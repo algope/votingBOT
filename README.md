@@ -1,2 +1,4 @@
 # votingBOT
-A bot-based voting system
+
+bot-based voting system
+a [Sails](http://sailsjs.org) application
