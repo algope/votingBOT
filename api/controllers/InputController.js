@@ -30,7 +30,7 @@ module.exports = {
 
     stages.findOrCreateEntry({user_id: userId}, {user_id: userId, stage: 1}).then(
       function (user) {
-        sails.log.debug("[DEV] - InputController.js Stage: " + stage);
+        sails.log.debug("[DEV] - InputController.js Stage: " + user.stage);
         switch (user.stage) {
           case 1: //start
             sails.log.debug("[DEV] - Stage 1. Command: " + command);
