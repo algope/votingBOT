@@ -31,17 +31,16 @@ module.exports = {
     stages.findOrCreateEntry({user_id: userId}, {user_id: userId, stage: 1}).then(
       function (user) {
         sails.log.debug("[DEV] - InputController.js Stage: " + user.stage);
-        switch (user.stage) {
-          case 1: //start
-            sails.log.debug("[DEV] - Stage 1. Command: " + command);
-            // if (update.message.photo || command.commandId == 0 || !command) {
-            //   answers.answeringError(userId, update, userAlias, user);
-            // } else if (command.commandType == 1) {
-            //   answers.answeringCommandsS1(command, userId, userName);
-            // } else {
-            //   answers.answeringError(userId, update, userAlias, user);
-            // }
-            break;
+        
+        if (user.stage == 1) { //start
+          sails.log.debug("[DEV] - Stage 1. Command: " + command);
+          if (update.message.photo || command.commandId == 0 || !command) {
+            answers.answeringError(userId, update, userAlias, user);
+          } else if (command.commandType == 1) {
+            answers.answeringCommandsS1(command, userId, userName);
+          } else {
+            answers.answeringError(userId, update, userAlias, user);
+          }
 
         }
       }
