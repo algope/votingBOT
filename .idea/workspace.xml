@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="f347c9c5-3dae-411d-a3be-dbe5f5325317" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/services/keyboards.js" afterPath="$PROJECT_DIR$/api/services/keyboards.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/services/telegram.js" afterPath="$PROJECT_DIR$/api/services/telegram.js" />
     </list>
     <ignored path="votingBOT.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -27,8 +27,8 @@
       <file leaf-file-name="InputController.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/api/controllers/InputController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="457">
-              <caret line="46" column="6" selection-start-line="46" selection-start-column="6" selection-end-line="46" selection-end-column="6" />
+            <state relative-caret-position="331">
+              <caret line="39" column="67" selection-start-line="39" selection-start-column="67" selection-end-line="39" selection-end-column="67" />
               <folding />
             </state>
           </provider>
@@ -37,8 +37,8 @@
       <file leaf-file-name="answers.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/api/services/answers.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
-              <caret line="12" column="107" selection-start-line="12" selection-start-column="107" selection-end-line="12" selection-end-column="107" />
+            <state relative-caret-position="108">
+              <caret line="11" column="19" selection-start-line="11" selection-start-column="19" selection-end-line="11" selection-end-column="19" />
               <folding />
             </state>
           </provider>
@@ -54,11 +54,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="keyboards.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="keyboards.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/api/services/keyboards.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="252">
-              <caret line="14" column="45" selection-start-line="14" selection-start-column="45" selection-end-line="14" selection-end-column="45" />
+            <state relative-caret-position="342">
+              <caret line="19" column="48" selection-start-line="19" selection-start-column="41" selection-end-line="19" selection-end-column="48" />
               <folding />
             </state>
           </provider>
@@ -74,16 +74,16 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="telegram.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="telegram.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/api/services/telegram.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="414">
-              <caret line="32" column="0" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
+            <state relative-caret-position="432">
+              <caret line="33" column="52" selection-start-line="33" selection-start-column="52" selection-end-line="33" selection-end-column="52" />
               <folding>
-                <element signature="e#1385#1767#0" expanded="false" />
-                <element signature="e#1814#2278#0" expanded="false" />
-                <element signature="e#2323#3151#0" expanded="false" />
-                <element signature="e#3205#3601#0" expanded="false" />
+                <element signature="e#1439#1821#0" expanded="false" />
+                <element signature="e#1868#2332#0" expanded="false" />
+                <element signature="e#2377#3205#0" expanded="false" />
+                <element signature="e#3259#3655#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -112,7 +112,6 @@
         <option value="$PROJECT_DIR$/api/models/Messages.js" />
         <option value="$PROJECT_DIR$/api/models/Users.js" />
         <option value="$PROJECT_DIR$/api/models/Stages.js" />
-        <option value="$PROJECT_DIR$/api/services/telegram.js" />
         <option value="$PROJECT_DIR$/config/globals.js" />
         <option value="$PROJECT_DIR$/config/connections.js" />
         <option value="$PROJECT_DIR$/config/env/development.js" />
@@ -124,6 +123,7 @@
         <option value="$PROJECT_DIR$/api/services/strings.js" />
         <option value="$PROJECT_DIR$/api/services/answers.js" />
         <option value="$PROJECT_DIR$/api/services/keyboards.js" />
+        <option value="$PROJECT_DIR$/api/services/telegram.js" />
       </list>
     </option>
   </component>
@@ -325,7 +325,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="11936000" />
+    <option name="totallyTimeSpent" value="12206000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1920" height="1053" extended-state="6" />
@@ -381,10 +381,10 @@
         <state relative-caret-position="558">
           <caret line="31" column="5" selection-start-line="31" selection-start-column="5" selection-end-line="31" selection-end-column="5" />
           <folding>
-            <element signature="e#1385#1767#0" expanded="false" />
-            <element signature="e#1814#2278#0" expanded="false" />
-            <element signature="e#2323#3151#0" expanded="false" />
-            <element signature="e#3205#3601#0" expanded="false" />
+            <element signature="e#1439#1821#0" expanded="false" />
+            <element signature="e#1868#2332#0" expanded="false" />
+            <element signature="e#2377#3205#0" expanded="false" />
+            <element signature="e#3259#3655#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -482,10 +482,10 @@
         <state relative-caret-position="558">
           <caret line="31" column="5" selection-start-line="31" selection-start-column="5" selection-end-line="31" selection-end-column="5" />
           <folding>
-            <element signature="e#1385#1767#0" expanded="false" />
-            <element signature="e#1814#2278#0" expanded="false" />
-            <element signature="e#2323#3151#0" expanded="false" />
-            <element signature="e#3205#3601#0" expanded="false" />
+            <element signature="e#1439#1821#0" expanded="false" />
+            <element signature="e#1868#2332#0" expanded="false" />
+            <element signature="e#2377#3205#0" expanded="false" />
+            <element signature="e#3259#3655#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -715,19 +715,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/api/services/telegram.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="414">
-          <caret line="32" column="0" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
-          <folding>
-            <element signature="e#1385#1767#0" expanded="false" />
-            <element signature="e#1814#2278#0" expanded="false" />
-            <element signature="e#2323#3151#0" expanded="false" />
-            <element signature="e#3205#3601#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/api/services/queries.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="234">
@@ -744,14 +731,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/api/controllers/InputController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="457">
-          <caret line="46" column="6" selection-start-line="46" selection-start-column="6" selection-end-line="46" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/api/services/strings.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
@@ -760,19 +739,40 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/api/services/answers.js">
+    <entry file="file://$PROJECT_DIR$/api/services/keyboards.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="12" column="107" selection-start-line="12" selection-start-column="107" selection-end-line="12" selection-end-column="107" />
+        <state relative-caret-position="342">
+          <caret line="19" column="48" selection-start-line="19" selection-start-column="41" selection-end-line="19" selection-end-column="48" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/api/services/keyboards.js">
+    <entry file="file://$PROJECT_DIR$/api/controllers/InputController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="14" column="45" selection-start-line="14" selection-start-column="45" selection-end-line="14" selection-end-column="45" />
+        <state relative-caret-position="331">
+          <caret line="39" column="67" selection-start-line="39" selection-start-column="67" selection-end-line="39" selection-end-column="67" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/services/answers.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="11" column="19" selection-start-line="11" selection-start-column="19" selection-end-line="11" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/services/telegram.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="432">
+          <caret line="33" column="52" selection-start-line="33" selection-start-column="52" selection-end-line="33" selection-end-column="52" />
+          <folding>
+            <element signature="e#1439#1821#0" expanded="false" />
+            <element signature="e#1868#2332#0" expanded="false" />
+            <element signature="e#2377#3205#0" expanded="false" />
+            <element signature="e#3259#3655#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>

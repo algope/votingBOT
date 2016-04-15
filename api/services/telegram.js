@@ -31,6 +31,8 @@ module.exports.sendMessage = function (chat_id, text, parse_mode, disable_web_pa
     reply_markup: reply_markup
   });
 
+  sails.log.debug("REPLY_KEYBOARD: "+ reply_markup);
+
   return new Promise(function (resolve, reject) {
     var postReq = https.request(options, function (res) {
       res.setEncoding('utf8');
