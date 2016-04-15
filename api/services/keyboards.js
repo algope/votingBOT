@@ -12,11 +12,11 @@ module.exports.createKeyboard = function (type) {
     //TODO: HARDCODED
     var keyboard = "";
     var buttons = null;
-
+    sails.log.debug("KEYBOARD TYPE: "+ type);
 
     switch (type) {
         case 1:
-            buttons = [[{text: "Si", callback_data: "butt_1"}],[{text: "No", callback_data: "butt_2"}]];
+            buttons = [[{text: "Si", callback_data: "butt_1"}]];
             keyboard = {inline_keyboard: buttons};
             break;
         case 2:
