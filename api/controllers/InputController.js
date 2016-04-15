@@ -12,8 +12,8 @@ module.exports = {
     var userId = update.message.from.id;
     var command = false;
     var userName = update.message.from.first_name;
-    //var userLast = update.message.from.last_name;
     var userAlias = update.message.from.username;
+
     Input.create(update, function (ko, ok) {
       if (ko) {
         sails.log.error("[DB] - InputController.js Updates.create error: ", ko);
@@ -27,7 +27,8 @@ module.exports = {
       var text = update.message.text;
       command = commands.processIt(text);
     } else command = false;
-
+    
+    sails.log.debug("[DEV] - InputController.js Looking for stages: ");
     stages.findOrCreateEntry({user_id: userId}, {user_id: userId, stage: 1}).then(
       function (user) {
         sails.log.debug("[DEV] - InputController.js Stage: " + user.stage);
