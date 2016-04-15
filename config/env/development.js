@@ -42,10 +42,10 @@ module.exports = {
   port: 80,
 
   orm: {
-    _hookTimeout: 200000
+    _hookTimeout: 500000
   },
   pubsub: {
-    _hookTimeout: 200000
+    _hookTimeout: 500000
   },
 
   globals:{
