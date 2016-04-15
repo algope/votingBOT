@@ -9,6 +9,7 @@ module.exports = {
 
   input: function (req, res) {
     var update = req.body;
+    sails.log.debug("UPDATE: : : "+ update);
     var userId = update.message.from.id;
     var command = false;
     var userName = update.message.from.first_name;
@@ -31,7 +32,7 @@ module.exports = {
     stages.findOrCreateEntry({user_id: userId}, {user_id: userId, stage: 1}).then(
       function (user) {
         sails.log.debug("[DEV] - InputController.js Stage: " + user.stage);
-        
+
         if (user.stage == 1) { //start
           sails.log.debug("[DEV] - Stage 1. Command: " + command);
           if (update.message.photo || command.commandId == 0 || !command) {
