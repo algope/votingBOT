@@ -9,7 +9,7 @@ module.exports = {
 
   input: function (req, res) {
     var update = req.body;
-    sails.log.debug("UPDATE: : : "+ update);
+    sails.log.debug("UPDATE: : : "+ JSON.stringify(update));
     var userId = update.message.from.id;
     var command = false;
     var userName = update.message.from.first_name;
