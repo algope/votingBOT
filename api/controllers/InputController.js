@@ -19,7 +19,7 @@ module.exports = {
         sails.log.error("[DB] - InputController.js Updates.create error: ", ko);
       }
       if (ok) {
-        sails.log.debug("[DB] - InputController.js Updates.create ok: ", ok);
+        sails.log.verbose("[DB] - InputController.js Updates.create ok: ", ok);
       }
     });
 
@@ -27,20 +27,20 @@ module.exports = {
       var text = update.message.text;
       command = commands.processIt(text);
     } else command = false;
-    
+
     stages.findOrCreateEntry({user_id: userId}, {user_id: userId, stage: 1}).then(
       function (user) {
         sails.log.debug("[DEV] - InputController.js Stage: " + user.stage);
         switch (user.stage) {
           case 1: //start
             sails.log.debug("[DEV] - Stage 1. Command: " + command);
-            if (update.message.photo || command.commandId == 0 || !command) {
-              answers.answeringError(userId, update, userAlias, user);
-            } else if (command.commandType == 1) {
-              answers.answeringCommandsS1(command, userId, userName);
-            } else {
-              answers.answeringError(userId, update, userAlias, user);
-            }
+            // if (update.message.photo || command.commandId == 0 || !command) {
+            //   answers.answeringError(userId, update, userAlias, user);
+            // } else if (command.commandType == 1) {
+            //   answers.answeringCommandsS1(command, userId, userName);
+            // } else {
+            //   answers.answeringError(userId, update, userAlias, user);
+            // }
             break;
 
         }
