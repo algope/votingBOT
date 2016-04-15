@@ -18,10 +18,10 @@ module.exports = {
 
     Input.create(update, function (ko, ok) {
       if (ko) {
-        sails.log.error("[DB] - Updates.create error: ", ko);
+        sails.log.error("[DB] - InputController.js Updates.create error: ", ko);
       }
       if (ok) {
-        sails.log.debug("[DB] - Updates.create ok: ", ok);
+        sails.log.debug("[DB] - InputController.js Updates.create ok: ", ok);
       }
     });
 
@@ -30,7 +30,7 @@ module.exports = {
       command = commands.processIt(text);
     } else command = false;
 
-
+    sails.log.debug("[DEV] - InputController.js Stage: "+stage);
     switch (stage) {
       case 1: //start
         sails.log.debug("[DEV] - Stage 1. Command: "+command);

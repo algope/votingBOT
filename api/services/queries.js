@@ -13,6 +13,7 @@ module.exports.findOrCreateStage = function(userId) {
       if(err){
         reject(err);
       }else if(ok){
+        sails.log.debug("[DEV] - Queries.js findOrCreateStage ok: "+ok);
         resolve(ok.stage);
       }
     })
