@@ -33,6 +33,7 @@ module.exports = {
 
     switch (stage) {
       case 1: //start
+        sails.log.debug("[DEV] - Stage 1. Command: "+command);
         if (update.message.photo || command.commandId == 0 || !command) {
           answers.answeringError(userId, update, userAlias, user);
         } else if (command.commandType == 1) {
