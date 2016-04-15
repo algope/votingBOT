@@ -13,7 +13,8 @@ module.exports.getError =
 
 module.exports.getWelcome = function (userName) {
     return "Hola " + userName + ", encantado de conocerte!\n" +
-        "Bienvenido al sistema de votación. Para empezar será necesario que te registres.";
+        "Bienvenidx al sistema de votación. Para empezar será necesario que te registres con tu DNI y tu Fecha de Nacimiento.\n" +
+      "¿Quieres registrarte?";
 };
 
 module.exports.getHelp1 = "Para enviar información, selecciona el comando: /enviar_info\n\n" +
