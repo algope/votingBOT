@@ -4,7 +4,6 @@
     <list default="true" id="f347c9c5-3dae-411d-a3be-dbe5f5325317" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/services/keyboards.js" afterPath="$PROJECT_DIR$/api/services/keyboards.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/services/strings.js" afterPath="$PROJECT_DIR$/api/services/strings.js" />
     </list>
     <ignored path="votingBOT.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -58,8 +57,8 @@
       <file leaf-file-name="keyboards.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/api/services/keyboards.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="324">
-              <caret line="18" column="101" selection-start-line="18" selection-start-column="101" selection-end-line="18" selection-end-column="101" />
+            <state relative-caret-position="360">
+              <caret line="20" column="18" selection-start-line="20" selection-start-column="18" selection-end-line="20" selection-end-column="18" />
               <folding />
             </state>
           </provider>
@@ -326,7 +325,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="11435000" />
+    <option name="totallyTimeSpent" value="11550000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1920" height="1053" extended-state="6" />
@@ -771,8 +770,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/api/services/keyboards.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="18" column="101" selection-start-line="18" selection-start-column="101" selection-end-line="18" selection-end-column="101" />
+        <state relative-caret-position="360">
+          <caret line="20" column="18" selection-start-line="20" selection-start-column="18" selection-end-line="20" selection-end-column="18" />
           <folding />
         </state>
       </provider>
