@@ -17,10 +17,44 @@ module.exports = {
    * environment (see config/connections.js and config/models.js )           *
    ***************************************************************************/
 
-  // models: {
-  //   connection: 'someMongodbServer'
-  // }
+  connections: {
+    'defaults': 'devMySQL',
+    devMySQL: {
+     adapter: 'sails-mysql',
+    host: process.env.DB_URL,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME
+    }
+  },
 
-  port: 8443
+  models: {
+    connection: 'devMySQL',
+    migrate: process.env.MIGRATION_TYPE
 
+
+  },
+
+  telegram: {
+    token: process.env.TELEGRAM_TOKEN
+  },
+
+  port: 80,
+
+  orm: {
+    _hookTimeout: 200000
+  },
+  pubsub: {
+    _hookTimeout: 200000
+  },
+
+  globals:{
+    authentication: {
+      secret: process.env.AUTH_SECRET
+    }
+  },
+
+  log: {
+    level: "verbose"
+  }
 };
