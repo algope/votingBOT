@@ -50,10 +50,10 @@ module.exports = {
         sails.log.debug("[DEV] - InputController.js CommandType: "+command.commandType);
 
         if (user.stage == 0) { //start
-          sails.log.debug("[DEV] - Stage 0. Command: " + command);
           if (update.message.photo || command.commandId == 0 || !command) {
             answers.answeringError(userId, update, userAlias, user);
           } else if (command.commandType == 1 || command.commandType == 4) {
+            sails.log.debug("[DEV] - InputController.js ELSE IF: "+command.commandType);
             answers.answeringCommandsS1(command, userId, userName);
           } else {
             answers.answeringError(userId, update, userAlias, user);
