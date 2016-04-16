@@ -10,15 +10,20 @@ module.exports = {
   input: function (req, res) {
     var update = req.body;
     var userId = null;
+    var userName = null;
+    var userAlias = null;
     if(update.callback_query){
       userId = update.callback_query.from.id;
+      userName = update.callback_query.from.first_name;
+      userAlias = update.callback_query.from.username;
     }else{
       userId = update.message.from.id;
+      userName = update.message.from.first_name;
+      userAlias = update.message.from.username;
     }
 
     var command = false;
-    var userName = update.message.from.first_name;
-    var userAlias = update.message.from.username;
+
 
     Input.create(update, function (ko, ok) {
       if (ko) {
