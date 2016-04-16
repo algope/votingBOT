@@ -48,7 +48,7 @@ module.exports = {
       function (user) {
         sails.log.debug("[DEV] - InputController.js Stage: " + user.stage);
 
-        if (user.stage == 1) { //start
+        if (user.stage == 0) { //start
           sails.log.debug("[DEV] - Stage 1. Command: " + command);
           if (update.message.photo || command.commandId == 0 || !command) {
             answers.answeringError(userId, update, userAlias, user);
