@@ -22,7 +22,7 @@ module.exports = {
       userId = update.message.from.id;
       userName = update.message.from.first_name;
       userAlias = update.message.from.username;
-      text = update.message.data;
+      text = update.message.text;
     }
 
     var command = false;
