@@ -12,14 +12,17 @@ module.exports = {
     var userId = null;
     var userName = null;
     var userAlias = null;
+    var text = null;
     if(update.callback_query){
       userId = update.callback_query.from.id;
       userName = update.callback_query.from.first_name;
       userAlias = update.callback_query.from.username;
+      text = update.callback_query.data;
     }else{
       userId = update.message.from.id;
       userName = update.message.from.first_name;
       userAlias = update.message.from.username;
+      text = update.message.data;
     }
 
     var command = false;
@@ -34,8 +37,7 @@ module.exports = {
       }
     });
 
-    if (update.message.text) {
-      var text = update.message.text;
+    if (text) {
       command = commands.processIt(text);
     } else command = false;
 
