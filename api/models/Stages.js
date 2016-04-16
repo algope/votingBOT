@@ -15,10 +15,6 @@ module.exports = {
     stage: {
       type: 'string',
       defaultsTo: ''
-    },
-    data_type_selected: {
-      type: 'string',
-      defaultsTo: ''
     }
   }
 };
