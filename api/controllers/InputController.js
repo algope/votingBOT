@@ -49,7 +49,7 @@ module.exports = {
         sails.log.debug("[DEV] - InputController.js Stage: " + user.stage);
 
         if (user.stage == 0) { //start
-          sails.log.debug("[DEV] - Stage 1. Command: " + command);
+          sails.log.debug("[DEV] - Stage 0. Command: " + command);
           if (update.message.photo || command.commandId == 0 || !command) {
             answers.answeringError(userId, update, userAlias, user);
           } else if (command.commandType == 1) {
