@@ -50,7 +50,7 @@ module.exports = {
         sails.log.debug("[DEV] - InputController.js CommandType: "+command.commandType);
 
         if (user.stage == 0) { //start
-          sails.log.debug("[DEV] - InputController.js IF: "+command.commandType);
+          
           if (update.message.photo || command.commandId == 0 || !command) {
             answers.answeringError(userId, update, userAlias, user);
           } else if (command.commandType == 1) {
