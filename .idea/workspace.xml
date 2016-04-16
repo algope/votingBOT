@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="f347c9c5-3dae-411d-a3be-dbe5f5325317" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/services/answers.js" afterPath="$PROJECT_DIR$/api/services/answers.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/controllers/InputController.js" afterPath="$PROJECT_DIR$/api/controllers/InputController.js" />
     </list>
     <ignored path="votingBOT.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -24,11 +24,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="InputController.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="InputController.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/api/controllers/InputController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="549">
-              <caret line="53" column="41" selection-start-line="53" selection-start-column="41" selection-end-line="53" selection-end-column="41" />
+            <state relative-caret-position="567">
+              <caret line="54" column="73" selection-start-line="54" selection-start-column="73" selection-end-line="54" selection-end-column="73" />
               <folding />
             </state>
           </provider>
@@ -44,7 +44,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="answers.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="answers.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/api/services/answers.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="180">
@@ -87,8 +87,8 @@
       <file leaf-file-name="commands.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/api/services/commands.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="432">
-              <caret line="93" column="16" selection-start-line="93" selection-start-column="16" selection-end-line="93" selection-end-column="16" />
+            <state relative-caret-position="594">
+              <caret line="98" column="26" selection-start-line="98" selection-start-column="12" selection-end-line="98" selection-end-column="26" />
               <folding />
             </state>
           </provider>
@@ -127,9 +127,9 @@
         <option value="$PROJECT_DIR$/api/models/Users.js" />
         <option value="$PROJECT_DIR$/api/models/Stages.js" />
         <option value="$PROJECT_DIR$/api/services/strings.js" />
-        <option value="$PROJECT_DIR$/api/controllers/InputController.js" />
         <option value="$PROJECT_DIR$/api/services/commands.js" />
         <option value="$PROJECT_DIR$/api/services/answers.js" />
+        <option value="$PROJECT_DIR$/api/controllers/InputController.js" />
       </list>
     </option>
   </component>
@@ -330,12 +330,12 @@
       <option name="presentableId" value="Default" />
       <updated>1460711355264</updated>
       <workItem from="1460711357478" duration="8136000" />
-      <workItem from="1460836054351" duration="3709000" />
+      <workItem from="1460836054351" duration="3895000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="16664000" />
+    <option name="totallyTimeSpent" value="16850000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1920" height="1053" extended-state="6" />
@@ -732,14 +732,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/api/models/Users.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="21" column="20" selection-start-line="21" selection-start-column="20" selection-end-line="21" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/api/services/strings.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="198">
@@ -748,18 +740,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/api/controllers/InputController.js">
+    <entry file="file://$PROJECT_DIR$/api/models/Users.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="549">
-          <caret line="53" column="41" selection-start-line="53" selection-start-column="41" selection-end-line="53" selection-end-column="41" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/api/services/commands.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="432">
-          <caret line="93" column="16" selection-start-line="93" selection-start-column="16" selection-end-line="93" selection-end-column="16" />
+        <state relative-caret-position="378">
+          <caret line="21" column="20" selection-start-line="21" selection-start-column="20" selection-end-line="21" selection-end-column="20" />
           <folding />
         </state>
       </provider>
@@ -779,6 +763,22 @@
             <element signature="e#9818#13406#0" expanded="false" />
             <element signature="e#13482#13935#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/services/commands.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="594">
+          <caret line="98" column="26" selection-start-line="98" selection-start-column="12" selection-end-line="98" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/controllers/InputController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="567">
+          <caret line="54" column="73" selection-start-line="54" selection-start-column="73" selection-end-line="54" selection-end-column="73" />
+          <folding />
         </state>
       </provider>
     </entry>
