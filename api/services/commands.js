@@ -92,7 +92,7 @@ function strip(text) {
   var regex = /(\/[a-z\_A-Z]+)/;
   var regex2 = /\b([A-Z]{1}\b)/;
   var regex3 = /((TEXTO)|(IMAGEN)+)/;
-  var regex4 = /(butt_)/;
+  var regex4 = /(butt_)./;
 
   var array = text.split(" ");
 
