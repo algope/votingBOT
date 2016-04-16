@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f347c9c5-3dae-411d-a3be-dbe5f5325317" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/controllers/InputController.js" afterPath="$PROJECT_DIR$/api/controllers/InputController.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/services/answers.js" afterPath="$PROJECT_DIR$/api/services/answers.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/services/commands.js" afterPath="$PROJECT_DIR$/api/services/commands.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/services/strings.js" afterPath="$PROJECT_DIR$/api/services/strings.js" />
     </list>
     <ignored path="votingBOT.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -26,8 +30,8 @@
       <file leaf-file-name="InputController.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/api/controllers/InputController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="495">
-              <caret line="50" column="38" selection-start-line="50" selection-start-column="38" selection-end-line="50" selection-end-column="38" />
+            <state relative-caret-position="351">
+              <caret line="42" column="27" selection-start-line="42" selection-start-column="27" selection-end-line="42" selection-end-column="27" />
               <folding />
             </state>
           </provider>
@@ -43,21 +47,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="answers.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="answers.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/api/services/answers.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="378">
-              <caret line="22" column="8" selection-start-line="22" selection-start-column="8" selection-end-line="22" selection-end-column="8" />
+            <state relative-caret-position="729">
+              <caret line="55" column="57" selection-start-line="55" selection-start-column="57" selection-end-line="55" selection-end-column="57" />
               <folding>
-                <element signature="e#1611#2931#0" expanded="false" />
-                <element signature="e#3008#4332#0" expanded="false" />
-                <element signature="e#4409#5743#0" expanded="false" />
-                <element signature="e#5821#7145#0" expanded="false" />
-                <element signature="e#7209#7794#0" expanded="false" />
-                <element signature="e#7872#8202#0" expanded="false" />
-                <element signature="e#8274#9206#0" expanded="false" />
-                <element signature="e#9279#12867#0" expanded="false" />
-                <element signature="e#12943#13396#0" expanded="false" />
+                <element signature="e#2079#3399#0" expanded="false" />
+                <element signature="e#3476#4800#0" expanded="false" />
+                <element signature="e#4877#6211#0" expanded="false" />
+                <element signature="e#6289#7613#0" expanded="false" />
+                <element signature="e#7677#8262#0" expanded="false" />
+                <element signature="e#8340#8670#0" expanded="false" />
+                <element signature="e#8742#9674#0" expanded="false" />
+                <element signature="e#9747#13335#0" expanded="false" />
+                <element signature="e#13411#13864#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -66,8 +70,8 @@
       <file leaf-file-name="strings.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/api/services/strings.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="15" column="124" selection-start-line="15" selection-start-column="124" selection-end-line="15" selection-end-column="124" />
+            <state relative-caret-position="198">
+              <caret line="11" column="60" selection-start-line="11" selection-start-column="60" selection-end-line="11" selection-end-column="60" />
               <folding />
             </state>
           </provider>
@@ -83,11 +87,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="commands.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="commands.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/api/services/commands.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="459">
-              <caret line="96" column="30" selection-start-line="96" selection-start-column="30" selection-end-line="96" selection-end-column="30" />
+            <state relative-caret-position="558">
+              <caret line="100" column="0" selection-start-line="100" selection-start-column="0" selection-end-line="100" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -121,14 +125,14 @@
         <option value="$PROJECT_DIR$/config/models.js" />
         <option value="$PROJECT_DIR$/api/services/queries.js" />
         <option value="$PROJECT_DIR$/api/services/stages.js" />
-        <option value="$PROJECT_DIR$/api/services/strings.js" />
-        <option value="$PROJECT_DIR$/api/services/answers.js" />
         <option value="$PROJECT_DIR$/api/services/keyboards.js" />
         <option value="$PROJECT_DIR$/api/services/telegram.js" />
         <option value="$PROJECT_DIR$/api/models/Users.js" />
-        <option value="$PROJECT_DIR$/api/controllers/InputController.js" />
         <option value="$PROJECT_DIR$/api/models/Stages.js" />
         <option value="$PROJECT_DIR$/api/services/commands.js" />
+        <option value="$PROJECT_DIR$/api/controllers/InputController.js" />
+        <option value="$PROJECT_DIR$/api/services/strings.js" />
+        <option value="$PROJECT_DIR$/api/services/answers.js" />
       </list>
     </option>
   </component>
@@ -329,12 +333,12 @@
       <option name="presentableId" value="Default" />
       <updated>1460711355264</updated>
       <workItem from="1460711357478" duration="8136000" />
-      <workItem from="1460836054351" duration="2524000" />
+      <workItem from="1460836054351" duration="3396000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="15479000" />
+    <option name="totallyTimeSpent" value="16351000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1920" height="1053" extended-state="6" />
@@ -372,7 +376,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="3" />
+      <option name="time" value="4" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -397,6 +401,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="558">
           <caret line="31" column="5" selection-start-line="31" selection-start-column="5" selection-end-line="31" selection-end-column="5" />
+          <folding>
+            <element signature="e#1315#1697#0" expanded="false" />
+            <element signature="e#1744#2208#0" expanded="false" />
+            <element signature="e#2253#3081#0" expanded="false" />
+            <element signature="e#3135#3531#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -479,6 +489,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="558">
           <caret line="31" column="5" selection-start-line="31" selection-start-column="5" selection-end-line="31" selection-end-column="5" />
+          <folding>
+            <element signature="e#1315#1697#0" expanded="false" />
+            <element signature="e#1744#2208#0" expanded="false" />
+            <element signature="e#2253#3081#0" expanded="false" />
+            <element signature="e#3135#3531#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -503,15 +519,15 @@
         <state relative-caret-position="432">
           <caret line="24" column="19" selection-start-line="24" selection-start-column="19" selection-end-line="24" selection-end-column="19" />
           <folding>
-            <element signature="e#1611#2931#0" expanded="false" />
-            <element signature="e#3008#4332#0" expanded="false" />
-            <element signature="e#4409#5743#0" expanded="false" />
-            <element signature="e#5821#7145#0" expanded="false" />
-            <element signature="e#7209#7794#0" expanded="false" />
-            <element signature="e#7872#8202#0" expanded="false" />
-            <element signature="e#8274#9206#0" expanded="false" />
-            <element signature="e#9279#12867#0" expanded="false" />
-            <element signature="e#12943#13396#0" expanded="false" />
+            <element signature="e#2079#3399#0" expanded="false" />
+            <element signature="e#3476#4800#0" expanded="false" />
+            <element signature="e#4877#6211#0" expanded="false" />
+            <element signature="e#6289#7613#0" expanded="false" />
+            <element signature="e#7677#8262#0" expanded="false" />
+            <element signature="e#8340#8670#0" expanded="false" />
+            <element signature="e#8742#9674#0" expanded="false" />
+            <element signature="e#9747#13335#0" expanded="false" />
+            <element signature="e#13411#13864#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -682,14 +698,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/api/services/strings.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="15" column="124" selection-start-line="15" selection-start-column="124" selection-end-line="15" selection-end-column="124" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/api/services/keyboards.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="450">
@@ -702,6 +710,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="378">
           <caret line="30" column="5" selection-start-line="30" selection-start-column="5" selection-end-line="30" selection-end-column="5" />
+          <folding>
+            <element signature="e#1315#1697#0" expanded="false" />
+            <element signature="e#1744#2208#0" expanded="false" />
+            <element signature="e#2253#3081#0" expanded="false" />
+            <element signature="e#3135#3531#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -729,37 +743,45 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/api/services/commands.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="558">
+          <caret line="100" column="0" selection-start-line="100" selection-start-column="0" selection-end-line="100" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/api/controllers/InputController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="495">
-          <caret line="50" column="38" selection-start-line="50" selection-start-column="38" selection-end-line="50" selection-end-column="38" />
+        <state relative-caret-position="351">
+          <caret line="42" column="27" selection-start-line="42" selection-start-column="27" selection-end-line="42" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/services/strings.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="11" column="60" selection-start-line="11" selection-start-column="60" selection-end-line="11" selection-end-column="60" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/api/services/answers.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="22" column="8" selection-start-line="22" selection-start-column="8" selection-end-line="22" selection-end-column="8" />
+        <state relative-caret-position="729">
+          <caret line="55" column="57" selection-start-line="55" selection-start-column="57" selection-end-line="55" selection-end-column="57" />
           <folding>
-            <element signature="e#1611#2931#0" expanded="false" />
-            <element signature="e#3008#4332#0" expanded="false" />
-            <element signature="e#4409#5743#0" expanded="false" />
-            <element signature="e#5821#7145#0" expanded="false" />
-            <element signature="e#7209#7794#0" expanded="false" />
-            <element signature="e#7872#8202#0" expanded="false" />
-            <element signature="e#8274#9206#0" expanded="false" />
-            <element signature="e#9279#12867#0" expanded="false" />
-            <element signature="e#12943#13396#0" expanded="false" />
+            <element signature="e#2079#3399#0" expanded="false" />
+            <element signature="e#3476#4800#0" expanded="false" />
+            <element signature="e#4877#6211#0" expanded="false" />
+            <element signature="e#6289#7613#0" expanded="false" />
+            <element signature="e#7677#8262#0" expanded="false" />
+            <element signature="e#8340#8670#0" expanded="false" />
+            <element signature="e#8742#9674#0" expanded="false" />
+            <element signature="e#9747#13335#0" expanded="false" />
+            <element signature="e#13411#13864#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/api/services/commands.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="96" column="30" selection-start-line="96" selection-start-column="30" selection-end-line="96" selection-end-column="30" />
-          <folding />
         </state>
       </provider>
     </entry>

@@ -43,6 +43,20 @@ module.exports.answeringCommandsS1 = function (command, userId, userName) {
     case 7: //resultados
       //TODO: RESULTADOS
       break;
+    case 10: //butt_1 : SI
+      telegram.sendMessage(userId, strings.getRegisterStep1, "", true, null, null).then(
+        function (response) {
+          stages.updateStage({user_id: userId}, {stage: 1});
+        }
+      );
+      break;
+    case 11: //butt_2 : NO
+      telegram.sendMessage(userId, strings.getBye, "", true, null, null).then(
+        function (response) {
+          stages.updateStage({user_id: userId}, {stage: 0});
+        }
+      );
+      break;
   }
 
 };

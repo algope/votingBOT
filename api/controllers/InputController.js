@@ -44,7 +44,7 @@ module.exports = {
 
     sails.log.debug("[DEV] - TEXT: "+text);
 
-    stages.findOrCreateEntry({user_id: userId}, {user_id: userId, stage: 1}).then(
+    stages.findOrCreateEntry({user_id: userId}, {user_id: userId, stage: 0}).then(
       function (user) {
         sails.log.debug("[DEV] - InputController.js Stage: " + user.stage);
 

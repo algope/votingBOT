@@ -7,8 +7,9 @@
  *
  */
 
-module.exports.getError =
-    "Ups, eso no me lo esperaba... ¿Te has equivocado?";
+module.exports.getError = "Ups, eso no me lo esperaba... ¿Te has equivocado?";
+module.exports.getBye = ":( Una pena, me hubiera gustado seguir hablando contigo\n" +
+  "Si cambias de opinión, solo tienes que volver a escribir: /start";
 
 
 module.exports.getWelcome = function (userName) {
@@ -16,6 +17,8 @@ module.exports.getWelcome = function (userName) {
         "Bienvenidx al sistema de votación. Para empezar será necesario que te registres con tu DNI y tu Fecha de Nacimiento.\n" +
       "¿Quieres registrarte?";
 };
+
+module.exports.getRegisterStep1 = "Estupendo, ¿cuál es tu DNI o NIE? Recuerda introducirlo con letra";
 
 module.exports.getHelp1 = "Para enviar información, selecciona el comando: /enviar_info\n\n" +
     "Para volver a empezar, selecciona el comando: /cancelar\n\n" +

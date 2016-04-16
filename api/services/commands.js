@@ -70,6 +70,7 @@ module.exports.processIt = function (text) {
         id = 0;
     }
     return {commandType: 2, commandId: id};
+
   } else if (result.type == 3) { //Information type
 
     switch (result.command) {
@@ -84,7 +85,21 @@ module.exports.processIt = function (text) {
     }
     return {commandType: 3, commandId: id};
 
-  } else return false;
+  } else if (result.type == 4) {
+    switch (result.command) {
+      case "butt_1":
+        id = 1;
+        break;
+      case "butt_2":
+        id = 2;
+        break;
+      default:
+        id = 0;
+    }
+    return {commandType: 4, commandId: id}
+  }
+
+  else return false;
 
 };
 
@@ -113,6 +128,8 @@ function strip(text) {
     return {command: matching2[0], type: 2};
   } else if (matching3) {
     return {command: matching3[0], type: 3};
+  } else if (matching4) {
+    return {command: matching4[0], type: 4};
   }
   else return false;
 
