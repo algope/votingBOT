@@ -27,15 +27,16 @@ module.exports = {
 
     var command = false;
 
-
-    Input.create(update, function (ko, ok) {
-      if (ko) {
-        sails.log.error("[DB] - InputController.js Updates.create error: ", ko);
-      }
-      if (ok) {
-        sails.log.verbose("[DB] - InputController.js Updates.create ok: ", ok);
-      }
-    });
+    if(!update.callback_query){
+      Input.create(update, function (ko, ok) {
+        if (ko) {
+          sails.log.error("[DB] - InputController.js Updates.create error: ", ko);
+        }
+        if (ok) {
+          sails.log.verbose("[DB] - InputController.js Updates.create ok: ", ok);
+        }
+      });
+    }
 
     if (text) {
       command = commands.processIt(text);
