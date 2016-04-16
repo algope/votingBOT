@@ -47,6 +47,7 @@ module.exports = {
     stages.findOrCreateEntry({user_id: userId}, {user_id: userId, stage: 0}).then(
       function (user) {
         sails.log.debug("[DEV] - InputController.js Stage: " + user.stage);
+        sails.log.debug("[DEV] - InputController.js CommandType: "+command.commandType);
 
         if (user.stage == 0) { //start
           sails.log.debug("[DEV] - Stage 0. Command: " + command);

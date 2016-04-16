@@ -27,8 +27,8 @@
       <file leaf-file-name="InputController.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/api/controllers/InputController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="567">
-              <caret line="54" column="73" selection-start-line="54" selection-start-column="73" selection-end-line="54" selection-end-column="73" />
+            <state relative-caret-position="477">
+              <caret line="49" column="88" selection-start-line="49" selection-start-column="88" selection-end-line="49" selection-end-column="88" />
               <folding />
             </state>
           </provider>
@@ -47,7 +47,7 @@
       <file leaf-file-name="answers.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/api/services/answers.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
+            <state relative-caret-position="36">
               <caret line="10" column="70" selection-start-line="10" selection-start-column="70" selection-end-line="10" selection-end-column="70" />
               <folding>
                 <element signature="e#2150#3470#0" expanded="false" />
@@ -330,12 +330,12 @@
       <option name="presentableId" value="Default" />
       <updated>1460711355264</updated>
       <workItem from="1460711357478" duration="8136000" />
-      <workItem from="1460836054351" duration="3895000" />
+      <workItem from="1460836054351" duration="4063000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="16850000" />
+    <option name="totallyTimeSpent" value="17018000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1920" height="1053" extended-state="6" />
@@ -748,9 +748,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/api/services/commands.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="594">
+          <caret line="98" column="26" selection-start-line="98" selection-start-column="12" selection-end-line="98" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/api/services/answers.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
+        <state relative-caret-position="36">
           <caret line="10" column="70" selection-start-line="10" selection-start-column="70" selection-end-line="10" selection-end-column="70" />
           <folding>
             <element signature="e#2150#3470#0" expanded="false" />
@@ -766,18 +774,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/api/services/commands.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="594">
-          <caret line="98" column="26" selection-start-line="98" selection-start-column="12" selection-end-line="98" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/api/controllers/InputController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="567">
-          <caret line="54" column="73" selection-start-line="54" selection-start-column="73" selection-end-line="54" selection-end-column="73" />
+        <state relative-caret-position="477">
+          <caret line="49" column="88" selection-start-line="49" selection-start-column="88" selection-end-line="49" selection-end-column="88" />
           <folding />
         </state>
       </provider>
