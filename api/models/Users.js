@@ -29,6 +29,9 @@ module.exports = {
       collection: 'messages',
       via: 'from',
       defaultsTo: null
+    },
+    valid: {
+      type: 'boolean'
     }
   }
 };

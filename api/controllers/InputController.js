@@ -9,8 +9,13 @@ module.exports = {
 
   input: function (req, res) {
     var update = req.body;
-    sails.log.debug("UPDATE: : : "+ JSON.stringify(update));
-    var userId = update.message.from.id;
+    var userId = null;
+    if(update.callback_query){
+      userId = update.callback_query.from.id;
+    }else{
+      userId = update.message.from.id;
+    }
+
     var command = false;
     var userName = update.message.from.first_name;
     var userAlias = update.message.from.username;
