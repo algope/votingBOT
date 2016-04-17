@@ -83,6 +83,7 @@ module.exports = {
           }
 
         } else if (user.stage == 2){ //Expecting Bdate
+          sails.log.debug("[DEV] - InputController.js COMMAND: "+JSON.stringify(command));
           if (!command) {
             sails.log.debug("[DEV] - InputController.js 1");
             answers.answeringError(userId, update, userAlias, user);
