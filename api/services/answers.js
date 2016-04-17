@@ -10,7 +10,7 @@
 var moment = require('moment');
 
 module.exports.answeringRegisterS0 = function (command, userId, callback_query_id) {
-  sails.log.debug("[DEV] - answers.js COMMANDID: "+command.commandId);
+  sails.log.debug("[DEV] - answers.js COMMANDID: " + command.commandId);
   switch (command.commandId) {
     case 1: //butt_1 : SI
       telegram.sendMessage(userId, strings.getRegisterStep0, "", true, null, {hide_keyboard: true}).then(
@@ -35,31 +35,46 @@ module.exports.answeringRegisterS0 = function (command, userId, callback_query_i
 module.exports.answeringRegisterS1 = function (command, userId, callback_query_id) {
   telegram.sendMessage(userId, strings.getValidating, "", true, null, {hide_keyboard: true}).then(
     function (response) {
-      sails.log.debug("[DEV] - Answers.js NID: "+JSON.stringify(command));
-      Census.findOne({nid: command.nid}).exec(function (ko, ok){
-        if(ok){
-          stages.updateStage({user_id: userId}, {stage: 2});
-          Users.update({id: userId}, {nid: command.nid}).exec(function (ko, ok){
-            if(ok){
-              sails.log.debug("[DB] - Answers.js NID INSERTED");
-            }else if(ko){
-              sails.log.error("[DB] - Answers.js NID UPDATE ERROR: "+ ko);
-            }
-          });
-          telegram.sendMessage(userId, strings.getRegisterStep1, "", true, null, {hide_keyboard: true})
-        }else if(!ok) {
-          telegram.sendMessage(userId, strings.getValidationErrorNID, "", true, null, {hide_keyboard: true});
-          Users.findOne({id: userId}).exec(function (ko, ok) {
-            if(ok){
-              sails.log.debug("[DB] - Answers.js UPDATING retry NID");
-              ok.retry_nid++;
-              ok.save(function(err, user) {});
-            }
-          });
-        }else if (ko){
-          sails.log.error("[DB] - Answers.js Error validating NID");
+      Users.findOne({id: userId}).exec(function (ko, ok) {
+        if (ok) {
+          if (ok.retry_nid <= 3) {
+            Census.findOne({nid: command.nid}).exec(function (ko, ok) {
+              if (ok) {
+                stages.updateStage({user_id: userId}, {stage: 2});
+                Users.update({id: userId}, {nid: command.nid}).exec(function (ko, ok) {
+                  if (ok) {
+                    sails.log.debug("[DB] - Answers.js NID INSERTED");
+                  } else if (ko) {
+                    sails.log.error("[DB] - Answers.js NID UPDATE ERROR: " + ko);
+                  }
+                });
+                telegram.sendMessage(userId, strings.getRegisterStep1, "", true, null, {hide_keyboard: true})
+              } else if (!ok) {
+                telegram.sendMessage(userId, strings.getValidationErrorNID, "", true, null, {hide_keyboard: true});
+                Users.findOne({id: userId}).exec(function (ko, ok) {
+                  if (ok) {
+                    sails.log.debug("[DB] - Answers.js UPDATING retry NID");
+                    ok.retry_nid++;
+                    ok.save(function (err, user) {
+                    });
+                  }
+                });
+              } else if (ko) {
+                sails.log.error("[DB] - Answers.js Error validating NID");
+              }
+            });
+
+          } else {
+            telegram.sendMessage(userId, strings.getBanned, "", true, null, {hide_keyboard: true});
+            Users.update({id: userId}, {banned: true});
+            stages.bannUser({user_id: userId}, {banned: true});
+          }
+        } else if (ko) {
+          sails.log.error("[DB] - Answers.js FindUserError: " + ko);
         }
+
       });
+
 
     }
   )
@@ -68,35 +83,51 @@ module.exports.answeringRegisterS1 = function (command, userId, callback_query_i
 module.exports.answeringRegisterS2 = function (command, userId, callback_query_id) {
   telegram.sendMessage(userId, strings.getValidating, "", true, null, {hide_keyboard: true}).then(
     function (response) {
-      var date = moment(command.date, "DD-MM-YYYY");
-      var day = date.date();
-      var month = date.month()+1;
-      var year = date.year();
-      var dateToCheck = new Date(year+'-'+month+'-'+day);
-      sails.log.debug("[DEV] - Answers.js DATE: "+date);
-      Census.findOne({birth_date: dateToCheck}).exec(function (ko, ok){
-        if(ok){
-          stages.updateStage({user_id: userId}, {stage: 3});
-          Users.update({id: userId}, {birth_date: dateToCheck, valid:true}).exec(function (ko, ok){
-            if(ok){
-              sails.log.debug("[DB] - Answers.js DBIRTH INSERTED");
-            }else if(ko){
-              sails.log.error("[DB] - Answers.js DBIRTH UPDATE ERROR: "+ ko);
-            }
-          });
-          telegram.sendMessage(userId, strings.getRegisterOk, "", true, null, {hide_keyboard: true})
-        }else if(!ok) {
-          telegram.sendMessage(userId, strings.getValidationErrorBDATE, "", true, null, {hide_keyboard: true});
-          Users.findOne({id: userId}).exec(function (ko, ok) {
-            if(ok){
-              ok.retry_birth_date++;
-              ok.save(function(err, user) {});
-            }
-          });
-        }else if (ko){
-          sails.log.error("[DB] - Answers.js Error validating Bdate");
+      Users.findOne({id: userId}).exec(function (ko, ok) {
+        if (ok) {
+          if (ok.retry_nid <= 3) {
+            var date = moment(command.date, "DD-MM-YYYY");
+            var day = date.date();
+            var month = date.month() + 1;
+            var year = date.year();
+            var dateToCheck = new Date(year + '-' + month + '-' + day);
+            sails.log.debug("[DEV] - Answers.js DATE: " + date);
+            Census.findOne({birth_date: dateToCheck}).exec(function (ko, ok) {
+              if (ok) {
+                stages.updateStage({user_id: userId}, {stage: 3});
+                Users.update({id: userId}, {birth_date: dateToCheck, valid: true}).exec(function (ko, ok) {
+                  if (ok) {
+                    sails.log.debug("[DB] - Answers.js DBIRTH INSERTED");
+                  } else if (ko) {
+                    sails.log.error("[DB] - Answers.js DBIRTH UPDATE ERROR: " + ko);
+                  }
+                });
+                telegram.sendMessage(userId, strings.getRegisterOk, "", true, null, {hide_keyboard: true})
+              } else if (!ok) {
+                telegram.sendMessage(userId, strings.getValidationErrorBDATE, "", true, null, {hide_keyboard: true});
+                Users.findOne({id: userId}).exec(function (ko, ok) {
+                  if (ok) {
+                    ok.retry_birth_date++;
+                    ok.save(function (err, user) {
+                    });
+                  }
+                });
+              } else if (ko) {
+                sails.log.error("[DB] - Answers.js Error validating Bdate");
+              }
+            });
+
+          } else {
+            telegram.sendMessage(userId, strings.getBanned, "", true, null, {hide_keyboard: true});
+            Users.update({id: userId}, {banned: true});
+            stages.bannUser({user_id: userId}, {banned: true});
+          }
+        } else if (ko) {
+          sails.log.error("[DB] - Answers.js FindUserError: " + ko);
         }
+
       });
+
     }
   )
 
@@ -105,7 +136,7 @@ module.exports.answeringRegisterS2 = function (command, userId, callback_query_i
 
 
 module.exports.answeringCommandsS0 = function (command, userId, userName) {
-  sails.log.debug("[DEV] - answers.js COMMANDID: "+command.commandId);
+  sails.log.debug("[DEV] - answers.js COMMANDID: " + command.commandId);
   switch (command.commandId) {
     case 1: //start
       telegram.sendMessage(userId, strings.getWelcome(userName), "", true, null, keyboards.createKeyboard(1));
@@ -132,7 +163,7 @@ module.exports.answeringCommandsS0 = function (command, userId, userName) {
 };
 
 module.exports.answeringCommandsS1 = function (command, userId, userName) {
-  sails.log.debug("[DEV] - answers.js COMMANDID: "+command.commandId);
+  sails.log.debug("[DEV] - answers.js COMMANDID: " + command.commandId);
   switch (command.commandId) {
     case 1: //start
       telegram.sendMessage(userId, strings.getWelcome(userName), "", true, null, keyboards.createKeyboard(1));
@@ -335,8 +366,6 @@ module.exports.answeringCommandsS10 = function (command, userId, userName) {
       break;
   }
 };
-
-
 
 
 module.exports.answeringVote = function (command, userId) {

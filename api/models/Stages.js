@@ -15,6 +15,11 @@ module.exports = {
     stage: {
       type: 'string',
       defaultsTo: ''
+    },
+    banned: {
+      type: 'boolean',
+      required: true,
+      defaultsTo: false
     }
   }
 };

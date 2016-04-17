@@ -31,7 +31,9 @@ module.exports.getValidationErrorNID = "Ups \u{1F633}, me temo que ha habido un 
 module.exports.getValidationErrorBDATE = "Ups \u{1F633}, me temo que ha habido un error. Es posible que no te encuentres en el Censo de votantes\n" +
   "Vuelve a introducir tu Fecha de Nacimiento por si te hubieras equivocado.\n Tienes 3 intentos.";
 
-module.exports.getTroll = "Uy, no tengo tiempo para leer tanto... \u{1F648}"
+module.exports.getBanned = "Lo siento \u{1F633}, has agotado los intentos para registrarte. Por seguridad he bloqueado tu usuario.";
+
+module.exports.getTroll = "Uy, no tengo tiempo para leer tanto... \u{1F648}";
 
 module.exports.getHelp1 = "Para enviar información, selecciona el comando: /enviar_info\n\n" +
     "Para volver a empezar, selecciona el comando: /cancelar\n\n" +
