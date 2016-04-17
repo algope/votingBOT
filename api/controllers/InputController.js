@@ -102,11 +102,11 @@ module.exports = {
               answers.answeringError(userId, update, userAlias, user);
             }
 
-          } else{
-            telegram.sendMessage(userId, strings.getBanned, "", true, null, {hide_keyboard: true});
-            return res.ok();
           }
 
+        } else{
+          telegram.sendMessage(userId, strings.getBanned, "", true, null, {hide_keyboard: true});
+          return res.ok();
         }
 
       }

@@ -4,10 +4,6 @@
     <list default="true" id="f347c9c5-3dae-411d-a3be-dbe5f5325317" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/controllers/InputController.js" afterPath="$PROJECT_DIR$/api/controllers/InputController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/models/Stages.js" afterPath="$PROJECT_DIR$/api/models/Stages.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/services/answers.js" afterPath="$PROJECT_DIR$/api/services/answers.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/services/stages.js" afterPath="$PROJECT_DIR$/api/services/stages.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/services/strings.js" afterPath="$PROJECT_DIR$/api/services/strings.js" />
     </list>
     <ignored path="votingBOT.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -31,8 +27,8 @@
       <file leaf-file-name="InputController.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/api/controllers/InputController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="621">
-              <caret line="106" column="28" selection-start-line="106" selection-start-column="28" selection-end-line="106" selection-end-column="28" />
+            <state relative-caret-position="747">
+              <caret line="109" column="9" selection-start-line="109" selection-start-column="9" selection-end-line="109" selection-end-column="9" />
               <folding />
             </state>
           </provider>
@@ -359,12 +355,12 @@
       <workItem from="1460711357478" duration="8136000" />
       <workItem from="1460836054351" duration="4746000" />
       <workItem from="1460886325112" duration="15606000" />
-      <workItem from="1460920776757" duration="1632000" />
+      <workItem from="1460920776757" duration="1903000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="34939000" />
+    <option name="totallyTimeSpent" value="35210000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -821,8 +817,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/api/controllers/InputController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="621">
-          <caret line="106" column="28" selection-start-line="106" selection-start-column="28" selection-end-line="106" selection-end-column="28" />
+        <state relative-caret-position="747">
+          <caret line="109" column="9" selection-start-line="109" selection-start-column="9" selection-end-line="109" selection-end-column="9" />
           <folding />
         </state>
       </provider>
