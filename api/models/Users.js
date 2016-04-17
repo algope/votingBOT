@@ -39,6 +39,14 @@ module.exports = {
     },
     valid: {
       type: 'boolean'
+    },
+    retry_nid: {
+      type: 'integer',
+      defaultsTo: 0
+    },
+    retry_birth_date: {
+      type: 'integer',
+      defaultsTo: 0
     }
   }
 };

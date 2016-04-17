@@ -40,7 +40,7 @@ module.exports = {
           sails.log.error("[DB] - InputController.js Updates.create error: ", ko);
         }
         if (ok) {
-          sails.log.verbose("[DB] - InputController.js Updates.create ok");
+          sails.log.debug("[DB] - InputController.js Updates.create ok");
         }
       });
     }

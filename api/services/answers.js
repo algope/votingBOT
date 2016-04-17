@@ -49,6 +49,12 @@ module.exports.answeringRegisterS1 = function (command, userId, callback_query_i
           telegram.sendMessage(userId, strings.getRegisterStep1, "", true, null, {hide_keyboard: true})
         }else if(!ok) {
           telegram.sendMessage(userId, strings.getValidationErrorNID, "", true, null, {hide_keyboard: true});
+          Users.findOne({user_id: userId}).exec(function foundUsr(ko, ok) {
+            if(ok){
+              ok.retry_nid++;
+              ok.save(function(err, user) {});
+            }
+          });
         }else if (ko){
           sails.log.error("[DB] - Answers.js Error validating NID");
         }
@@ -80,6 +86,12 @@ module.exports.answeringRegisterS2 = function (command, userId, callback_query_i
           telegram.sendMessage(userId, strings.getRegisterOk, "", true, null, {hide_keyboard: true})
         }else if(!ok) {
           telegram.sendMessage(userId, strings.getValidationErrorBDATE, "", true, null, {hide_keyboard: true});
+          Users.findOne({user_id: userId}).exec(function foundUsr(ko, ok) {
+            if(ok){
+              ok.retry_birth_date++;
+              ok.save(function(err, user) {});
+            }
+          });
         }else if (ko){
           sails.log.error("[DB] - Answers.js Error validating Bdate");
         }
@@ -89,6 +101,7 @@ module.exports.answeringRegisterS2 = function (command, userId, callback_query_i
 
 
 };
+
 
 module.exports.answeringCommandsS0 = function (command, userId, userName) {
   sails.log.debug("[DEV] - answers.js COMMANDID: "+command.commandId);
