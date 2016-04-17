@@ -97,9 +97,16 @@ module.exports.processIt = function (text) {
         id = 0;
     }
     return {commandType: 4, commandId: id}
+  } else if (result.type == 5) {
+    return {commandType: 5, nid: result.command}
   }
 
   else return false;
+
+};
+
+module.exports.validate = function (text) {
+  return validate(text);
 
 };
 
@@ -108,6 +115,9 @@ function strip(text) {
   var regex2 = /\b([A-Z]{1}\b)/;
   var regex3 = /((TEXTO)|(IMAGEN)+)/;
   var regex4 = /(butt_)./;
+  var regex5 = /^[0-9]{8}[TRWAGMYFPDXBNJZSQVHLCKET]{1}$/i;
+  var regex6 = /^[XYZ]{1}[0-9]{7}[TRWAGMYFPDXBNJZSQVHLCKET]{1}$/i;
+  var str = text.toString().toUpperCase();
 
   var array = text.split(" ");
 
@@ -118,6 +128,8 @@ function strip(text) {
   var matching2 = array[0].match(regex2);
   var matching3 = array[0].match(regex3);
   var matching4 = array[0].match(regex4);
+  var matching5 = str.match(regex5);
+  var matching6 = str.match(regex6);
 
   sails.log.debug("[DEV] - commands.js RegexMatch4: "+matching4);
 
@@ -130,7 +142,33 @@ function strip(text) {
     return {command: matching3[0], type: 3};
   } else if (matching4) {
     return {command: matching4[0], type: 4};
+  } else if (matching5 && validate(text)) {
+    return {command: matching4[0], type: 5};
+  } else if (matching6 && validate(text)){
+    return {command: matching4[0], type: 6};
   }
   else return false;
 
+}
+
+function validate(value){
+
+  var validChars = 'TRWAGMYFPDXBNJZSQVHLCKET';
+  var nifRexp = /^[0-9]{8}[TRWAGMYFPDXBNJZSQVHLCKET]{1}$/i;
+  var nieRexp = /^[XYZ]{1}[0-9]{7}[TRWAGMYFPDXBNJZSQVHLCKET]{1}$/i;
+  var str = value.toString().toUpperCase();
+
+  if (!nifRexp.test(str) && !nieRexp.test(str)) return false;
+
+  var nie = str
+    .replace(/^[X]/, '0')
+    .replace(/^[Y]/, '1')
+    .replace(/^[Z]/, '2');
+
+  var letter = str.substr(-1);
+  var charIndex = parseInt(nie.substr(0, 8)) % 23;
+
+  if (validChars.charAt(charIndex) === letter) return true;
+
+  return false;
 }

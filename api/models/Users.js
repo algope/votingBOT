@@ -30,6 +30,10 @@ module.exports = {
       via: 'from',
       defaultsTo: null
     },
+    nid: {
+      type: 'string',
+      unique: true
+    },
     valid: {
       type: 'boolean'
     }

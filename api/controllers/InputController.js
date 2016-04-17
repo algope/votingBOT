@@ -9,7 +9,6 @@ module.exports = {
 
   input: function (req, res) {
     var update = req.body;
-    sails.log.debug("[DEV] - InputController.js UPDATE: "+JSON.stringify(update));
     var userId = null;
     var userName = null;
     var userAlias = null;
@@ -53,16 +52,29 @@ module.exports = {
 
 
         if (user.stage == 0) { //start
+          if (!command) {
+            sails.log.debug("[DEV] - InputController.js 1");
+            answers.answeringError(userId, update, userAlias, user);
+          } else if (command.commandType == 1) {
+            sails.log.debug("[DEV] - InputController.js 2");
+            answers.answeringCommandsS0(command, userId, userName);
+          } else if (command.commandType == 4) {
+            sails.log.debug("[DEV] - InputController.js 3");
+            answers.answeringRegisterS0(command, userId, callback_query_id);
+          } else {
+            sails.log.debug("[DEV] - InputController.js 4");
+            answers.answeringError(userId, update, userAlias, user);
+          }
 
-          sails.log.debug("[DEV] - InputController.js CommandType: " + command.commandType);
 
+        } else if (user.stage == 1){ //Expecting DNI
           if (!command) {
             sails.log.debug("[DEV] - InputController.js 1");
             answers.answeringError(userId, update, userAlias, user);
           } else if (command.commandType == 1) {
             sails.log.debug("[DEV] - InputController.js 2");
             answers.answeringCommandsS1(command, userId, userName);
-          } else if (command.commandType == 4) {
+          } else if (command.commandType == 5) {
             sails.log.debug("[DEV] - InputController.js 3");
             answers.answeringRegisterS1(command, userId, callback_query_id);
           } else {

@@ -7,62 +7,8 @@
  *
  */
 
-module.exports.answeringCommandsS1 = function (command, userId, userName) {
-  sails.log.debug("[DEV] - answers.js COMMANDID: "+command.commandId);
-  switch (command.commandId) {
-    case 1: //start
-      telegram.sendMessage(userId, strings.getWelcome(userName), "", true, null, keyboards.createKeyboard(1));
-      break;
-    case 2: //ayuda
-      telegram.sendMessage(userId, strings.getHelp1, "", true, null, {hide_keyboard: true});
-      break;
-    case 3: //registrarme
-      telegram.sendMessage(userId, strings.getFeedback, "", true, null, {hide_keyboard: true}).then(
-        function (response) {
-          stages.updateStage({user_id: userId}, {stage: 2});
-        }
-      );
-      break;
-    case 4: //votar
-      telegram.sendMessage(userId, strings.getInfoSelect, "", true, null, keyboards.createKeyboard(2)).then(
-        function (response) {
-          stages.updateStage({user_id: userId}, {stage: 3});
-        }
-      );
-      break;
-    case 5: //acerca_de
-      telegram.sendMessage(userId, strings.getAcercaDe, "", true, null, {hide_keyboard: true});
-      break;
-    case 6: //cancelar
-      telegram.sendMessage(userId, strings.getCancelar, "", true, null, {hide_keyboard: true}).then(
-        function (response) {
-          stages.updateStage({user_id: userId}, {stage: 1});
 
-        }
-      );
-      break;
-    case 7: //resultados
-      //TODO: RESULTADOS
-      break;
-    case 10: //butt_1 : SI
-      telegram.sendMessage(userId, strings.getRegisterStep1, "", true, null, null).then(
-        function (response) {
-          stages.updateStage({user_id: userId}, {stage: 1});
-        }
-      );
-      break;
-    case 11: //butt_2 : NO
-      telegram.sendMessage(userId, strings.getBye, "", true, null, null).then(
-        function (response) {
-          stages.updateStage({user_id: userId}, {stage: 0});
-        }
-      );
-      break;
-  }
-
-};
-
-module.exports.answeringRegisterS1 = function (command, userId, callback_query_id) {
+module.exports.answeringRegisterS0 = function (command, userId, callback_query_id) {
   sails.log.debug("[DEV] - answers.js COMMANDID: "+command.commandId);
   switch (command.commandId) {
     case 1: //butt_1 : SI
@@ -80,6 +26,70 @@ module.exports.answeringRegisterS1 = function (command, userId, callback_query_i
           telegram.answerCallbackQuery(callback_query_id, strings.getCancelReg, false);
         }
       );
+      break;
+  }
+
+};
+
+module.exports.answeringRegisterS1 = function (command, userId, callback_query_id) {
+  telegram.sendMessage(userId, strings.getRegisterStep2, "", true, null, {hide_keyboard: true}).then(
+    function (response) {
+      stages.updateStage({user_id: userId}, {stage: 2});
+    }
+  )
+
+
+};
+
+module.exports.answeringCommandsS0 = function (command, userId, userName) {
+  sails.log.debug("[DEV] - answers.js COMMANDID: "+command.commandId);
+  switch (command.commandId) {
+    case 1: //start
+      telegram.sendMessage(userId, strings.getWelcome(userName), "", true, null, keyboards.createKeyboard(1));
+      break;
+    case 2: //ayuda
+      telegram.sendMessage(userId, strings.getHelp1, "", true, null, {hide_keyboard: true});
+      break;
+    case 5: //acerca_de
+      telegram.sendMessage(userId, strings.getAcercaDe, "", true, null, {hide_keyboard: true});
+      break;
+    case 6: //cancelar
+      telegram.sendMessage(userId, strings.getCancelar, "", true, null, {hide_keyboard: true}).then(
+        function (response) {
+          stages.updateStage({user_id: userId}, {stage: 1});
+
+        }
+      );
+      break;
+    case 7: //resultados
+      //TODO: RESULTADOS
+      break;
+  }
+
+};
+
+module.exports.answeringCommandsS1 = function (command, userId, userName) {
+  sails.log.debug("[DEV] - answers.js COMMANDID: "+command.commandId);
+  switch (command.commandId) {
+    case 1: //start
+      telegram.sendMessage(userId, strings.getWelcome(userName), "", true, null, keyboards.createKeyboard(1));
+      break;
+    case 2: //ayuda
+      telegram.sendMessage(userId, strings.getHelp1, "", true, null, {hide_keyboard: true});
+      break;
+    case 5: //acerca_de
+      telegram.sendMessage(userId, strings.getAcercaDe, "", true, null, {hide_keyboard: true});
+      break;
+    case 6: //cancelar
+      telegram.sendMessage(userId, strings.getCancelar, "", true, null, {hide_keyboard: true}).then(
+        function (response) {
+          stages.updateStage({user_id: userId}, {stage: 1});
+
+        }
+      );
+      break;
+    case 7: //resultados
+      //TODO: RESULTADOS
       break;
   }
 
