@@ -57,7 +57,7 @@ module.exports.answeringRegisterS1 = function (command, userId, callback_query_i
 module.exports.answeringRegisterS2 = function (command, userId, callback_query_id) {
   telegram.sendMessage(userId, strings.getValidating, "", true, null, {hide_keyboard: true}).then(
     function (response) {
-      var date = moment(command.date);
+      var date = moment(command.date, "DD-MM-YYYY");
       sails.log.debug("[DEV] - Answers.js DATE: "+date);
       Census.findOne({birth_date: date}).exec(function (ko, ok){
         if(ok){
