@@ -66,7 +66,7 @@ module.exports.answeringRegisterS1 = function (command, userId, userName) {
   sails.log.debug("[DEV] - answers.js COMMANDID: "+command.commandId);
   switch (command.commandId) {
     case 1: //butt_1 : SI
-      telegram.sendMessage(userId, strings.getRegisterStep1, "", true, null, {hide_keyboard: true}).then(
+      telegram.sendMessage(userId, strings.getRegisterStep1, "", true, null, {force_reply: true}).then(
         function (response) {
           stages.updateStage({user_id: userId}, {stage: 1});
         }
