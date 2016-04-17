@@ -37,7 +37,7 @@ module.exports.answeringRegisterS1 = function (command, userId, callback_query_i
     function (response) {
       Users.findOne({id: userId}).exec(function (ko, ok) {
         if (ok) {
-          if (ok.retry_nid <= 3) {
+          if (ok.retry_nid < 3) {
             Census.findOne({nid: command.nid}).exec(function (ko, ok) {
               if (ok) {
                 stages.updateStage({user_id: userId}, {stage: 2});
@@ -84,7 +84,7 @@ module.exports.answeringRegisterS2 = function (command, userId, callback_query_i
     function (response) {
       Users.findOne({id: userId}).exec(function (ko, ok) {
         if (ok) {
-          if (ok.retry_birth_date <= 3) {
+          if (ok.retry_birth_date < 3) {
             var date = moment(command.date, "DD-MM-YYYY");
             var day = date.date();
             var month = date.month() + 1;
