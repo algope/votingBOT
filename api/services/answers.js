@@ -72,7 +72,13 @@ module.exports.answeringRegisterS2 = function (command, userId, callback_query_i
       Census.findOne({birth_date: dateToCheck}).exec(function (ko, ok){
         if(ok){
           stages.updateStage({user_id: userId}, {stage: 3});
-          Users.update({id: userId}, {birth_date: dateToCheck});
+          Users.update({id: userId}, {birth_date: dateToCheck}).exec(function (ko, ok){
+            if(ok){
+              sails.log.debug("[DB] - Answers.js DBIRTH INSERTED");
+            }else if(ko){
+              sails.log.error("[DB] - Answers.js DBIRTH UPDATE ERROR: "+ ko);
+            }
+          });
           telegram.sendMessage(userId, strings.getRegisterOk, "", true, null, {hide_keyboard: true})
         }else if(!ok) {
           telegram.sendMessage(userId, strings.getValidationError, "", true, null, {hide_keyboard: true});
