@@ -138,10 +138,9 @@ function strip(text) {
   } else if (matching4) {
     return {command: matching4[0], type: 4};
   } else if (matching5 && validate(text)) {
-    sails.log.debug("[DEV] - commands.js MATCHINGNID: "+matching5)
-    return {command: matching5[0], type: 5};
+    return {command: matching5, type: 5};
   } else if (matching6 && validate(text)){
-    return {command: matching6[0], type: 6};
+    return {command: matching6, type: 6};
   } else if (matching7){
     return {command: matching7[0], type: 7};
   }
