@@ -51,6 +51,7 @@ module.exports.answeringRegisterS1 = function (command, userId, callback_query_i
           telegram.sendMessage(userId, strings.getValidationErrorNID, "", true, null, {hide_keyboard: true});
           Users.findOne({user_id: userId}).exec(function (ko, ok) {
             if(ok){
+              sails.log.debug("[DB] - Answers.js UPDATING retry NID");
               ok.retry_nid+1;
               ok.save(function(err, user) {});
             }
