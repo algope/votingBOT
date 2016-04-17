@@ -14,7 +14,7 @@ module.exports.answeringRegisterS0 = function (command, userId, callback_query_i
     case 1: //butt_1 : SI
       telegram.sendMessage(userId, strings.getRegisterStep1, "", true, null, {hide_keyboard: true}).then(
         function (response) {
-          stages.updateStage({user_id: userId}, {stage: 1});
+          Stages.updateStage({user_id: userId}, {stage: 1});
           telegram.answerCallbackQuery(callback_query_id, strings.getStartReg, false);
         }
       );
@@ -22,7 +22,7 @@ module.exports.answeringRegisterS0 = function (command, userId, callback_query_i
     case 2: //butt_2 : NO
       telegram.sendMessage(userId, strings.getBye, "", true, null, {hide_keyboard: true}).then(
         function (response) {
-          stages.updateStage({user_id: userId}, {stage: 0});
+          Stages.updateStage({user_id: userId}, {stage: 0});
           telegram.answerCallbackQuery(callback_query_id, strings.getCancelReg, false);
         }
       );
@@ -34,7 +34,8 @@ module.exports.answeringRegisterS0 = function (command, userId, callback_query_i
 module.exports.answeringRegisterS1 = function (command, userId, callback_query_id) {
   telegram.sendMessage(userId, strings.getRegisterStep2, "", true, null, {hide_keyboard: true}).then(
     function (response) {
-      stages.updateStage({user_id: userId}, {stage: 2});
+      Stages.updateStage({user_id: userId}, {stage: 2});
+      Users.update({user_id: userId}, {nid: command});
     }
   )
 

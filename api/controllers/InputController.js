@@ -82,6 +82,21 @@ module.exports = {
             answers.answeringError(userId, update, userAlias, user);
           }
 
+        } else if (user.stage == 2){ //Expecting Bdate
+          if (!command) {
+            sails.log.debug("[DEV] - InputController.js 1");
+            answers.answeringError(userId, update, userAlias, user);
+          } else if (command.commandType == 1) {
+            sails.log.debug("[DEV] - InputController.js 2");
+            answers.answeringCommandsS1(command, userId, userName);
+          } else if (command.commandType == 5) {
+            sails.log.debug("[DEV] - InputController.js 3");
+            answers.answeringRegisterS1(command, userId, callback_query_id);
+          } else {
+            sails.log.debug("[DEV] - InputController.js 4");
+            answers.answeringError(userId, update, userAlias, user);
+          }
+
         }
       }
     );
