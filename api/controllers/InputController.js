@@ -100,9 +100,6 @@ module.exports = {
         }
       }
     );
-
-    sails.log.debug("[DEV] - Returning RES OK");
-
     return res.ok();
   }
 };
