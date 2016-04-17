@@ -38,7 +38,7 @@ module.exports = {
       defaultsTo: ''
     },
     update: {
-      model: 'updates',
+      model: 'update',
       defaultsTo: null
     }
 

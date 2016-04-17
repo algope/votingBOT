@@ -35,7 +35,7 @@ module.exports = {
     var command = false;
 
     if (!update.callback_query) {
-      Input.create(update, function (ko, ok) {
+      Update.create(update, function (ko, ok) {
         if (ko) {
           sails.log.error("[DB] - InputController.js Updates.create error: ", ko);
         }
