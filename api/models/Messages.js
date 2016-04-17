@@ -25,8 +25,20 @@ module.exports = {
       model: 'chats',
       defaultsTo: null
     },
-    input: {
-      model: 'input',
+    text: {
+      type: 'string',
+      defaultsTo: ''
+    },
+    photo: {
+      type: 'array',
+      defaultsTo: null
+    },
+    caption: {
+      type: 'string',
+      defaultsTo: ''
+    },
+    update: {
+      model: 'updates',
       defaultsTo: null
     }
 
