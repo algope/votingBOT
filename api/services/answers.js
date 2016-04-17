@@ -69,7 +69,7 @@ module.exports.answeringRegisterS1 = function (command, userId, callback_query_i
       telegram.sendMessage(userId, strings.getRegisterStep1, "", true, null, {hide_keyboard: true}).then(
         function (response) {
           stages.updateStage({user_id: userId}, {stage: 1});
-          telegram.answerCallbackQuery(callback_query_id, null, false);
+          telegram.answerCallbackQuery(callback_query_id, strings.getStartReg, false);
         }
       );
       break;
@@ -77,7 +77,7 @@ module.exports.answeringRegisterS1 = function (command, userId, callback_query_i
       telegram.sendMessage(userId, strings.getBye, "", true, null, {hide_keyboard: true}).then(
         function (response) {
           stages.updateStage({user_id: userId}, {stage: 0});
-          telegram.answerCallbackQuery(callback_query_id, null, false);
+          telegram.answerCallbackQuery(callback_query_id, strings.getCancelReg, false);
         }
       );
       break;

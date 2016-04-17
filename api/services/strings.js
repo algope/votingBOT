@@ -11,6 +11,9 @@ module.exports.getError = "Ups, eso no me lo esperaba... ¿Te has equivocado?";
 module.exports.getBye = ":( Una pena, me hubiera gustado seguir hablando contigo\n" +
   "Si cambias de opinión, solo tienes que volver a escribir: /start";
 
+module.exports.getStartReg = "Iniciando registro...";
+module.exports.getCancelReg = "Registro cancelado.";
+
 
 module.exports.getWelcome = function (userName) {
     return "Hola " + userName + ", encantado de conocerte!\n" +
