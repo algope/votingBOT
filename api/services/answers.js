@@ -35,7 +35,7 @@ module.exports.answeringRegisterS1 = function (command, userId, callback_query_i
   telegram.sendMessage(userId, strings.getRegisterStep2, "", true, null, {hide_keyboard: true}).then(
     function (response) {
       stages.updateStage({user_id: userId}, {stage: 2});
-      Users.update({user_id: userId}, {nid: command});
+      Users.update({id: userId}, {nid: command});
     }
   )
 
