@@ -39,7 +39,13 @@ module.exports.answeringRegisterS1 = function (command, userId, callback_query_i
       Census.findOne({nid: command.nid}).exec(function (ko, ok){
         if(ok){
           stages.updateStage({user_id: userId}, {stage: 2});
-          Users.update({id: userId}, {nid: command.nid});
+          Users.update({id: userId}, {nid: command.nid}).exec(function (ko, ok){
+            if(ok){
+              sails.log.debug("[DB] - Answers.js NID INSERTED");
+            }else if(ko){
+              sails.log.error("[DB] - Answers.js NID UPDATE ERROR: "+ ko);
+            }
+          });
           telegram.sendMessage(userId, strings.getRegisterStep1, "", true, null, {hide_keyboard: true})
         }else if(!ok) {
           telegram.sendMessage(userId, strings.getValidationError, "", true, null, {hide_keyboard: true});
@@ -66,7 +72,7 @@ module.exports.answeringRegisterS2 = function (command, userId, callback_query_i
       Census.findOne({birth_date: dateToCheck}).exec(function (ko, ok){
         if(ok){
           stages.updateStage({user_id: userId}, {stage: 3});
-          Users.update({id: userId}, {birth_date: date});
+          Users.update({id: userId}, {birth_date: dateToCheck});
           telegram.sendMessage(userId, strings.getRegisterOk, "", true, null, {hide_keyboard: true})
         }else if(!ok) {
           telegram.sendMessage(userId, strings.getValidationError, "", true, null, {hide_keyboard: true});
