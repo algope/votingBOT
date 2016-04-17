@@ -23,8 +23,8 @@ module.exports.getWelcome = function (userName) {
 
 module.exports.getRegisterStep0 = "Estupendo, ¿cuál es tu DNI o NIE? Recuerda introducirlo con letra.";
 module.exports.getRegisterStep1 = "Perfecto, ahora indícame tu fecha de nacimiento con el siguiente formato: DD/MM/AAAA";
-module.exports.getRegisterOk = "Registro completo :), Para empezar a votar selecciona el comando /votar";
-module.exports.getValidating = "Comprobando tus datos con el censo...";
+module.exports.getRegisterOk = "Registro completo \xE2\x9C\x82, Para empezar a votar selecciona el comando /votar";
+module.exports.getValidating = "Comprobando censo...\xE2\x8C\x9B";
 module.exports.getValidationError = "Ups, me temo que no puedes votar, Es posible que no estés en el censo de votantes :(";
 
 module.exports.getHelp1 = "Para enviar información, selecciona el comando: /enviar_info\n\n" +
