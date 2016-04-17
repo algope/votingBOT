@@ -18,7 +18,7 @@ module.exports.getWelcome = function (userName) {
       "¿Quieres registrarte?";
 };
 
-module.exports.getRegisterStep1 = "Estupendo, ¿cuál es tu DNI o NIE? Recuerda introducirlo con letra";
+module.exports.getRegisterStep1 = "Estupendo, ¿cuál es tu DNI o NIE? Recuerda introducirlo con letra.";
 
 module.exports.getHelp1 = "Para enviar información, selecciona el comando: /enviar_info\n\n" +
     "Para volver a empezar, selecciona el comando: /cancelar\n\n" +
