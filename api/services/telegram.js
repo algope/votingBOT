@@ -46,6 +46,37 @@ module.exports.sendMessage = function (chat_id, text, parse_mode, disable_web_pa
   });
 };
 
+module.exports.answerCallbackQuery = function (callback_query_id, text, show_alert) {
+  var options = {
+    host: sails.config.telegram.url,
+    path: "/bot" + sails.config.telegram.token + '/sendMessage',
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  };
+  var post_data = JSON.stringify({
+    callback_query_id: callback_query_id,
+    text: text,
+    show_alert: show_alert
+  });
+
+  return new Promise(function (resolve, reject) {
+    var postReq = https.request(options, function (res) {
+      res.setEncoding('utf8');
+      var json = "";
+      res.on('data', function (chunk) {
+        json += chunk;
+      });
+      res.on('end', function () {
+        resolve(JSON.parse(json))
+      });
+    });
+    postReq.write(post_data);
+    postReq.end();
+  });
+};
+
 
 module.exports.setWebHook = function (url) {
   return new Promise(function (resolve, reject) {

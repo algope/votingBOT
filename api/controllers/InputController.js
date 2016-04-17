@@ -13,11 +13,13 @@ module.exports = {
     var userName = null;
     var userAlias = null;
     var text = null;
+    var callback_query_id = null;
     if (update.callback_query) {
       userId = update.callback_query.from.id;
       userName = update.callback_query.from.first_name;
       userAlias = update.callback_query.from.username;
       text = update.callback_query.data;
+      callback_query_id = update.callback_query.id;
     } else {
       userId = update.message.from.id;
       userName = update.message.from.first_name;
@@ -61,7 +63,7 @@ module.exports = {
             answers.answeringCommandsS1(command, userId, userName);
           } else if (command.commandType == 4) {
             sails.log.debug("[DEV] - InputController.js 3");
-            answers.answeringRegisterS1(command, userId, userName);
+            answers.answeringRegisterS1(command, userId, callback_query_id);
           } else {
             sails.log.debug("[DEV] - InputController.js 4");
             answers.answeringError(userId, update, userAlias, user);
