@@ -9,6 +9,7 @@ module.exports = {
 
   input: function (req, res) {
     var update = req.body;
+    sails.log.debug("[DEV] - InputController.js UPDATE: "+JSON.stringify(update));
     var userId = null;
     var userName = null;
     var userAlias = null;
