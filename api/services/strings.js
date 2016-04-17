@@ -21,12 +21,15 @@ module.exports.getWelcome = function (userName) {
       "¿Quieres registrarte?";
 };
 
-module.exports.getRegisterStep0 = "Estupendo, ¿cuál es tu DNI o NIE? Recuerda introducirlo con letra.";
-module.exports.getRegisterStep1 = "Perfecto, ahora indícame tu fecha de nacimiento con el siguiente formato: DD/MM/AAAA";
+module.exports.getRegisterStep0 = "Estupendo, ahora introduce tu DNI o NIE. Recuerda introducirlo con letra...";
+module.exports.getRegisterStep1 = "Perfecto, indícame ahora tu Fecha de Nacimiento con el siguiente formato: DD/MM/AAAA";
 module.exports.getRegisterOk = "Registro completo \u{2705}, Para empezar a votar selecciona el comando /votar";
 module.exports.getValidating = "Comprobando censo... \u{23F3}";
-module.exports.getValidationError = "Ups \u{1F633}, me temo que ha habido un error. Es posible que no te encuentres en el Censo de votantes\n\n" +
-  "Vuelve a introducir tus datos, tienes 3 intentos.";
+module.exports.getValidationErrorNID = "Ups \u{1F633}, me temo que ha habido un error. Es posible que no te encuentres en el Censo de votantes\n" +
+  "Vuelve a introducir tu DNI por si te hubieras equivocado.\n Tienes 3 intentos.";
+
+module.exports.getValidationErrorBDATE = "Ups \u{1F633}, me temo que ha habido un error. Es posible que no te encuentres en el Censo de votantes\n" +
+  "Vuelve a introducir tu Fecha de Nacimiento por si te hubieras equivocado.\n Tienes 3 intentos.";
 
 module.exports.getHelp1 = "Para enviar información, selecciona el comando: /enviar_info\n\n" +
     "Para volver a empezar, selecciona el comando: /cancelar\n\n" +
