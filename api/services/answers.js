@@ -49,9 +49,9 @@ module.exports.answeringRegisterS1 = function (command, userId, callback_query_i
           telegram.sendMessage(userId, strings.getRegisterStep1, "", true, null, {hide_keyboard: true})
         }else if(!ok) {
           telegram.sendMessage(userId, strings.getValidationErrorNID, "", true, null, {hide_keyboard: true});
-          Users.findOne({user_id: userId}).exec(function foundUsr(ko, ok) {
+          Users.findOne({user_id: userId}).exec(function (ko, ok) {
             if(ok){
-              ok.retry_nid++;
+              ok.retry_nid+1;
               ok.save(function(err, user) {});
             }
           });
@@ -86,9 +86,9 @@ module.exports.answeringRegisterS2 = function (command, userId, callback_query_i
           telegram.sendMessage(userId, strings.getRegisterOk, "", true, null, {hide_keyboard: true})
         }else if(!ok) {
           telegram.sendMessage(userId, strings.getValidationErrorBDATE, "", true, null, {hide_keyboard: true});
-          Users.findOne({user_id: userId}).exec(function foundUsr(ko, ok) {
+          Users.findOne({user_id: userId}).exec(function (ko, ok) {
             if(ok){
-              ok.retry_birth_date++;
+              ok.retry_birth_date+1;
               ok.save(function(err, user) {});
             }
           });
