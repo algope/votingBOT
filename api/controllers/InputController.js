@@ -27,6 +27,10 @@ module.exports = {
       text = update.message.text;
     }
 
+    if(text.length>200){
+      telegram.sendMessage(userId, strings.getTroll, "", true, null, {hide_keyboard: true})
+    }
+
     var command = false;
 
     if (!update.callback_query) {
