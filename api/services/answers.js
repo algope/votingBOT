@@ -62,6 +62,27 @@ module.exports.answeringCommandsS1 = function (command, userId, userName) {
 
 };
 
+module.exports.answeringRegisterS1 = function (answer, userId, userName) {
+  sails.log.debug("[DEV] - answers.js COMMANDID: "+command.commandId);
+  switch (command.commandId) {
+    case 1: //butt_1 : SI
+      telegram.sendMessage(userId, strings.getRegisterStep1, "", true, null, null).then(
+        function (response) {
+          stages.updateStage({user_id: userId}, {stage: 1});
+        }
+      );
+      break;
+    case 2: //butt_2 : NO
+      telegram.sendMessage(userId, strings.getBye, "", true, null, null).then(
+        function (response) {
+          stages.updateStage({user_id: userId}, {stage: 0});
+        }
+      );
+      break;
+  }
+
+};
+
 module.exports.answeringCommandsS2 = function (command, userId, userName) {
   switch (command.commandId) {
     case 1: //start

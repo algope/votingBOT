@@ -88,10 +88,10 @@ module.exports.processIt = function (text) {
   } else if (result.type == 4) {
     switch (result.command) {
       case "butt_1":
-        id = 10;
+        id = 1;
         break;
       case "butt_2":
-        id = 11;
+        id = 2;
         break;
       default:
         id = 0;
