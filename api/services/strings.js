@@ -16,7 +16,7 @@ module.exports.getCancelReg = "Registro cancelado.";
 
 
 module.exports.getWelcome = function (userName) {
-    return "Hola " + userName + ", encantado de conocerte!\n" +
+    return "Hola " + userName + ", ¡encantado de conocerte! \u{1F604}\n" +
         "Bienvenidx al sistema de votación. Para empezar será necesario que te registres con tu DNI y tu Fecha de Nacimiento.\n" +
       "¿Quieres registrarte?";
 };
@@ -25,7 +25,8 @@ module.exports.getRegisterStep0 = "Estupendo, ¿cuál es tu DNI o NIE? Recuerda 
 module.exports.getRegisterStep1 = "Perfecto, ahora indícame tu fecha de nacimiento con el siguiente formato: DD/MM/AAAA";
 module.exports.getRegisterOk = "Registro completo \u{2705}, Para empezar a votar selecciona el comando /votar";
 module.exports.getValidating = "Comprobando censo... \u{23F3}";
-module.exports.getValidationError = "Ups, me temo que no puedes votar, Es posible que no estés en el censo de votantes :(";
+module.exports.getValidationError = "Ups \u{1F633}, me temo que ha habido un error. Es posible que no te encuentres en el Censo de votantes\n\n" +
+  "Vuelve a introducir tus datos, tienes 3 intentos.";
 
 module.exports.getHelp1 = "Para enviar información, selecciona el comando: /enviar_info\n\n" +
     "Para volver a empezar, selecciona el comando: /cancelar\n\n" +
