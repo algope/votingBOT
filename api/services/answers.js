@@ -58,8 +58,12 @@ module.exports.answeringRegisterS2 = function (command, userId, callback_query_i
   telegram.sendMessage(userId, strings.getValidating, "", true, null, {hide_keyboard: true}).then(
     function (response) {
       var date = moment(command.date, "DD-MM-YYYY");
+      var day = date.date();
+      var month = date.month()+1;
+      var year = date.year();
+      var dateToCheck = new Date(year+'-'+month+'-'+day);
       sails.log.debug("[DEV] - Answers.js DATE: "+date);
-      Census.findOne({birth_date: date}).exec(function (ko, ok){
+      Census.findOne({birth_date: dateToCheck}).exec(function (ko, ok){
         if(ok){
           stages.updateStage({user_id: userId}, {stage: 3});
           Users.update({id: userId}, {birth_date: date});
