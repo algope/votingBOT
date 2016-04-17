@@ -49,7 +49,7 @@ module.exports.sendMessage = function (chat_id, text, parse_mode, disable_web_pa
 module.exports.answerCallbackQuery = function (callback_query_id, text, show_alert) {
   var options = {
     host: sails.config.telegram.url,
-    path: "/bot" + sails.config.telegram.token + '/sendMessage',
+    path: "/bot" + sails.config.telegram.token + '/answerCallbackQuery',
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'

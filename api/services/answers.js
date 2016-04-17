@@ -69,7 +69,6 @@ module.exports.answeringRegisterS1 = function (command, userId, callback_query_i
       telegram.sendMessage(userId, strings.getRegisterStep1, "", true, null, {hide_keyboard: true}).then(
         function (response) {
           stages.updateStage({user_id: userId}, {stage: 1});
-          sails.log.debug("[DEV] - answers.js CALLBACKQUERYID: "+callback_query_id);
           telegram.answerCallbackQuery(callback_query_id, null, false);
         }
       );
@@ -78,7 +77,6 @@ module.exports.answeringRegisterS1 = function (command, userId, callback_query_i
       telegram.sendMessage(userId, strings.getBye, "", true, null, {hide_keyboard: true}).then(
         function (response) {
           stages.updateStage({user_id: userId}, {stage: 0});
-
           telegram.answerCallbackQuery(callback_query_id, null, false);
         }
       );
