@@ -100,7 +100,9 @@ module.exports.processIt = function (text) {
   } else if (result.type == 5) {
     return {commandType: 5, nid: result.command}
   } else if (result.type == 6) {
-    return {commandType: 6, date: result.command}
+    return {commandType: 6, nid: result.command}
+  } else if (result.type == 7){
+    return {commandType: 7, date: result.command}
   }
 
   else return false;
