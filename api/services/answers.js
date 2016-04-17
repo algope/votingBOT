@@ -58,6 +58,7 @@ module.exports.answeringRegisterS2 = function (command, userId, callback_query_i
   telegram.sendMessage(userId, strings.getValidating, "", true, null, {hide_keyboard: true}).then(
     function (response) {
       var date = moment(command.date);
+      sails.log.debug("[DEV] - Answers.js DATE: "+date);
       Census.findOne({birth_date: date}).exec(function (ko, ok){
         if(ok){
           stages.updateStage({user_id: userId}, {stage: 3});
