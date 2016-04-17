@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f347c9c5-3dae-411d-a3be-dbe5f5325317" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/controllers/InputController.js" afterPath="$PROJECT_DIR$/api/controllers/InputController.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/services/answers.js" afterPath="$PROJECT_DIR$/api/services/answers.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/services/commands.js" afterPath="$PROJECT_DIR$/api/services/commands.js" />
     </list>
     <ignored path="votingBOT.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -29,8 +27,8 @@
       <file leaf-file-name="InputController.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/api/controllers/InputController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="495">
-              <caret line="59" column="60" selection-start-line="59" selection-start-column="60" selection-end-line="59" selection-end-column="60" />
+            <state relative-caret-position="567">
+              <caret line="63" column="47" selection-start-line="63" selection-start-column="47" selection-end-line="63" selection-end-column="47" />
               <folding />
             </state>
           </provider>
@@ -49,19 +47,19 @@
       <file leaf-file-name="answers.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/api/services/answers.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="468">
-              <caret line="80" column="12" selection-start-line="80" selection-start-column="12" selection-end-line="80" selection-end-column="12" />
+            <state relative-caret-position="198">
+              <caret line="64" column="54" selection-start-line="64" selection-start-column="54" selection-end-line="64" selection-end-column="54" />
               <folding>
                 <element signature="e#279#2073#0" expanded="false" />
-                <element signature="e#2802#4122#0" expanded="false" />
-                <element signature="e#4199#5523#0" expanded="false" />
-                <element signature="e#5600#6934#0" expanded="false" />
-                <element signature="e#7012#8336#0" expanded="false" />
-                <element signature="e#8400#8985#0" expanded="false" />
-                <element signature="e#9063#9393#0" expanded="false" />
-                <element signature="e#9465#10397#0" expanded="false" />
-                <element signature="e#10470#14058#0" expanded="false" />
-                <element signature="e#14134#14587#0" expanded="false" />
+                <element signature="e#2803#4123#0" expanded="false" />
+                <element signature="e#4200#5524#0" expanded="false" />
+                <element signature="e#5601#6935#0" expanded="false" />
+                <element signature="e#7013#8337#0" expanded="false" />
+                <element signature="e#8401#8986#0" expanded="false" />
+                <element signature="e#9064#9394#0" expanded="false" />
+                <element signature="e#9466#10398#0" expanded="false" />
+                <element signature="e#10471#14059#0" expanded="false" />
+                <element signature="e#14135#14588#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -130,8 +128,8 @@
         <option value="$PROJECT_DIR$/api/models/Users.js" />
         <option value="$PROJECT_DIR$/api/models/Stages.js" />
         <option value="$PROJECT_DIR$/api/services/strings.js" />
-        <option value="$PROJECT_DIR$/api/controllers/InputController.js" />
         <option value="$PROJECT_DIR$/api/services/commands.js" />
+        <option value="$PROJECT_DIR$/api/controllers/InputController.js" />
         <option value="$PROJECT_DIR$/api/services/answers.js" />
       </list>
     </option>
@@ -334,12 +332,12 @@
       <updated>1460711355264</updated>
       <workItem from="1460711357478" duration="8136000" />
       <workItem from="1460836054351" duration="4746000" />
-      <workItem from="1460886325112" duration="845000" />
+      <workItem from="1460886325112" duration="940000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="18546000" />
+    <option name="totallyTimeSpent" value="18641000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1920" height="1053" extended-state="6" />
@@ -507,15 +505,15 @@
           <caret line="24" column="19" selection-start-line="24" selection-start-column="19" selection-end-line="24" selection-end-column="19" />
           <folding>
             <element signature="e#279#2073#0" expanded="false" />
-            <element signature="e#2802#4122#0" expanded="false" />
-            <element signature="e#4199#5523#0" expanded="false" />
-            <element signature="e#5600#6934#0" expanded="false" />
-            <element signature="e#7012#8336#0" expanded="false" />
-            <element signature="e#8400#8985#0" expanded="false" />
-            <element signature="e#9063#9393#0" expanded="false" />
-            <element signature="e#9465#10397#0" expanded="false" />
-            <element signature="e#10470#14058#0" expanded="false" />
-            <element signature="e#14134#14587#0" expanded="false" />
+            <element signature="e#2803#4123#0" expanded="false" />
+            <element signature="e#4200#5524#0" expanded="false" />
+            <element signature="e#5601#6935#0" expanded="false" />
+            <element signature="e#7013#8337#0" expanded="false" />
+            <element signature="e#8401#8986#0" expanded="false" />
+            <element signature="e#9064#9394#0" expanded="false" />
+            <element signature="e#9466#10398#0" expanded="false" />
+            <element signature="e#10471#14059#0" expanded="false" />
+            <element signature="e#14135#14588#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -723,14 +721,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/api/models/Users.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="21" column="20" selection-start-line="21" selection-start-column="20" selection-end-line="21" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/api/services/commands.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="378">
@@ -741,27 +731,35 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/api/controllers/InputController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="495">
-          <caret line="59" column="60" selection-start-line="59" selection-start-column="60" selection-end-line="59" selection-end-column="60" />
+        <state relative-caret-position="567">
+          <caret line="63" column="47" selection-start-line="63" selection-start-column="47" selection-end-line="63" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/models/Users.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="21" column="20" selection-start-line="21" selection-start-column="20" selection-end-line="21" selection-end-column="20" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/api/services/answers.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="468">
-          <caret line="80" column="12" selection-start-line="80" selection-start-column="12" selection-end-line="80" selection-end-column="12" />
+        <state relative-caret-position="198">
+          <caret line="64" column="54" selection-start-line="64" selection-start-column="54" selection-end-line="64" selection-end-column="54" />
           <folding>
             <element signature="e#279#2073#0" expanded="false" />
-            <element signature="e#2802#4122#0" expanded="false" />
-            <element signature="e#4199#5523#0" expanded="false" />
-            <element signature="e#5600#6934#0" expanded="false" />
-            <element signature="e#7012#8336#0" expanded="false" />
-            <element signature="e#8400#8985#0" expanded="false" />
-            <element signature="e#9063#9393#0" expanded="false" />
-            <element signature="e#9465#10397#0" expanded="false" />
-            <element signature="e#10470#14058#0" expanded="false" />
-            <element signature="e#14134#14587#0" expanded="false" />
+            <element signature="e#2803#4123#0" expanded="false" />
+            <element signature="e#4200#5524#0" expanded="false" />
+            <element signature="e#5601#6935#0" expanded="false" />
+            <element signature="e#7013#8337#0" expanded="false" />
+            <element signature="e#8401#8986#0" expanded="false" />
+            <element signature="e#9064#9394#0" expanded="false" />
+            <element signature="e#9466#10398#0" expanded="false" />
+            <element signature="e#10471#14059#0" expanded="false" />
+            <element signature="e#14135#14588#0" expanded="false" />
           </folding>
         </state>
       </provider>

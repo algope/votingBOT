@@ -62,7 +62,7 @@ module.exports.answeringCommandsS1 = function (command, userId, userName) {
 
 };
 
-module.exports.answeringRegisterS1 = function (answer, userId, userName) {
+module.exports.answeringRegisterS1 = function (command, userId, userName) {
   sails.log.debug("[DEV] - answers.js COMMANDID: "+command.commandId);
   switch (command.commandId) {
     case 1: //butt_1 : SI

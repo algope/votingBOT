@@ -61,7 +61,7 @@ module.exports = {
             answers.answeringCommandsS1(command, userId, userName);
           } else if (command.commandType == 4) {
             sails.log.debug("[DEV] - InputController.js 3");
-            answers.answeringRegisterS1(answer, userId, userName);
+            answers.answeringRegisterS1(command, userId, userName);
           } else {
             sails.log.debug("[DEV] - InputController.js 4");
             answers.answeringError(userId, update, userAlias, user);
