@@ -36,10 +36,10 @@ module.exports.answeringRegisterS1 = function (command, userId, callback_query_i
   telegram.sendMessage(userId, strings.getValidating, "", true, null, {hide_keyboard: true}).then(
     function (response) {
       sails.log.debug("[DEV] - Answers.js NID: "+JSON.stringify(command));
-      Census.findOne({nid: command.command}).exec(function (ko, ok){
+      Census.findOne({nid: command.nid}).exec(function (ko, ok){
         if(ok){
           stages.updateStage({user_id: userId}, {stage: 2});
-          Users.update({id: userId}, {nid: command});
+          Users.update({id: userId}, {nid: command.nid});
           telegram.sendMessage(userId, strings.getRegisterStep1, "", true, null, {hide_keyboard: true})
         }else if(!ok) {
           telegram.sendMessage(userId, strings.getValidationError, "", true, null, {hide_keyboard: true});
@@ -57,7 +57,7 @@ module.exports.answeringRegisterS1 = function (command, userId, callback_query_i
 module.exports.answeringRegisterS2 = function (command, userId, callback_query_id) {
   telegram.sendMessage(userId, strings.getValidating, "", true, null, {hide_keyboard: true}).then(
     function (response) {
-      var date = moment(command.command);
+      var date = moment(command.date);
       Census.findOne({birth_date: date}).exec(function (ko, ok){
         if(ok){
           stages.updateStage({user_id: userId}, {stage: 3});

@@ -99,6 +99,8 @@ module.exports.processIt = function (text) {
     return {commandType: 4, commandId: id}
   } else if (result.type == 5) {
     return {commandType: 5, nid: result.command}
+  } else if (result.type == 6) {
+    return {commandType: 6, date: result.command}
   }
 
   else return false;
@@ -138,9 +140,9 @@ function strip(text) {
   } else if (matching4) {
     return {command: matching4[0], type: 4};
   } else if (matching5 && validate(text)) {
-    return {command: matching5, type: 5};
+    return {command: matching5[0], type: 5};
   } else if (matching6 && validate(text)){
-    return {command: matching6, type: 6};
+    return {command: matching6[0], type: 6};
   } else if (matching7){
     return {command: matching7[0], type: 7};
   }
