@@ -56,8 +56,6 @@ module.exports.answeringRegisterS1 = function (command, userId, callback_query_i
 
     }
   )
-
-
 };
 
 module.exports.answeringRegisterS2 = function (command, userId, callback_query_id) {
