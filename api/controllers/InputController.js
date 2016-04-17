@@ -28,7 +28,8 @@ module.exports = {
     }
 
     if(text.length>200){
-      telegram.sendMessage(userId, strings.getTroll, "", true, null, {hide_keyboard: true})
+      telegram.sendMessage(userId, strings.getTroll, "", true, null, {hide_keyboard: true});
+      return res.ok();
     }
 
     var command = false;
