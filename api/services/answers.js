@@ -66,14 +66,14 @@ module.exports.answeringRegisterS1 = function (command, userId, userName) {
   sails.log.debug("[DEV] - answers.js COMMANDID: "+command.commandId);
   switch (command.commandId) {
     case 1: //butt_1 : SI
-      telegram.sendMessage(userId, strings.getRegisterStep1, "", true, null, null).then(
+      telegram.sendMessage(userId, strings.getRegisterStep1, "", true, null, {hide_keyboard: true}).then(
         function (response) {
           stages.updateStage({user_id: userId}, {stage: 1});
         }
       );
       break;
     case 2: //butt_2 : NO
-      telegram.sendMessage(userId, strings.getBye, "", true, null, null).then(
+      telegram.sendMessage(userId, strings.getBye, "", true, null, {hide_keyboard: true}).then(
         function (response) {
           stages.updateStage({user_id: userId}, {stage: 0});
         }
