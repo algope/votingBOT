@@ -35,6 +35,7 @@ module.exports.answeringRegisterS0 = function (command, userId, callback_query_i
 module.exports.answeringRegisterS1 = function (command, userId, callback_query_id) {
   telegram.sendMessage(userId, strings.getValidating, "", true, null, {hide_keyboard: true}).then(
     function (response) {
+      sails.log.debug("[DEV] - Answers.js NID: "+command);
       Census.findOne({nid: command}).exec(function (ko, ok){
         if(ok){
           stages.updateStage({user_id: userId}, {stage: 2});
