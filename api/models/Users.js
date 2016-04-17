@@ -47,11 +47,6 @@ module.exports = {
     retry_birth_date: {
       type: 'integer',
       defaultsTo: 0
-    },
-    banned: {
-      type: 'boolean',
-      required: true,
-      defaultsTo: false
     }
   }
 };

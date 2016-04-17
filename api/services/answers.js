@@ -66,7 +66,6 @@ module.exports.answeringRegisterS1 = function (command, userId, callback_query_i
 
           } else {
             telegram.sendMessage(userId, strings.getBanned, "", true, null, {hide_keyboard: true});
-            Users.update({id: userId}, {banned: true});
             stages.bannUser({user_id: userId}, {banned: true});
           }
         } else if (ko) {
@@ -119,7 +118,6 @@ module.exports.answeringRegisterS2 = function (command, userId, callback_query_i
 
           } else {
             telegram.sendMessage(userId, strings.getBanned, "", true, null, {hide_keyboard: true});
-            Users.update({id: userId}, {banned: true});
             stages.bannUser({user_id: userId}, {banned: true});
           }
         } else if (ko) {
