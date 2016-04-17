@@ -7,12 +7,13 @@
  *
  */
 
+var moment = require('moment');
 
 module.exports.answeringRegisterS0 = function (command, userId, callback_query_id) {
   sails.log.debug("[DEV] - answers.js COMMANDID: "+command.commandId);
   switch (command.commandId) {
     case 1: //butt_1 : SI
-      telegram.sendMessage(userId, strings.getRegisterStep1, "", true, null, {hide_keyboard: true}).then(
+      telegram.sendMessage(userId, strings.getRegisterStep0, "", true, null, {hide_keyboard: true}).then(
         function (response) {
           stages.updateStage({user_id: userId}, {stage: 1});
           telegram.answerCallbackQuery(callback_query_id, strings.getStartReg, false);
@@ -32,10 +33,41 @@ module.exports.answeringRegisterS0 = function (command, userId, callback_query_i
 };
 
 module.exports.answeringRegisterS1 = function (command, userId, callback_query_id) {
-  telegram.sendMessage(userId, strings.getRegisterStep2, "", true, null, {hide_keyboard: true}).then(
+  telegram.sendMessage(userId, strings.getValidating, "", true, null, {hide_keyboard: true}).then(
     function (response) {
-      stages.updateStage({user_id: userId}, {stage: 2});
-      Users.update({id: userId}, {nid: command});
+      Census.findOne({nid: command}).exec(function (ko, ok){
+        if(ok){
+          stages.updateStage({user_id: userId}, {stage: 2});
+          Users.update({id: userId}, {nid: command});
+          telegram.sendMessage(userId, strings.getRegisterStep1, "", true, null, {hide_keyboard: true})
+        }else if(!ok) {
+          telegram.sendMessage(userId, strings.getValidationError, "", true, null, {hide_keyboard: true});
+        }else if (ko){
+          sails.log.error("[DB] - Answers.js Error validating NID");
+        }
+      });
+
+    }
+  )
+
+
+};
+
+module.exports.answeringRegisterS2 = function (command, userId, callback_query_id) {
+  telegram.sendMessage(userId, strings.getValidating, "", true, null, {hide_keyboard: true}).then(
+    function (response) {
+      var date = moment(command);
+      Census.findOne({birth_date: date}).exec(function (ko, ok){
+        if(ok){
+          stages.updateStage({user_id: userId}, {stage: 3});
+          Users.update({id: userId}, {birth_date: date});
+          telegram.sendMessage(userId, strings.getRegisterOk, "", true, null, {hide_keyboard: true})
+        }else if(!ok) {
+          telegram.sendMessage(userId, strings.getValidationError, "", true, null, {hide_keyboard: true});
+        }else if (ko){
+          sails.log.error("[DB] - Answers.js Error validating Bdate");
+        }
+      });
     }
   )
 

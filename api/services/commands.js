@@ -117,10 +117,8 @@ function strip(text) {
   var regex4 = /(butt_)./;
   var regex5 = /^[0-9]{8}[TRWAGMYFPDXBNJZSQVHLCKET]{1}$/i;
   var regex6 = /^[XYZ]{1}[0-9]{7}[TRWAGMYFPDXBNJZSQVHLCKET]{1}$/i;
+  var regex7 = /^(?:(?:31(\/|-|\.)(?:0?[13578]|1[02]))\1|(?:(?:29|30)(\/|-|\.)(?:0?[1,3-9]|1[0-2])\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:29(\/|-|\.)0?2\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\d|2[0-8])(\/|-|\.)(?:(?:0?[1-9])|(?:1[0-2]))\4(?:(?:1[6-9]|[2-9]\d)?\d{2})$/;
   var array = text.split(" ");
-
-  sails.log.debug("Array splited: ", array);
-  sails.log.debug("Array[0]", array[0]);
 
   var matching = array[0].match(regex);
   var matching2 = array[0].match(regex2);
@@ -128,11 +126,10 @@ function strip(text) {
   var matching4 = array[0].match(regex4);
   var matching5 = array[0].toString().toUpperCase().match(regex5);
   var matching6 = array[0].toString().toUpperCase().match(regex6);
+  var matching7 = array[0].match(regex7);
 
-  sails.log.debug("[DEV] - commands.js RegexMatch4: "+matching4);
 
   if (matching) {
-    sails.log.debug("Returning RegEx: ", matching[0]);
     return {command: matching[0], type: 1};
   } else if (matching2) {
     return {command: matching2[0], type: 2};
@@ -144,6 +141,8 @@ function strip(text) {
     return {command: matching5[0], type: 5};
   } else if (matching6 && validate(text)){
     return {command: matching6[0], type: 6};
+  } else if (matching7){
+    return {command: matching7[0], type: 7};
   }
   else return false;
 

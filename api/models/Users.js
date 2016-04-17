@@ -34,6 +34,9 @@ module.exports = {
       type: 'string',
       unique: true
     },
+    birth_date:{
+      type: 'date'
+    },
     valid: {
       type: 'boolean'
     }

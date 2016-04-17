@@ -74,7 +74,7 @@ module.exports = {
           } else if (command.commandType == 1) {
             sails.log.debug("[DEV] - InputController.js 2");
             answers.answeringCommandsS1(command, userId, userName);
-          } else if (command.commandType == 5) {
+          } else if (command.commandType == 5 || command.commandType == 6) {
             sails.log.debug("[DEV] - InputController.js 3");
             answers.answeringRegisterS1(command, userId, callback_query_id);
           } else {
@@ -88,10 +88,10 @@ module.exports = {
             answers.answeringError(userId, update, userAlias, user);
           } else if (command.commandType == 1) {
             sails.log.debug("[DEV] - InputController.js 2");
-            answers.answeringCommandsS1(command, userId, userName);
-          } else if (command.commandType == 5) {
+            answers.answeringCommandsS2(command, userId, userName);
+          } else if (command.commandType == 7) {
             sails.log.debug("[DEV] - InputController.js 3");
-            answers.answeringRegisterS1(command, userId, callback_query_id);
+            answers.answeringRegisterS2(command, userId, callback_query_id);
           } else {
             sails.log.debug("[DEV] - InputController.js 4");
             answers.answeringError(userId, update, userAlias, user);
