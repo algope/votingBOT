@@ -162,7 +162,7 @@ module.exports.answeringCommandsS0 = function (command, userId, userName) {
     case 6: //cancelar
       telegram.sendMessage(userId, strings.getCancelar, "", true, null, {hide_keyboard: true}).then(
         function (response) {
-          stages.updateStage({user_id: userId}, {stage: 1});
+          stages.updateStage({user_id: userId}, {stage: 0});
 
         }
       );
