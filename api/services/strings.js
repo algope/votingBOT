@@ -35,7 +35,7 @@ module.exports.getBanned = "Lo siento \u{1F633}, has agotado los intentos para r
 
 module.exports.getTroll = "Uy, no tengo tiempo para leer tanto... \u{1F648}";
 
-module.exports.getHelp1 = "Para enviar información, selecciona el comando: /enviar_info\n\n" +
+module.exports.getHelp0 = "Para enviar información, selecciona el comando: /enviar_info\n\n" +
     "Para volver a empezar, selecciona el comando: /cancelar\n\n" +
     "Para enviarnos una sugerencia sobre civicBOT, escribe /sugerencias";
 module.exports.getHelp2 =

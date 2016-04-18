@@ -154,7 +154,7 @@ module.exports.answeringCommandsS0 = function (command, userId, userName) {
       telegram.sendMessage(userId, strings.getWelcome(userName), "", true, null, keyboards.createKeyboard(1));
       break;
     case 2: //ayuda
-      telegram.sendMessage(userId, strings.getHelp1, "", true, null, {hide_keyboard: true});
+      telegram.sendMessage(userId, strings.getHelp0, "", true, null, {hide_keyboard: true});
       break;
     case 5: //acerca_de
       telegram.sendMessage(userId, strings.getAcercaDe, "", true, null, {hide_keyboard: true});

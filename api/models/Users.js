@@ -58,7 +58,7 @@ module.exports = {
     encrypted_vote_id: {
       type: 'string',
       required: true,
-      defaultsTo: ""
+      defaultsTo: null
     }
   }
 };

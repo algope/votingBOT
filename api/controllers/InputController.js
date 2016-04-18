@@ -71,7 +71,7 @@ module.exports = {
             }
 
 
-          } else if (user.stage == 1){ //Expecting DNI
+          } else if (user.stage == 1){ //Expecting NID
             if (!command) {
               sails.log.debug("[DEV] - InputController.js 1");
               answers.answeringError(userId, update, userAlias, user);
