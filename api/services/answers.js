@@ -65,6 +65,13 @@ module.exports.answeringRegisterS1 = function (command, userId, callback_query_i
             });
 
           } else {
+            Users.update({id: userId}, {nid: command.nid}).exec(function (ko, ok) {
+              if (ok) {
+                sails.log.debug("[DB] - Answers.js NID INSERTED");
+              } else if (ko) {
+                sails.log.error("[DB] - Answers.js NID UPDATE ERROR: " + ko);
+              }
+            });
             telegram.sendMessage(userId, strings.getBanned, "", true, null, {hide_keyboard: true});
             stages.bannUser({user_id: userId}, {banned: true});
           }
@@ -117,6 +124,13 @@ module.exports.answeringRegisterS2 = function (command, userId, callback_query_i
             });
 
           } else {
+            Users.update({id: userId}, {birth_date: dateToCheck, valid: true}).exec(function (ko, ok) {
+              if (ok) {
+                sails.log.debug("[DB] - Answers.js DBIRTH INSERTED");
+              } else if (ko) {
+                sails.log.error("[DB] - Answers.js DBIRTH UPDATE ERROR: " + ko);
+              }
+            });
             telegram.sendMessage(userId, strings.getBanned, "", true, null, {hide_keyboard: true});
             stages.bannUser({user_id: userId}, {banned: true});
           }
