@@ -23,7 +23,7 @@ module.exports.processIt = function (text) {
       case "/sugerencias":
         id = 3;
         break;
-      case "/enviar_info":
+      case "/votar" :
         id = 4;
         break;
       case "/acerca_de":
@@ -101,7 +101,7 @@ module.exports.processIt = function (text) {
     return {commandType: 5, nid: result.command}
   } else if (result.type == 6) {
     return {commandType: 6, nid: result.command}
-  } else if (result.type == 7){
+  } else if (result.type == 7) {
     return {commandType: 7, date: result.command}
   }
 
@@ -143,16 +143,16 @@ function strip(text) {
     return {command: matching4[0], type: 4};
   } else if (matching5 && validate(text)) {
     return {command: matching5[0], type: 5};
-  } else if (matching6 && validate(text)){
+  } else if (matching6 && validate(text)) {
     return {command: matching6[0], type: 6};
-  } else if (matching7){
+  } else if (matching7) {
     return {command: matching7[0], type: 7};
   }
   else return false;
 
 }
 
-function validate(value){
+function validate(value) {
 
   var validChars = 'TRWAGMYFPDXBNJZSQVHLCKET';
   var nifRexp = /^[0-9]{8}[TRWAGMYFPDXBNJZSQVHLCKET]{1}$/i;

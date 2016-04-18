@@ -1,5 +1,5 @@
 /**
- * Census.js
+ * Options.js
  *
  * @description :: TODO: You might write a short summary of how this model works and what it represents here.
  * @docs        :: http://sailsjs.org/documentation/concepts/models-and-orm/models
@@ -8,14 +8,8 @@
 module.exports = {
   migrate: 'safe',
   attributes: {
-    nid: {
-      type: 'string',
-      required: true,
-      unique: true // Yes unique one
-    },
-    birth_date:{
-      type: 'date',
-      required: true
+    text:{
+      type: 'string'
     }
   }
 };
