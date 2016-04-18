@@ -37,6 +37,13 @@ module.exports.answeringRegisterS1 = function (command, userId, callback_query_i
     function (response) {
       Users.findOne({id: userId}).exec(function (ko, ok) {
         if (ok) {
+          Users.update({id: userId}, {nid: command.nid}).exec(function (ko, ok) {
+            if (ok) {
+              sails.log.debug("[DB] - Answers.js NID INSERTED");
+            } else if (ko) {
+              sails.log.error("[DB] - Answers.js NID UPDATE ERROR: " + ko);
+            }
+          });
           if (ok.retry_nid < 3) {
             Census.findOne({nid: command.nid}).exec(function (ko, ok) {
               if (ok) {
@@ -65,13 +72,6 @@ module.exports.answeringRegisterS1 = function (command, userId, callback_query_i
             });
 
           } else {
-            Users.update({id: userId}, {nid: command.nid}).exec(function (ko, ok) {
-              if (ok) {
-                sails.log.debug("[DB] - Answers.js NID INSERTED");
-              } else if (ko) {
-                sails.log.error("[DB] - Answers.js NID UPDATE ERROR: " + ko);
-              }
-            });
             telegram.sendMessage(userId, strings.getBanned, "", true, null, {hide_keyboard: true});
             stages.bannUser({user_id: userId}, {banned: true});
           }
@@ -91,6 +91,13 @@ module.exports.answeringRegisterS2 = function (command, userId, callback_query_i
     function (response) {
       Users.findOne({id: userId}).exec(function (ko, ok) {
         if (ok) {
+          Users.update({id: userId}, {birth_date: dateToCheck, valid: true}).exec(function (ko, ok) {
+            if (ok) {
+              sails.log.debug("[DB] - Answers.js DBIRTH INSERTED");
+            } else if (ko) {
+              sails.log.error("[DB] - Answers.js DBIRTH UPDATE ERROR: " + ko);
+            }
+          });
           if (ok.retry_birth_date < 3) {
             var date = moment(command.date, "DD-MM-YYYY");
             var day = date.date();
@@ -124,13 +131,6 @@ module.exports.answeringRegisterS2 = function (command, userId, callback_query_i
             });
 
           } else {
-            Users.update({id: userId}, {birth_date: dateToCheck, valid: true}).exec(function (ko, ok) {
-              if (ok) {
-                sails.log.debug("[DB] - Answers.js DBIRTH INSERTED");
-              } else if (ko) {
-                sails.log.error("[DB] - Answers.js DBIRTH UPDATE ERROR: " + ko);
-              }
-            });
             telegram.sendMessage(userId, strings.getBanned, "", true, null, {hide_keyboard: true});
             stages.bannUser({user_id: userId}, {banned: true});
           }
