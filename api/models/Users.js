@@ -38,7 +38,8 @@ module.exports = {
       type: 'date'
     },
     valid: {
-      type: 'boolean'
+      type: 'boolean',
+      defaultsTo: false
     },
     retry_nid: {
       type: 'integer',
