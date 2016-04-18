@@ -8,7 +8,7 @@
  */
 
 module.exports.getError = "Ups, eso no me lo esperaba... ¿Te has equivocado?";
-module.exports.getBye = ":( Una pena, me hubiera gustado seguir hablando contigo\n" +
+module.exports.getBye = "Una pena \u{1F633}, me hubiera gustado seguir hablando contigo.\n" +
   "Si cambias de opinión, solo tienes que volver a escribir: /start";
 
 module.exports.getStartReg = "Iniciando registro...";
