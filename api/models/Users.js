@@ -39,6 +39,7 @@ module.exports = {
     },
     valid: {
       type: 'boolean',
+      required: true,
       defaultsTo: false
     },
     retry_nid: {
@@ -48,6 +49,16 @@ module.exports = {
     retry_birth_date: {
       type: 'integer',
       defaultsTo: 0
+    },
+    has_voted: {
+      type: 'boolean',
+      required: true,
+      defaultsTo: false
+    },
+    encrypted_vote_id: {
+      type: 'string',
+      required: true,
+      defaultsTo: ""
     }
   }
 };
