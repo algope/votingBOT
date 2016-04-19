@@ -47,7 +47,6 @@ module.exports.getVoteOptions = function () {
        for (var i = 0; i < ok.length; i++) {
          resp += ok[i].id + " : " + ok[i].text + "\n";
        }
-       sails.log.debug("[DEV] - Strings.js getVoteOptions: "+resp);
        resolve(resp);
      }
 

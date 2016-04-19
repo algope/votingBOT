@@ -249,7 +249,6 @@ module.exports.answeringCommandsS3 = function (command, userId, userName) {
       break;
     case 4: //votar
       strings.getVoteOptions().then(function(response){
-        sails.log.debug("RESPONSE: : : "+response);
         telegram.sendMessage(userId, response);
       });
 
