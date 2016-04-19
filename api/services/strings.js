@@ -42,9 +42,11 @@ module.exports.getReadyToVote = function (userName) {
 module.exports.getVoteOptions = function () {
   Options.find().exec(function (ko, ok){
     if(ok){
+      var resp = "Opciones disponibles: \n\n";
       ok.forEach(function(value){
-        sails.log.debug("[DEV] - Strings.js Answer Options: "+ JSON.stringify(value));
+        resp += value.id +" : "+ value.text;
       });
+      return resp;
     }
 
   })
