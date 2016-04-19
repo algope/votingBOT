@@ -40,17 +40,20 @@ module.exports.getReadyToVote = function (userName) {
 };
 
 module.exports.getVoteOptions = function () {
-  Options.find().exec(function (ko, ok) {
-    if (ok) {
-      var resp = "Opciones disponibles: \n\n";
-      for (var i = 0; i < ok.length; i++) {
-        resp += ok[i].id + " : " + ok[i].text + "\n";
-      }
-      sails.log.debug("[DEV] - Strings.js getVoteOptions: "+resp);
-      return resp;
-    }
+ return new Promise(function(resolve, reject){
+   Options.find().exec(function (ko, ok) {
+     if (ok) {
+       var resp = "Opciones disponibles: \n\n";
+       for (var i = 0; i < ok.length; i++) {
+         resp += ok[i].id + " : " + ok[i].text + "\n";
+       }
+       sails.log.debug("[DEV] - Strings.js getVoteOptions: "+resp);
+       resolve(resp);
+     }
 
-  })
+   })
+
+ })
 };
 
 
