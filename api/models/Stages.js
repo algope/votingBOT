@@ -20,7 +20,17 @@ module.exports = {
       type: 'boolean',
       required: true,
       defaultsTo: false
-    }
+    },
+    valid: {
+      type: 'boolean',
+      required: true,
+      defaultsTo: false
+    },
+    has_voted: {
+      type: 'boolean',
+      required: true,
+      defaultsTo: false
+    },
   }
 };
 

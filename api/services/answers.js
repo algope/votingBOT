@@ -91,13 +91,6 @@ module.exports.answeringRegisterS2 = function (command, userId, callback_query_i
     function (response) {
       Users.findOne({id: userId}).exec(function (ko, ok) {
         if (ok) {
-          Users.update({id: userId}, {birth_date: dateToCheck, valid: true}).exec(function (ko, ok) {
-            if (ok) {
-              sails.log.debug("[DB] - Answers.js DBIRTH INSERTED");
-            } else if (ko) {
-              sails.log.error("[DB] - Answers.js DBIRTH UPDATE ERROR: " + ko);
-            }
-          });
           if (ok.retry_birth_date < 3) {
             var date = moment(command.date, "DD-MM-YYYY");
             var day = date.date();
@@ -107,14 +100,14 @@ module.exports.answeringRegisterS2 = function (command, userId, callback_query_i
             sails.log.debug("[DEV] - Answers.js DATE: " + date);
             Census.findOne({birth_date: dateToCheck}).exec(function (ko, ok) {
               if (ok) {
-                stages.updateStage({user_id: userId}, {stage: 3});
-                Users.update({id: userId}, {birth_date: dateToCheck, valid: true}).exec(function (ko, ok) {
+                Users.update({id: userId}, {birth_date: dateToCheck}).exec(function (ko, ok) {
                   if (ok) {
                     sails.log.debug("[DB] - Answers.js DBIRTH INSERTED");
                   } else if (ko) {
                     sails.log.error("[DB] - Answers.js DBIRTH UPDATE ERROR: " + ko);
                   }
                 });
+                stages.updateStage({user_id: userId}, {stage: 3, valid: true}); //We validate the user in order to vote.
                 telegram.sendMessage(userId, strings.getRegisterOk, "", true, null, {hide_keyboard: true})
               } else if (!ok) {
                 telegram.sendMessage(userId, strings.getValidationErrorBDATE, "", true, null, {hide_keyboard: true});
@@ -247,11 +240,7 @@ module.exports.answeringCommandsS2 = function (command, userId, userName) {
 module.exports.answeringCommandsS3 = function (command, userId, userName) {
   switch (command.commandId) {
     case 1: //start
-      telegram.sendMessage(userId, strings.getWelcome(userName)).then(
-        function (response) {
-          stages.updateStage({user_id: userId}, {stage: 1});
-        }
-      );
+      telegram.sendMessage(userId, strings.getReadyToVote(userName));
       break;
     case 2: //ayuda
       telegram.sendMessage(userId, strings.getHelp3, "", true, null, {hide_keyboard: true});
@@ -259,6 +248,7 @@ module.exports.answeringCommandsS3 = function (command, userId, userName) {
     case 3: //sugerencias
       break;
     case 4: //votar
+      telegram.sendMessage(userId, strings.getVoteOptions, "", true, null, {hide_keyboard: true});
       break;
     case 5: //acerca_de
       telegram.sendMessage(userId, strings.getAcercaDe, "", true, null, {hide_keyboard: true});

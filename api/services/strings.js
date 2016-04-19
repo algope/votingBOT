@@ -17,7 +17,7 @@ module.exports.getCancelReg = "Registro cancelado.";
 
 module.exports.getWelcome = function (userName) {
     return "Hola " + userName + ", ¡encantado de conocerte! \u{1F604}\n" +
-        "Bienvenidx al sistema de votación. Para empezar será necesario que te registres con tu DNI y tu Fecha de Nacimiento.\n" +
+        "Bienvenidx al sistema de votación. Para empezar será necesario que te registres con tu DNI y Fecha de Nacimiento.\n" +
       "¿Quieres registrarte?";
 };
 
@@ -34,6 +34,25 @@ module.exports.getValidationErrorBDATE = "Ups \u{1F633}, me temo que ha habido u
 module.exports.getBanned = "Lo siento \u{1F633}, has agotado los intentos para registrarte. Por seguridad he bloqueado tu usuario.";
 
 module.exports.getTroll = "Uy, no tengo tiempo para leer tanto... \u{1F648}";
+
+module.exports.getReadyToVote = function (userName) {
+  return "Hola de nuevo " + userName + ", Ya tenemos todos tus datos verificados, ¿preparadx para votar? \u{1F604}\n";
+};
+
+module.exports.getVotingOptions = function () {
+  Options.find().exec(function (ko, ok){
+    if(ok){
+      ok.forEach(function(value){
+        sails.log.debug("[DEV] - Strings.js Answer Options: "+value);
+      });
+    }
+
+  })
+};
+
+
+
+
 
 module.exports.getHelp0 = "Para enviar información, selecciona el comando: /enviar_info\n\n" +
     "Para volver a empezar, selecciona el comando: /cancelar\n\n" +
