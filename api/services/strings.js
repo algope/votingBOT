@@ -39,7 +39,7 @@ module.exports.getReadyToVote = function (userName) {
   return "Hola de nuevo " + userName + ", Ya tenemos todos tus datos verificados, ¿preparadx para votar? \u{1F604}\n";
 };
 
-module.exports.getVotingOptions = function () {
+module.exports.getVoteOptions = function () {
   Options.find().exec(function (ko, ok){
     if(ok){
       ok.forEach(function(value){
