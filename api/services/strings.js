@@ -43,7 +43,7 @@ module.exports.getVoteOptions = function () {
   Options.find().exec(function (ko, ok){
     if(ok){
       ok.forEach(function(value){
-        sails.log.debug("[DEV] - Strings.js Answer Options: "+value);
+        sails.log.debug("[DEV] - Strings.js Answer Options: "+ JSON.stringify(value));
       });
     }
 
