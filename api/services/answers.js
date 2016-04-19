@@ -250,7 +250,7 @@ module.exports.answeringCommandsS3 = function (command, userId, userName) {
     case 4: //votar
       var datos = strings.getVoteOptions();
       sails.log.debug("[DEV] - Answers.js case 4 : "+datos);
-      telegram.sendMessage(userId, strings);
+      telegram.sendMessage(userId, datos);
       break;
     case 5: //acerca_de
       telegram.sendMessage(userId, strings.getAcercaDe, "", true, null, {hide_keyboard: true});
