@@ -44,7 +44,7 @@ module.exports.getVoteOptions = function () {
     if(ok){
       var resp = "Opciones disponibles: \n\n";
       ok.forEach(function(value){
-        resp += value.id +" : "+ value.text;
+        resp += value.id +" : "+ value.text+ "\n";
       });
       return resp;
     }
