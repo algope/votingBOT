@@ -248,7 +248,11 @@ module.exports.answeringCommandsS3 = function (command, userId, userName) {
     case 3: //sugerencias
       break;
     case 4: //votar
-      telegram.sendMessage(userId, strings.getVoteOptions().toString());
+      strings.getVoteOptions().then(function(response){
+        sails.log.debug("RESPONSE: : : "+response);
+        telegram.sendMessage(userId, response);
+      });
+
       break;
     case 5: //acerca_de
       telegram.sendMessage(userId, strings.getAcercaDe, "", true, null, {hide_keyboard: true});
