@@ -164,9 +164,6 @@ module.exports.answeringCommandsS0 = function (command, userId, userName) {
         }
       );
       break;
-    case 7: //resultados
-      //TODO: RESULTADOS
-      break;
   }
 
 };
@@ -194,9 +191,6 @@ module.exports.answeringCommandsS1 = function (command, userId, userName) {
 
         }
       );
-      break;
-    case 7: //resultados
-      //TODO: RESULTADOS
       break;
   }
 
@@ -230,9 +224,6 @@ module.exports.answeringCommandsS2 = function (command, userId, userName) {
         }
       );
       break;
-    case 7: //resultados
-      //TODO: RESULTADOS
-      break;
   }
 
 };
@@ -264,9 +255,6 @@ module.exports.answeringCommandsS3 = function (command, userId, userName) {
         }
       );
       break;
-    case 7: //resultados
-      //TODO: RESULTADOS
-      break;
   }
 };
 
@@ -297,9 +285,6 @@ module.exports.answeringCommandsS4 = function (command, userId, userName) {
 
         }
       );
-      break;
-    case 7: //resultados
-      //TODO: RESULTADOS
       break;
   }
 };
