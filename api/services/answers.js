@@ -152,6 +152,8 @@ module.exports.answeringCommandsS0 = function (command, userId, userName) {
     case 3: //sugerencias
           break;
     case 4: //votar
+      telegram.sendMessage(userId, strings.getNotReadyToVote);
+      telegram.sendMessage(userId, strings.getRegQuestion, "", true, null, keyboards.createKeyboard(1));
           break;
     case 5: //acerca_de
       telegram.sendMessage(userId, strings.getAcercaDe, "", true, null, {hide_keyboard: true});

@@ -13,6 +13,7 @@ module.exports.getBye = "Una pena \u{1F633}, me hubiera gustado seguir hablando 
 
 module.exports.getStartReg = "Iniciando registro...";
 module.exports.getCancelReg = "Registro cancelado.";
+module.exports.getRegQuestion = "¿Quieres registrarte? Recuerda tener a mano tu número de DNI o NIE y tu Fecha de Nacimiento";
 
 
 module.exports.getWelcome = function (userName) {
@@ -54,6 +55,8 @@ module.exports.getVoteOptions = function () {
 
  })
 };
+
+module.exports.getNotReadyToVote = "No vayas tan rápido, apenas nos conocemos... \u{1F648} Antes de votar, registrarte deberás. ";
 
 
 module.exports.getHelp0 = "Para enviar información, selecciona el comando: /enviar_info\n\n" +
