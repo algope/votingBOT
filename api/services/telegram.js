@@ -81,6 +81,7 @@ module.exports.sendImage = function (chat_id, photo, caption, disable_notificati
         json += chunk;
       });
       res.on('end', function () {
+        sails.log.debug("[DEV] - Telegram.js sendPhoto OK");
         resolve(JSON.parse(json))
       });
       res.on('error', function(error){
