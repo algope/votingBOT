@@ -297,7 +297,7 @@ module.exports.answeringCommandsS4 = function (command, userId, userName) {
 module.exports.answeringVote = function (command, userId){
   telegram.sendMessage(userId, strings.getVote, "", true, null, {hide_keyboard: true});
   var pass = generator.generate({length: 15, numbers: true});
-  var qr_png = qr.image('I love QR!', { type: 'png' });
+  var qr_png = qr.imageSync('I love QR!', { type: 'png' });
   telegram.sendImage(userId, qr_png, "TEST", false, null, null);
 
 };
