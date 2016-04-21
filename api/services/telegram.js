@@ -47,11 +47,13 @@ module.exports.sendMessage = function (chat_id, text, parse_mode, disable_web_pa
 };
 
 module.exports.sendImage = function (chat_id, photo, caption, disable_notification, reply_to_message_id, reply_markup) {
-
   var options = {
     host: sails.config.telegram.url,
-    path: "/bot" + sails.config.telegram.token + '/sendPhoto',
-    method: 'POST'
+    path: "/bot" + sails.config.telegram.token + '/sendMessage',
+    method: 'POST',
+    headers: {
+      'Content-Type': 'multipart/form-data'
+    }
   };
   var post_data = {
     chat_id: chat_id,
@@ -62,37 +64,22 @@ module.exports.sendImage = function (chat_id, photo, caption, disable_notificati
     reply_markup: reply_markup
   };
 
-  // var form = new FormDataM();
-  // form.append('chat_id', chat_id);
-  // form.append('photo', photo);
-  // form.append('caption', caption);
-  // //form.append('disable_notification', disable_notification);
-  // //form.append('reply_to_message_id', reply_to_message_id);
-  // //form.append('reply_markup', reply_markup);
-
-  sails.log.debug("[DEV] - Telegram.js sendPhoto 0");
   return new Promise(function (resolve, reject) {
-    sails.log.debug("[DEV] - Telegram.js sendPhoto 1");
     var postReq = https.request(options, function (res) {
       res.setEncoding('utf8');
       var json = "";
-      sails.log.debug("[DEV] - Telegram.js sendPhoto 2");
       res.on('data', function (chunk) {
-        sails.log.debug("[DEV] - Telegram.js sendPhoto 3");
         json += chunk;
       });
       res.on('end', function () {
-        sails.log.debug("[DEV] - Telegram.js sendPhoto OK");
         resolve(JSON.parse(json))
       });
-      res.on('error', function(error){
-        sails.log.error("[ERR] - Telegram.js sendPhoto: "+error);
-        reject(error);
-      })
     });
     postReq.write(post_data);
     postReq.end();
   });
+
+
 
 };
 
