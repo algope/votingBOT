@@ -9,7 +9,7 @@
 
 var moment = require('moment');
 var generator = require('generate-password');
-var qr = require('qr-image');
+var qr = require('qr-js');
 var fs = require('fs');
 var FormData = require('form-data');
 
