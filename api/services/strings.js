@@ -57,6 +57,10 @@ module.exports.getVoteOptions = function () {
 };
 
 module.exports.getNotReadyToVote = "No vayas tan rápido, apenas nos conocemos... \u{1F648} Antes de votar, registrarte deberás. ";
+module.exports.getVote = "Tu voto ha sido guardado correctamente. Esta imagen es el código que deberás utilizar para consultar de nuevo tu voto\n";
+
+
+
 
 
 module.exports.getHelp0 = "Para enviar información, selecciona el comando: /enviar_info\n\n" +

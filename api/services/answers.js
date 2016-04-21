@@ -292,27 +292,9 @@ module.exports.answeringCommandsS4 = function (command, userId, userName) {
 };
 
 
-module.exports.answeringVote = function (command, userId) {
-  switch (command.commandId) {
-    case 1: //TEXTO
-      telegram.sendMessage(userId, strings.getTextSelected, "", true, null, {hide_keyboard: true}).then(
-        function (response) {
-          stages.updateStage({user_id: userId}, {stage: 3, data_type_selected: 1})
+module.exports.answeringVote = function (command, userId){
+  telegram.sendMessage(userId, strings.getVote, "", true, null, {hide_keyboard: true})
 
-        }
-      );
-
-      break;
-    case 2: //IMAGEN
-      telegram.sendMessage(userId, strings.getImageSelected, "", true, null, {hide_keyboard: true}).then(
-        function (response) {
-          stages.updateStage({user_id: userId}, {stage: 3, data_type_selected: 2});
-
-        }
-      );
-      break;
-
-  }
 };
 
 module.exports.answeringError = function (userId, update, userAlias, user) {

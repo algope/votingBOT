@@ -93,8 +93,8 @@ module.exports = {
               answers.answeringError(userId, update, userAlias, user);
             } else if (command.commandType == 1) {
               answers.answeringCommandsS3(command, userId, userName);
-            } else if (command.commandType == 5 || command.commandType == 6) {
-              answers.answeringVoting(command, userId, callback_query_id);
+            } else if (command.commandType == 8) {
+              answers.answeringVote(command, userId);
             } else {
               answers.answeringError(userId, update, userAlias, user);
             }
