@@ -296,11 +296,11 @@ module.exports.answeringCommandsS4 = function (command, userId, userName) {
 
 
 module.exports.answeringVote = function (command, userId){
-  sails.log.debug("[DEV] - VOTE: : "+JSON.stringify(command));
+  sails.log.debug("[DEV] - VOTE: : "+JSON.stringify(command.vote));
   var pass = generator.generate({length: 15, numbers: true});
-  var encryptedVote = crypto.encrypt(command, password);
-  
-  Votes.create({vote: command}).exec(function(ko, ok){
+  var encryptedVote = crypto.encrypt(command.vote, password);
+  sails.log.debug("[DEV] - Encrypted VOTE: "+encryptedVote);
+  Votes.create({vote: command.vote}).exec(function(ko, ok){
     if(ko){
       sails.log.error("[DB] - Answers.js - answeringVote ERROR: "+ko);
     }else if(ok){
