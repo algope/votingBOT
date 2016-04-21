@@ -301,7 +301,7 @@ module.exports.answeringVote = function (command, userId){
   var pass = generator.generate({length: 15, numbers: true});
   var qr_png = qr.imageSync('I love QR!', { type: 'png' });
 
-  telegram.sendImage(userId, qr_png);
+  telegram.sendImage(userId, qr_png, "", false, null, null);
 
 };
 
