@@ -10,6 +10,7 @@
 var querystring = require('querystring');
 var https = require('https');
 var request = require('request');
+var FormData = require('form-data');
 
 
 module.exports.sendMessage = function (chat_id, text, parse_mode, disable_web_page_preview, reply_to_message_id, reply_markup) {
@@ -47,22 +48,27 @@ module.exports.sendMessage = function (chat_id, text, parse_mode, disable_web_pa
 };
 
 module.exports.sendImage = function (chat_id, photo, caption, disable_notification, reply_to_message_id, reply_markup) {
+  var form = new FormData();
+  form.append('chat_id', chat_id);
+  form.append('photo', photo);
+  form.append('caption', caption);
+  form.append('disable_notification', disable_notification);
+  form.append('reply_to_message_id', reply_to_message_id);
+  form.append('reply_markup', reply_markup);
   var options = {
     host: sails.config.telegram.url,
     path: "/bot" + sails.config.telegram.token + '/sendMessage',
     method: 'POST',
-    headers: {
-      'Content-Type': 'multipart/form-data'
-    }
+    headers: form.getHeaders()
   };
-  var post_data = {
-    chat_id: chat_id,
-    photo: photo,
-    caption: caption,
-    disable_notification: disable_notification,
-    reply_to_message_id: reply_to_message_id,
-    reply_markup: reply_markup
-  };
+  // var post_data = {
+  //   chat_id: chat_id,
+  //   photo: photo,
+  //   caption: caption,
+  //   disable_notification: disable_notification,
+  //   reply_to_message_id: reply_to_message_id,
+  //   reply_markup: reply_markup
+  // };
 
   return new Promise(function (resolve, reject) {
     var postReq = https.request(options, function (res) {
@@ -78,7 +84,7 @@ module.exports.sendImage = function (chat_id, photo, caption, disable_notificati
         reject(error);
       })
     });
-    postReq.write(post_data);
+    form.pipe(postReq);
     postReq.end();
   });
 
