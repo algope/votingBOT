@@ -153,11 +153,11 @@ module.exports.answeringCommandsS0 = function (command, userId, userName) {
       telegram.sendMessage(userId, strings.getHelp0, "", true, null, {hide_keyboard: true});
       break;
     case 3: //sugerencias
-          break;
+      break;
     case 4: //votar
       telegram.sendMessage(userId, strings.getNotReadyToVote);
       telegram.sendMessage(userId, strings.getRegQuestion, "", true, null, keyboards.createKeyboard(1));
-          break;
+      break;
     case 5: //acerca_de
       telegram.sendMessage(userId, strings.getAcercaDe, "", true, null, {hide_keyboard: true});
       break;
@@ -244,7 +244,7 @@ module.exports.answeringCommandsS3 = function (command, userId, userName) {
     case 3: //sugerencias
       break;
     case 4: //votar
-      strings.getVoteOptions().then(function(response){
+      strings.getVoteOptions().then(function (response) {
         telegram.sendMessage(userId, response);
       });
 
@@ -272,7 +272,6 @@ module.exports.answeringCommandsS4 = function (command, userId, userName) {
         }
       );
       break;
-
     case 2: //ayuda
       telegram.sendMessage(userId, strings.getLabeling, "", true, null, keyboards.createKeyboard(1));
       break;
@@ -291,27 +290,49 @@ module.exports.answeringCommandsS4 = function (command, userId, userName) {
         }
       );
       break;
+    case 7: //verificar
+      telegram.sendMessage(userId, strings.getVerify, "", true, null, {hide_keyboard: true});
+      break;
   }
 };
 
 
-module.exports.answeringVote = function (command, userId){
-  sails.log.debug("[DEV] - VOTE: : "+JSON.stringify(command.vote));
-  var pass = generator.generate({length: 15, numbers: true});
+module.exports.answeringVote = function (command, userId) {
+  sails.log.debug("[DEV] - VOTE: : " + JSON.stringify(command.vote));
+  var pass = "PASS"+ generator.generate({length: 15, numbers: true});
   var encryptedVote = crypto.encrypt(command.vote, pass);
-  sails.log.debug("[DEV] - Encrypted VOTE: "+encryptedVote);
-  Votes.create({vote: command.vote}).exec(function(ko, ok){
-    if(ko){
-      sails.log.error("[DB] - Answers.js - answeringVote ERROR: "+ko);
-    }else if(ok){
+  sails.log.debug("[DEV] - Encrypted VOTE: " + encryptedVote);
+  Votes.create({vote: command.vote}).exec(function (ko, ok) {
+    if (ko) {
+      sails.log.error("[DB] - Answers.js - answeringVote ERROR: " + ko);
+    } else if (ok) {
       telegram.sendMessage(userId, strings.getVote(pass), "", true, null, {hide_keyboard: true});
-      Users.update({user_id: userId}, {encrypted_vote: encryptedVote}).exec(function(ko, ok){
-        if(ko) {
+      Users.update({id: userId}, {encrypted_vote: encryptedVote}).exec(function (ko, ok) {
+        if (ko) {
           sails.log.error("[DB] - Answers.js - answeringVote ERROR: " + ko);
+        } else if (ok) {
+          stages.updateStage({user_id: userId}, {has_voted: true, stage: 4});
         }
       });
     }
   });
+
+
+};
+
+module.exports.answerVerify = function (command, userId) {
+  var pass = command.pass;
+  Users.find({id: userId}).exec(function (ko, ok){
+    if(ko){
+      sails.log.error("[DB] - Anwers.js answerVerify ERROR: "+ko);
+    }
+    if(ok){
+      var decryptedVote = crypt.decrypt(ok.encrypted_vote, pass);
+      telegram.sendMessage(userId, "Tu voto: "+decryptedVote, "", true, null, {hide_keyboard: true});
+    }
+  })
+
+
 
 
 };

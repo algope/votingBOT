@@ -98,6 +98,17 @@ module.exports = {
             } else {
               answers.answeringError(userId, update, userAlias, user);
             }
+
+          } else if (user.stage == 4 && user.valid && user.has_voted){
+            if (!command) {
+              answers.answeringError(userId, update, userAlias, user);
+            } else if (command.commandType == 1) {
+              answers.answeringCommandsS3(command, userId, userName);
+            } else if (command.commandType == 9) {
+              answers.answerVerify(command, userId);
+            } else {
+              answers.answeringError(userId, update, userAlias, user);
+            }
           }
 
         } else {

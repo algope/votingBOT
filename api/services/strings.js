@@ -62,7 +62,8 @@ module.exports.getVote = function(pass) {
   "Este es el código que deberás utilizar para verificar que tu voto es correcto: \n\n" + pass;
 };
 
-
+module.exports.getVerify = "Vamos a verificar tu voto.\n" +
+  "Envíame el código que te dí cuando votaste:";
 
 
 
