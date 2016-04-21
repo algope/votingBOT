@@ -48,7 +48,6 @@ module.exports.sendMessage = function (chat_id, text, parse_mode, disable_web_pa
 };
 
 module.exports.sendImage = function (chat_id, photo, caption, disable_notification, reply_to_message_id, reply_markup) {
-  sails.log.debug("[DEV] - Telegram.js sendPhoto OK");
 
   var options = {
     host: sails.config.telegram.url,
@@ -58,14 +57,14 @@ module.exports.sendImage = function (chat_id, photo, caption, disable_notificati
       'Content-Type': 'multipart/form-data'
     }
   };
-  var post_data = JSON.stringify({
-    chat_id: chat_id,
-    photo: photo,
-    caption: caption,
-    disable_notification: disable_notification,
-    reply_to_message_id: reply_to_message_id,
-    reply_markup: reply_markup
-  });
+  // var post_data = JSON.stringify({
+  //   chat_id: chat_id,
+  //   photo: photo,
+  //   caption: caption,
+  //   disable_notification: disable_notification,
+  //   reply_to_message_id: reply_to_message_id,
+  //   reply_markup: reply_markup
+  // });
 
   var form = new FormData();
   form.append('chat_id', chat_id);
@@ -76,10 +75,13 @@ module.exports.sendImage = function (chat_id, photo, caption, disable_notificati
   form.append('reply_markup', reply_markup);
 
   return new Promise(function (resolve, reject) {
+    sails.log.debug("[DEV] - Telegram.js sendPhoto 1");
     var postReq = https.request(options, function (res) {
       res.setEncoding('utf8');
       var json = "";
+      sails.log.debug("[DEV] - Telegram.js sendPhoto 2");
       res.on('data', function (chunk) {
+        sails.log.debug("[DEV] - Telegram.js sendPhoto 3");
         json += chunk;
       });
       res.on('end', function () {
