@@ -48,12 +48,14 @@ module.exports.sendMessage = function (chat_id, text, parse_mode, disable_web_pa
 };
 
 module.exports.sendImage = function (chat_id, photo, caption, disable_notification, reply_to_message_id, reply_markup) {
+  sails.log.debug("[DEV] - Telegram.js sendPhoto OK");
+
   var options = {
     host: sails.config.telegram.url,
     path: "/bot" + sails.config.telegram.token + '/sendPhoto',
     method: 'POST',
     headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'multipart/form-data'
     }
   };
   var post_data = JSON.stringify({

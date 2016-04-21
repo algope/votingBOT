@@ -300,8 +300,8 @@ module.exports.answeringVote = function (command, userId){
   telegram.sendMessage(userId, strings.getVote, "", true, null, {hide_keyboard: true});
   var pass = generator.generate({length: 15, numbers: true});
   var qr_png = qr.imageSync('I love QR!', { type: 'png' });
-  
-  telegram.sendImage(userId, qr_png, "TEST", false, null, null);
+
+  telegram.sendImage(userId, qr_png);
 
 };
 
