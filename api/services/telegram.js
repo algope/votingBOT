@@ -74,8 +74,8 @@ module.exports.sendImage = function (chat_id, photo, caption, disable_notificati
       res.on('end', function () {
         resolve(JSON.parse(json))
       });
-      res.on('err', function(error){
-        sails.log.error("ERROR : : : "+error);
+      res.on('error', function(error){
+        reject(error);
       })
     });
     postReq.write(post_data);
