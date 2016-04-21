@@ -106,6 +106,7 @@ module.exports.processIt = function (text) {
   } else if (result.type == 8) {
     return {commandType: 8, vote: result.command};
   } else if (result.type == 9){
+    sails.log.debug("COMMANDTYPE: : : 9");
     return {commandType: 9, pass: result.command};
   }
   else return false;
