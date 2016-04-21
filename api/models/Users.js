@@ -45,7 +45,7 @@ module.exports = {
       type: 'integer',
       defaultsTo: 0
     },
-    encrypted_vote_id: {
+    encrypted_vote: {
       type: 'string'
     }
   }

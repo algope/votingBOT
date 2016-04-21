@@ -11,6 +11,7 @@ var moment = require('moment');
 var generator = require('generate-password');
 var fs = require('fs');
 
+
 module.exports.answeringRegisterS0 = function (command, userId, callback_query_id) {
   sails.log.debug("[DEV] - answers.js COMMANDID: " + command.commandId);
   switch (command.commandId) {
@@ -295,9 +296,22 @@ module.exports.answeringCommandsS4 = function (command, userId, userName) {
 
 
 module.exports.answeringVote = function (command, userId){
-  telegram.sendMessage(userId, strings.getVote, "", true, null, {hide_keyboard: true});
   var pass = generator.generate({length: 15, numbers: true});
-  telegram.sendMessage(userId, pass, "", true, null, {hide_keyboard: true});
+  var encryptedVote = crypto.encrypt(command, password);
+  Vote.create({vote: command}).exec(function(ko, ok){
+    if(ko){
+      sails.log.error("[DB] - Answers.js - answeringVote ERROR: "+ko);
+    }else if(ok){
+      telegram.sendMessage(userId, strings.getVote(pass), "", true, null, {hide_keyboard: true});
+      Users.update({user_id: userId}, {encrypted_vote: encryptedVote}).exec(function(ko, ok){
+        if(ko) {
+          sails.log.error("[DB] - Answers.js - answeringVote ERROR: " + ko);
+        }
+      });
+    }
+  });
+
+
 };
 
 module.exports.answeringError = function (userId, update, userAlias, user) {
