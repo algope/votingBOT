@@ -299,19 +299,7 @@ module.exports.answeringCommandsS4 = function (command, userId, userName) {
 module.exports.answeringVote = function (command, userId){
   telegram.sendMessage(userId, strings.getVote, "", true, null, {hide_keyboard: true});
   var pass = generator.generate({length: 15, numbers: true});
-  var qr_png = qr.imageSync('I love QR!', { type: 'png' });
-
-  telegram.sendImage(userId, qr_png, "", false, null, null).then(
-    function(resolve, reject){
-      if(resolve){
-        sails.log.debug("RESOLVE: "+resolve);
-      }
-      if(reject){
-        sails.log.error("REJECT: "+reject);
-      }
-    }
-  )
-
+  telegram.sendMessage(userId, pass, "", true, null, {hide_keyboard: true});
 };
 
 module.exports.answeringError = function (userId, update, userAlias, user) {
