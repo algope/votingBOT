@@ -129,6 +129,7 @@ function strip(text) {
   var regex8 = /(\d+)(,\s*\d+)*/;
   var regex9 = /(PASS).+/;
   var array = text.split(" ");
+  
 
   var matching = array[0].match(regex);
   var matching2 = array[0].match(regex2);
