@@ -9,9 +9,7 @@
 
 var moment = require('moment');
 var generator = require('generate-password');
-var qr = require('qr-js');
 var fs = require('fs');
-var FormData = require('form-data');
 
 module.exports.answeringRegisterS0 = function (command, userId, callback_query_id) {
   sails.log.debug("[DEV] - answers.js COMMANDID: " + command.commandId);
