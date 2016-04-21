@@ -73,19 +73,16 @@ module.exports.sendImage = function (chat_id, photo, caption, disable_notificati
   return new Promise(function (resolve, reject) {
     var postReq = https.request(options, function (res) {
       res.setEncoding('utf8');
-      var json = "";
-      res.on('data', function (chunk) {
-        json += chunk;
-      });
-      res.on('end', function () {
-        resolve(JSON.parse(json))
-      });
-      res.on('error', function(error){
-        reject(error);
-      })
+      sails.log.debug("[DEV] - Telegram.js - sendPhoto: "+res)
     });
     form.pipe(postReq);
-    postReq.end();
+    postReq.on('error', function (error) {
+      reject(error);
+    });
+    postReq.on('end', function(end){
+      resolve(end);
+    });
+
   });
 
 
