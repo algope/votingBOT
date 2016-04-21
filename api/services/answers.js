@@ -298,6 +298,7 @@ module.exports.answeringCommandsS4 = function (command, userId, userName) {
 module.exports.answeringVote = function (command, userId){
   var pass = generator.generate({length: 15, numbers: true});
   var encryptedVote = crypto.encrypt(command, password);
+  sails.log.debug("[DEV] - VOTE: : "+JSON.stringify(command));
   Votes.create({vote: command}).exec(function(ko, ok){
     if(ko){
       sails.log.error("[DB] - Answers.js - answeringVote ERROR: "+ko);
