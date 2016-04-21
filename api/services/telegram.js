@@ -10,7 +10,7 @@
 var querystring = require('querystring');
 var https = require('https');
 var request = require('request');
-var FormData = require('form-data');
+var FormDataM = require('form-data');
 
 
 module.exports.sendMessage = function (chat_id, text, parse_mode, disable_web_page_preview, reply_to_message_id, reply_markup) {
@@ -66,13 +66,14 @@ module.exports.sendImage = function (chat_id, photo, caption, disable_notificati
   //   reply_markup: reply_markup
   // });
 
-  var form = new FormData();
+  var form = new FormDataM();
   form.append('chat_id', chat_id);
   form.append('photo', photo);
   form.append('caption', caption);
-  form.append('disable_notification', disable_notification);
-  form.append('reply_to_message_id', reply_to_message_id);
-  form.append('reply_markup', reply_markup);
+  //form.append('disable_notification', disable_notification);
+  //form.append('reply_to_message_id', reply_to_message_id);
+  //form.append('reply_markup', reply_markup);
+
   sails.log.debug("[DEV] - Telegram.js sendPhoto 0");
   return new Promise(function (resolve, reject) {
     sails.log.debug("[DEV] - Telegram.js sendPhoto 1");
