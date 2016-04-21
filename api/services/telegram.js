@@ -10,6 +10,7 @@
 var querystring = require('querystring');
 var https = require('https');
 var request = require('request');
+var FormData = require('form-data');
 
 
 module.exports.sendMessage = function (chat_id, text, parse_mode, disable_web_page_preview, reply_to_message_id, reply_markup) {
@@ -64,6 +65,14 @@ module.exports.sendImage = function (chat_id, photo, caption, disable_notificati
     reply_markup: reply_markup
   });
 
+  var form = new FormData();
+  form.append('chat_id', chat_id);
+  form.append('photo', photo);
+  form.append('caption', caption);
+  form.append('disable_notification', disable_notification);
+  form.append('reply_to_message_id', reply_to_message_id);
+  form.append('reply_markup', reply_markup);
+
   return new Promise(function (resolve, reject) {
     var postReq = https.request(options, function (res) {
       res.setEncoding('utf8');
@@ -79,7 +88,7 @@ module.exports.sendImage = function (chat_id, photo, caption, disable_notificati
         reject(error);
       })
     });
-    postReq.write(post_data);
+    postReq.write(form);
     postReq.end();
   });
 

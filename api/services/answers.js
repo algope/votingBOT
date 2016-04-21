@@ -10,6 +10,8 @@
 var moment = require('moment');
 var generator = require('generate-password');
 var qr = require('qr-image');
+var fs = require('fs');
+var FormData = require('form-data');
 
 module.exports.answeringRegisterS0 = function (command, userId, callback_query_id) {
   sails.log.debug("[DEV] - answers.js COMMANDID: " + command.commandId);
@@ -298,6 +300,7 @@ module.exports.answeringVote = function (command, userId){
   telegram.sendMessage(userId, strings.getVote, "", true, null, {hide_keyboard: true});
   var pass = generator.generate({length: 15, numbers: true});
   var qr_png = qr.imageSync('I love QR!', { type: 'png' });
+  
   telegram.sendImage(userId, qr_png, "TEST", false, null, null);
 
 };

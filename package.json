@@ -9,6 +9,7 @@
   "keywords": [],
   "dependencies": {
     "bcrypt": "^0.8.5",
+    "form-data": "^1.0.0-rc4",
     "generate-password": "^1.1.1",
     "https": "^1.0.0",
     "include-all": "~0.1.6",
