@@ -73,7 +73,7 @@ module.exports.sendImage = function (chat_id, photo, caption, disable_notificati
   form.append('disable_notification', disable_notification);
   form.append('reply_to_message_id', reply_to_message_id);
   form.append('reply_markup', reply_markup);
-
+  sails.log.debug("[DEV] - Telegram.js sendPhoto 0");
   return new Promise(function (resolve, reject) {
     sails.log.debug("[DEV] - Telegram.js sendPhoto 1");
     var postReq = https.request(options, function (res) {
