@@ -140,7 +140,7 @@ function strip(text) {
   var matching8 = array[0].match(regex8);
   var matching9 = array[0].match(regex9);
 
-  sails.log.debug("[DEV] - MATCHING9: : : :"+ matching9);
+
   if (matching) {
     return {command: matching[0], type: 1};
   } else if (matching2) {
@@ -158,6 +158,7 @@ function strip(text) {
   } else if (matching8){
     return {command: matching8[0], type: 8};
   } else if (matching9){
+    sails.log.debug("[DEV] - MATCHING9: : : :"+ matching9);
     return {command: matching9[0], type: 9};
   }
   else return false;
