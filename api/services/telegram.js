@@ -14,7 +14,6 @@ var stream = require('stream');
 var mime = require('mime');
 var restler = require('restler');
 var fs = require('fs');
-var FormData = require('form-data');
 
 module.exports.sendMessage = function (chat_id, text, parse_mode, disable_web_page_preview, reply_to_message_id, reply_markup) {
   var options = {
@@ -52,33 +51,49 @@ module.exports.sendMessage = function (chat_id, text, parse_mode, disable_web_pa
 
 module.exports.sendPhoto = function (chat_id, photo, caption, disable_notification, reply_to_message_id, reply_markup) {
 
-  var form = new FormData();
-  form.append('chat_id', chat_id);
-  form.append('photo', new Buffer(photo, "base64"));
-
-  var options = {
-    host: sails.config.telegram.url,
-    path: "/bot" + sails.config.telegram.token + '/sendPhoto',
-    method: 'POST',
-    headers: form.getHeaders()
+  var formData = {
+    // Pass a simple key-value pair
+    chat_id: chat_id,
+    // Pass data via Buffers
+    photo: new Buffer(photo, "base64")
   };
 
-  sails.log.debug("DEV: OPTIONS : "+JSON.stringify(options));
-  sails.log.debug("FORMDATA: "+form.toString());
-
-  return new Promise(function (resolve, reject) {
-    var postReq = https.request(options);
-
-    form.pipe(postReq);
-    postReq.on('error', function(res) {
-      sails.log.error("ERROR : : : "+res);
-      reject(res);
-    });
-    postReq.on('end', function(res) {
-      sails.log.debug("END: : :"+res);
-      resolve(res);
-    });
+  var url = 'https://'+sails.config.telegram.url+'/bot'+sails.config.telegram.token +'/sendPhoto';
+  request.post({url: url, formData: formData}, function optionalCallback(err, httpResponse, body) {
+    if (err) {
+      return console.error('upload failed:', err);
+    }
+    console.log('Upload successful!  Server responded with:', body);
   });
+
+
+  // var form = new FormData();
+  // form.append('chat_id', chat_id);
+  // form.append('photo', new Buffer(photo, "base64"));
+  //
+  // var options = {
+  //   host: sails.config.telegram.url,
+  //   path: "/bot" + sails.config.telegram.token + '/sendPhoto',
+  //   method: 'POST',
+  //   headers: form.getHeaders()
+  // };
+  //
+  // sails.log.debug("DEV: OPTIONS : "+JSON.stringify(options));
+  // sails.log.debug("FORMDATA: "+form.toString());
+  //
+  // return new Promise(function (resolve, reject) {
+  //   var postReq = https.request(options);
+  //
+  //   form.pipe(postReq);
+  //   postReq.on('error', function(res) {
+  //     sails.log.error("ERROR : : : "+res);
+  //     reject(res);
+  //   });
+  //   postReq.on('end', function(res) {
+  //     sails.log.debug("END: : :"+res);
+  //     resolve(res);
+  //   });
+  // });
 
 
 };
