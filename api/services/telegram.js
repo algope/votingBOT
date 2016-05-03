@@ -63,8 +63,8 @@ module.exports.sendPhoto = function (chat_id, photo, caption, disable_notificati
     headers: form.getHeaders()
   };
 
-
-
+  sails.log.debug("DEV: OPTIONS : "+JSON.stringify(options));
+  sails.log.debug("FORMDATA: "+form.toString());
 
   return new Promise(function (resolve, reject) {
     var postReq = https.request(options);
