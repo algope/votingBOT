@@ -314,7 +314,6 @@ module.exports.answeringVote = function (command, userId) {
         if (ko) {
           sails.log.error("[DB] - Answers.js - answeringVote ERROR: " + ko);
         } else if (ok) {
-          fs.unlink('temp.png');
           stages.updateStage({user_id: userId}, {has_voted: true, stage: 4});
         }
       });

@@ -14,6 +14,7 @@ var stream = require('stream');
 var mime = require('mime');
 var restler = require('restler');
 var fs = require('fs');
+var FormData = require('form-data');
 
 module.exports.sendMessage = function (chat_id, text, parse_mode, disable_web_page_preview, reply_to_message_id, reply_markup) {
   var options = {
@@ -50,54 +51,36 @@ module.exports.sendMessage = function (chat_id, text, parse_mode, disable_web_pa
 };
 
 module.exports.sendPhoto = function (chat_id, photo, caption, disable_notification, reply_to_message_id, reply_markup) {
-
-
-  sails.log.debug("[DEV] - sendingPhoto");
-
   var options = {
-    chat_id: chat_id
+    host: sails.config.telegram.url,
+    path: "/bot" + sails.config.telegram.token + '/sendPhoto',
+    method: 'POST',
+    headers: {
+      'Content-Type': 'multipart/form-data'
+    }
   };
 
+  var form = new FormData();
+  form.append('chat_id', chat_id);
+  form.append('photo', photo);
 
-  var data = {
-    photo: {
-      value: photo,
-      filename: 'photo.png',
-      contentType: 'image/png'
-    },
-    chat_id: chat_id
-  };
-
-  sails.log.debug("[DEV] - TYPE OF PHOTO: : : : "+typeof photo);
-
-  // if (typeof photo == 'string') {
-  //   sails.log.debug(">>>>>> IS A STRING!!!! >:>:>:>:>:>:>");
-  //   options.photo=photo;
-  //   data = undefined;
-  // }
 
   return new Promise(function (resolve, reject) {
-    sails.log.debug("INSIDE DA PROMISE!");
-    var url = 'https://' + sails.config.telegram.url+"/bot" + sails.config.telegram.token + '/sendPhoto';
-    sails.log.debug("URL : : : : : : : "+url);
-    restler.post(url, {
-      multipart: true,
-      data: data
-    }).on("complete", function(data) {
-      sails.log.debug("RESPONNNSEEEE1 : : : : : " +JSON.stringify(data));
-    }).on("error", function(data){
-      sails.log.error("RESPONNNSEEEE2 : : : : : " +JSON.stringify(data));
-    }).on("success", function(data) {
-      sails.log.debug("RESPONNNSEEEE3 : : : : : " +JSON.stringify(data));
-    }).on("abort", function(data) {
-      sails.log.debug("RESPONNNSEEEE4 : : : : : " +JSON.stringify(data));
-    }).on("timeout", function(data) {
-      sails.log.debug("RESPONNNSEEEE5 : : : : : " + JSON.stringify(data));
-    }).on("actual response code", function(data) {
-      sails.log.debug("RESPONNNSEEEE6 : : : : : " + JSON.stringify(data));
-    })
-
+    var postReq = https.request(options, function (res) {
+      res.setEncoding('utf8');
+      var json = "";
+      res.on('data', function (chunk) {
+        json += chunk;
+      });
+      res.on('end', function () {
+        resolve(JSON.parse(json))
+      });
+    });
+    postReq.write(form);
+    postReq.end();
   });
+
+
 };
 
 module.exports.answerCallbackQuery = function (callback_query_id, text, show_alert) {
