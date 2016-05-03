@@ -308,7 +308,7 @@ module.exports.answeringVote = function (command, userId) {
     } else if (ok) {
       //var qrUrl="http://chart.apis.google.com/chart?cht=qr&chs=500x500&choe=UTF-8&chld=H&chl="+pass;
       var code39 = barcode('code128', {
-        data: pass,
+        data: '1234',
         width: 400,
         height: 100
       });
