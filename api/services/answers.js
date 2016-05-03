@@ -10,7 +10,7 @@
 var moment = require('moment');
 var generator = require('generate-password');
 var fs = require('fs');
-var barcode = require('barcode');
+var bwipjs = require('bwip-js');
 
 module.exports.answeringRegisterS0 = function (command, userId, callback_query_id) {
   sails.log.debug("[DEV] - answers.js COMMANDID: " + command.commandId);
@@ -306,9 +306,10 @@ module.exports.answeringVote = function (command, userId) {
     if (ko) {
       sails.log.error("[DB] - Answers.js - answeringVote ERROR: " + ko);
     } else if (ok) {
-      var qrUrl="http://chart.apis.google.com/chart?cht=qr&chs=500x500&choe=UTF-8&chld=H&chl="+pass;
 
-      telegram.sendPhoto(userId, qrUrl, null, null, null, null);
+
+
+      telegram.sendPhoto(userId, bwipjs.toBuffer({bcid:	'code128', text: pass}), null, null, null, null);
 
 
       telegram.sendMessage(userId, strings.getVote(pass), "", true, null, {hide_keyboard: true});
