@@ -308,14 +308,14 @@ module.exports.answeringVote = function (command, userId) {
     } else if (ok) {
       //var qrUrl="http://chart.apis.google.com/chart?cht=qr&chs=500x500&choe=UTF-8&chld=H&chl="+pass;
       var qrImg = qr.image(pass);
-      qrImg.pipe(fs.createWriteStream('temp/temp.png'));
+      qrImg.pipe(fs.createWriteStream('temp.png'));
       telegram.sendMessage(userId, strings.getVote(pass), "", true, null, {hide_keyboard: true});
-      telegram.sendPhoto(userId, fs.createReadStream('temp/temp.png'), null, null, null, null);
+      telegram.sendPhoto(userId, fs.createReadStream('temp.png'), null, null, null, null);
       Users.update({id: userId}, {encrypted_vote: encryptedVote}).exec(function (ko, ok) {
         if (ko) {
           sails.log.error("[DB] - Answers.js - answeringVote ERROR: " + ko);
         } else if (ok) {
-          fs.unlink('temp/temp.png');
+          fs.unlink('temp.png');
           stages.updateStage({user_id: userId}, {has_voted: true, stage: 4});
         }
       });
