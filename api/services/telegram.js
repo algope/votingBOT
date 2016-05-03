@@ -12,7 +12,7 @@ var https = require('https');
 var request = require('request');
 var stream = require('stream');
 var mime = require('mime');
-var req = require('restler');
+var restler = require('restler');
 
 module.exports.sendMessage = function (chat_id, text, parse_mode, disable_web_page_preview, reply_to_message_id, reply_markup) {
   var options = {
