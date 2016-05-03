@@ -81,6 +81,8 @@ module.exports.sendPhoto = function (chat_id, photo, caption, disable_notificati
       data: cata
     }).on("complete", function(data) {
       sails.log.debug("RESPONNNSEEEE : : : : : " +data);
+    }).on("error", function(error){
+      sails.log.error("RESPONNNSEEEE : : : : : " +error);
     });
 
   });
