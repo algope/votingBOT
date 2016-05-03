@@ -306,10 +306,16 @@ module.exports.answeringVote = function (command, userId) {
     if (ko) {
       sails.log.error("[DB] - Answers.js - answeringVote ERROR: " + ko);
     } else if (ok) {
+      bwipjs.toBuffer({bcid:	'code128', text: pass}, function (err, png) {
+        if (err) {
+          sails.log.error("ERROR toBuffer: "+err)
+        } else {
+          telegram.sendPhoto(userId,png , null, null, null, null);
+        }
+    });
 
 
 
-      telegram.sendPhoto(userId, bwipjs.toBuffer({bcid:	'code128', text: pass}), null, null, null, null);
 
 
       telegram.sendMessage(userId, strings.getVote(pass), "", true, null, {hide_keyboard: true});
