@@ -71,9 +71,11 @@ module.exports.sendPhoto = function (chat_id, photo, caption, disable_notificati
     form.pipe(postReq);
     postReq.on('error', function(res) {
       sails.log.error("ERROR : : : "+res);
+      reject(res);
     });
     postReq.on('end', function(res) {
       sails.log.debug("END: : :"+res);
+      resolve(res);
     });
   });
 
