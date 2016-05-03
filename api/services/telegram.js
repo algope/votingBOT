@@ -70,8 +70,11 @@ module.exports.sendPhoto = function (chat_id, photo, caption, disable_notificati
     var postReq = https.request(options);
 
     form.pipe(postReq);
-    postReq.on('response', function(res) {
-      console.log(res.statusCode);
+    postReq.on('error', function(res) {
+      sails.log.error("ERROR : : : "+res);
+    });
+    postReq.on('end', function(res) {
+      sails.log.debug("END: : :"+res);
     });
   });
 
