@@ -82,7 +82,8 @@ module.exports.sendPhoto = function (chat_id, photo, caption, disable_notificati
       multipart: data,
       json: true
     }, function (body, response, err) {
-      if (!err) {
+      if (err) {
+        sails.log.error("[DEV] - telegram.js ERROR: "+err);
         reject(err);
       } else {
         resolve(response);
