@@ -15,7 +15,6 @@ var mime = require('mime');
 var restler = require('restler');
 var bot = require('telegram-bot-bootstrap');
 var fs = require('fs');
-var Alice = new bot(sails.config.telegram.token);
 
 module.exports.sendMessage = function (chat_id, text, parse_mode, disable_web_page_preview, reply_to_message_id, reply_markup) {
   var options = {
@@ -55,52 +54,51 @@ module.exports.sendPhoto = function (chat_id, photo, caption, disable_notificati
 
 
   sails.log.debug("[DEV] - sendingPhoto");
-  Alice.sendPhoto(chat_id, photo).then(console.log);
 
-  // var options = {
-  //   chat_id: chat_id
-  // };
-  //
-  //
-  // var data = {
-  //   photo: {
-  //     value: photo,
-  //     filename: 'photo.png',
-  //     contentType: 'image/png'
-  //   },
-  //   chat_id: chat_id
-  // };
-  //
-  // sails.log.debug("[DEV] - TYPE OF PHOTO: : : : "+typeof photo);
-  //
-  // // if (typeof photo == 'string') {
-  // //   sails.log.debug(">>>>>> IS A STRING!!!! >:>:>:>:>:>:>");
-  // //   options.photo=photo;
-  // //   data = undefined;
-  // // }
-  //
-  // return new Promise(function (resolve, reject) {
-  //   sails.log.debug("INSIDE DA PROMISE!");
-  //   var url = 'https://' + sails.config.telegram.url+"/bot" + sails.config.telegram.token + '/sendPhoto';
-  //   sails.log.debug("URL : : : : : : : "+url);
-  //   restler.post(url, {
-  //     multipart: true,
-  //     data: data
-  //   }).on("complete", function(data) {
-  //     sails.log.debug("RESPONNNSEEEE1 : : : : : " +JSON.stringify(data));
-  //   }).on("error", function(data){
-  //     sails.log.error("RESPONNNSEEEE2 : : : : : " +JSON.stringify(data));
-  //   }).on("success", function(data) {
-  //     sails.log.debug("RESPONNNSEEEE3 : : : : : " +JSON.stringify(data));
-  //   }).on("abort", function(data) {
-  //     sails.log.debug("RESPONNNSEEEE4 : : : : : " +JSON.stringify(data));
-  //   }).on("timeout", function(data) {
-  //     sails.log.debug("RESPONNNSEEEE5 : : : : : " + JSON.stringify(data));
-  //   }).on("actual response code", function(data) {
-  //     sails.log.debug("RESPONNNSEEEE6 : : : : : " + JSON.stringify(data));
-  //   })
-  //
-  // });
+  var options = {
+    chat_id: chat_id
+  };
+
+
+  var data = {
+    photo: {
+      value: photo,
+      filename: 'photo.png',
+      contentType: 'image/png'
+    },
+    chat_id: chat_id
+  };
+
+  sails.log.debug("[DEV] - TYPE OF PHOTO: : : : "+typeof photo);
+
+  // if (typeof photo == 'string') {
+  //   sails.log.debug(">>>>>> IS A STRING!!!! >:>:>:>:>:>:>");
+  //   options.photo=photo;
+  //   data = undefined;
+  // }
+
+  return new Promise(function (resolve, reject) {
+    sails.log.debug("INSIDE DA PROMISE!");
+    var url = 'https://' + sails.config.telegram.url+"/bot" + sails.config.telegram.token + '/sendPhoto';
+    sails.log.debug("URL : : : : : : : "+url);
+    restler.post(url, {
+      multipart: true,
+      data: data
+    }).on("complete", function(data) {
+      sails.log.debug("RESPONNNSEEEE1 : : : : : " +JSON.stringify(data));
+    }).on("error", function(data){
+      sails.log.error("RESPONNNSEEEE2 : : : : : " +JSON.stringify(data));
+    }).on("success", function(data) {
+      sails.log.debug("RESPONNNSEEEE3 : : : : : " +JSON.stringify(data));
+    }).on("abort", function(data) {
+      sails.log.debug("RESPONNNSEEEE4 : : : : : " +JSON.stringify(data));
+    }).on("timeout", function(data) {
+      sails.log.debug("RESPONNNSEEEE5 : : : : : " + JSON.stringify(data));
+    }).on("actual response code", function(data) {
+      sails.log.debug("RESPONNNSEEEE6 : : : : : " + JSON.stringify(data));
+    })
+
+  });
 };
 
 module.exports.answerCallbackQuery = function (callback_query_id, text, show_alert) {
