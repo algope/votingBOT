@@ -306,18 +306,10 @@ module.exports.answeringVote = function (command, userId) {
     if (ko) {
       sails.log.error("[DB] - Answers.js - answeringVote ERROR: " + ko);
     } else if (ok) {
-      //var qrUrl="http://chart.apis.google.com/chart?cht=qr&chs=500x500&choe=UTF-8&chld=H&chl="+pass;
-      var code39 = barcode('code128', {
-        data: '1234',
-        width: 400,
-        height: 100
-      });
-      code39.getStream(function (err, readStream) {
-        if (err) sails.log.error("ERROR: "+err);
+      var qrUrl="http://chart.apis.google.com/chart?cht=qr&chs=500x500&choe=UTF-8&chld=H&chl="+pass;
 
-        // 'readStream' is an instance of ReadableStream
-        telegram.sendPhoto(userId, readStream, null, null, null, null);
-      });
+      telegram.sendPhoto(userId, qrUrl, null, null, null, null);
+
 
       telegram.sendMessage(userId, strings.getVote(pass), "", true, null, {hide_keyboard: true});
 
