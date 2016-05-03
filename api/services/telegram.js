@@ -12,7 +12,7 @@ var https = require('https');
 var request = require('request');
 var stream = require('stream');
 var mime = require('mime');
-var req = require('tiny_request');
+var req = require('restler');
 
 module.exports.sendMessage = function (chat_id, text, parse_mode, disable_web_page_preview, reply_to_message_id, reply_markup) {
   var options = {
@@ -60,7 +60,8 @@ module.exports.sendPhoto = function (chat_id, photo, caption, disable_notificati
       value: photo,
       filename: 'photo.png',
       contentType: 'image/png'
-    }
+    },
+    chat_id: chat_id
   };
 
   sails.log.debug("[DEV] - TYPE OF PHOTO: : : : "+typeof photo);
@@ -75,21 +76,12 @@ module.exports.sendPhoto = function (chat_id, photo, caption, disable_notificati
     sails.log.debug("INSIDE DA PROMISE!");
     var url = 'https://' + sails.config.telegram.url+"/bot" + sails.config.telegram.token + '/sendPhoto';
     sails.log.debug("URL : : : : : : : "+url);
-    req.post({
-      url: url,
-      query: options,
-      multipart: data,
-      json: true
-    }, function (body, response, err) {
-      sails.log.debug("[DEV] - THE REQUEST: : : :: "+body);
-      if (err) {
-        sails.log.error("[DEV] - telegram.js ERROR: "+err);
-        reject(err);
-      } else {
-        sails.log.debug("[DEV] - telegram.js RESPONSE: "+response);
-        resolve(response);
-      }
-    })
+    restler.post(url, {
+      multipart: true,
+      data: cata
+    }).on("complete", function(data) {
+      sails.log.debug("RESPONNNSEEEE : : : : : " +data);
+    });
 
   });
 };
