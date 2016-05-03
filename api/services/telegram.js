@@ -10,10 +10,9 @@
 var querystring = require('querystring');
 var https = require('https');
 var request = require('request');
-var FormData = require('form-data');
 var stream = require('stream');
 var mime = require('mime');
-const fileType = require('file-type');
+var req = require('tiny_request');
 
 module.exports.sendMessage = function (chat_id, text, parse_mode, disable_web_page_preview, reply_to_message_id, reply_markup) {
   var options = {
@@ -50,60 +49,45 @@ module.exports.sendMessage = function (chat_id, text, parse_mode, disable_web_pa
 };
 
 module.exports.sendPhoto = function (chat_id, photo, caption, disable_notification, reply_to_message_id, reply_markup) {
-  if (Buffer.isBuffer(photo)) {
-    var filetype = fileType(photo);
-    if (!filetype) {
-      throw new Error('Unsupported Buffer file type');
-    }
-    var formData = {};
-    formData['photo'] = {
+
+  var options = {
+    chat_id: chat_id,
+    caption: caption,
+    disable_notification: disable_notification,
+    reply_to_message_id: reply_to_message_id,
+    reply_markup: reply_markup
+  };
+
+
+  var data = {
+    photo: {
       value: photo,
-      options: {
-        filename: "photo."+filetype.ext,
-        contentType: filetype.mime
-      }
-    };
+      filename: 'photo.png',
+      contentType: 'image/png'
+    }
+  };
+
+  if (typeof photo == 'string') {
+    preparedOptions.params.photo = photo;
+    data = undefined;
   }
 
-  var form = new FormData();
-  form.append('chat_id', chat_id);
-  form.append('photo', formData);
-  form.append('caption', caption);
-  form.append('disable_notification', disable_notification);
-  form.append('reply_to_message_id', reply_to_message_id);
-  form.append('reply_markup', reply_markup);
-  var options = {
-    host: sails.config.telegram.url,
-    path: "/bot" + sails.config.telegram.token + '/sendPhoto',
-    method: 'POST',
-    headers: form.getHeaders()
-  };
-  // var post_data = {
-  //   chat_id: chat_id,
-  //   photo: photo,
-  //   caption: caption,
-  //   disable_notification: disable_notification,
-  //   reply_to_message_id: reply_to_message_id,
-  //   reply_markup: reply_markup
-  // };
 
   return new Promise(function (resolve, reject) {
-    var postReq = https.request(options, function (res) {
-      res.setEncoding('utf8');
-      sails.log.debug("[DEV] - Telegram.js - sendPhoto: "+res)
-    });
-    form.pipe(postReq);
-    postReq.on('error', function (error) {
-      reject(error);
-    });
-    postReq.on('end', function(end){
-      resolve(end);
-    });
+    req.post({
+      url: sails.config.telegram.url+"/bot" + sails.config.telegram.token + '/sendPhoto',
+      query: options,
+      multipart: data,
+      json: true
+    }, function (body, response, err) {
+      if (!err) {
+        reject(err);
+      } else {
+        resolve(response);
+      }
+    })
 
   });
-
-
-
 };
 
 module.exports.answerCallbackQuery = function (callback_query_id, text, show_alert) {
@@ -228,3 +212,4 @@ module.exports.downloadFile = function (file_path) {
     });
   })
 };
+
