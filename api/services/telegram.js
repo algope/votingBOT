@@ -68,9 +68,11 @@ module.exports.sendPhoto = function (chat_id, photo, caption, disable_notificati
   };
 
   if (typeof photo == 'string') {
-    preparedOptions.params.photo = photo;
+    sails.log.debug(">>>>>> IS A STRING!!!! >:>:>:>:>:>:>");
+    options.photo=photo;
     data = undefined;
   }
+
 
 
   return new Promise(function (resolve, reject) {
