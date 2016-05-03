@@ -327,7 +327,7 @@ module.exports.answerVerify = function (command, userId) {
       sails.log.error("[DB] - Anwers.js answerVerify ERROR: "+ko);
     }
     if(ok){
-      var decryptedVote = crypt.decrypt(ok.encrypted_vote, pass);
+      var decryptedVote = crypto.decrypt(ok.encrypted_vote, pass);
       telegram.sendMessage(userId, "Tu voto: "+decryptedVote, "", true, null, {hide_keyboard: true});
     }
   })
