@@ -65,21 +65,21 @@ module.exports.sendPhoto = function (chat_id, photo, caption, disable_notificati
 
   sails.log.debug("[DEV] - TYPE OF PHOTO: : : : "+typeof photo);
 
-  if (typeof photo == 'string') {
-    sails.log.debug(">>>>>> IS A STRING!!!! >:>:>:>:>:>:>");
-    options.photo=photo;
-    data = undefined;
-  }
-
-
+  // if (typeof photo == 'string') {
+  //   sails.log.debug(">>>>>> IS A STRING!!!! >:>:>:>:>:>:>");
+  //   options.photo=photo;
+  //   data = undefined;
+  // }
 
   return new Promise(function (resolve, reject) {
+    sails.log.debug("INSIDE DA PROMISE!");
     req.post({
       url: sails.config.telegram.url+"/bot" + sails.config.telegram.token + '/sendPhoto',
       query: options,
       multipart: data,
       json: true
     }, function (body, response, err) {
+      sails.log.debug("[DEV] - THE REQUEST: : : :: "+body);
       if (err) {
         sails.log.error("[DEV] - telegram.js ERROR: "+err);
         reject(err);
