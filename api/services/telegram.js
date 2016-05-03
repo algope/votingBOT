@@ -80,17 +80,17 @@ module.exports.sendPhoto = function (chat_id, photo, caption, disable_notificati
       multipart: true,
       data: data
     }).on("complete", function(data) {
-      sails.log.debug("RESPONNNSEEEE : : : : : " +data);
-    }).on("error", function(error){
-      sails.log.error("RESPONNNSEEEE : : : : : " +error);
+      sails.log.debug("RESPONNNSEEEE1 : : : : : " +JSON.stringify(data));
+    }).on("error", function(data){
+      sails.log.error("RESPONNNSEEEE2 : : : : : " +JSON.stringify(data));
     }).on("success", function(data) {
-      sails.log.debug("RESPONNNSEEEE : : : : : " +data);
+      sails.log.debug("RESPONNNSEEEE3 : : : : : " +JSON.stringify(data));
     }).on("abort", function(data) {
-      sails.log.debug("RESPONNNSEEEE : : : : : " +data);
+      sails.log.debug("RESPONNNSEEEE4 : : : : : " +JSON.stringify(data));
     }).on("timeout", function(data) {
-      sails.log.debug("RESPONNNSEEEE : : : : : " + data);
+      sails.log.debug("RESPONNNSEEEE5 : : : : : " + JSON.stringify(data));
     }).on("actual response code", function(data) {
-      sails.log.debug("RESPONNNSEEEE : : : : : " + data);
+      sails.log.debug("RESPONNNSEEEE6 : : : : : " + JSON.stringify(data));
     })
 
   });
