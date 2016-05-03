@@ -51,33 +51,28 @@ module.exports.sendMessage = function (chat_id, text, parse_mode, disable_web_pa
 };
 
 module.exports.sendPhoto = function (chat_id, photo, caption, disable_notification, reply_to_message_id, reply_markup) {
-  var options = {
-    host: sails.config.telegram.url,
-    path: "/bot" + sails.config.telegram.token + '/sendPhoto',
-    method: 'POST',
-    headers: {
-      'Content-Type': 'multipart/form-data'
-    }
-  };
 
   var form = new FormData();
   form.append('chat_id', chat_id);
   form.append('photo', photo);
 
+  var options = {
+    host: sails.config.telegram.url,
+    path: "/bot" + sails.config.telegram.token + '/sendPhoto',
+    method: 'POST',
+    headers: form.getHeaders()
+  };
+
+
+
 
   return new Promise(function (resolve, reject) {
-    var postReq = https.request(options, function (res) {
-      res.setEncoding('utf8');
-      var json = "";
-      res.on('data', function (chunk) {
-        json += chunk;
-      });
-      res.on('end', function () {
-        resolve(JSON.parse(json))
-      });
+    var postReq = https.request(options);
+
+    form.pipe(postReq);
+    postReq.on('response', function(res) {
+      console.log(res.statusCode);
     });
-    postReq.write(form);
-    postReq.end();
   });
 
 
