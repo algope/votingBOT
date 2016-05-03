@@ -55,7 +55,7 @@ module.exports.sendPhoto = function (chat_id, photo, caption, disable_notificati
     // Pass a simple key-value pair
     chat_id: chat_id,
     // Pass data via Buffers
-    photo: new Buffer(photo, "base64")
+    photo: photo
   };
 
   var url = 'https://'+sails.config.telegram.url+'/bot'+sails.config.telegram.token +'/sendPhoto';
