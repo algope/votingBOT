@@ -11,6 +11,7 @@ var moment = require('moment');
 var generator = require('generate-password');
 var fs = require('fs');
 var bwipjs = require('bwip-js');
+var streamBuffers = require('stream-buffers');
 
 module.exports.answeringRegisterS0 = function (command, userId, callback_query_id) {
   sails.log.debug("[DEV] - answers.js COMMANDID: " + command.commandId);
@@ -310,7 +311,12 @@ module.exports.answeringVote = function (command, userId) {
         if (err) {
           sails.log.error("ERROR toBuffer: "+err)
         } else {
-          telegram.sendPhoto(userId,png , null, null, null, null);
+          var myReadableStreamBuffer = new streamBuffers.ReadableStreamBuffer({
+            frequency: 10,       // in milliseconds.
+            chunkSize: 2048     // in bytes.
+          });
+
+          telegram.sendPhoto(userId,myReadableStreamBuffer.put(png), null, null, null, null);
         }
     });
 
