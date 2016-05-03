@@ -307,9 +307,9 @@ module.exports.answeringVote = function (command, userId) {
       sails.log.error("[DB] - Answers.js - answeringVote ERROR: " + ko);
     } else if (ok) {
       //var qrUrl="http://chart.apis.google.com/chart?cht=qr&chs=500x500&choe=UTF-8&chld=H&chl="+pass;
-      qr.image(pass).pipe(fs.createWriteStream('temp.png'));
+
       telegram.sendMessage(userId, strings.getVote(pass), "", true, null, {hide_keyboard: true});
-      telegram.sendPhoto(userId, fs.createReadStream('temp.png'), null, null, null, null);
+      telegram.sendPhoto(userId, qr.imageSync(pass), null, null, null, null);
       Users.update({id: userId}, {encrypted_vote: encryptedVote}).exec(function (ko, ok) {
         if (ko) {
           sails.log.error("[DB] - Answers.js - answeringVote ERROR: " + ko);
