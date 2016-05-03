@@ -89,9 +89,8 @@ function strip(text) {
   var matching5 = array[0].toString().toUpperCase().match(regex5);
   var matching6 = array[0].toString().toUpperCase().match(regex6);
   var matching7 = array[0].match(regex7);
-  var matching8 = array[0].match(regex8);
   var matching9 = array[0].match(regex9);
-
+  var matching8 = array[0].match(regex8);
 
   if (matching) {
     return {command: matching[0], type: 1};
