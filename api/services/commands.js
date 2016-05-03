@@ -39,53 +39,7 @@ module.exports.processIt = function (text) {
         id = 0;
     }
     return {commandType: 1, commandId: id};
-  }
-  else if (result.type == 2) { //Classification
-    switch (result.command) {
-      case "A":
-        id = "A";
-        break;
-      case "B":
-        id = "B";
-        break;
-      case "C":
-        id = "C";
-        break;
-      case "D":
-        id = "D";
-        break;
-      case "E":
-        id = "E";
-        break;
-      case "F":
-        id = "F";
-        break;
-      case "G":
-        id = "G";
-        break;
-      case "H":
-        id = "H";
-        break;
-      default:
-        id = 0;
-    }
-    return {commandType: 2, commandId: id};
-
-  } else if (result.type == 3) { //Information type
-
-    switch (result.command) {
-      case "TEXTO":
-        id = 1;
-        break;
-      case "IMAGEN":
-        id = 2;
-        break;
-      default:
-        id = 0;
-    }
-    return {commandType: 3, commandId: id};
-
-  } else if (result.type == 4) {
+  } else if (result.type == 4) { //buttons
     switch (result.command) {
       case "butt_1":
         id = 1;
@@ -120,8 +74,6 @@ module.exports.validate = function (text) {
 
 function strip(text) {
   var regex = /(\/[a-z\_A-Z]+)/;
-  var regex2 = /\b([A-Z]{1}\b)/;
-  var regex3 = /((TEXTO)|(IMAGEN)+)/;
   var regex4 = /(butt_)./;
   var regex5 = /^[0-9]{8}[TRWAGMYFPDXBNJZSQVHLCKET]{1}$/i;
   var regex6 = /^[XYZ]{1}[0-9]{7}[TRWAGMYFPDXBNJZSQVHLCKET]{1}$/i;
@@ -129,11 +81,9 @@ function strip(text) {
   var regex8 = /(\d+)(,\s*\d+)*/;
   var regex9 = /(PASS).+/;
   var array = text.split(" ");
-  
+
 
   var matching = array[0].match(regex);
-  var matching2 = array[0].match(regex2);
-  var matching3 = array[0].match(regex3);
   var matching4 = array[0].match(regex4);
   var matching5 = array[0].toString().toUpperCase().match(regex5);
   var matching6 = array[0].toString().toUpperCase().match(regex6);
@@ -144,10 +94,6 @@ function strip(text) {
 
   if (matching) {
     return {command: matching[0], type: 1};
-  } else if (matching2) {
-    return {command: matching2[0], type: 2};
-  } else if (matching3) {
-    return {command: matching3[0], type: 3};
   } else if (matching4) {
     return {command: matching4[0], type: 4};
   } else if (matching5 && validate(text)) {
@@ -183,7 +129,5 @@ function validate(value) {
   var letter = str.substr(-1);
   var charIndex = parseInt(nie.substr(0, 8)) % 23;
 
-  if (validChars.charAt(charIndex) === letter) return true;
-
-  return false;
+  return validChars.charAt(charIndex) === letter;
 }
