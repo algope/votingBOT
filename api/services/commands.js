@@ -12,6 +12,7 @@
 module.exports.processIt = function (text) {
   var id = 0;
   var result = strip(text);
+  sails.log.debug("[DEV] - STRIP RESULT: : "+result.type);
   if (result.type == 1) { //Main commands
     switch (result.command) {
       case "/start":
