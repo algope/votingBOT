@@ -56,7 +56,7 @@ module.exports.sendPhoto = function (chat_id, photo, caption, disable_notificati
     // Pass a simple key-value pair
     chat_id: chat_id,
     // Pass data via Buffers
-    photo: new Base64Decode(photo)
+    photo: photo
   };
 
   sails.log.debug("DEV : : PHOTO IN BASE64"+photo);
