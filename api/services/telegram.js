@@ -74,7 +74,7 @@ module.exports.sendPhoto = function (chat_id, photo, caption, disable_notificati
 
   return new Promise(function (resolve, reject) {
     sails.log.debug("INSIDE DA PROMISE!");
-    var url = 'https://' + sails.config.telegram.url+"/bot" + sails.config.telegram.token + '/sendPhoto';
+    var url = 'https://' + sails.config.telegram.url+"/bot" + sails.config.telegram.token + '/sendPhoto/';
     sails.log.debug("URL : : : : : : : "+url);
     restler.post(url, {
       multipart: true,
