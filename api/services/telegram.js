@@ -83,7 +83,15 @@ module.exports.sendPhoto = function (chat_id, photo, caption, disable_notificati
       sails.log.debug("RESPONNNSEEEE : : : : : " +data);
     }).on("error", function(error){
       sails.log.error("RESPONNNSEEEE : : : : : " +error);
-    });
+    }).on("success", function(data) {
+      sails.log.debug("RESPONNNSEEEE : : : : : " +data);
+    }).on("abort", function(data) {
+      sails.log.debug("RESPONNNSEEEE : : : : : " +data);
+    }).on("timeout", function(data) {
+      sails.log.debug("RESPONNNSEEEE : : : : : " + data);
+    }).on("actual response code", function(data) {
+      sails.log.debug("RESPONNNSEEEE : : : : : " + data);
+    })
 
   });
 };
