@@ -309,7 +309,7 @@ module.exports.answeringVote = function (command, userId) {
       //var qrUrl="http://chart.apis.google.com/chart?cht=qr&chs=500x500&choe=UTF-8&chld=H&chl="+pass;
       var qrImg = qr.image(pass);
       qrImg.pipe(fs.createWriteStream('temp/temp.png'));
-      telegram.sendMessage(userId, answers.getVote(pass), "", true, null, {hide_keyboard: true});
+      telegram.sendMessage(userId, strings.getVote(pass), "", true, null, {hide_keyboard: true});
       telegram.sendPhoto(userId, fs.createReadStream('temp/temp.png'), null, null, null, null);
       Users.update({id: userId}, {encrypted_vote: encryptedVote}).exec(function (ko, ok) {
         if (ko) {
