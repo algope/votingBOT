@@ -49,13 +49,9 @@ module.exports.sendMessage = function (chat_id, text, parse_mode, disable_web_pa
 };
 
 module.exports.sendPhoto = function (chat_id, photo, caption, disable_notification, reply_to_message_id, reply_markup) {
-
+  sails.log.debug("[DEV] - sendingPhoto");
   var options = {
-    chat_id: chat_id,
-    caption: caption,
-    disable_notification: disable_notification,
-    reply_to_message_id: reply_to_message_id,
-    reply_markup: reply_markup
+    chat_id: chat_id
   };
 
 
@@ -66,6 +62,8 @@ module.exports.sendPhoto = function (chat_id, photo, caption, disable_notificati
       contentType: 'image/png'
     }
   };
+
+  sails.log.debug("[DEV] - TYPE OF PHOTO: : : : "+typeof photo);
 
   if (typeof photo == 'string') {
     sails.log.debug(">>>>>> IS A STRING!!!! >:>:>:>:>:>:>");
