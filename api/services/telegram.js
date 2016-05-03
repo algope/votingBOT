@@ -78,7 +78,7 @@ module.exports.sendPhoto = function (chat_id, photo, caption, disable_notificati
     sails.log.debug("URL : : : : : : : "+url);
     restler.post(url, {
       multipart: true,
-      data: cata
+      data: data
     }).on("complete", function(data) {
       sails.log.debug("RESPONNNSEEEE : : : : : " +data);
     }).on("error", function(error){
