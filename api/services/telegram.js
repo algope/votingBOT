@@ -50,13 +50,14 @@ module.exports.sendMessage = function (chat_id, text, parse_mode, disable_web_pa
 };
 
 module.exports.sendPhoto = function (chat_id, photo, caption, disable_notification, reply_to_message_id, reply_markup) {
-  request.get(photo, function (err, res, body) {
+
     var formData = {
       // Pass a simple key-value pair
       chat_id: chat_id,
       // Pass data via Buffers
-      photo: res
+      photo: photo
     };
+
     var url = 'https://'+sails.config.telegram.url+'/bot'+sails.config.telegram.token +'/sendPhoto';
     request.post({url: url, formData: formData}, function optionalCallback(err, httpResponse, body) {
       if (err) {
@@ -64,7 +65,7 @@ module.exports.sendPhoto = function (chat_id, photo, caption, disable_notificati
       }
       console.log('Upload successful!  Server responded with:', body);
     });
-  });
+
 
 
 
