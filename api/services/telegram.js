@@ -14,7 +14,6 @@ var stream = require('stream');
 var mime = require('mime');
 var restler = require('restler');
 var fs = require('fs');
-var Base64Decode = require('base64-stream').decode;
 
 module.exports.sendMessage = function (chat_id, text, parse_mode, disable_web_page_preview, reply_to_message_id, reply_markup) {
   var options = {
