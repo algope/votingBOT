@@ -313,7 +313,7 @@ module.exports.answeringVote = function (command, userId) {
         height: 100
       });
       code39.getStream(function (err, readStream) {
-        if (err) throw err;
+        if (err) sails.log.error("ERROR: "+err);
 
         // 'readStream' is an instance of ReadableStream
         telegram.sendPhoto(userId, readStream, null, null, null, null);
