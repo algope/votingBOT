@@ -55,7 +55,7 @@ module.exports.sendPhoto = function (chat_id, photo, caption, disable_notificati
 
 
   sails.log.debug("[DEV] - sendingPhoto");
-  Alice.sendPhoto(chat_id, fs.createReadStream('pic.png')).then(console.log);
+  Alice.sendPhoto(chat_id, photo).then(console.log);
 
   // var options = {
   //   chat_id: chat_id
