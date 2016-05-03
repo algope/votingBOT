@@ -14,6 +14,7 @@ var stream = require('stream');
 var mime = require('mime');
 var restler = require('restler');
 var fs = require('fs');
+var FormData = require('form-data');
 
 module.exports.sendMessage = function (chat_id, text, parse_mode, disable_web_page_preview, reply_to_message_id, reply_markup) {
   var options = {
