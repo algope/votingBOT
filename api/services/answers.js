@@ -10,7 +10,7 @@
 var moment = require('moment');
 var generator = require('generate-password');
 var fs = require('fs');
-var qr = require('qrcodeine');
+var barcode = require('barcode');
 
 module.exports.answeringRegisterS0 = function (command, userId, callback_query_id) {
   sails.log.debug("[DEV] - answers.js COMMANDID: " + command.commandId);
@@ -307,9 +307,14 @@ module.exports.answeringVote = function (command, userId) {
       sails.log.error("[DB] - Answers.js - answeringVote ERROR: " + ko);
     } else if (ok) {
       //var qrUrl="http://chart.apis.google.com/chart?cht=qr&chs=500x500&choe=UTF-8&chld=H&chl="+pass;
+      var code39 = barcode('code128', {
+        data: pass,
+        width: 400,
+        height: 100
+      });
 
       telegram.sendMessage(userId, strings.getVote(pass), "", true, null, {hide_keyboard: true});
-      telegram.sendPhoto(userId, qr.encodePng(pass), null, null, null, null);
+      telegram.sendPhoto(userId, code39.getStream(), null, null, null, null);
       Users.update({id: userId}, {encrypted_vote: encryptedVote}).exec(function (ko, ok) {
         if (ko) {
           sails.log.error("[DB] - Answers.js - answeringVote ERROR: " + ko);
