@@ -79,7 +79,7 @@ function strip(text) {
   var regex5 = /^[0-9]{8}[TRWAGMYFPDXBNJZSQVHLCKET]{1}$/i;
   var regex6 = /^[XYZ]{1}[0-9]{7}[TRWAGMYFPDXBNJZSQVHLCKET]{1}$/i;
   var regex7 = /^(?:(?:31(\/|-|\.)(?:0?[13578]|1[02]))\1|(?:(?:29|30)(\/|-|\.)(?:0?[1,3-9]|1[0-2])\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:29(\/|-|\.)0?2\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\d|2[0-8])(\/|-|\.)(?:(?:0?[1-9])|(?:1[0-2]))\4(?:(?:1[6-9]|[2-9]\d)?\d{2})$/;
-  var regex8 = /(\d+)(,\s*\d+)*/;
+  var regex8 = /^(\d+)(,\s*\d+)*/;
   var regex9 = /(PASS).+/;
   var array = text.split(" ");
 
@@ -89,8 +89,9 @@ function strip(text) {
   var matching5 = array[0].toString().toUpperCase().match(regex5);
   var matching6 = array[0].toString().toUpperCase().match(regex6);
   var matching7 = array[0].match(regex7);
-  var matching9 = array[0].match(regex9);
   var matching8 = array[0].match(regex8);
+  var matching9 = array[0].match(regex9);
+
 
   if (matching) {
     return {command: matching[0], type: 1};
