@@ -14,6 +14,7 @@ var stream = require('stream');
 var mime = require('mime');
 var restler = require('restler');
 var bot = require('telegram-bot-bootstrap');
+var fs = require('fs');
 var Alice = new bot(sails.config.telegram.token);
 
 module.exports.sendMessage = function (chat_id, text, parse_mode, disable_web_page_preview, reply_to_message_id, reply_markup) {
