@@ -14,7 +14,6 @@ var stream = require('stream');
 var mime = require('mime');
 var restler = require('restler');
 var fs = require('fs');
-var FormData = require('form-data');
 
 module.exports.sendMessage = function (chat_id, text, parse_mode, disable_web_page_preview, reply_to_message_id, reply_markup) {
   var options = {
@@ -54,7 +53,7 @@ module.exports.sendPhoto = function (chat_id, photo, caption, disable_notificati
 
   var form = new FormData();
   form.append('chat_id', chat_id);
-  form.append('photo', photo);
+  form.append('photo', new Buffer(photo, "base64"));
 
   var options = {
     host: sails.config.telegram.url,
