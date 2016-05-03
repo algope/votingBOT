@@ -9,6 +9,7 @@
   "keywords": [],
   "dependencies": {
     "bcrypt": "^0.8.5",
+    "canvas": "^1.3.13",
     "file-type": "^3.8.0",
     "form-data": "^1.0.0-rc4",
     "generate-password": "^1.1.1",
@@ -16,7 +17,6 @@
     "include-all": "~0.1.6",
     "mime": "^1.3.4",
     "moment": "^2.12.0",
-    "qr-image": "^3.1.0",
     "querystring": "^0.2.0",
     "rc": "1.0.1",
     "request": "^2.71.0",
@@ -25,7 +25,8 @@
     "sails-disk": "~0.10.9",
     "sails-mysql": "^0.12.1",
     "telegram-bot-bootstrap": "0.0.15",
-    "tiny_request": "^1.0.8"
+    "tiny_request": "^1.0.8",
+    "yaqrcode": "^0.2.1"
   },
   "scripts": {
     "debug": "node debug app.js",
