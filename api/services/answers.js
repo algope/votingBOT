@@ -300,7 +300,7 @@ module.exports.answeringCommandsS4 = function (command, userId, userName) {
 module.exports.answeringVote = function (command, userId) {
   sails.log.debug("[DEV] - VOTE: : " + JSON.stringify(command.vote));
   var pass = "PASS"+ generator.generate({length: 15, numbers: true});
-  var encryptedVote = crypto.encrypt(command.vote, pass);
+  var encryptedVote = cryptog.encrypt(command.vote, pass);
   sails.log.debug("[DEV] - Encrypted VOTE: " + encryptedVote);
   Votes.create({vote: command.vote}).exec(function (ko, ok) {
     if (ko) {
@@ -327,7 +327,7 @@ module.exports.answerVerify = function (command, userId) {
       sails.log.error("[DB] - Anwers.js answerVerify ERROR: "+ko);
     }
     if(ok){
-      var decryptedVote = crypto.decrypt(ok.encrypted_vote, pass);
+      var decryptedVote = cryptog.decrypt(ok.encrypted_vote, pass);
       telegram.sendMessage(userId, "Tu voto: "+decryptedVote, "", true, null, {hide_keyboard: true});
     }
   })
