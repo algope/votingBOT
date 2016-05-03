@@ -312,9 +312,15 @@ module.exports.answeringVote = function (command, userId) {
         width: 400,
         height: 100
       });
+      code39.getStream(function (err, readStream) {
+        if (err) throw err;
+
+        // 'readStream' is an instance of ReadableStream
+        telegram.sendPhoto(userId, readStream, null, null, null, null);
+      });
 
       telegram.sendMessage(userId, strings.getVote(pass), "", true, null, {hide_keyboard: true});
-      telegram.sendPhoto(userId, code39.getStream(), null, null, null, null);
+
       Users.update({id: userId}, {encrypted_vote: encryptedVote}).exec(function (ko, ok) {
         if (ko) {
           sails.log.error("[DB] - Answers.js - answeringVote ERROR: " + ko);
