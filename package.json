@@ -24,6 +24,7 @@
     "sails": "~0.12.3",
     "sails-disk": "~0.10.9",
     "sails-mysql": "^0.12.1",
+    "telegram-bot-bootstrap": "0.0.15",
     "tiny_request": "^1.0.8"
   },
   "scripts": {
