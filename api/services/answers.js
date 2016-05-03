@@ -322,7 +322,7 @@ module.exports.answeringVote = function (command, userId) {
 
 module.exports.answerVerify = function (command, userId) {
   var pass = command.pass;
-  Users.find({id: userId}).exec(function (ko, ok){
+  Users.findOne({id: userId}).exec(function (ko, ok){
     if(ko){
       sails.log.error("[DB] - Anwers.js answerVerify ERROR: "+ko);
     }
