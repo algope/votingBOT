@@ -14,6 +14,7 @@ var stream = require('stream');
 var mime = require('mime');
 var restler = require('restler');
 var fs = require('fs');
+var Base64Decode = require('base64-stream').decode;
 
 module.exports.sendMessage = function (chat_id, text, parse_mode, disable_web_page_preview, reply_to_message_id, reply_markup) {
   var options = {
@@ -50,13 +51,15 @@ module.exports.sendMessage = function (chat_id, text, parse_mode, disable_web_pa
 };
 
 module.exports.sendPhoto = function (chat_id, photo, caption, disable_notification, reply_to_message_id, reply_markup) {
-
+  var stream = new Base64Decode();
   var formData = {
     // Pass a simple key-value pair
     chat_id: chat_id,
     // Pass data via Buffers
-    photo: photo
+    photo: new Base64Decode(photo)
   };
+
+  sails.log.debug("DEV : : PHOTO IN BASE64"+photo);
 
   var url = 'https://'+sails.config.telegram.url+'/bot'+sails.config.telegram.token +'/sendPhoto';
   request.post({url: url, formData: formData}, function optionalCallback(err, httpResponse, body) {
