@@ -56,7 +56,7 @@ module.exports.sendPhoto = function (chat_id, photo, caption, disable_notificati
       throw new Error('Unsupported Buffer file type');
     }
     var formData = {};
-    formData[type] = {
+    formData['photo'] = {
       value: photo,
       options: {
         filename: "photo."+filetype.ext,
