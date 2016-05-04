@@ -48,7 +48,7 @@ module.exports.answeringRegisterS1 = function (command, userId, callback_query_i
               sails.log.error("[DB] - Answers.js NID UPDATE ERROR: " + ko);
             }
           });
-          if (sails.config.census.check){ //Census User Check Activated
+          if (sails.config.census.check == 1){ //Census User Check Activated
             if (ok.retry_nid < 3) {
               Census.findOne({nid: command.nid}).exec(function (ko, ok) {
                 if (ok) {
@@ -111,7 +111,7 @@ module.exports.answeringRegisterS2 = function (command, userId, callback_query_i
     function (response) {
       Users.findOne({id: userId}).exec(function (ko, ok) {
         if (ok) {
-          if (sails.config.census.check){
+          if (sails.config.census.check == 1){
             if (ok.retry_birth_date < 3) {
               var date = moment(command.date, "DD-MM-YYYY");
               var day = date.date();
