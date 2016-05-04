@@ -76,7 +76,11 @@ module.exports.getVerifiedVote = function (vote) {
 module.exports.getVerifiedError = "Parece que la contraseña para descifrar el voto no es correcta \u{274C} \n" +
   "Vuelve a intentarlo o ponte en contacto con nosotros";
 
+module.exports.getAlreadyVotedWelcome = function(username){
+  return "Hola de nuevo " + userName + ", Ya tenemos tu voto registrado correctamente, puedes verificar tu voto mediante el comando /verificar";
+};
 
+module.exports.getAlreadyVoted = "Ups, parece que ya has votado \u{1F633}, puedes verificar tu voto mediante el comando /verificar";
 
 module.exports.getHelp0 = "Para enviar información, selecciona el comando: /enviar_info\n\n" +
   "Para volver a empezar, selecciona el comando: /cancelar\n\n" +

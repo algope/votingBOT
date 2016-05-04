@@ -99,7 +99,7 @@ module.exports = {
               answers.answeringError(userId, update, userAlias, user);
             }
 
-          } else if (user.stage == 4){
+          } else if (user.stage == 4){ //Already voted
             if (!command) {
               answers.answeringError(userId, update, userAlias, user);
             } else if (command.commandType == 1) {

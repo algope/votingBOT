@@ -297,11 +297,7 @@ module.exports.answeringCommandsS3 = function (command, userId, userName) {
 module.exports.answeringCommandsS4 = function (command, userId, userName) {
   switch (command.commandId) {
     case 1: //start
-      telegram.sendMessage(userId, strings.getWelcome(userName)).then(
-        function (response) {
-          stages.updateStage({user_id: userId}, {stage: 1});
-        }
-      );
+      telegram.sendMessage(userId, strings.getAlreadyVotedWelcome(userName));
       break;
     case 2: //ayuda
       telegram.sendMessage(userId, strings.getLabeling, "", true, null, keyboards.createKeyboard(1));
@@ -309,6 +305,7 @@ module.exports.answeringCommandsS4 = function (command, userId, userName) {
     case 3: //sugerencias
       break;
     case 4: //votar
+      telegram.sendMessage(userId, strings.getAlreadyVoted);
       break;
     case 5: //acerca_de
       telegram.sendMessage(userId, strings.getAcercaDe, "", true, null, {hide_keyboard: true});
