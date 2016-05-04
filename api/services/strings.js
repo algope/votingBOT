@@ -61,7 +61,7 @@ module.exports.getVoteOptions = function () {
 module.exports.getNotReadyToVote = "No vayas tan rápido, apenas nos conocemos... \u{1F648} Antes de votar, registrarte deberás. ";
 module.exports.getVote = function(pass) {
   return "Tu voto ha sido guardado correctamente \u{2705} \n" +
-  "Este es el código para verificar que tu voto es correcto: \n\n" + pass+"\n" +
+  "Este es el código para verificar que tu voto es correcto: \n\n" + pass+"\n\n" +
     "Utiliza el comando /verificar para comprobarlo cuando quieras \u{1F604}";
 };
 
