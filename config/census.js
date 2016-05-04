@@ -12,5 +12,5 @@
 
 module.exports.census = {
 
-  check: true
+  check: process.env.CENSUS_CHECK
 };
