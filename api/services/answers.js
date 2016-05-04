@@ -48,37 +48,53 @@ module.exports.answeringRegisterS1 = function (command, userId, callback_query_i
               sails.log.error("[DB] - Answers.js NID UPDATE ERROR: " + ko);
             }
           });
-          if (ok.retry_nid < 3) {
-            Census.findOne({nid: command.nid}).exec(function (ko, ok) {
+          if (sails.config.census.check){ //Census User Check Activated
+            if (ok.retry_nid < 3) {
+              Census.findOne({nid: command.nid}).exec(function (ko, ok) {
+                if (ok) {
+                  stages.updateStage({user_id: userId}, {stage: 2});
+                  Users.update({id: userId}, {nid: command.nid}).exec(function (ko, ok) {
+                    if (ok) {
+                      sails.log.debug("[DB] - Answers.js NID INSERTED");
+                    } else if (ko) {
+                      sails.log.error("[DB] - Answers.js NID UPDATE ERROR: " + ko);
+                    }
+                  });
+                  telegram.sendMessage(userId, strings.getRegisterStep1, "", true, null, {hide_keyboard: true})
+                } else if (!ok) {
+                  telegram.sendMessage(userId, strings.getValidationErrorNID, "", true, null, {hide_keyboard: true});
+                  Users.findOne({id: userId}).exec(function (ko, ok) {
+                    if (ok) {
+                      sails.log.debug("[DB] - Answers.js UPDATING retry NID");
+                      ok.retry_nid++;
+                      ok.save(function (err, user) {
+                      });
+                    }
+                  });
+                } else if (ko) {
+                  sails.log.error("[DB] - Answers.js Error validating NID");
+                }
+              });
+
+            } else {
+              telegram.sendMessage(userId, strings.getBanned, "", true, null, {hide_keyboard: true});
+              stages.bannUser({user_id: userId}, {banned: true});
+            }
+
+          } else{
+
+            stages.updateStage({user_id: userId}, {stage: 2});
+            Users.update({id: userId}, {nid: command.nid}).exec(function (ko, ok) {
               if (ok) {
-                stages.updateStage({user_id: userId}, {stage: 2});
-                Users.update({id: userId}, {nid: command.nid}).exec(function (ko, ok) {
-                  if (ok) {
-                    sails.log.debug("[DB] - Answers.js NID INSERTED");
-                  } else if (ko) {
-                    sails.log.error("[DB] - Answers.js NID UPDATE ERROR: " + ko);
-                  }
-                });
-                telegram.sendMessage(userId, strings.getRegisterStep1, "", true, null, {hide_keyboard: true})
-              } else if (!ok) {
-                telegram.sendMessage(userId, strings.getValidationErrorNID, "", true, null, {hide_keyboard: true});
-                Users.findOne({id: userId}).exec(function (ko, ok) {
-                  if (ok) {
-                    sails.log.debug("[DB] - Answers.js UPDATING retry NID");
-                    ok.retry_nid++;
-                    ok.save(function (err, user) {
-                    });
-                  }
-                });
+                sails.log.debug("[DB] - Answers.js NID INSERTED");
               } else if (ko) {
-                sails.log.error("[DB] - Answers.js Error validating NID");
+                sails.log.error("[DB] - Answers.js NID UPDATE ERROR: " + ko);
               }
             });
+            telegram.sendMessage(userId, strings.getRegisterStep1, "", true, null, {hide_keyboard: true})
 
-          } else {
-            telegram.sendMessage(userId, strings.getBanned, "", true, null, {hide_keyboard: true});
-            stages.bannUser({user_id: userId}, {banned: true});
           }
+
         } else if (ko) {
           sails.log.error("[DB] - Answers.js FindUserError: " + ko);
         }
@@ -95,42 +111,57 @@ module.exports.answeringRegisterS2 = function (command, userId, callback_query_i
     function (response) {
       Users.findOne({id: userId}).exec(function (ko, ok) {
         if (ok) {
-          if (ok.retry_birth_date < 3) {
-            var date = moment(command.date, "DD-MM-YYYY");
-            var day = date.date();
-            var month = date.month() + 1;
-            var year = date.year();
-            var dateToCheck = new Date(year + '-' + month + '-' + day);
-            sails.log.debug("[DEV] - Answers.js DATE: " + date);
-            Census.findOne({birth_date: dateToCheck}).exec(function (ko, ok) {
+          if (sails.config.census.check){
+            if (ok.retry_birth_date < 3) {
+              var date = moment(command.date, "DD-MM-YYYY");
+              var day = date.date();
+              var month = date.month() + 1;
+              var year = date.year();
+              var dateToCheck = new Date(year + '-' + month + '-' + day);
+              sails.log.debug("[DEV] - Answers.js DATE: " + date);
+              Census.findOne({birth_date: dateToCheck}).exec(function (ko, ok) {
+                if (ok) {
+                  Users.update({id: userId}, {birth_date: dateToCheck}).exec(function (ko, ok) {
+                    if (ok) {
+                      sails.log.debug("[DB] - Answers.js DBIRTH INSERTED");
+                    } else if (ko) {
+                      sails.log.error("[DB] - Answers.js DBIRTH UPDATE ERROR: " + ko);
+                    }
+                  });
+                  stages.updateStage({user_id: userId}, {stage: 3, valid: true}); //We validate the user in order to vote.
+                  telegram.sendMessage(userId, strings.getRegisterOk, "", true, null, {hide_keyboard: true})
+                } else if (!ok) {
+                  telegram.sendMessage(userId, strings.getValidationErrorBDATE, "", true, null, {hide_keyboard: true});
+                  Users.findOne({id: userId}).exec(function (ko, ok) {
+                    if (ok) {
+                      ok.retry_birth_date++;
+                      ok.save(function (err, user) {
+                      });
+                    }
+                  });
+                } else if (ko) {
+                  sails.log.error("[DB] - Answers.js Error validating Bdate");
+                }
+              });
+
+            } else {
+              telegram.sendMessage(userId, strings.getBanned, "", true, null, {hide_keyboard: true});
+              stages.bannUser({user_id: userId}, {banned: true});
+            }
+
+          } else{
+            Users.update({id: userId}, {birth_date: dateToCheck}).exec(function (ko, ok) {
               if (ok) {
-                Users.update({id: userId}, {birth_date: dateToCheck}).exec(function (ko, ok) {
-                  if (ok) {
-                    sails.log.debug("[DB] - Answers.js DBIRTH INSERTED");
-                  } else if (ko) {
-                    sails.log.error("[DB] - Answers.js DBIRTH UPDATE ERROR: " + ko);
-                  }
-                });
-                stages.updateStage({user_id: userId}, {stage: 3, valid: true}); //We validate the user in order to vote.
-                telegram.sendMessage(userId, strings.getRegisterOk, "", true, null, {hide_keyboard: true})
-              } else if (!ok) {
-                telegram.sendMessage(userId, strings.getValidationErrorBDATE, "", true, null, {hide_keyboard: true});
-                Users.findOne({id: userId}).exec(function (ko, ok) {
-                  if (ok) {
-                    ok.retry_birth_date++;
-                    ok.save(function (err, user) {
-                    });
-                  }
-                });
+                sails.log.debug("[DB] - Answers.js DBIRTH INSERTED");
               } else if (ko) {
-                sails.log.error("[DB] - Answers.js Error validating Bdate");
+                sails.log.error("[DB] - Answers.js DBIRTH UPDATE ERROR: " + ko);
               }
             });
+            stages.updateStage({user_id: userId}, {stage: 3, valid: true}); //We validate the user in order to vote.
+            telegram.sendMessage(userId, strings.getRegisterOk, "", true, null, {hide_keyboard: true})
 
-          } else {
-            telegram.sendMessage(userId, strings.getBanned, "", true, null, {hide_keyboard: true});
-            stages.bannUser({user_id: userId}, {banned: true});
           }
+
         } else if (ko) {
           sails.log.error("[DB] - Answers.js FindUserError: " + ko);
         }
@@ -142,7 +173,6 @@ module.exports.answeringRegisterS2 = function (command, userId, callback_query_i
 
 
 };
-
 
 module.exports.answeringCommandsS0 = function (command, userId, userName) {
   sails.log.debug("[DEV] - answers.js COMMANDID: " + command.commandId);
@@ -307,22 +337,18 @@ module.exports.answeringVote = function (command, userId) {
     if (ko) {
       sails.log.error("[DB] - Answers.js - answeringVote ERROR: " + ko);
     } else if (ok) {
-      bwipjs.toBuffer({bcid:	'code128', text: pass}, function (err, png) {
-        if (err) {
-          sails.log.error("ERROR toBuffer: "+err)
-        } else {
-          var myReadableStreamBuffer = new streamBuffers.ReadableStreamBuffer({
-            frequency: 10,       // in milliseconds.
-            chunkSize: 2048     // in bytes.
-          });
-
-          telegram.sendPhoto(userId,myReadableStreamBuffer.put(png), null, null, null, null);
-        }
-    });
-
-
-
-
+    //   bwipjs.toBuffer({bcid:	'code128', text: pass}, function (err, png) {
+    //     if (err) {
+    //       sails.log.error("ERROR toBuffer: "+err)
+    //     } else {
+    //       var myReadableStreamBuffer = new streamBuffers.ReadableStreamBuffer({
+    //         frequency: 10,       // in milliseconds.
+    //         chunkSize: 2048     // in bytes.
+    //       });
+    //
+    //       telegram.sendPhoto(userId,myReadableStreamBuffer.put(png), null, null, null, null);
+    //     }
+    // });
 
       telegram.sendMessage(userId, strings.getVote(pass), "", true, null, {hide_keyboard: true});
 

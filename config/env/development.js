@@ -39,6 +39,10 @@ module.exports = {
     token: process.env.TELEGRAM_TOKEN
   },
 
+  census: {
+    check: process.env.CENSUS_CHECK
+  },
+
   port: 80,
 
   orm: {
