@@ -7,7 +7,7 @@
  *
  */
 
-module.exports.getError = "Ups, eso no me lo esperaba... ¿Te has equivocado?";
+module.exports.getError = "Ups, eso no me lo esperaba...\u{1F633}\n Revisa lo que me acabas de enviar";
 module.exports.getBye = "Una pena \u{1F633}, me hubiera gustado seguir hablando contigo.\n" +
   "Si cambias de opinión, solo tienes que volver a escribir: /start";
 
@@ -48,6 +48,8 @@ module.exports.getVoteOptions = function () {
        for (var i = 0; i < ok.length; i++) {
          resp += ok[i].id + " : " + ok[i].text + "\n";
        }
+       resp += "\nSelecciona hasta 8 opciones.\nMe puedes enviar tu voto utilizando los números de las opciones separados por comas.\n" +
+         "Ejemplo: opcion, opcion, opcion";
        resolve(resp);
      }
 
