@@ -373,7 +373,15 @@ module.exports.answerVerify = function (command, userId) {
     }
     if(ok){
       var decryptedVote = cryptog.decrypt(ok.encrypted_vote, pass);
-      telegram.sendMessage(userId, "Tu voto: "+decryptedVote, "", true, null, {hide_keyboard: true});
+      var regex = /^(\d+)(,\s*\d+)*/;
+      var array = decryptedVote.split(" ");
+      var matching = array[0].match(regex);
+      if (matching) {
+        telegram.sendMessage(userId, strings.getVerifiedVote(decryptedVote), "", true, null, {hide_keyboard: true});
+      } else {
+        telegram.sendMessage(userId, strings.getVerifiedError, "", true, null, {hide_keyboard: true});
+      }
+
     }
   })
 
