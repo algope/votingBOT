@@ -7,8 +7,8 @@
  *
  */
 
-module.exports.getError = "Ups, eso no me lo esperaba...\u1F633 \nRevisa lo que me acabas de enviar";
-module.exports.getBye = "Una pena \u1F633, me hubiera gustado seguir hablando contigo.\n" +
+module.exports.getError = "Ups, eso no me lo esperaba...\u{1F633} \nRevisa lo que me acabas de enviar";
+module.exports.getBye = "Una pena \u{1F633}, me hubiera gustado seguir hablando contigo.\n" +
   "Si cambias de opinión, solo tienes que volver a escribir: /start";
 
 module.exports.getStartReg = "Iniciando registro...";
@@ -17,7 +17,7 @@ module.exports.getRegQuestion = "¿Quieres registrarte? Recuerda tener a mano tu
 
 
 module.exports.getWelcome = function (userName) {
-  return "Hola " + userName + ", ¡encantado de conocerte! \u1F604\n" +
+  return "Hola " + userName + ", ¡encantado de conocerte! \u{1F604}\n" +
     "Bienvenidx al sistema de votación.\nPara votar será necesario que nos digas tu DNI y fecha de Nacimiento y comprobemos que estás en el censo.\n" +
     "¿Quieres seguir?";
 };
@@ -26,18 +26,18 @@ module.exports.getRegisterStep0 = "Estupendo, ahora introduce tu DNI o NIE. Recu
 module.exports.getRegisterStep1 = "Perfecto, indícame ahora tu Fecha de Nacimiento con el siguiente formato: DD/MM/AAAA";
 module.exports.getRegisterOk = "Registro completo \u2705, Para empezar a votar selecciona el comando /votar";
 module.exports.getValidating = "Comprobando censo... \u23F3";
-module.exports.getValidationErrorNID = "Ups \u1F633, me temo que ha habido un error. Es posible que no te encuentres en el Censo de votantes\n" +
+module.exports.getValidationErrorNID = "Ups \u{1F633}, me temo que ha habido un error. Es posible que no te encuentres en el Censo de votantes\n" +
   "Vuelve a introducir tu DNI por si te hubieras equivocado.\n Tienes 3 intentos.";
 
-module.exports.getValidationErrorBDATE = "Ups \u1F633, me temo que ha habido un error. Es posible que no te encuentres en el Censo de votantes\n" +
+module.exports.getValidationErrorBDATE = "Ups \u{1F633}, me temo que ha habido un error. Es posible que no te encuentres en el Censo de votantes\n" +
   "Vuelve a introducir tu Fecha de Nacimiento por si te hubieras equivocado.\n Tienes 3 intentos.";
 
-module.exports.getBanned = "Lo siento \u1F633, has agotado los intentos para registrarte. Por seguridad he bloqueado tu usuario.";
+module.exports.getBanned = "Lo siento \u{1F633}, has agotado los intentos para registrarte. Por seguridad he bloqueado tu usuario.";
 
-module.exports.getTroll = "Uy, no tengo tiempo para leer tanto... \u1F648";
+module.exports.getTroll = "Uy, no tengo tiempo para leer tanto... \u{1F648}";
 
 module.exports.getReadyToVote = function (userName) {
-  return "Hola de nuevo " + userName + ", Ya tenemos todos tus datos verificados, ¿preparadx para votar? \u1F604\n";
+  return "Hola de nuevo " + userName + ", Ya tenemos todos tus datos verificados, ¿preparadx para votar? \u{1F604}\n";
 };
 
 module.exports.getVoteOptions = function () {
@@ -69,11 +69,11 @@ module.exports.getVoteOptions = function () {
  })
 };
 
-module.exports.getNotReadyToVote = "No vayas tan rápido, apenas nos conocemos... \u1F648 Antes de votar, registrarte deberás. ";
+module.exports.getNotReadyToVote = "No vayas tan rápido, apenas nos conocemos... \u{1F648} Antes de votar, registrarte deberás. ";
 module.exports.getVote = function(pass) {
   return "Tu voto ha sido guardado correctamente \u2705 \n" +
   "Este es el código para verificar que tu voto es correcto: \n\n" + pass+"\n\n" +
-    "Utiliza el comando /verificar para comprobarlo cuando quieras \u1F604";
+    "Utiliza el comando /verificar para comprobarlo cuando quieras \u{1F604}";
 };
 
 module.exports.getVerify = "Vamos a verificar tu voto.\n" +
@@ -91,7 +91,7 @@ module.exports.getAlreadyVotedWelcome = function(userName){
   return "Hola de nuevo " + userName + ", Ya tenemos tu voto registrado correctamente, puedes verificar tu voto mediante el comando /verificar";
 };
 
-module.exports.getAlreadyVoted = "Ups, parece que ya has votado \u1F633, puedes verificar tu voto mediante el comando /verificar";
+module.exports.getAlreadyVoted = "Ups, parece que ya has votado \u{1F633}, puedes verificar tu voto mediante el comando /verificar";
 
 module.exports.getHelp0 = "Para enviar información, selecciona el comando: /enviar_info\n\n" +
   "Para volver a empezar, selecciona el comando: /cancelar\n\n" +
