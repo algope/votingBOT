@@ -49,14 +49,11 @@ module.exports.getVoteOptions = function () {
          var id = ok[i].id;
          if(id<10){
            resp += ok[i].id+"\uFE0F\u20E3" + " : " + ok[i].text + "\n";
-         } else if(id==10){
-           resp += "\u1F51F\uFE0F\u20E3" + " : " + ok[i].text + "\n";
-
-         } else if(id>10){
+         } else if(id>=10){
            var idStr = ok[i].id.toString();
            var n1 = idStr.charAt(0);
            var n2 = idStr.charAt(1);
-           resp += n1+"\uFE0F\u20E3"+"\\u003"+n2+"\uFE0F\u20E3"+ " : " + ok[i].text + "\n";
+           resp += n1+"\uFE0F\u20E3"+n2+"\uFE0F\u20E3"+ " : " + ok[i].text + "\n";
          }
 
        }
