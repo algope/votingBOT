@@ -18,8 +18,8 @@ module.exports.getRegQuestion = "¿Quieres registrarte? Recuerda tener a mano tu
 
 module.exports.getWelcome = function (userName) {
   return "Hola " + userName + ", ¡encantado de conocerte! \u{1F604}\n" +
-    "Bienvenidx al sistema de votación. Para empezar será necesario que te registres con tu DNI y Fecha de Nacimiento.\n" +
-    "¿Quieres registrarte?";
+    "Bienvenidx al sistema de votación.\n Para votar será necesario que nos digas tu DNI y fecha de Nacimiento y comprobemos que estás en el censo.\n" +
+    "¿Quieres seguir?";
 };
 
 module.exports.getRegisterStep0 = "Estupendo, ahora introduce tu DNI o NIE. Recuerda introducirlo con letra...";
@@ -48,8 +48,10 @@ module.exports.getVoteOptions = function () {
        for (var i = 0; i < ok.length; i++) {
          resp += ok[i].id + " : " + ok[i].text + "\n";
        }
-       resp += "\nSelecciona hasta 8 opciones.\nMe puedes enviar tu voto utilizando los números de las opciones separados por comas.\n" +
-         "Ejemplo: opcion, opcion, opcion";
+       resp += "\nSelecciona hasta 8 opciones.\n"+
+       "Envía tu voto utilizando los números de las opciones separados por comas.\n"+
+         "Ejemplo: 31,55, 53,34, 42, 44, 36, 54 (si las opciones estuviesen numeradas entre el 31 y 55)\n"+
+       "Nota: Los espacios en blanco entre los números son opcionales";
        resolve(resp);
      }
 
