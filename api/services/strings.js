@@ -48,7 +48,7 @@ module.exports.getVoteOptions = function () {
        for (var i = 0; i < ok.length; i++) {
          resp += ok[i].id + " : " + ok[i].text + "\n";
        }
-       resp += "\nSelecciona hasta \u{0038} \u{20E3} opciones.\n"+
+       resp += "\nSelecciona hasta \u{0038 20E3} opciones.\n"+
        "Envía tu voto utilizando los números de las opciones separados por comas.\n"+
          "Ejemplo: 31,55, 53,34, 42, 44, 36, 54 (si las opciones estuviesen numeradas entre el 31 y 55)\n"+
        "Nota: Los espacios en blanco entre los números son opcionales";
