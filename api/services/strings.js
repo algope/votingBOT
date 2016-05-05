@@ -47,12 +47,12 @@ module.exports.getVoteOptions = function () {
        var resp = "Opciones disponibles: \n\n";
        for (var i = 0; i < ok.length; i++) {
          if(ok[i].id<=10){
-           resp += "\u003"+ok[i].id+"\uFE0F\u20E3" + " : " + ok[i].text + "\n";
+           resp += "\\u003"+ok[i].id+"\uFE0F\u20E3" + " : " + ok[i].text + "\n";
          }else if(ok[i].id>10){
            var id = ok[i].id.toString();
            var n1 = id.charAt(0);
            var n2 = id.charAt(1);
-           resp += "\u003"+n1+"\uFE0F\u20E3"+"\u003"+n2+"\uFE0F\u20E3"+ " : " + ok[i].text + "\n";
+           resp += "\\u003"+n1+"\uFE0F\u20E3"+"\\u003"+n2+"\uFE0F\u20E3"+ " : " + ok[i].text + "\n";
          }
 
        }
