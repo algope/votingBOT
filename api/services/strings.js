@@ -18,7 +18,7 @@ module.exports.getRegQuestion = "¿Quieres registrarte? Recuerda tener a mano tu
 
 module.exports.getWelcome = function (userName) {
   return "Hola " + userName + ", ¡encantado de conocerte! \u{1F604}\n" +
-    "Bienvenidx al sistema de votación.\n Para votar será necesario que nos digas tu DNI y fecha de Nacimiento y comprobemos que estás en el censo.\n" +
+    "Bienvenidx al sistema de votación.\nPara votar será necesario que nos digas tu DNI y fecha de Nacimiento y comprobemos que estás en el censo.\n" +
     "¿Quieres seguir?";
 };
 
