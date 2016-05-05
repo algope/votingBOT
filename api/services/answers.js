@@ -14,7 +14,6 @@ var fs = require('fs');
 // var streamBuffers = require('stream-buffers');
 
 module.exports.answeringRegisterS0 = function (command, userId, callback_query_id) {
-  sails.log.debug("[DEV] - answers.js COMMANDID: " + command.commandId);
   switch (command.commandId) {
     case 1: //butt_1 : SI
       telegram.sendMessage(userId, strings.getRegisterStep0, "", true, null, {hide_keyboard: true}).then(
@@ -174,6 +173,7 @@ module.exports.answeringRegisterS2 = function (command, userId, callback_query_i
 
 };
 
+
 module.exports.answeringCommandsS0 = function (command, userId, userName) {
   sails.log.debug("[DEV] - answers.js COMMANDID: " + command.commandId);
   switch (command.commandId) {
@@ -286,7 +286,7 @@ module.exports.answeringCommandsS3 = function (command, userId, userName) {
     case 6: //cancelar
       telegram.sendMessage(userId, strings.getCancelar, "", true, null, {hide_keyboard: true}).then(
         function (response) {
-          stages.updateStage({user_id: userId}, {stage: 1});
+          stages.updateStage({user_id: userId}, {stage: 2});
 
         }
       );
@@ -313,7 +313,7 @@ module.exports.answeringCommandsS4 = function (command, userId, userName) {
     case 6: //cancelar
       telegram.sendMessage(userId, strings.getCancelar, "", true, null, {hide_keyboard: true}).then(
         function (response) {
-          stages.updateStage({user_id: userId}, {stage: 1});
+          stages.updateStage({user_id: userId}, {stage: 4});
 
         }
       );
