@@ -46,13 +46,17 @@ module.exports.getVoteOptions = function () {
      if (ok) {
        var resp = "Opciones disponibles: \n\n";
        for (var i = 0; i < ok.length; i++) {
-         if(ok[i].id<=10){
-           resp += "\\u003"+ok[i].id+"\uFE0F\u20E3" + " : " + ok[i].text + "\n";
-         }else if(ok[i].id>10){
-           var id = ok[i].id.toString();
-           var n1 = id.charAt(0);
-           var n2 = id.charAt(1);
-           resp += "\\u003"+n1+"\uFE0F\u20E3"+"\\u003"+n2+"\uFE0F\u20E3"+ " : " + ok[i].text + "\n";
+         var id = ok[i].id;
+         if(id<10){
+           resp += ok[i].id+"\uFE0F\u20E3" + " : " + ok[i].text + "\n";
+         } else if(id==10){
+           resp += "\u1F51F\uFE0F\u20E3" + " : " + ok[i].text + "\n";
+
+         } else if(id>10){
+           var idStr = ok[i].id.toString();
+           var n1 = idStr.charAt(0);
+           var n2 = idStr.charAt(1);
+           resp += n1+"\uFE0F\u20E3"+"\\u003"+n2+"\uFE0F\u20E3"+ " : " + ok[i].text + "\n";
          }
 
        }
@@ -68,29 +72,29 @@ module.exports.getVoteOptions = function () {
  })
 };
 
-module.exports.getNotReadyToVote = "No vayas tan rápido, apenas nos conocemos... \u{1F648} Antes de votar, registrarte deberás. ";
+module.exports.getNotReadyToVote = "No vayas tan rápido, apenas nos conocemos... \u1F648 Antes de votar, registrarte deberás. ";
 module.exports.getVote = function(pass) {
-  return "Tu voto ha sido guardado correctamente \u{2705} \n" +
+  return "Tu voto ha sido guardado correctamente \u2705 \n" +
   "Este es el código para verificar que tu voto es correcto: \n\n" + pass+"\n\n" +
-    "Utiliza el comando /verificar para comprobarlo cuando quieras \u{1F604}";
+    "Utiliza el comando /verificar para comprobarlo cuando quieras \u1F604";
 };
 
 module.exports.getVerify = "Vamos a verificar tu voto.\n" +
   "Envíame el código que te proporcioné cuando votaste:";
 
 module.exports.getVerifiedVote = function (vote) {
-  return "Tu voto es correcto \u{2705} \n"+
+  return "Tu voto es correcto \u2705 \n"+
       "Esto es lo que votaste: "+vote;
 };
 
-module.exports.getVerifiedError = "Parece que la contraseña para descifrar el voto no es correcta \u{274C} \n" +
+module.exports.getVerifiedError = "Parece que la contraseña para descifrar el voto no es correcta \u274C \n" +
   "Vuelve a intentarlo o ponte en contacto con nosotros";
 
 module.exports.getAlreadyVotedWelcome = function(userName){
   return "Hola de nuevo " + userName + ", Ya tenemos tu voto registrado correctamente, puedes verificar tu voto mediante el comando /verificar";
 };
 
-module.exports.getAlreadyVoted = "Ups, parece que ya has votado \u{1F633}, puedes verificar tu voto mediante el comando /verificar";
+module.exports.getAlreadyVoted = "Ups, parece que ya has votado \u1F633, puedes verificar tu voto mediante el comando /verificar";
 
 module.exports.getHelp0 = "Para enviar información, selecciona el comando: /enviar_info\n\n" +
   "Para volver a empezar, selecciona el comando: /cancelar\n\n" +
