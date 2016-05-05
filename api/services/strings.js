@@ -59,8 +59,8 @@ module.exports.getVoteOptions = function () {
        }
        resp += "\nSelecciona hasta \u0038\uFE0F\u20E3 opciones.\n"+
        "Envía tu voto utilizando los números de las opciones separados por comas.\n"+
-         "Ejemplo: 31,55, 53,34, 42, 44, 36, 54 (si las opciones estuviesen numeradas entre el 31 y 55)\n"+
-       "Nota: Los espacios en blanco entre los números son opcionales";
+         "Ejemplo: 1,5, 10,11, 18, 20 \n"+
+       "Nota: Los espacios en blanco entre los números son opcionales.";
        resolve(resp);
      }
 
