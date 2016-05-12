@@ -332,6 +332,9 @@ module.exports.answeringVote = function (command, userId) {
   var cleanedVote = vote.replace(/[, ]+/g, " ").trim();
   var splitOptions = cleanedVote.split(" ");
 
+  sails.log.debug("CLEANED VOTE: : : : "+cleanedVote);
+  sails.log.debug("SPLIT OPTIONS : : : : "+splitOptions);
+
   if(splitOptions.length>3){
     telegram.sendMessage(userId, strings.getVotingError);
   } else if(splitOptions<=3){
