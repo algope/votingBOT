@@ -333,7 +333,7 @@ module.exports.answeringVote = function (command, userId) {
   var splitOptions = cleanedVote.split(" ");
 
   if(splitOptions.length>3){
-    telegram.sendMessage(userId, strings.getVotingError());
+    telegram.sendMessage(userId, strings.getVotingError);
   } else if(splitOptions<=3){
     var pass = "PASS"+ generator.generate({length: 15, numbers: true});
     var encryptedVote = cryptog.encrypt(command.vote, pass);
