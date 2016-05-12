@@ -370,8 +370,9 @@ module.exports.answeringVote = function (command, userId) {
           //     }
           // });
 
-          telegram.sendMessage(userId, strings.getVote(pass), "", true, null, {hide_keyboard: true});
-
+          telegram.sendMessage(userId, strings.getVote, "", true, null, {hide_keyboard: true});
+          telegram.sendMessage(userId, pass);
+          telegram.sendMessage(userId, strings.getVote3);
           Users.update({id: userId}, {encrypted_vote: encryptedVote}).exec(function (ko, ok) {
             if (ko) {
               sails.log.error("[DB] - Answers.js - answeringVote ERROR: " + ko);
