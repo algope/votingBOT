@@ -44,7 +44,7 @@ module.exports.getVoteOptions = function () {
  return new Promise(function(resolve, reject){
    Options.find().exec(function (ko, ok) {
      if (ok) {
-       var resp = "Opciones disponibles: \n\n";
+       var resp = "Selecciona los \u0033\uFE0F\u20E3 elementos que consideras más importantes para la toma de concienca:\n\n";
        for (var i = 0; i < ok.length; i++) {
          var id = ok[i].id;
          if(id<10){
@@ -57,9 +57,9 @@ module.exports.getVoteOptions = function () {
          }
 
        }
-       resp += "\nSelecciona hasta \u0038\uFE0F\u20E3 opciones.\n"+
+       resp += "\nSelecciona hasta \u0033\uFE0F\u20E3 opciones.\n"+
        "Envía tu voto utilizando los números de las opciones separados por comas.\n"+
-         "Ejemplo: 1,5, 10,11, 18, 20 \n"+
+         "Ejemplo: 1, 3, 5 \n"+
        "Nota: Los espacios en blanco entre los números son opcionales.";
        resolve(resp);
      }
@@ -68,6 +68,9 @@ module.exports.getVoteOptions = function () {
 
  })
 };
+
+module.exports.getVotingError = "Vaya, parece que has querido votar más de \u0033\uFE0F\u20E3 opciones. \n" +
+  "Recuerda que como máximo puedes votar \u0033\uFE0F\u20E3 opciones";
 
 module.exports.getNotReadyToVote = "No vayas tan rápido, apenas nos conocemos... \u{1F648} Antes de votar, registrarte deberás. ";
 module.exports.getVote = function(pass) {

@@ -327,37 +327,47 @@ module.exports.answeringCommandsS4 = function (command, userId, userName) {
 
 module.exports.answeringVote = function (command, userId) {
   sails.log.debug("[DEV] - VOTE: : " + JSON.stringify(command.vote));
-  var pass = "PASS"+ generator.generate({length: 15, numbers: true});
-  var encryptedVote = cryptog.encrypt(command.vote, pass);
-  sails.log.debug("[DEV] - Encrypted VOTE: " + encryptedVote);
-  Votes.create({vote: command.vote}).exec(function (ko, ok) {
-    if (ko) {
-      sails.log.error("[DB] - Answers.js - answeringVote ERROR: " + ko);
-    } else if (ok) {
-    //   bwipjs.toBuffer({bcid:	'code128', text: pass}, function (err, png) {
-    //     if (err) {
-    //       sails.log.error("ERROR toBuffer: "+err)
-    //     } else {
-    //       var myReadableStreamBuffer = new streamBuffers.ReadableStreamBuffer({
-    //         frequency: 10,       // in milliseconds.
-    //         chunkSize: 2048     // in bytes.
-    //       });
-    //
-    //       telegram.sendPhoto(userId,myReadableStreamBuffer.put(png), null, null, null, null);
-    //     }
-    // });
 
-      telegram.sendMessage(userId, strings.getVote(pass), "", true, null, {hide_keyboard: true});
+  var vote = command.vote;
+  var cleanedVote = vote.replace(/[, ]+/g, " ").trim();
+  var splitOptions = cleanedVote.split(" ");
 
-      Users.update({id: userId}, {encrypted_vote: encryptedVote}).exec(function (ko, ok) {
-        if (ko) {
-          sails.log.error("[DB] - Answers.js - answeringVote ERROR: " + ko);
-        } else if (ok) {
-          stages.updateStage({user_id: userId}, {has_voted: true, stage: 4});
-        }
-      });
-    }
-  });
+  if(splitOptions.length>3){
+    telegram.sendMessage(userId, strings.getVotingError());
+  } else if(splitOptions<=3){
+    var pass = "PASS"+ generator.generate({length: 15, numbers: true});
+    var encryptedVote = cryptog.encrypt(command.vote, pass);
+    sails.log.debug("[DEV] - Encrypted VOTE: " + encryptedVote);
+    Votes.create({vote: command.vote}).exec(function (ko, ok) {
+      if (ko) {
+        sails.log.error("[DB] - Answers.js - answeringVote ERROR: " + ko);
+      } else if (ok) {
+        //   bwipjs.toBuffer({bcid:	'code128', text: pass}, function (err, png) {
+        //     if (err) {
+        //       sails.log.error("ERROR toBuffer: "+err)
+        //     } else {
+        //       var myReadableStreamBuffer = new streamBuffers.ReadableStreamBuffer({
+        //         frequency: 10,       // in milliseconds.
+        //         chunkSize: 2048     // in bytes.
+        //       });
+        //
+        //       telegram.sendPhoto(userId,myReadableStreamBuffer.put(png), null, null, null, null);
+        //     }
+        // });
+
+        telegram.sendMessage(userId, strings.getVote(pass), "", true, null, {hide_keyboard: true});
+
+        Users.update({id: userId}, {encrypted_vote: encryptedVote}).exec(function (ko, ok) {
+          if (ko) {
+            sails.log.error("[DB] - Answers.js - answeringVote ERROR: " + ko);
+          } else if (ok) {
+            stages.updateStage({user_id: userId}, {has_voted: true, stage: 4});
+          }
+        });
+      }
+    });
+  }
+
 
 
 };
