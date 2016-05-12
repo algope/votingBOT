@@ -340,12 +340,12 @@ module.exports.answeringVote = function (command, userId) {
     telegram.sendMessage(userId, strings.getVotingError);
   } else if(splitOptions.lenght<=3){
     for(var i=0; i<splitOptions.length; i++){
-      if(splitOptions[i]>9){
+      if(parseInt(splitOptions[i])>9){
         flag++;
       }
     }
     if(flag>0){
-      telegram.sendMessage(userId, strings.getVotingError);
+      telegram.sendMessage(userId, strings.getVotingError2(flag));
     }
     var pass = "PASS"+ generator.generate({length: 15, numbers: true});
     var encryptedVote = cryptog.encrypt(command.vote, pass);
