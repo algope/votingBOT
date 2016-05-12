@@ -331,13 +331,22 @@ module.exports.answeringVote = function (command, userId) {
   var vote = command.vote;
   var cleanedVote = vote.replace(/[, ]+/g, " ").trim();
   var splitOptions = cleanedVote.split(" ");
+  var flag = 0;
 
   sails.log.debug("CLEANED VOTE: : : : "+cleanedVote);
   sails.log.debug("SPLIT OPTIONS : : : : "+splitOptions);
 
   if(splitOptions.length>3){
     telegram.sendMessage(userId, strings.getVotingError);
-  } else if(splitOptions<=3){
+  } else if(splitOptions.lenght<=3){
+    for(var i=0; i<splitOptions.length; i++){
+      if(splitOptions[i]>9){
+        flag++;
+      }
+    }
+    if(flag>0){
+      telegram.sendMessage(userId, strings.getVotingError);
+    }
     var pass = "PASS"+ generator.generate({length: 15, numbers: true});
     var encryptedVote = cryptog.encrypt(command.vote, pass);
     sails.log.debug("[DEV] - Encrypted VOTE: " + encryptedVote);

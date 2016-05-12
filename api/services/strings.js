@@ -70,7 +70,12 @@ module.exports.getVoteOptions = function () {
 };
 
 module.exports.getVotingError = "Vaya, parece que has querido votar más de \u0033\uFE0F\u20E3 opciones. \n" +
-  "Recuerda que como máximo puedes votar \u0033\uFE0F\u20E3 opciones";
+  "Recuerda que como máximo puedes votar \u0033\uFE0F\u20E3 opciones.";
+
+module.exports.getVotingError2 = function(num){
+  return "Vaya, parece ser que "+num+" de las opciones introducidas no pertenencen al listado." +
+    "Vuelve a emitir tu voto con las opciones del listado";
+};
 
 module.exports.getNotReadyToVote = "No vayas tan rápido, apenas nos conocemos... \u{1F648} Antes de votar, registrarte deberás. ";
 module.exports.getVote = function(pass) {
