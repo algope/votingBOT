@@ -338,7 +338,7 @@ module.exports.answeringVote = function (command, userId) {
 
   if(splitOptions.length>3){
     telegram.sendMessage(userId, strings.getVotingError);
-  } else if(splitOptions.lenght<=3){
+  } else if(splitOptions.length<=3){
     for(var i=0; i<splitOptions.length; i++){
       if(parseInt(splitOptions[i])>9){
         flag++;
