@@ -1,8 +1,8 @@
 {
   "tell.hello" : "¡Hola!",
   "tell.hello.again" : "Hola de nuevo",
-  "tell.welcome": "¡Hola %s!, ¡encantado de conocerte! \xF0\x9F\x98\x84 \nBienvenidx al sistema de votación.\nPara votar será necesario que nos digas tu DNI y fecha de Nacimiento y comprobemos que estás en el censo.\n¿Quieres seguir?",
-  "tell.error": "Ups, eso no me lo esperaba...\u1F633 \nRevisa lo que me acabas de enviar",
+  "tell.welcome": "¡Hola %s!, ¡encantado de conocerte! :smile: \nBienvenidx al sistema de votación.\nPara votar será necesario que nos digas tu DNI y fecha de Nacimiento y comprobemos que estás en el censo.\n¿Quieres seguir?",
+  "tell.error": "Ups, eso no me lo esperaba... :confused: \nRevisa lo que me acabas de enviar",
   "tell.troll": "Uy, no tengo tiempo para leer tanto... \u1F648",
   "tell.goodbye": "Una pena \u1F633, me hubiera gustado seguir hablando contigo.\nSi cambias de opinión, solo tienes que volver a escribir: /start",
 
