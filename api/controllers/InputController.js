@@ -105,7 +105,6 @@ module.exports = {
             } else if (command.commandType == 1) {
               answers.answeringCommandsS4(command, userId, userName);
             } else if (command.commandType == 9) {
-              sails.log.debug("VERIFICAR!!!!!");
               answers.answerVerify(command, userId);
             } else {
               answers.answeringError(userId, update, userAlias, user);

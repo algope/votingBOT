@@ -178,7 +178,7 @@ module.exports.answeringCommandsS0 = function (command, userId, userName) {
   sails.log.debug("[DEV] - answers.js COMMANDID: " + command.commandId);
   switch (command.commandId) {
     case 1: //start
-      telegram.sendMessage(userId, strings.getWelcome(userName), "", true, null, keyboards.createKeyboard(1));
+      telegram.sendMessage(userId, sails.__({phrase: 'tell.welcome', locale: 'es'}, userName), "", true, null, keyboards.createKeyboard(1));
       break;
     case 2: //ayuda
       telegram.sendMessage(userId, strings.getHelp0, "", true, null, {hide_keyboard: true});

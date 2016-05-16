@@ -1,4 +1,32 @@
 {
-  "Welcome": "Bienvenido",
-  "A brand new app.": "Una nueva aplicación."
+  "tell.hello" : "¡Hola!",
+  "tell.hello.again" : "Hola de nuevo",
+  "tell.welcome": "¡Hola %s!, ¡encantado de conocerte! \u{1F604} \nBienvenidx al sistema de votación.\nPara votar será necesario que nos digas tu DNI y fecha de Nacimiento y comprobemos que estás en el censo.\n¿Quieres seguir?",
+  "tell.error": "Ups, eso no me lo esperaba...\u{1F633} \nRevisa lo que me acabas de enviar",
+  "tell.troll": "Uy, no tengo tiempo para leer tanto... \u{1F648}",
+  "tell.goodbye": "Una pena \u{1F633}, me hubiera gustado seguir hablando contigo.\nSi cambias de opinión, solo tienes que volver a escribir: /start",
+
+  "tell.register.start": "Iniciando registro...",
+  "tell.register.cancel": "Registro cancelado.",
+  "tell.register.question": "¿Quieres registrarte? Recuerda tener a mano tu número de DNI o NIE y tu Fecha de Nacimiento",
+  "tell.register.nid": "Estupendo, ahora introduce tu DNI o NIE. Recuerda introducirlo con letra...",
+  "tell.register.bdate": "Perfecto, indícame ahora tu Fecha de Nacimiento con el siguiente formato: DD/MM/AAAA",
+  "tell.register.complete": "Registro completo \u2705, Para empezar a votar selecciona el comando /votar",
+  "tell.register.check": "Comprobando censo... \u23F3",
+  "tell.register.error.nid": "Ups \u{1F633}, me temo que ha habido un error. Es posible que no te encuentres en el Censo de votantes.\nVuelve a introducir tu DNI por si te hubieras equivocado.\n Tienes 3 intentos.",
+  "tell.register.error.bdate": "Ups \u{1F633}, me temo que ha habido un error. Es posible que no te encuentres en el Censo de votantes \nVuelve a introducir tu Fecha de Nacimiento por si te hubieras equivocado.\n Tienes 3 intentos.",
+  "tell.register.banned": "Lo siento \u{1F633}, has agotado los intentos para registrarte. Por seguridad he bloqueado tu usuario.",
+
+  "tell.voting.error": "Vaya, parece que has querido votar más de \u0033\uFE0F\u20E3 opciones. \nRecuerda que como máximo puedes votar \u0033\uFE0F\u20E3 opciones.",
+  "tell.voting.ready" : ", Ya tenemos todos tus datos verificados, ¿preparadx para votar? \u{1F604}\n",
+  "tell.voting.noRegistered": "No vayas tan rápido, apenas nos conocemos... \u{1F648} Antes de votar, registrarte deberás. ",
+  "tell.voting.success": "Tu voto ha sido guardado correctamente \u2705 \nEste es el código para verificar que tu voto es correcto:",
+  "tell.voting.verify": "Utiliza el comando /verificar para comprobarlo cuando quieras \u{1F604}",
+  "tell.voting.alreadyVote" : "Ups, parece que ya has votado \u{1F633}, puedes verificar tu voto mediante el comando /verificar",
+  "tell.voting.voteEnd" : "Hola de nuevo %s, Ya tenemos tu voto registrado correctamente, puedes verificar tu voto mediante el comando /verificar",
+  "tell.voting.incorrect" : "Vaya, parece ser que %s de las opciones introducidas no pertenencen al listado. \nVuelve a emitir tu voto con las opciones del listado",
+
+  "tell.verifying": "Vamos a verificar tu voto.\nEnvíame el código que te proporcioné cuando votaste:",
+  "tell.verifying.error" : "Parece que la contraseña para descifrar el voto no es correcta \u274C \nVuelve a intentarlo o ponte en contacto con nosotros",
+  "tell.verifying.sucess" : "Tu voto es correcto \u2705 \n Lo que votaste fue: %s"
 }
