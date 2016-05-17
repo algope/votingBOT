@@ -50,7 +50,7 @@ module.exports = {
     } else command = false;
 
     sails.log.debug("[DEV] - TEXT: " + text);
-    stages.findOrCreateEntry({user_id: userId}, {user_id: userId, stage: 0, locale: locale}).then(
+    stages.findOrCreateEntry({user_id: userId}, {user_id: userId, stage: 0}).then(
       function process(user) {
         if (!user.banned) {
           sails.log.debug("[DEV] - InputController.js Stage: " + user.stage);
