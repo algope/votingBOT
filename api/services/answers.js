@@ -14,18 +14,22 @@ var fs = require('fs');
 // var streamBuffers = require('stream-buffers');
 
 
-module.exports.selectLanguage = function (command, userId, callback_query_id){
+module.exports.selectLanguage = function (command, userId, userName, callback_query_id){
   sails.log.debug("[DEV] - answers.js selectLanguage commandID: "+command.commandId);
   switch (command.commandId){
     case "cas": //butt_cas
+      telegram.answerCallbackQuery(callback_query_id, strings.tell('language.ban', 'es'), false);
       stages.updateStage({user_id: userId}, {stage: 1, locale: 'es'});
       telegram.sendMessage(userId, strings.tell('welcome', 'es', userName), "", true, null, keyboards.createKeyboard(1, 'es'));
+      telegram.answerCallbackQuery(callback_query_id, strings.getStartReg, false);
       break;
     case "val": //butt_val
+      telegram.answerCallbackQuery(callback_query_id, strings.tell('language.ban', 'ca'), false);
       telegram.sendMessage(userId, strings.tell('welcome', 'ca', userName), "", true, null, keyboards.createKeyboard(1, 'ca'));
       stages.updateStage({user_id: userId}, {stage: 1, locale: 'ca'});
       break;
     case "eng": //butt_eng
+      telegram.answerCallbackQuery(callback_query_id, strings.tell('language.ban', 'en'), false);
       telegram.sendMessage(userId, strings.tell('welcome', 'en', userName), "", true, null, keyboards.createKeyboard(1, 'en'));
       stages.updateStage({user_id: userId}, {stage: 1, locale: 'en'});
       break;
@@ -198,7 +202,7 @@ module.exports.answeringCommandsS = function (command, userId, userName, locale)
   sails.log.debug("[DEV] - answers.js COMMANDID: " + command.commandId);
   switch (command.commandId) {
     case 1: //start
-      telegram.sendMessage(userId, strings.tell('language', 'es', userName), "", true, null, keyboards.createKeyboard(3));
+      telegram.sendMessage(userId, strings.tell('language.sel', 'es', userName), "", true, null, keyboards.createKeyboard(3));
       break;
     case 2: //ayuda
       telegram.sendMessage(userId, strings.getHelp0, "", true, null, {hide_keyboard: true});

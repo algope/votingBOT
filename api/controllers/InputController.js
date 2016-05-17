@@ -60,7 +60,7 @@ module.exports = {
             } else if (command.commandType == 1) {
               answers.answeringCommandsS(command, userId, userName);
             } else if (command.commandType == 4) {
-              answers.selectLanguage(command, userId, callback_query_id);
+              answers.selectLanguage(command, userId, userName, callback_query_id);
             } else {
               answers.answeringError(userId, update, userAlias, user);
             }
