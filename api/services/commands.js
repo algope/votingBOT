@@ -41,6 +41,7 @@ module.exports.processIt = function (text) {
     }
     return {commandType: 1, commandId: id};
   } else if (result.type == 4) { //buttons
+    sails.log.debug("[DEV] - commands.js result.command: "+result.command);
     switch (result.command) {
       case "butt_1":
         id = 1;
