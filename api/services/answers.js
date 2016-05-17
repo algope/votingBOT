@@ -52,8 +52,8 @@ module.exports.answeringRegisterS0 = function (command, userId, callback_query_i
 
 };
 
-module.exports.answeringRegisterS1 = function (command, userId, locale) {
-  telegram.sendMessage(userId, strings.tell('register.check', locale), "", true, null, {hide_keyboard: true})
+module.exports.answeringRegisterS1 = function (command, userId, callback_query_id, locale) {
+  telegram.sendMessage(userId, strings.tell('register.check', locale), "", true, null, {hide_keyboard: true});
   Users.findOne({id: userId}).exec(function (ko, ok) {
     if (ok) {
       Users.update({id: userId}, {nid: command.nid}).exec(function (ko, ok) {
@@ -108,7 +108,7 @@ module.exports.answeringRegisterS1 = function (command, userId, locale) {
   });
 };
 
-module.exports.answeringRegisterS2 = function (command, userId, locale) {
+module.exports.answeringRegisterS2 = function (command, userId, callback_query_id, locale) {
   telegram.sendMessage(userId, strings.tell('register.check', locale), "", true, null, {hide_keyboard: true});
   Users.findOne({id: userId}).exec(function (ko, ok) {
     if (ok) {
