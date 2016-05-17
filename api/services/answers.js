@@ -16,15 +16,15 @@ var fs = require('fs');
 
 module.exports.selectLanguage = function (command, userId, callback_query_id){
   switch (command.commandId){
-    case 'cas': //butt_cas
+    case "cas": //butt_cas
       telegram.sendMessage(userId, strings.tell('welcome', 'es', userName), "", true, null, keyboards.createKeyboard(1));
       stages.updateStage({user_id: userId}, {stage: 1, locale: 'es'});
       break;
-    case 'val': //butt_val
+    case "val": //butt_val
       telegram.sendMessage(userId, strings.tell('welcome', 'ca', userName), "", true, null, keyboards.createKeyboard(1));
       stages.updateStage({user_id: userId}, {stage: 1, locale: 'ca'});
       break;
-    case 'eng': //butt_eng
+    case "eng": //butt_eng
       telegram.sendMessage(userId, strings.tell('welcome', 'en', userName), "", true, null, keyboards.createKeyboard(1));
       stages.updateStage({user_id: userId}, {stage: 1, locale: 'en'});
       break;

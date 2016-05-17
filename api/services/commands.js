@@ -48,6 +48,15 @@ module.exports.processIt = function (text) {
       case "butt_2":
         id = 2;
         break;
+      case "butt_cas":
+        id="cas";
+        break;
+      case "butt_val":
+        id="val";
+        break;
+      case "butt_eng":
+        id="eng";
+        break;
       default:
         id = 0;
     }
@@ -106,7 +115,6 @@ function strip(text) {
   } else if (matching8){
     return {command: matching8[0], type: 8};
   } else if (matching9){
-    sails.log.debug("[DEV] - MATCHING9: : : :"+ matching9);
     return {command: matching9[0], type: 9};
   }
   else return false;
