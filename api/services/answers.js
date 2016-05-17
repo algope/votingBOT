@@ -15,6 +15,7 @@ var fs = require('fs');
 
 
 module.exports.selectLanguage = function (command, userId, callback_query_id){
+  sails.log.debug("[DEV] - answers.js selectLanguage commandID: "+command.commandId);
   switch (command.commandId){
     case "cas": //butt_cas
       telegram.sendMessage(userId, strings.tell('welcome', 'es', userName), "", true, null, keyboards.createKeyboard(1));
