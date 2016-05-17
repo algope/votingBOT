@@ -7,6 +7,8 @@
  *
  */
 
+var emoji = require('node-emoji');
+
 module.exports.getError = "Ups, eso no me lo esperaba...\u{1F633} \nRevisa lo que me acabas de enviar";
 module.exports.getBye = "Una pena \u{1F633}, me hubiera gustado seguir hablando contigo.\n" +
   "Si cambias de opinión, solo tienes que volver a escribir: /start";
@@ -94,5 +96,10 @@ module.exports.getVerifiedVote = function (vote) {
 
 module.exports.getAlreadyVotedWelcome = function(userName){
   return "Hola de nuevo " + userName + ", Ya tenemos tu voto registrado correctamente, puedes verificar tu voto mediante el comando /verificar";
+};
+
+
+module.exports.tell = function(id, locale, userName){
+  return emoji.emojify(sails.__({phrase: id, locale: locale}, userName));
 };
 

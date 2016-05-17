@@ -31,6 +31,10 @@ module.exports = {
       required: true,
       defaultsTo: false
     },
+    locale: {
+      type: 'string',
+      defaultsTo: 'es'
+    }
   }
 };
 

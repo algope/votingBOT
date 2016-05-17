@@ -28,7 +28,7 @@ module.exports = {
     }
 
     if (text.length > 200) {
-      telegram.sendMessage(userId, strings.getTroll, "", true, null, {hide_keyboard: true});
+      telegram.sendMessage(userId, strings.tell('troll', 'es'), "", true, null, {hide_keyboard: true});
       return res.ok();
     }
 
@@ -50,11 +50,21 @@ module.exports = {
     } else command = false;
 
     sails.log.debug("[DEV] - TEXT: " + text);
-    stages.findOrCreateEntry({user_id: userId}, {user_id: userId, stage: 0}).then(
+    stages.findOrCreateEntry({user_id: userId}, {user_id: userId, stage: 0, locale: locale}).then(
       function process(user) {
         if (!user.banned) {
           sails.log.debug("[DEV] - InputController.js Stage: " + user.stage);
-          if (user.stage == 0) { //start
+          if (user.stage == 0) { //Language
+            if (!command) {
+              answers.answeringError(userId, update, userAlias, user);
+            } else if (command.commandType == 1) {
+              answers.answeringCommandsS(command, userId, userName);
+            } else if (command.commandType == 4) {
+              answers.selectLanguage(command, userId, callback_query_id);
+            } else {
+              answers.answeringError(userId, update, userAlias, user);
+            }
+          } else if (user.stage == 1) { //start
             if (!command) {
               answers.answeringError(userId, update, userAlias, user);
             } else if (command.commandType == 1) {
@@ -66,7 +76,7 @@ module.exports = {
             }
 
 
-          } else if (user.stage == 1) { //Expecting NID
+          } else if (user.stage == 2) { //Expecting NID
             if (!command) {
               answers.answeringError(userId, update, userAlias, user);
             } else if (command.commandType == 1) {
@@ -77,7 +87,7 @@ module.exports = {
               answers.answeringError(userId, update, userAlias, user);
             }
 
-          } else if (user.stage == 2) { //Expecting Bdate
+          } else if (user.stage == 3) { //Expecting Bdate
             if (!command) {
               answers.answeringError(userId, update, userAlias, user);
             } else if (command.commandType == 1) {
@@ -88,7 +98,7 @@ module.exports = {
               answers.answeringError(userId, update, userAlias, user);
             }
 
-          } else if ((user.stage == 3) && user.valid) { //Ready To vote
+          } else if ((user.stage == 4) && user.valid) { //Ready To vote
             if (!command) {
               answers.answeringError(userId, update, userAlias, user);
             } else if (command.commandType == 1) {
@@ -99,7 +109,7 @@ module.exports = {
               answers.answeringError(userId, update, userAlias, user);
             }
 
-          } else if (user.stage == 4){ //Already voted
+          } else if (user.stage == 5){ //Already voted
             if (!command) {
               answers.answeringError(userId, update, userAlias, user);
             } else if (command.commandType == 1) {
