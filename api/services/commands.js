@@ -48,13 +48,13 @@ module.exports.processIt = function (text) {
         id = 2;
         break;
       case "butt_c":
-        id="cas";
+        id=3;
         break;
       case "butt_v":
-        id="val";
+        id=4;
         break;
       case "butt_e":
-        id="eng";
+        id=5;
         break;
       default:
         id = 0;
