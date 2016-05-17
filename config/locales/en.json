@@ -1,12 +1,16 @@
 {
+  "yes" : "SI",
+  "no" : "NO",
+  "language.ban":"Castellano",
   "selected" : "Has seleccionado Castellano. \nSi quieres cambiar el idioma, pulsa /idioma en cualquier momento :smile:",
   "hello" : "¡Hola!",
   "hello.again" : "Hola de nuevo",
-  "language" : "Tria idioma / Selecciona idioma / Choose language",
+  "language.sel" : "Tria idioma / Selecciona idioma / Choose language",
   "welcome": "¡Hola %s!, ¡encantado de conocerte! :smile: \nBienvenidx al sistema de votación.\nPara votar será necesario que nos digas tu DNI y fecha de Nacimiento y comprobemos que estás en el censo.\n¿Quieres seguir?",
   "error": "Ups, eso no me lo esperaba... :confused: \nRevisa lo que me acabas de enviar",
   "troll": "Uy, no tengo tiempo para leer tanto... :weary:",
   "goodbye": "Una pena :sob:, me hubiera gustado seguir hablando contigo.\nSi cambias de opinión, solo tienes que volver a escribir: /start",
+  "cancel" : "Comando cancelado",
 
   "register.start": "Iniciando registro...",
   "register.cancel": "Registro cancelado.",
@@ -20,7 +24,7 @@
   "register.banned": "Lo siento :flushed:, has agotado los intentos para registrarte. Por seguridad he bloqueado tu usuario.",
 
   "voting.error": "Vaya, parece que has querido votar más de :eight: opciones. \nRecuerda que como máximo puedes votar :eight: opciones.",
-  "voting.ready" : ", Ya tenemos todos tus datos verificados, ¿preparadx para votar? :grin:\n",
+  "voting.ready" : "¡Hola de nuevo %s, Ya tenemos todos tus datos verificados, ¿preparadx para votar? :grin:\n",
   "voting.noRegistered": "No vayas tan rápido, apenas nos conocemos... :bowtie: Antes de votar, registrarte deberás. ",
   "voting.success": "Tu voto ha sido guardado correctamente :thumbsup: \nEste es el código para verificar que tu voto es correcto:",
   "voting.verify": "Utiliza el comando /verificar para comprobarlo cuando quieras :sunglasses:",
@@ -30,5 +34,5 @@
 
   "verifying": "Vamos a verificar tu voto.\nEnvíame el código que te proporcioné cuando votaste:",
   "verifying.error" : "Parece que la contraseña para descifrar el voto no es correcta :flushed: \nVuelve a intentarlo o ponte en contacto con nosotros",
-  "verifying.sucess" : "Tu voto es correcto \u2705 \n Lo que votaste fue: %s"
+  "verifying.sucess" : "Tu voto es correcto :thumbsup: \n Lo que votaste fue: %s"
 }

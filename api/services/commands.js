@@ -12,7 +12,6 @@
 module.exports.processIt = function (text) {
   var id = 0;
   var result = strip(text);
-  sails.log.debug("[DEV] - STRIP RESULT: : "+result.type);
   if (result.type == 1) { //Main commands
     switch (result.command) {
       case "/start":
@@ -41,7 +40,6 @@ module.exports.processIt = function (text) {
     }
     return {commandType: 1, commandId: id};
   } else if (result.type == 4) { //buttons
-    sails.log.debug("[DEV] - commands.js result.command: "+result.command);
     switch (result.command) {
       case "butt_1":
         id = 1;
@@ -71,7 +69,6 @@ module.exports.processIt = function (text) {
   } else if (result.type == 8) {
     return {commandType: 8, vote: result.command};
   } else if (result.type == 9){
-    sails.log.debug("COMMANDTYPE: : : 9");
     return {commandType: 9, pass: result.command};
   }
   else return false;
