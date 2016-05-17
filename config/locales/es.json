@@ -1,4 +1,6 @@
 {
+  "yes" : "SI",
+  "no" : "NO",
   "selected" : "Has seleccionado Castellano. \nSi quieres cambiar el idioma, pulsa /idioma en cualquier momento :smile:",
   "hello" : "¡Hola!",
   "hello.again" : "Hola de nuevo",

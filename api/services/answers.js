@@ -18,15 +18,15 @@ module.exports.selectLanguage = function (command, userId, callback_query_id){
   sails.log.debug("[DEV] - answers.js selectLanguage commandID: "+command.commandId);
   switch (command.commandId){
     case "cas": //butt_cas
-      telegram.sendMessage(userId, strings.tell('welcome', 'es', userName), "", true, null, keyboards.createKeyboard(1));
       stages.updateStage({user_id: userId}, {stage: 1, locale: 'es'});
+      telegram.sendMessage(userId, strings.tell('welcome', 'es', userName), "", true, null, keyboards.createKeyboard(1, 'es'));
       break;
     case "val": //butt_val
-      telegram.sendMessage(userId, strings.tell('welcome', 'ca', userName), "", true, null, keyboards.createKeyboard(1));
+      telegram.sendMessage(userId, strings.tell('welcome', 'ca', userName), "", true, null, keyboards.createKeyboard(1, 'ca'));
       stages.updateStage({user_id: userId}, {stage: 1, locale: 'ca'});
       break;
     case "eng": //butt_eng
-      telegram.sendMessage(userId, strings.tell('welcome', 'en', userName), "", true, null, keyboards.createKeyboard(1));
+      telegram.sendMessage(userId, strings.tell('welcome', 'en', userName), "", true, null, keyboards.createKeyboard(1, 'en'));
       stages.updateStage({user_id: userId}, {stage: 1, locale: 'en'});
       break;
   }

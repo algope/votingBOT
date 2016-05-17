@@ -8,7 +8,7 @@
  */
 
 
-module.exports.createKeyboard = function (type) {
+module.exports.createKeyboard = function (type, locale) {
   //TODO: HARDCODED
   var keyboard = "";
   var buttons = null;
@@ -16,7 +16,7 @@ module.exports.createKeyboard = function (type) {
 
   switch (type) {
     case 1:
-      buttons = [[{text: "Si", callback_data: "butt_1"},{text: "No", callback_data: "butt_2"}]];
+      buttons = [[{text: strings.tell('yes',locale), callback_data: "butt_1"},{text: strings.tell('no',locale), callback_data: "butt_2"}]];
       keyboard = {inline_keyboard: buttons};
       break;
     case 2:

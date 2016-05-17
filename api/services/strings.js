@@ -100,6 +100,7 @@ module.exports.getAlreadyVotedWelcome = function(userName){
 
 
 module.exports.tell = function(id, locale, userName){
+  sails.log.debug("STRRRRIIIIINNNNGGG : : :" +emoji.emojify(sails.__({phrase: id, locale: locale}, userName)));
   return emoji.emojify(sails.__({phrase: id, locale: locale}, userName));
 };
 
