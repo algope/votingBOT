@@ -49,13 +49,13 @@ module.exports.processIt = function (text) {
       case "butt_2":
         id = 2;
         break;
-      case "butt_cas":
+      case "butt_c":
         id="cas";
         break;
-      case "butt_val":
+      case "butt_v":
         id="val";
         break;
-      case "butt_eng":
+      case "butt_e":
         id="eng";
         break;
       default:
