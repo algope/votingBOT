@@ -39,9 +39,6 @@ module.exports = {
         if (ko) {
           sails.log.error("[DB] - InputController.js Updates.create error: ", ko);
         }
-        if (ok) {
-          sails.log.debug("[DB] - InputController.js Updates.create ok");
-        }
       });
     }
 
