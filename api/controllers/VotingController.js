@@ -22,12 +22,12 @@ module.exports = {
         if(ok==undefined){
           return res.notFound("User not registered. Need to execute a census validation first");
         }else{
+          var pass = "PASS"+ generator.generate({length: 15, numbers: true});
+          var encryptedVote = cryptog.encrypt(vote, pass);
           Votes.create({vote: vote}).exec(function(ko, ok){
             if(ko){
               return res.serverError(ko);
             }else if(ok){
-              var pass = "PASS"+ generator.generate({length: 15, numbers: true});
-              var encryptedVote = cryptog.encrypt(command.vote, pass);
               Status.update({nid: dni}, {has_voted: true, encrypted_vote: encryptedVote}).exec(function(ko, ok){
                 if(ko){
                   return res.serverError(ko);
@@ -47,4 +47,3 @@ module.exports = {
   }
 
 };
-
