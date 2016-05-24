@@ -35,7 +35,7 @@ module.exports = {
               if(ko){
                 sails.log.error("[DB] - ERROR creating STATUS row : "+ko);
               }else if (ok){
-                if(ok.hasvoted){
+                if(ok.has_voted){
                   return res.ok({found:true, has_voted: true, name: name, surnames: surnames})
                 }else{
                   return res.ok({found: true, name: name, surnames: surnames});

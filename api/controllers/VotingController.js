@@ -71,7 +71,7 @@ module.exports = {
           if (matching) {
             return res.ok({verfied: true, vote: decryptedVote});
           } else {
-            return res.ok({verfied: false, reason: 'Wrong password'});
+            return res.notFound({verfied: false, reason: 'Wrong password'});
           }
         }
 
