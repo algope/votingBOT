@@ -20,10 +20,10 @@ module.exports = {
       Census.findOne({dni: dni, birth_date: dateToCheck}).exec(function(ko, ok){
         if(ko){
           sails.log.error("KO: : : "+JSON.stringify(ko));
-          return res.notFound(ko);
+          return res.notFound({found: false});
         }else{
           if(ok==undefined){
-            return res.notFound(ok);
+            return res.notFound({found: false});
           }else{
             return res.ok({found: true, name: ok.name});
           }
