@@ -11,8 +11,13 @@ module.exports = {
 	vote: function(req, res){
     var dni = req.param('dni');
     var vote = req.param('vote');
+    var regex = /^(\d+)(,\s*\d+)*/;
+    var matching = vote.match(regex);
     if(!dni || !vote){
       return res.badRequest('Expected params');
+    }
+    if(!matching){
+      return res.badRequest('Vote is invalid');
     }
     Status.findOne({nid: dni}).exec(function(ko, ok){
       if(ko){
