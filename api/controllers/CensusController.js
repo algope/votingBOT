@@ -12,7 +12,7 @@ module.exports = {
     var dni = req.param('dni');
     var bdate = req.param('bdate');
     if(!dni || !bdate){
-      return res.badRequest('Expected params');
+      return res.badRequest('Params expected.');
     }
     var date = moment(bdate, "DD-MM-YYYY");
     var day = date.date();
@@ -29,7 +29,14 @@ module.exports = {
           if(ok==undefined){
             return res.notFound({found: false});
           }else{
-            return res.ok({found: true, name: ok.name, surnames: ok.surnames});
+            Status.create({nid: dni, has_voted: false, user_type: 'Kiosk'}).exec(function(ko, ok){
+              if(ko){
+                sails.log.error("[DB] - ERROR creating STATUS row : "+ko);
+              }else if (ok){
+                return res.ok({found: true, name: ok.name, surnames: ok.surnames});
+              }
+            });
+
           }
         }
       });
