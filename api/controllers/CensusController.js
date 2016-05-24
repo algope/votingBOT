@@ -19,6 +19,7 @@ module.exports = {
     if(validateNID(dni)){
       Census.findOne({dni: dni, birth_date: dateToCheck}).then(function(ko, ok){
         if(ko){
+          sails.log.error("KO: : : "+ko);
           return res.notFound(ko);
         }else if(ok){
           return res.ok({found: true, name: ok.name});
