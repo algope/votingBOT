@@ -31,11 +31,15 @@ module.exports = {
           }else{
             var name=ok.name;
             var surnames=ok.surnames;
-            Status.findOrCreate({nid: dni, has_voted: false, user_type: 'Kiosk'}).exec(function(ko, ok){
+            Status.findOrCreate({nid: dni, user_type: 'Kiosk'}).exec(function(ko, ok){
               if(ko){
                 sails.log.error("[DB] - ERROR creating STATUS row : "+ko);
               }else if (ok){
-                return res.ok({found: true, name: name, surnames: surnames});
+                if(ok.hasvoted){
+                  return res.ok({found:true, has_voted: true, name: name, surnames: surnames})
+                }else{
+                  return res.ok({found: true, name: name, surnames: surnames});
+                }
               }
             });
 
