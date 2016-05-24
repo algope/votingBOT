@@ -46,4 +46,12 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
+  'POST /census*': {response: 'notFound'},
+  'PUT /census*': {response: 'notFound'},
+  'DELETE /census*': {response: 'notFound'},
+  'POST /voting*': {response: 'notFound'},
+  'PUT /voting*': {response: 'notFound'},
+  'DELETE /voting*': {response: 'notFound'}
+
+
 };
