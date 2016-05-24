@@ -5,10 +5,12 @@
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
 
+var generator = require('generate-password');
+
 module.exports = {
 	vote: function(req, res){
     var dni = req.param('dni');
-    var vote = req.param('vpote');
+    var vote = req.param('vote');
     if(!dni || !vote){
       return res.badRequest('Expected params');
     }
@@ -31,7 +33,6 @@ module.exports = {
                   return res.serverError(ko);
                 }else if(ok){
                   return res.ok({has_voted: true, password: pass});
-
                 }
               });
             }

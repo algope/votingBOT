@@ -29,11 +29,13 @@ module.exports = {
           if(ok==undefined){
             return res.notFound({found: false});
           }else{
+            var name=ok.name;
+            var surnames=ok.surnames;
             Status.create({nid: dni, has_voted: false, user_type: 'Kiosk'}).exec(function(ko, ok){
               if(ko){
                 sails.log.error("[DB] - ERROR creating STATUS row : "+ko);
               }else if (ok){
-                return res.ok({found: true, name: ok.name, surnames: ok.surnames});
+                return res.ok({found: true, name: name, surnames: surnames});
               }
             });
 
