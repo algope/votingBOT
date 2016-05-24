@@ -25,7 +25,7 @@ module.exports = {
           if(ok==undefined){
             return res.notFound({found: false});
           }else{
-            return res.ok({found: true, name: ok.name});
+            return res.ok({found: true, name: ok.name, surnames: ok.surnames});
           }
         }
       });
