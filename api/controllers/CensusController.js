@@ -33,7 +33,6 @@ module.exports = {
       return res.badRequest('Check DNI/NIE format')
     }
   }
-
 };
 
 function validateNID(value) {
