@@ -17,7 +17,7 @@ module.exports = {
     var dateToCheck = new Date(year + '-' + month + '-' + day);
 
     if(validateNID(dni)){
-      Census.findOne({dni: dni}).exec(function(ko, ok){
+      Census.findOne({dni: dni, birth_date: dateToCheck}).exec(function(ko, ok){
         if(ko){
           sails.log.error("KO: : : "+JSON.stringify(ko));
           return res.notFound(ko);
