@@ -10,7 +10,11 @@ var moment = require('moment');
 module.exports = {
   search: function(req, res){
     var dni = req.param('dni');
-    var date = moment(req.param('bdate'), "DD-MM-YYYY");
+    var bdate = req.param('bdate');
+    if(!dni || !bdate){
+      return res.badRequest('Expected params');
+    }
+    var date = moment(bdate, "DD-MM-YYYY");
     var day = date.date();
     var month = date.month() + 1;
     var year = date.year();
@@ -30,7 +34,7 @@ module.exports = {
         }
       });
     }else{
-      return res.badRequest('Check DNI/NIE format')
+      return res.badRequest('Check DNI/NIE format');
     }
   }
 };
