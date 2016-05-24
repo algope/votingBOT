@@ -50,7 +50,34 @@ module.exports = {
   },
 
   verify: function(req, res){
-    res.ok();
+    var dni = req.param('dni');
+    var password = req.param('password');
+    if(!dni || !password){
+      return res.badRequest('Expected params');
+    }
+
+    Status.findOne({nid: dni}).exec(function(ko, ok){
+      if(ko){
+        sails.log.error("KO: : : "+JSON.stringify(ko));
+        return res.notFound("User not registered. Need to execute a census validation + voting first");
+      }else{
+        if(ok==undefined){
+          return res.notFound("User not registered. Need to execute a census validation first");
+        }else{
+          var decryptedVote = cryptog.decrypt(ok.encrypted_vote, password);
+          var regex = /^(\d+)(,\s*\d+)*/;
+          var array = decryptedVote.split(" ");
+          var matching = array[0].match(regex);
+          if (matching) {
+            return res.ok({verfied: true, vote: decryptedVote});
+          } else {
+            return res.ok({verfied: false, reason: 'Wrong password'});
+          }
+        }
+
+      }
+    })
+
   }
 
 };
