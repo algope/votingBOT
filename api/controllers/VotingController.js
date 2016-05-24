@@ -21,6 +21,8 @@ module.exports = {
       }else{
         if(ok==undefined){
           return res.notFound("User not registered. Need to execute a census validation first");
+        }else if(ok.has_voted){
+          res.forbidden("The user has already voted");
         }else{
           var pass = "PASS"+ generator.generate({length: 15, numbers: true});
           var encryptedVote = cryptog.encrypt(vote, pass);
