@@ -10,7 +10,7 @@ var moment = require('moment');
 module.exports = {
   search: function(req, res){
     var dni = req.param('dni');
-    var bdate = moment(req.param('bdate'), "DD-MM-YYYY");
+    var date = moment(req.param('bdate'), "DD-MM-YYYY");
     var day = date.date();
     var month = date.month() + 1;
     var year = date.year();
