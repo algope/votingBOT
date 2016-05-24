@@ -17,21 +17,15 @@ module.exports = {
     var dateToCheck = new Date(year + '-' + month + '-' + day);
 
     if(validateNID(dni)){
-      Census.findOne({dni: dni}).then(function(ko, ok){
+      Census.findOne({dni: dni, birth_date: dateToCheck}).then(function(ko, ok){
         if(ko){
           return res.notFound(ko);
         }else if(ok){
-          Census.findOne({birth_date: dateToCheck}).then(function(ko, ok){
-            if(ko){
-              return res.notFound(ko);
-            }else if(ok){
-              return res.ok({found: true, name: ok.name});
-            }
-          })
+          return res.ok({found: true, name: ok.name});
         }
       });
     }else{
-      return res.badRequest('Check DNI/NIE or Birth Date format')
+      return res.badRequest('Check DNI/NIE format')
     }
   }
 
