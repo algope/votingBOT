@@ -347,26 +347,32 @@ module.exports.answeringVote = function (command, userId, locale) {
           //     }
           // });
 
-          telegram.sendMessage(userId, strings.tell('voting.success', locale), "", true, null, {hide_keyboard: true}).then(function(){
-              telegram.sendMessage(userId, pass).then(function(){
-                telegram.sendMessage(userId, strings.tell('voting.verify', locale));
-              })
-            });
+
 
           Users.update({id: userId}, {encrypted_vote: encryptedVote}).exec(function (ko, ok) {
             if (ko) {
               sails.log.error("[DB] - Answers.js - answeringVote ERROR: " + ko);
             } else if (ok) {
-              stages.updateStage({user_id: userId}, {has_voted: true, stage: 5});
+              Status.update({nid: ok.nid}, {has_voted: true, encrypted_vote: encryptedVote}).exec(function(ko, ok){
+                if(ko){
+                  sails.log.error("[DB] - Answers.js - answeringVote ERROR: " + ko);
+                } else if(ok){
+                  stages.updateStage({user_id: userId}, {has_voted: true, stage: 5});
+                  telegram.sendMessage(userId, strings.tell('voting.success', locale), "", true, null, {hide_keyboard: true}).then(function(){
+                    telegram.sendMessage(userId, pass).then(function(){
+                      telegram.sendMessage(userId, strings.tell('voting.verify', locale));
+                    })
+                  });
+                }
+              });
             }
           });
+
         }
       });
     }
 
   }
-
-
 
 };
 
