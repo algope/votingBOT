@@ -34,5 +34,7 @@
 
   "verifying": "Vamos a verificar tu voto.\nEnvíame el código que te proporcioné cuando votaste:",
   "verifying.error" : "Parece que la contraseña para descifrar el voto no es correcta :flushed: \nVuelve a intentarlo o ponte en contacto con nosotros",
-  "verifying.sucess" : "Tu voto es correcto :thumbsup: \n Lo que votaste fue: %s"
+  "verifying.sucess" : "Tu voto es correcto :thumbsup: \n Lo que votaste fue: %s",
+
+  "about.question" : "¿Sobre qué opción quieres saber más?"
 }

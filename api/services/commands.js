@@ -20,7 +20,7 @@ module.exports.processIt = function (text) {
       case "/ayuda":
         id = 2;
         break;
-      case "/sugerencias":
+      case "/saber_mas":
         id = 3;
         break;
       case "/votar" :

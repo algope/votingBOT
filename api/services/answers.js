@@ -264,8 +264,8 @@ module.exports.answeringCommandsS3 = function (command, userId, userName, locale
     case 2: //ayuda
       //TODO
       break;
-    case 3: //sugerencias
-      //TODO
+    case 3: //saber_mas
+      telegram.sendMessage(userId, strings.tell('about.question', locale, userName));
       break;
     case 4: //votar
       //TODO: TRANSLATION
