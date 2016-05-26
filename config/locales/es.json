@@ -5,7 +5,7 @@
   "selected" : "Has seleccionado Castellano. \nSi quieres cambiar el idioma, pulsa /idioma en cualquier momento :smile:",
   "hello" : "¡Hola!",
   "hello.again" : "Hola de nuevo",
-  "language.sel" : "Tria idioma / Selecciona idioma / Choose language",
+  "language.sel" : "Selecciona idioma:",
   "welcome": "¡Hola %s!, ¡encantado de conocerte! :smile: \nBienvenidx al sistema de votación.\nPara votar será necesario que nos digas tu DNI y fecha de Nacimiento y comprobemos que estás en el censo.\n¿Quieres seguir?",
   "error": "Ups, eso no me lo esperaba... :confused: \nRevisa lo que me acabas de enviar",
   "troll": "Uy, no tengo tiempo para leer tanto... :weary:",
