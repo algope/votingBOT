@@ -63,7 +63,7 @@ module.exports.answeringRegisterS1 = function (command, userId, callback_query_i
       });
       if (sails.config.census.check == 1){ //Census User Check Activated
         if (ok.retry_nid < 3) {
-          Census.findOne({nid: command.nid}).exec(function (ko, ok) {
+          Census.findOne({dni: command.nid}).exec(function (ko, ok) {
             if (ok) {
               stages.updateStage({user_id: userId}, {stage: 3});
               Users.update({id: userId}, {nid: command.nid}).exec(function (ko, ok) {
