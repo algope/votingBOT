@@ -27,11 +27,11 @@ module.exports.selectLanguage = function (command, userId, userName, callback_qu
       telegram.sendMessage(userId, strings.tell('welcome', 'ca', userName), "", true, null, keyboards.createKeyboard(1, 'ca'));
       stages.updateStage({user_id: userId}, {stage: 1, locale: 'ca'});
       break;
-    case 5: //butt_eng
-      telegram.answerCallbackQuery(callback_query_id, strings.tell('language.ban', 'en'), false);
-      telegram.sendMessage(userId, strings.tell('welcome', 'en', userName), "", true, null, keyboards.createKeyboard(1, 'en'));
-      stages.updateStage({user_id: userId}, {stage: 1, locale: 'en'});
-      break;
+    // case 5: //butt_eng
+    //   telegram.answerCallbackQuery(callback_query_id, strings.tell('language.ban', 'en'), false);
+    //   telegram.sendMessage(userId, strings.tell('welcome', 'en', userName), "", true, null, keyboards.createKeyboard(1, 'en'));
+    //   stages.updateStage({user_id: userId}, {stage: 1, locale: 'en'});
+    //   break;
   }
 
 };

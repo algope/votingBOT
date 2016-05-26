@@ -53,9 +53,6 @@ module.exports.processIt = function (text) {
       case "butt_v":
         id=4;
         break;
-      case "butt_e":
-        id=5;
-        break;
       default:
         id = 0;
     }

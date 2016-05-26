@@ -24,7 +24,7 @@ module.exports.createKeyboard = function (type, locale) {
       keyboard = {keyboard: buttons, resize_keyboard: true, one_time_keyboard: true, selective: true};
       break;
     case 3:
-      buttons = [[{text: "VAL", callback_data: "butt_v"},{text: "CAS", callback_data: "butt_c"},{text: "ENG", callback_data: "butt_e"}]];
+      buttons = [[{text: "VAL", callback_data: "butt_v"},{text: "CAS", callback_data: "butt_c"}]];
       keyboard = {inline_keyboard: buttons};
       break;
 
