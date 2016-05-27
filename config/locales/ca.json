@@ -11,6 +11,7 @@
   "troll": "Uy, no tengo tiempo para leer tanto... :weary:",
   "goodbye": "Una pena :sob:, me hubiera gustado seguir hablando contigo.\nSi cambias de opinión, solo tienes que volver a escribir: /start",
   "cancel" : "Comando cancelado",
+  "about" : "Asistente de votación OCCVotingBOT\n\nDesarrollado por: Hub Cívico\nhttp://hubcivico.org",
 
   "register.start": "Iniciando registro...",
   "register.cancel": "Registro cancelado.",
@@ -36,5 +37,6 @@
   "verifying.error" : "Parece que la contraseña para descifrar el voto no es correcta :flushed: \nVuelve a intentarlo o ponte en contacto con nosotros",
   "verifying.sucess" : "Tu voto es correcto :thumbsup: \n Lo que votaste fue: %s",
 
-  "about.question" : "¿Sobre qué opción quieres saber más?"
+  "about.question" : "¿Sobre qué opción quieres saber más?",
+  "about.noRegistered": "No vayas tan rápido, apenas nos conocemos... :bowtie: Antes de saber más, registrarte deberás. "
 }

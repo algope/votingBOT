@@ -14,8 +14,8 @@ var fs = require('fs');
 // var streamBuffers = require('stream-buffers');
 
 
-module.exports.selectLanguage = function (command, userId, userName, callback_query_id){
-  switch (command.commandId){
+module.exports.selectLanguage = function (command, userId, userName, callback_query_id) {
+  switch (command.commandId) {
     case 3: //butt_cas
       telegram.answerCallbackQuery(callback_query_id, strings.tell('language.ban', 'es'), false);
       stages.updateStage({user_id: userId}, {stage: 1, locale: 'es'});
@@ -36,7 +36,7 @@ module.exports.selectLanguage = function (command, userId, userName, callback_qu
 
 };
 
-module.exports.answeringRegisterS0 = function (command, userId, callback_query_id, locale) {
+module.exports.answeringRegisterS1 = function (command, userId, callback_query_id, locale) {
   switch (command.commandId) {
     case 1: //butt_1 : SI
       telegram.sendMessage(userId, strings.tell('register.nid', locale), "", true, null, {hide_keyboard: true});
@@ -52,7 +52,7 @@ module.exports.answeringRegisterS0 = function (command, userId, callback_query_i
 
 };
 
-module.exports.answeringRegisterS1 = function (command, userId, callback_query_id, locale) {
+module.exports.answeringRegisterS2 = function (command, userId, callback_query_id, locale) {
   telegram.sendMessage(userId, strings.tell('register.check', locale), "", true, null, {hide_keyboard: true});
   Users.findOne({id: userId}).exec(function (ko, ok) {
     if (ok) {
@@ -61,7 +61,7 @@ module.exports.answeringRegisterS1 = function (command, userId, callback_query_i
           sails.log.error("[DB] - Answers.js NID UPDATE ERROR: " + ko);
         }
       });
-      if (sails.config.census.check == 1){ //Census User Check Activated
+      if (sails.config.census.check == 1) { //Census User Check Activated
         if (ok.retry_nid < 3) {
           Census.findOne({dni: command.nid}).exec(function (ko, ok) {
             if (ok) {
@@ -91,7 +91,7 @@ module.exports.answeringRegisterS1 = function (command, userId, callback_query_i
           stages.bannUser({user_id: userId}, {banned: true});
         }
 
-      } else{
+      } else {
         stages.updateStage({user_id: userId}, {stage: 3});
         Users.update({id: userId}, {nid: command.nid}).exec(function (ko, ok) {
           if (ko) {
@@ -108,7 +108,7 @@ module.exports.answeringRegisterS1 = function (command, userId, callback_query_i
   });
 };
 
-module.exports.answeringRegisterS2 = function (command, userId, callback_query_id, locale) {
+module.exports.answeringRegisterS3 = function (command, userId, callback_query_id, locale) {
   telegram.sendMessage(userId, strings.tell('register.check', locale), "", true, null, {hide_keyboard: true});
   Users.findOne({id: userId}).exec(function (ko, ok) {
     if (ok) {
@@ -117,7 +117,7 @@ module.exports.answeringRegisterS2 = function (command, userId, callback_query_i
       var month = date.month() + 1;
       var year = date.year();
       var dateToCheck = new Date(year + '-' + month + '-' + day);
-      if (sails.config.census.check == 1){
+      if (sails.config.census.check == 1) {
         if (ok.retry_birth_date < 3) {
           Census.findOne({birth_date: dateToCheck}).exec(function (ko, ok) {
             if (ok) {
@@ -147,7 +147,7 @@ module.exports.answeringRegisterS2 = function (command, userId, callback_query_i
           stages.bannUser({user_id: userId}, {banned: true});
         }
 
-      } else{
+      } else {
         Users.update({id: userId}, {birth_date: dateToCheck}).exec(function (ko, ok) {
           if (ok) {
             sails.log.debug("[DB] - Answers.js DBIRTH INSERTED");
@@ -165,43 +165,15 @@ module.exports.answeringRegisterS2 = function (command, userId, callback_query_i
   });
 
 
-
 };
 
 
-module.exports.answeringCommandsS = function (command, userId, userName) {
+module.exports.answeringCommandsS0 = function (command, userId, userName) {
   switch (command.commandId) {
     case 1: //start
       telegram.sendMessage(userId, strings.tell('language.sel', 'es', userName), "", true, null, keyboards.createKeyboard(3));
       break;
   }
-};
-
-module.exports.answeringCommandsS0 = function (command, userId, userName, locale) {
-  switch (command.commandId) {
-    case 1: //start
-      telegram.sendMessage(userId, strings.tell('welcome', locale, userName), "", true, null, keyboards.createKeyboard(1));
-      break;
-    case 2: //ayuda
-      //TODO
-      break;
-    case 3: //sugerencias
-      break;
-    case 4: //votar
-      telegram.sendMessage(userId, strings.tell('voting.noRegistered', locale));
-      telegram.sendMessage(userId, strings.tell('register.question', locale), "", true, null, keyboards.createKeyboard(1));
-      break;
-    case 5: //acerca_de
-      //TODO
-      break;
-    case 6: //cancelar
-      telegram.sendMessage(userId, strings.tell('cancel', locale), "", true, null, {hide_keyboard: true});
-      stages.updateStage({user_id: userId}, {stage: 1});
-      break;
-    case 7: //idioma
-      //TODO
-  }
-
 };
 
 module.exports.answeringCommandsS1 = function (command, userId, userName, locale) {
@@ -212,18 +184,25 @@ module.exports.answeringCommandsS1 = function (command, userId, userName, locale
     case 2: //ayuda
       //TODO
       break;
-    case 3: //sugerencias
-      //TODO
+    case 3: //acerca_de
+      telegram.sendMessage(userId, strings.tell('about', locale));
       break;
     case 4: //votar
-      telegram.sendMessage(userId, strings.tell('voting.noRegistered', locale));
+      telegram.sendMessage(userId, strings.tell('voting.noRegistered', locale)).then(function(){
+        telegram.sendMessage(userId, strings.tell('register.question', locale), "", true, null, keyboards.createKeyboard(1));
+      });
       break;
-    case 5: //acerca_de
-      //TODO
+    case 5: //saber_mas
+      telegram.sendMessage(userId, strings.tell('about.noRegistered', locale)).then(function(){
+        telegram.sendMessage(userId, strings.tell('register.question', locale), "", true, null, keyboards.createKeyboard(1));
+      });
       break;
     case 6: //cancelar
       telegram.sendMessage(userId, strings.tell('cancel', locale), "", true, null, {hide_keyboard: true});
-      stages.updateStage({user_id: userId}, {stage: 1});
+      //tages.updateStage({user_id: userId}, {stage: 1});
+      break;
+    case 7: //verificar
+      telegram.sendMessage(userId, strings.tell('verifying.notRegistered', locale));
       break;
   }
 
@@ -237,21 +216,22 @@ module.exports.answeringCommandsS2 = function (command, userId, userName, locale
     case 2: //ayuda
       //TODO
       break;
-    case 3: //sugerencias
+    case 3: //acerca_de
+      telegram.sendMessage(userId, strings.tell('about', locale));
       break;
     case 4: //votar
       telegram.sendMessage(userId, strings.tell('voting.noRegistered', locale));
-      telegram.sendMessage(userId, strings.tell('register.question', locale), "", true, null, keyboards.createKeyboard(1));
       break;
-    case 5: //acerca_de
-      //TODO
+    case 5: //saber_mas
+      telegram.sendMessage(userId, strings.tell('about.noRegistered', locale));
       break;
     case 6: //cancelar
       telegram.sendMessage(userId, strings.tell('cancel', locale), "", true, null, {hide_keyboard: true});
-      stages.updateStage({user_id: userId}, {stage: 1});
+      //stages.updateStage({user_id: userId}, {stage: 1});
       break;
-    case 7: //idioma
-    //TODO
+    case 7: //verificar
+      telegram.sendMessage(userId, strings.tell('verifying.notRegistered', locale));
+      break;
   }
 
 };
@@ -259,32 +239,63 @@ module.exports.answeringCommandsS2 = function (command, userId, userName, locale
 module.exports.answeringCommandsS3 = function (command, userId, userName, locale) {
   switch (command.commandId) {
     case 1: //start
+      telegram.sendMessage(userId, strings.tell('welcome', locale, userName), "", true, null, keyboards.createKeyboard(1));
+      break;
+    case 2: //ayuda
+      //TODO
+      break;
+    case 3: //acerca_de
+      telegram.sendMessage(userId, strings.tell('about', locale));
+      break;
+    case 4: //votar
+      telegram.sendMessage(userId, strings.tell('voting.noRegistered', locale));
+      break;
+    case 5: //saber_mas
+      telegram.sendMessage(userId, strings.tell('about.noRegistered', locale));
+      break;
+    case 6: //cancelar
+      telegram.sendMessage(userId, strings.tell('cancel', locale), "", true, null, {hide_keyboard: true});
+      //stages.updateStage({user_id: userId}, {stage: 1});
+      break;
+    case 7: //verificar
+      telegram.sendMessage(userId, strings.tell('verifying.notRegistered', locale));
+      break;
+  }
+
+};
+
+module.exports.answeringCommandsS4 = function (command, userId, userName, locale) {
+  switch (command.commandId) {
+    case 1: //start
       telegram.sendMessage(userId, strings.tell('voting.ready', locale, userName));
       break;
     case 2: //ayuda
       //TODO
       break;
-    case 3: //saber_mas
-      telegram.sendMessage(userId, strings.tell('about.question', locale, userName));
+    case 3: //acerca_de
+      telegram.sendMessage(userId, strings.tell('about', locale));
       break;
     case 4: //votar
       //TODO: TRANSLATION
       strings.getVoteOptions().then(function (response) {
         telegram.sendMessage(userId, response);
       });
-
       break;
-    case 5: //acerca_de
-      //TODO
+    case 5: //saber_mas
+      telegram.sendMessage(userId, strings.tell('about.question', locale));
+      stages.updateStage({user_id: userId}, {stage: 10});
       break;
     case 6: //cancelar
       telegram.sendMessage(userId, strings.tell('cancel', locale), "", true, null, {hide_keyboard: true});
-      stages.updateStage({user_id: userId}, {stage: 1});
+      //stages.updateStage({user_id: userId}, {stage: 1});
+      break;
+    case 7: //verificar
+      telegram.sendMessage(userId, strings.tell('verifying.notRegistered', locale));
       break;
   }
 };
 
-module.exports.answeringCommandsS4 = function (command, userId, userName, locale) {
+module.exports.answeringCommandsS5 = function (command, userId, userName, locale) {
   switch (command.commandId) {
     case 1: //start
       telegram.sendMessage(userId, strings.tell('voting.alreadyVote', locale));
@@ -292,18 +303,47 @@ module.exports.answeringCommandsS4 = function (command, userId, userName, locale
     case 2: //ayuda
       //TODO
       break;
-    case 3: //sugerencias
+    case 3: //acerca_de
+      telegram.sendMessage(userId, strings.tell('about', locale));
+      break;
+    case 4: //votar
+      telegram.sendMessage(userId, strings.tell('voting.alreadyVote', locale));
+      break;
+    case 5: //saber_mas
+      telegram.sendMessage(userId, strings.tell('about.question', locale));
+      stages.updateStage({user_id: userId}, {stage: 10});
+      break;
+    case 6: //cancelar
+      telegram.sendMessage(userId, strings.tell('cancel', locale), "", true, null, {hide_keyboard: true});
+      //stages.updateStage({user_id: userId}, {stage: 1});
+      break;
+    case 7: //verificar
+      telegram.sendMessage(userId, strings.tell('verifying', locale), "", true, null, {hide_keyboard: true});
+      break;
+  }
+};
+
+module.exports.answeringCommandsS10 = function (command, userId, userName, locale) {
+  switch (command.commandId) {
+    case 1: //start
+      telegram.sendMessage(userId, strings.tell('voting.alreadyVote', locale));
+      break;
+    case 2: //ayuda
       //TODO
+      break;
+    case 3: //acerca_de
+      telegram.sendMessage(userId, strings.tell('about', locale));
       break;
     case 4: //votar
       telegram.sendMessage(userId, strings.tell('voting.alreadyVote', locale));
       break;
     case 5: //acerca_de
-      //TODO
+      telegram.sendMessage(userId, strings.tell('about.question', locale));
+      stages.updateStage({user_id: userId}, {stage: 10});
       break;
     case 6: //cancelar
       telegram.sendMessage(userId, strings.tell('cancel', locale), "", true, null, {hide_keyboard: true});
-      stages.updateStage({user_id: userId}, {stage: 1});
+      //stages.updateStage({user_id: userId}, {stage: 1});
       break;
     case 7: //verificar
       telegram.sendMessage(userId, strings.tell('verifying', locale), "", true, null, {hide_keyboard: true});
@@ -317,18 +357,18 @@ module.exports.answeringVote = function (command, userId, locale) {
   var cleanedVote = vote.replace(/[, ]+/g, " ").trim();
   var splitOptions = cleanedVote.split(" ");
   var flag = 0;
-  if(splitOptions.length>3){ //TODO: HARDCODED
+  if (splitOptions.length > 3) { //TODO: HARDCODED
     telegram.sendMessage(userId, strings.tell('voting.error', locale));
-  } else if(splitOptions.length<=3){
-    for(var i=0; i<splitOptions.length; i++){
-      if(parseInt(splitOptions[i])>9){
+  } else if (splitOptions.length <= 3) {
+    for (var i = 0; i < splitOptions.length; i++) {
+      if (parseInt(splitOptions[i]) > 9) {
         flag++;
       }
     }
-    if(flag>0){
+    if (flag > 0) {
       telegram.sendMessage(userId, strings.tell('voting.incorrect', locale, flag));
-    }else{
-      var pass = "PASS"+ generator.generate({length: 15, numbers: true});
+    } else {
+      var pass = "PASS" + generator.generate({length: 15, numbers: true});
       var encryptedVote = cryptog.encrypt(command.vote, pass);
       Votes.create({vote: command.vote}).exec(function (ko, ok) {
         if (ko) {
@@ -348,18 +388,17 @@ module.exports.answeringVote = function (command, userId, locale) {
           // });
 
 
-
           Users.update({id: userId}, {encrypted_vote: encryptedVote}).exec(function (ko, ok) {
             if (ko) {
               sails.log.error("[DB] - Answers.js - answeringVote ERROR: " + ko);
             } else if (ok) {
-              Status.update({nid: ok.nid}, {has_voted: true, encrypted_vote: encryptedVote}).exec(function(ko, ok){
-                if(ko){
+              Status.update({nid: ok.nid}, {has_voted: true, encrypted_vote: encryptedVote}).exec(function (ko, ok) {
+                if (ko) {
                   sails.log.error("[DB] - Answers.js - answeringVote ERROR: " + ko);
-                } else if(ok){
+                } else if (ok) {
                   stages.updateStage({user_id: userId}, {has_voted: true, stage: 5});
-                  telegram.sendMessage(userId, strings.tell('voting.success', locale), "", true, null, {hide_keyboard: true}).then(function(){
-                    telegram.sendMessage(userId, pass).then(function(){
+                  telegram.sendMessage(userId, strings.tell('voting.success', locale), "", true, null, {hide_keyboard: true}).then(function () {
+                    telegram.sendMessage(userId, pass).then(function () {
                       telegram.sendMessage(userId, strings.tell('voting.verify', locale));
                     })
                   });
@@ -378,11 +417,11 @@ module.exports.answeringVote = function (command, userId, locale) {
 
 module.exports.answerVerify = function (command, userId, locale) {
   var pass = command.pass;
-  Users.findOne({id: userId}).exec(function (ko, ok){
-    if(ko){
-      sails.log.error("[DB] - Anwers.js answerVerify ERROR: "+ko);
+  Users.findOne({id: userId}).exec(function (ko, ok) {
+    if (ko) {
+      sails.log.error("[DB] - Anwers.js answerVerify ERROR: " + ko);
     }
-    if(ok){
+    if (ok) {
       var decryptedVote = cryptog.decrypt(ok.encrypted_vote, pass);
       var regex = /^(\d+)(,\s*\d+)*/;
       var array = decryptedVote.split(" ");
@@ -399,8 +438,33 @@ module.exports.answerVerify = function (command, userId, locale) {
 
 };
 
+
+module.exports.answeringGetInfo = function (command, userId, locale) {
+  var vote = command.vote;
+  var cleanedVote = vote.replace(/[, ]+/g, " ").trim();
+  var splitOptions = cleanedVote.split(" ");
+  var option = splitOptions[0];
+
+  Options.findOne({id: option}).exec(function (ko, ok) {
+    if (ko) {
+      sails.log.error("[DB] - Answers.js ERROR options get info");
+    } else if (ok) {
+      if (locale == 'es') {
+        telegram.sendMessage(userId, ok.description_es);
+
+      } else if (locale == 'ca') {
+        telegram.sendMessage(userId, ok.description_ca);
+      }
+    }
+  })
+
+};
+
+
 module.exports.answeringError = function (userId, locale) {
   telegram.sendMessage(userId, strings.tell('error', locale));
 };
+
+
 
 

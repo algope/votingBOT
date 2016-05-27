@@ -20,13 +20,13 @@ module.exports.processIt = function (text) {
       case "/ayuda":
         id = 2;
         break;
-      case "/saber_mas":
+      case "/acerca_de":
         id = 3;
         break;
       case "/votar" :
         id = 4;
         break;
-      case "/acerca_de":
+      case "/saber_mas":
         id = 5;
         break;
       case "/cancelar":

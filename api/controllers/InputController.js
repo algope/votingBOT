@@ -56,7 +56,7 @@ module.exports = {
             if (!command) {
               answers.answeringError(userId, locale);
             } else if (command.commandType == 1) {
-              answers.answeringCommandsS(command, userId, userName);
+              answers.answeringCommandsS0(command, userId, userName);
             } else if (command.commandType == 4) {
               answers.selectLanguage(command, userId, userName, callback_query_id);
             } else {
@@ -66,9 +66,9 @@ module.exports = {
             if (!command) {
               aanswers.answeringError(userId, locale);
             } else if (command.commandType == 1) {
-              answers.answeringCommandsS0(command, userId, userName, locale);
+              answers.answeringCommandsS1(command, userId, userName, locale);
             } else if (command.commandType == 4) {
-              answers.answeringRegisterS0(command, userId, callback_query_id, locale);
+              answers.answeringRegisterS1(command, userId, callback_query_id, locale);
             } else {
               answers.answeringError(userId, locale);
             }
@@ -78,9 +78,9 @@ module.exports = {
             if (!command) {
               answers.answeringError(userId, locale);
             } else if (command.commandType == 1) {
-              answers.answeringCommandsS1(command, userId, userName, locale);
+              answers.answeringCommandsS2(command, userId, userName, locale);
             } else if (command.commandType == 5 || command.commandType == 6) {
-              answers.answeringRegisterS1(command, userId, callback_query_id, locale);
+              answers.answeringRegisterS2(command, userId, callback_query_id, locale);
             } else {
               answers.answeringError(userId, locale);
             }
@@ -89,9 +89,9 @@ module.exports = {
             if (!command) {
               answers.answeringError(userId, locale);
             } else if (command.commandType == 1) {
-              answers.answeringCommandsS2(command, userId, userName, locale);
+              answers.answeringCommandsS3(command, userId, userName, locale);
             } else if (command.commandType == 7) {
-              answers.answeringRegisterS2(command, userId, callback_query_id, locale);
+              answers.answeringRegisterS3(command, userId, callback_query_id, locale);
             } else {
               answers.answeringError(userId, locale);
             }
@@ -100,7 +100,7 @@ module.exports = {
             if (!command) {
               answers.answeringError(userId, locale);
             } else if (command.commandType == 1) {
-              answers.answeringCommandsS3(command, userId, userName, locale);
+              answers.answeringCommandsS4(command, userId, userName, locale);
             } else if (command.commandType == 8) {
               answers.answeringVote(command, userId, locale);
             } else {
@@ -111,9 +111,19 @@ module.exports = {
             if (!command) {
               answers.answeringError(userId, locale);
             } else if (command.commandType == 1) {
-              answers.answeringCommandsS4(command, userId, userName, locale);
+              answers.answeringCommandsS5(command, userId, userName, locale);
             } else if (command.commandType == 9) {
               answers.answerVerify(command, userId, locale);
+            } else {
+              answers.answeringError(userId, locale);
+            }
+          } else if (user.stage == 10){ //get_info
+            if (!command) {
+              answers.answeringError(userId, locale);
+            } else if (command.commandType == 1) {
+              answers.answeringCommandsS10(command, userId, userName, locale);
+            } else if (command.commandType == 8) {
+              answers.answeringGetInfo(command, userId, locale);
             } else {
               answers.answeringError(userId, locale);
             }

@@ -6,13 +6,16 @@
  */
 
 module.exports = {
-  migrate: 'safe',
+  migrate: 'drop',
   attributes: {
     text:{
       type: 'string'
     },
-    description:{
+    description_es:{
       type:'string'
+    },
+    description_ca:{
+      type: 'string'
     }
   }
 };
