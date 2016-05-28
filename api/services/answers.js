@@ -63,6 +63,7 @@ module.exports.answeringRegisterS2 = function (command, userId, callback_query_i
       });
       if (sails.config.census.check == 1) { //Census User Check Activated
         if (ok.retry_nid < 3) {
+          var retry = 3-ok.retry_nid;
           Census.findOne({dni: command.nid}).exec(function (ko, ok) {
             if (ok) {
               stages.updateStage({user_id: userId}, {stage: 3});
@@ -73,7 +74,7 @@ module.exports.answeringRegisterS2 = function (command, userId, callback_query_i
               });
               telegram.sendMessage(userId, strings.tell('register.bdate', locale), "", true, null, {hide_keyboard: true})
             } else if (!ok) {
-              telegram.sendMessage(userId, strings.tell('register.error.nid', locale), "", true, null, {hide_keyboard: true});
+              telegram.sendMessage(userId, strings.tell('register.error.nid', locale, retry), "", true, null, {hide_keyboard: true});
               Users.findOne({id: userId}).exec(function (ko, ok) {
                 if (ok) {
                   ok.retry_nid++;
@@ -119,6 +120,7 @@ module.exports.answeringRegisterS3 = function (command, userId, callback_query_i
       var dateToCheck = new Date(year + '-' + month + '-' + day);
       if (sails.config.census.check == 1) {
         if (ok.retry_birth_date < 3) {
+          var retry = 3 - ok.retry_birth_date;
           Census.findOne({birth_date: dateToCheck}).exec(function (ko, ok) {
             if (ok) {
               Users.update({id: userId}, {birth_date: dateToCheck}).exec(function (ko, ok) {
@@ -129,7 +131,7 @@ module.exports.answeringRegisterS3 = function (command, userId, callback_query_i
               stages.updateStage({user_id: userId}, {stage: 4, valid: true}); //We validate the user in order to vote.
               telegram.sendMessage(userId, strings.tell('register.complete', locale), "", true, null, {hide_keyboard: true})
             } else if (!ok) {
-              telegram.sendMessage(userId, strings.tell('register.error.bdate', locale), "", true, null, {hide_keyboard: true});
+              telegram.sendMessage(userId, strings.tell('register.error.bdate', locale, retry), "", true, null, {hide_keyboard: true});
               Users.findOne({id: userId}).exec(function (ko, ok) {
                 if (ok) {
                   ok.retry_birth_date++;
