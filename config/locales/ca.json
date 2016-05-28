@@ -18,7 +18,7 @@
   "register.question": "Vols registrar-te? Recorda tenir a mà el teu número de DNI o NIE i la teva Data de Naixement",
   "register.nid": "Meravellós, ara introdueix el teu DNI o NIE. Recorda introduir-ho amb lletra...",
   "register.bdate": "Perfecte, indicam ara la teva Data de Naixement amb el següent format: DD/MM/AAAA",
-  "register.complete": "Registre complet :thumbsup:, Pe a començar a votar selecciona el comandament /votar",
+  "register.complete": "Registre complet :thumbsup:, Per a començar a votar selecciona el comandament /votar",
   "register.check": "Comprovant cens... :hourglass_flowing_sand:",
   "register.error.nid": "Ups :flushed:, em pareix que hi ha hagut un error. És possible que no hi apareixes en el Cens de votants.\nTorna a introduir el teu DNI per si t'hagueres equivocat.\nTens %s intents.",
   "register.error.bdate": "Ups :flushed:, em pareix que hi ha hagut un error. És posible que no hi apareixes en el Cens de votants \nTorna a introduir la teva Data de Naixement per si t'hagueres equivocat.\nTens %s intents.",
@@ -38,5 +38,9 @@
   "verifying.sucess" : "El teu vot és correcte :thumbsup: \nEl que vares votar és: %s",
 
   "about.question" : "¿Sobre quina opció vols saber-ne més?",
-  "about.noRegistered": "No siguis tan ràpid, encara no ens coneguem... :bowtie: Abans de saber-ne més, registrar-te deuràs."
+  "about.noRegistered": "No siguis tan ràpid, encara no ens coneguem... :bowtie: Abans de saber-ne més, registrar-te deuràs.",
+
+  "options.intro" : "Opcions disponibles:\n\n",
+  "options.footer" : "\nSelecciona fins a :eight: opcions.\nEnvia el teu vot mitjançant els números de ses opcions separades per comes.\nExemple: 1, 3, 5 \nNota: Els espais en blanc entre els números són opcionals."
+
 }

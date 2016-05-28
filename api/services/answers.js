@@ -279,7 +279,7 @@ module.exports.answeringCommandsS4 = function (command, userId, userName, locale
       break;
     case 4: //votar
       //TODO: TRANSLATION
-      strings.getVoteOptions().then(function (response) {
+      strings.getVoteOptions(locale).then(function (response) {
         telegram.sendMessage(userId, response);
       });
       break;

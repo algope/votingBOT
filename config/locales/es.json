@@ -39,5 +39,8 @@
   "verifying.notRegistered" : "Es un poco pronto para que empecemos a verificar cosas :bowtie:, sigue los pasos que te he ido indicando :smile:",
 
   "about.question" : "¿Sobre qué opción quieres saber más?",
-  "about.noRegistered": "No vayas tan rápido, apenas nos conocemos... :bowtie: Antes de saber más, registrarte deberás. "
+  "about.noRegistered": "No vayas tan rápido, apenas nos conocemos... :bowtie: Antes de saber más, registrarte deberás. ",
+
+  "options.intro" : "Opciones disponibles:\n\n",
+  "options.footer" : "\nSelecciona hasta :eight: opciones.\nEnvía tu voto utilizando los números de las opciones separados por comas.\nEjemplo: 1, 3, 5 \nNota: Los espacios en blanco entre los números son opcionales."
 }
