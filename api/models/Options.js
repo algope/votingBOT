@@ -10,6 +10,12 @@ module.exports = {
   attributes: {
     text:{
       type: 'string'
+    },
+    description_es:{
+      type:'string'
+    },
+    description_ca:{
+      type: 'string'
     }
   }
 };

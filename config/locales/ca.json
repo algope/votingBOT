@@ -1,0 +1,46 @@
+{
+  "yes" : "SI",
+  "no" : "NO",
+  "language.ban":"Valencià",
+  "selected" : "Has triat valencià.",
+  "hello" : "Hola!",
+  "hello.again" : "Hola de nou",
+  "language.sel" : "Selecciona idioma:",
+  "welcome": "Hola %s!, un plaer conèixer-te! :smile: \nBenvingut/da al sistema de votació.\nPer a votar sirà necessari que em diguis el teu DNI i Data de Naixement i comprovaré que hi apareixes en el cens.\nVols continuar?",
+  "error": "Ups, açò no m'ho esperava... :confused: \nRevisa el que m'acabes d'enviar",
+  "troll": "Uy, no tinc temps per a llegir tant... :weary:",
+  "goodbye": "Una llastima :sob:, m'haguera agradat seguir parlant amb tu.\nSi canvies d'opinió, només has de tornar a escriure: /start",
+  "cancel" : "Comandament cancel·lat",
+  "about" : "Assistent de votació OCCVotingBOT\n\nDesenvolupat per: Hub Cívico\nhttp://hubcivico.org",
+
+  "register.start": "Iniciant registre...",
+  "register.cancel": "Registre cancel·lat.",
+  "register.question": "Vols registrar-te? Recorda tenir a mà el teu número de DNI o NIE i la teva Data de Naixement",
+  "register.nid": "Meravellós, ara introdueix el teu DNI o NIE. Recorda introduir-ho amb lletra...",
+  "register.bdate": "Perfecte, indicam ara la teva Data de Naixement amb el següent format: DD/MM/AAAA",
+  "register.complete": "Registre complet :thumbsup:, Per a començar a votar selecciona el comandament /votar",
+  "register.check": "Comprovant cens... :hourglass_flowing_sand:",
+  "register.error.nid": "Ups :flushed:, em pareix que hi ha hagut un error. És possible que no hi apareixes en el Cens de votants.\nTorna a introduir el teu DNI per si t'hagueres equivocat.\nTens %s intents.",
+  "register.error.bdate": "Ups :flushed:, em pareix que hi ha hagut un error. És posible que no hi apareixes en el Cens de votants \nTorna a introduir la teva Data de Naixement per si t'hagueres equivocat.\nTens %s intents.",
+  "register.banned": "Lo lament :flushed:, has esgotat els intents per a registrar-te. Per seguretat he bloquejat el teu usuari",
+
+  "voting.error": "Vaja, pareix que has volgut votar més de :eight: opcions. \nRecorda que com màxim pots votar :eight: opcions.",
+  "voting.ready" : "Hola de nou %s, Ja tenim totes les teves dades verificades, preparat/ada per a votar? :grin:\n",
+  "voting.noRegistered": "No siguis tan ràpid, encara no ens coneguem... :bowtie: Abans de votar, registrar-te deuràs.",
+  "voting.success": "El teu vot ha estat guardat correctament :thumbsup: \nAquest és el codi per a verificar que el teu vot és correcte:",
+  "voting.verify": "Utilitza el comandament /verificar per a comprovar-ho quan vulguis :sunglasses:",
+  "voting.alreadyVote" : "Ups, pareix que ja has votat :flushed:, pots verificar el teu vot mitjançant el comandament /verificar",
+  "voting.voteEnd" : "Hola de nou %s, Ja tenim el teu vot registrat correctament, pots verificar el teu vot mitjançant el comandament /verificar",
+  "voting.incorrect" : "Vaja, pareix que %s de les opcions introduïdes no pertanyen al llistat. \nTorna a emetre el teu vot amb les opcions del llistat",
+
+  "verifying": "Anem a verificar el teu vot.\nEnviam el codi que et vaig proporcionar quan vares votar:",
+  "verifying.error" : "Pareix que el codi per a desxifrar el vot no és correcta :flushed: \nTorna a intentar-ho o posat en contacte amb nosaltres.",
+  "verifying.sucess" : "El teu vot és correcte :thumbsup: \nEl que vares votar és: %s",
+
+  "about.question" : "¿Sobre quina opció vols saber-ne més?",
+  "about.noRegistered": "No siguis tan ràpid, encara no ens coneguem... :bowtie: Abans de saber-ne més, registrar-te deuràs.",
+
+  "options.intro" : "Opcions disponibles:\n\n",
+  "options.footer" : "\nSelecciona fins a :eight: opcions.\nEnvia el teu vot mitjançant els números de ses opcions separades per comes.\nExemple: 1, 3, 5 \nNota: Els espais en blanc entre els números són opcionals."
+
+}

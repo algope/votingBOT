@@ -1,4 +1,46 @@
 {
-  "Welcome": "Bienvenido",
-  "A brand new app.": "Una nueva aplicación."
+  "yes" : "SI",
+  "no" : "NO",
+  "language.ban":"Castellano",
+  "selected" : "Has seleccionado castellano.",
+  "hello" : "¡Hola!",
+  "hello.again" : "Hola de nuevo",
+  "language.sel" : "Selecciona idioma:",
+  "welcome": "¡Hola %s!, ¡encantado de conocerte! :smile: \nBienvenidx al sistema de votación.\nPara votar será necesario que nos digas tu DNI y fecha de Nacimiento y comprobemos que estás en el censo.\n¿Quieres seguir?",
+  "error": "Ups, eso no me lo esperaba... :confused: \nRevisa lo que me acabas de enviar",
+  "troll": "Uy, no tengo tiempo para leer tanto... :weary:",
+  "goodbye": "Una pena :sob:, me hubiera gustado seguir hablando contigo.\nSi cambias de opinión, solo tienes que volver a escribir: /start",
+  "cancel" : "Comando cancelado",
+  "about" : "Asistente de votación OCCVotingBOT\n\nDesarrollado por: Hub Cívico\nhttp://hubcivico.org",
+
+  "register.start": "Iniciando registro...",
+  "register.cancel": "Registro cancelado.",
+  "register.question": "¿Quieres registrarte? Recuerda tener a mano tu número de DNI o NIE y tu Fecha de Nacimiento",
+  "register.nid": "Estupendo, ahora introduce tu DNI o NIE. Recuerda introducirlo con letra...",
+  "register.bdate": "Perfecto, indícame ahora tu Fecha de Nacimiento con el siguiente formato: DD/MM/AAAA",
+  "register.complete": "Registro completo :thumbsup:, Para empezar a votar selecciona el comando /votar",
+  "register.check": "Comprobando censo... :hourglass_flowing_sand:",
+  "register.error.nid": "Ups :flushed:, me temo que ha habido un error. Es posible que no te encuentres en el Censo de votantes.\nVuelve a introducir tu DNI por si te hubieras equivocado.\nTienes %s intentos.",
+  "register.error.bdate": "Ups :flushed:, me temo que ha habido un error. Es posible que no te encuentres en el Censo de votantes \nVuelve a introducir tu Fecha de Nacimiento por si te hubieras equivocado.\nTienes %s intentos.",
+  "register.banned": "Lo siento :flushed:, has agotado los intentos para registrarte. Por seguridad he bloqueado tu usuario.",
+
+  "voting.error": "Vaya, parece que has querido votar más de :eight: opciones. \nRecuerda que como máximo puedes votar :eight: opciones.",
+  "voting.ready" : "¡Hola de nuevo %s, Ya tenemos todos tus datos verificados, ¿preparadx para votar? :grin:\n",
+  "voting.noRegistered": "No vayas tan rápido, apenas nos conocemos... :bowtie: Antes de votar, registrarte deberás. ",
+  "voting.success": "Tu voto ha sido guardado correctamente :thumbsup: \nEste es el código para verificar que tu voto es correcto:",
+  "voting.verify": "Utiliza el comando /verificar para comprobarlo cuando quieras :sunglasses:",
+  "voting.alreadyVote" : "Ups, parece que ya has votado :flushed:, puedes verificar tu voto mediante el comando /verificar",
+  "voting.voteEnd" : "Hola de nuevo %s, Ya tenemos tu voto registrado correctamente, puedes verificar tu voto mediante el comando /verificar",
+  "voting.incorrect" : "Vaya, parece ser que %s de las opciones introducidas no pertenencen al listado. \nVuelve a emitir tu voto con las opciones del listado",
+
+  "verifying": "Vamos a verificar tu voto.\nEnvíame el código que te proporcioné cuando votaste:",
+  "verifying.error" : "Parece que el código para descifrar el voto no es correcto :flushed: \nVuelve a intentarlo o ponte en contacto con nosotros",
+  "verifying.sucess" : "Tu voto es correcto :thumbsup: \n Lo que votaste fue: %s",
+  "verifying.notRegistered" : "Es un poco pronto para que empecemos a verificar cosas :bowtie:, sigue los pasos que te he ido indicando :smile:",
+
+  "about.question" : "¿Sobre qué opción quieres saber más?",
+  "about.noRegistered": "No vayas tan rápido, apenas nos conocemos... :bowtie: Antes de saber más, registrarte deberás. ",
+
+  "options.intro" : "Opciones disponibles:\n\n",
+  "options.footer" : "\nSelecciona hasta :eight: opciones.\nEnvía tu voto utilizando los números de las opciones separados por comas.\nEjemplo: 1, 3, 5 \nNota: Los espacios en blanco entre los números son opcionales."
 }

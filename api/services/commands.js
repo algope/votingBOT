@@ -12,7 +12,6 @@
 module.exports.processIt = function (text) {
   var id = 0;
   var result = strip(text);
-  sails.log.debug("[DEV] - STRIP RESULT: : "+result.type);
   if (result.type == 1) { //Main commands
     switch (result.command) {
       case "/start":
@@ -21,13 +20,13 @@ module.exports.processIt = function (text) {
       case "/ayuda":
         id = 2;
         break;
-      case "/sugerencias":
+      case "/acerca_de":
         id = 3;
         break;
       case "/votar" :
         id = 4;
         break;
-      case "/acerca_de":
+      case "/saber_mas":
         id = 5;
         break;
       case "/cancelar":
@@ -48,6 +47,12 @@ module.exports.processIt = function (text) {
       case "butt_2":
         id = 2;
         break;
+      case "butt_c":
+        id=3;
+        break;
+      case "butt_v":
+        id=4;
+        break;
       default:
         id = 0;
     }
@@ -61,7 +66,6 @@ module.exports.processIt = function (text) {
   } else if (result.type == 8) {
     return {commandType: 8, vote: result.command};
   } else if (result.type == 9){
-    sails.log.debug("COMMANDTYPE: : : 9");
     return {commandType: 9, pass: result.command};
   }
   else return false;
@@ -106,7 +110,6 @@ function strip(text) {
   } else if (matching8){
     return {command: matching8[0], type: 8};
   } else if (matching9){
-    sails.log.debug("[DEV] - MATCHING9: : : :"+ matching9);
     return {command: matching9[0], type: 9};
   }
   else return false;

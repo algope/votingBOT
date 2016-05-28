@@ -8,7 +8,7 @@
 module.exports = {
   migrate: 'safe',
   attributes: {
-    nid: {
+    dni: {
       type: 'string',
       required: true,
       unique: true // Yes unique one
@@ -16,6 +16,18 @@ module.exports = {
     birth_date:{
       type: 'date',
       required: true
+    },
+    sex:{
+      type: 'string'
+    },
+    address:{
+      type: 'string'
+    },
+    name:{
+      type:'string'
+    },
+    surnames:{
+      type:'string'
     }
   }
 };

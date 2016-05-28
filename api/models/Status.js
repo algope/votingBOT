@@ -1,5 +1,5 @@
 /**
- * Stages.js
+ * Status.js
  *
  * @description :: TODO: You might write a short summary of how this model works and what it represents here.
  * @docs        :: http://sailsjs.org/documentation/concepts/models-and-orm/models
@@ -8,32 +8,23 @@
 module.exports = {
 
   attributes: {
-    user_id: {
-      type: 'integer',
+    nid: {
+      type: 'string',
+      required: true,
       unique: true
     },
-    stage: {
+    has_voted:{
+      type: 'boolean',
+      required: true,
+      defaultsTo: false
+    },
+    user_type:{
       type: 'string',
       defaultsTo: ''
     },
-    banned: {
-      type: 'boolean',
-      required: true,
-      defaultsTo: false
-    },
-    valid: {
-      type: 'boolean',
-      required: true,
-      defaultsTo: false
-    },
-    has_voted: {
-      type: 'boolean',
-      required: true,
-      defaultsTo: false
-    },
-    locale: {
+    encrypted_vote: {
       type: 'string',
-      defaultsTo: 'es'
+      defaultsTo: ''
     }
   }
 };
