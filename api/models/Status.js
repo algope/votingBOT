@@ -14,7 +14,6 @@ module.exports = {
     },
     telegram_id:{
       type: 'string',
-      unique: true,
       defaultsTo: ''
     },
     has_voted:{

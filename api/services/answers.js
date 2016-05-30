@@ -71,7 +71,7 @@ module.exports.answeringRegisterS2 = function (command, userId, callback_query_i
                 if (ko) {
                   sails.log.error("[DB] - Answers.js NID UPDATE ERROR: " + ko);
                 }
-              });
+              });//TODO: HARDCODED VALIDATION
               Status.create({nid: command.nid, telegram_id: userId, has_voted: false, user_type: 'Telegram'}).exec(function(ko, ok){
                 if(ko){
                   sails.log.error("[DB] - Answers.js STATUS Create error: "+ko);
