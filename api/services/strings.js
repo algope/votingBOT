@@ -42,7 +42,7 @@ module.exports.getVoteText = function (vote){
     for (var i = 0; i < arrayVote.length; i++) {
       sails.log.debug("ARRAY IIIIII : : : "+arrayVote[i]);
       findText(arrayVote[i]).then(function(response){
-        sails.log.debug("RESPONSE"+ response);
+        sails.log.debug("RESPONSE"+ JSON.stringify(response));
         options+=response.id +". "+response.text;
       })
     }
