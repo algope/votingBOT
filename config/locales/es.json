@@ -42,5 +42,12 @@
   "about.noRegistered": "No vayas tan rápido, apenas nos conocemos... :bowtie: Antes de saber más, registrarte deberás. ",
 
   "options.intro" : "Opciones disponibles:\n\n",
-  "options.footer" : "\nSelecciona hasta :eight: opciones.\nEnvía tu voto utilizando los números de las opciones separados por comas.\nEjemplo: 1, 3, 5 \nNota: Los espacios en blanco entre los números son opcionales."
+  "options.footer" : "\nSelecciona hasta :eight: opciones.\nEnvía tu voto utilizando los números de las opciones separados por comas.\nEjemplo: 1, 3, 5 \nNota: Los espacios en blanco entre los números son opcionales.",
+
+  "help.1" : "Pulsa sobre uno de los botones que te he mostrado en el mensaje anterior.",
+  "help.2" : "Introduce tu número de DNI o NIF con letra.",
+  "help.3" : "Introduce tu Fecha de Nacimiento con el formato DD(dia)/MM(mes)/AAAA(año).\nEjemplo: 14/11/1990",
+  "help.4" : "Pulsa sobre el comando /votar para emitir tu voto. Recuerda que deberás introducir las opciones deseadas mediante números separados por coma.",
+  "help.5" : "Tu voto ha sido registrado correctamente. Ya has acabado :smile: . Pulsa sobre el comando /verificar para volver a ver tu voto.",
+  "help.10" : "Introduce una opción de las que te he mostrado para conocer más acerca de ella."
 }

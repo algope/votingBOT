@@ -41,6 +41,13 @@
   "about.noRegistered": "No siguis tan ràpid, encara no ens coneguem... :bowtie: Abans de saber-ne més, registrar-te deuràs.",
 
   "options.intro" : "Opcions disponibles:\n\n",
-  "options.footer" : "\nSelecciona fins a :eight: opcions.\nEnvia el teu vot mitjançant els números de ses opcions separades per comes.\nExemple: 1, 3, 5 \nNota: Els espais en blanc entre els números són opcionals."
+  "options.footer" : "\nSelecciona fins a :eight: opcions.\nEnvia el teu vot mitjançant els números de ses opcions separades per comes.\nExemple: 1, 3, 5 \nNota: Els espais en blanc entre els números són opcionals.",
+
+  "help.1" : "Polsa damunt un dels botons que t'he mostrat al missatge anterior.",
+  "help.2" : "Introdueix el teu número de DNI o NIF amb lletra.",
+  "help.3" : "Introdueix la teva Data de Naixement amb el format DD(dia)/MM(mes)/AAAA(año).\nExemple: 14/11/1990",
+  "help.4" : "Polsa damunt el comandament /votar per a emetre el teu vot. Recorda que hauràs d'introduir les opcions desitjades mitjançant números separats per coma.",
+  "help.5" : "El teu vot ha estat enregistrat correctament. Ja has acabat :smile: . Polsa damunt el comandament /verificar per a tornar a veure el teu vot.",
+  "help.10" : "Introdueix una opció de les que t'he mostrat per a conèixer més d'ella."
 
 }

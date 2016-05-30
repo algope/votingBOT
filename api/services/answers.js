@@ -199,7 +199,7 @@ module.exports.answeringCommandsS1 = function (command, userId, userName, locale
       telegram.sendMessage(userId, strings.tell('welcome', locale, userName), "", true, null, keyboards.createKeyboard(1));
       break;
     case 2: //ayuda
-      //TODO
+      telegram.sendMessage(userId, strings.tell('help.1', locale));
       break;
     case 3: //acerca_de
       telegram.sendMessage(userId, strings.tell('about', locale));
@@ -231,7 +231,7 @@ module.exports.answeringCommandsS2 = function (command, userId, userName, locale
       telegram.sendMessage(userId, strings.tell('welcome', locale, userName), "", true, null, keyboards.createKeyboard(1));
       break;
     case 2: //ayuda
-      //TODO
+      telegram.sendMessage(userId, strings.tell('help.2', locale));
       break;
     case 3: //acerca_de
       telegram.sendMessage(userId, strings.tell('about', locale));
@@ -259,7 +259,7 @@ module.exports.answeringCommandsS3 = function (command, userId, userName, locale
       telegram.sendMessage(userId, strings.tell('welcome', locale, userName), "", true, null, keyboards.createKeyboard(1));
       break;
     case 2: //ayuda
-      //TODO
+      telegram.sendMessage(userId, strings.tell('help.3', locale));
       break;
     case 3: //acerca_de
       telegram.sendMessage(userId, strings.tell('about', locale));
@@ -287,13 +287,12 @@ module.exports.answeringCommandsS4 = function (command, userId, userName, locale
       telegram.sendMessage(userId, strings.tell('voting.ready', locale, userName));
       break;
     case 2: //ayuda
-      //TODO
+      telegram.sendMessage(userId, strings.tell('help.4', locale));
       break;
     case 3: //acerca_de
       telegram.sendMessage(userId, strings.tell('about', locale));
       break;
     case 4: //votar
-      //TODO: TRANSLATION
       strings.getVoteOptions(locale).then(function (response) {
         telegram.sendMessage(userId, response);
       });
@@ -318,7 +317,7 @@ module.exports.answeringCommandsS5 = function (command, userId, userName, locale
       telegram.sendMessage(userId, strings.tell('voting.voteEnd', locale));
       break;
     case 2: //ayuda
-      //TODO
+      telegram.sendMessage(userId, strings.tell('help.5', locale));
       break;
     case 3: //acerca_de
       telegram.sendMessage(userId, strings.tell('about', locale));
@@ -346,13 +345,25 @@ module.exports.answeringCommandsS10 = function (command, userId, userName, local
       telegram.sendMessage(userId, strings.tell('voting.alreadyVote', locale));
       break;
     case 2: //ayuda
-      //TODO
+      telegram.sendMessage(userId, strings.tell('help.10', locale));
       break;
     case 3: //acerca_de
       telegram.sendMessage(userId, strings.tell('about', locale));
       break;
     case 4: //votar
-      telegram.sendMessage(userId, strings.tell('voting.alreadyVote', locale));
+      Status.findOne({telegram_id: userId}).exec(function(ko, ok){
+        if(ko){
+          sails.log.error("[DB] - Answers.js commandsS10 ERROR: "+ko);
+        }else if(ok.has_voted){
+          telegram.sendMessage(userId, strings.tell('voting.alreadyVote', locale));
+        }else{
+          stages.updateStage({user_id: userId}, {stage: 5});
+          strings.getVoteOptions(locale).then(function (response) {
+            telegram.sendMessage(userId, response);
+          });
+        }
+      });
+
       break;
     case 5: //saber_mas
       telegram.sendMessage(userId, strings.tell('about.question', locale));
