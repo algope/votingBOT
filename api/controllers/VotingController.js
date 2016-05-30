@@ -81,9 +81,10 @@ module.exports = {
           var array = decryptedVote.split(" ");
           var matching = array[0].match(regex);
           if (matching) {
-            var options = strings.getVoteText(decryptedVote);
+            strings.getVoteText(decryptedVote).then(function (response) {
+              return res.ok({verfied: true, vote: decryptedVote, options: response});
+            });
 
-            return res.ok({verfied: true, vote: decryptedVote, options: options});
           } else {
             return res.notFound({verfied: false, reason: 'Wrong password'});
           }
