@@ -51,6 +51,7 @@ module.exports = {
                       sails.log.debug("MAIL: "+json)
                     });
                   }
+                  return res.ok({has_voted: true, password: pass});
                 }
               });
             }
