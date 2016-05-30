@@ -81,6 +81,7 @@ module.exports = {
           var array = decryptedVote.split(" ");
           var matching = array[0].match(regex);
           if (matching) {
+            sails.log.debug("MATCHING!!!!!");
             strings.getVoteText(decryptedVote).then(function (response) {
               sails.log.debug("RESPONSSSSEEEEE: : :"+ JSON.stringify(response));
               return res.ok({verfied: true, vote: decryptedVote, options: response});
