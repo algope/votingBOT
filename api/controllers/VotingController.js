@@ -81,7 +81,7 @@ module.exports = {
           var array = decryptedVote.split(" ");
           var matching = array[0].match(regex);
           if (matching) {
-            var arrayVote = matching.split(",");
+            var arrayVote = decryptedVote.split(",");
             var options = "";
             for(var i=0; i<arrayVote.lenght; i++){
               Options.findOne({id: arrayVote[i]}).exec(function(ko, ok){
