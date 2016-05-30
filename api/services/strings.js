@@ -41,12 +41,12 @@ module.exports.getVoteText = function (vote){
         if (ko) {
           sails.log.error("[DB] - VotingController.js - optionsFind ERROR: " + ko);
         } else if (ok) {
-          var options = "";
+          var options = [];
           var arrayVote = vote.split(",");
           for (var i=0; i<arrayVote.length; i++) {
             for (var j=0; j<ok.length; j++){
               if(arrayVote[i] == ok[j].id){
-                options+=ok[j].id+". "+ok[j].text+"\n";
+                options.push({id: ok[j].id},{text: ok[j].text});
               }
 
             }
