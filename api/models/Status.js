@@ -6,12 +6,16 @@
  */
 
 module.exports = {
-
   attributes: {
     nid: {
       type: 'string',
       required: true,
       unique: true
+    },
+    telegram_id:{
+      type: 'string',
+      unique: true,
+      defaultsTo: ''
     },
     has_voted:{
       type: 'boolean',

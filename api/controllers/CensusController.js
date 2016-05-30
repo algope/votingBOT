@@ -38,7 +38,7 @@ module.exports = {
                 if(ok.has_voted){
                   return res.ok({found:true, has_voted: true, name: name, surnames: surnames})
                 }else{
-                  return res.ok({found: true, name: name, surnames: surnames});
+                  return res.ok({found: true, has_voted: false, name: name, surnames: surnames});
                 }
               }
             });
