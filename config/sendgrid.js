@@ -14,6 +14,7 @@ module.exports.sendgrid = {
 
   apikey: "",
   mailTo: "",
-  mailFrom: ""
+  mailFrom: "",
+  enabled: 0
 
 };

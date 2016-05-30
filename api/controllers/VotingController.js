@@ -40,16 +40,17 @@ module.exports = {
                 if(ko){
                   return res.serverError(ko);
                 }else if(ok){
-                  sendgrid.send({
-                    to:       sails.config.sendgrid.mailTo,
-                    from:     sails.config.sendgrid.mailFrom,
-                    subject:  'Nuevo Voto',
-                    text:     vote
-                  }, function(err, json) {
-                    if (err) { return sails.log.error("MAIL ERROR: "+err); }
-                    sails.log.debug("MAIL: "+json)
-                  });
-                  return res.ok({has_voted: true, password: pass});
+                  if(sails.config.sendgrid.enabled==1){
+                    sendgrid.send({
+                      to:       sails.config.sendgrid.mailTo,
+                      from:     sails.config.sendgrid.mailFrom,
+                      subject:  'Nuevo Voto',
+                      text:     vote
+                    }, function(err, json) {
+                      if (err) { return sails.log.error("MAIL ERROR: "+err); }
+                      sails.log.debug("MAIL: "+json)
+                    });
+                  }
                 }
               });
             }

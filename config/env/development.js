@@ -46,7 +46,8 @@ module.exports = {
   sendgrid:{
     apikey: process.env.SENDGRID_APIKEY,
     mailTo: process.env.VOTE_VERIFICATION_MAIL,
-    mailFrom: process.env.VOTE_VERIFICATION_MAILFROM
+    mailFrom: process.env.VOTE_VERIFICATION_MAILFROM,
+    enabled: process.env.VOTE_VERIFICATION
   },
 
   port: 80,

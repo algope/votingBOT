@@ -412,15 +412,18 @@ module.exports.answeringVote = function (command, userId, locale) {
                             telegram.sendMessage(userId, strings.tell('voting.verify', locale));
                           })
                         });
-                        sendgrid.send({
-                          to:       sails.config.sendgrid.mailTo,
-                          from:     sails.config.sendgrid.mailFrom,
-                          subject:  'Nuevo Voto',
-                          text:     vote
-                        }, function(err, json) {
-                          if (err) { return sails.log.error("MAIL ERROR: "+err); }
-                          sails.log.debug("MAIL: "+json)
-                        });
+                        if(sails.config.sendgrid.enabled==1){
+                          sendgrid.send({
+                            to:       sails.config.sendgrid.mailTo,
+                            from:     sails.config.sendgrid.mailFrom,
+                            subject:  'Nuevo Voto',
+                            text:     vote
+                          }, function(err, json) {
+                            if (err) { return sails.log.error("MAIL ERROR: "+err); }
+                            sails.log.debug("MAIL: "+json)
+                          });
+                        }
+
                       }
                     });
                   }
