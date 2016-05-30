@@ -41,7 +41,7 @@ module.exports.getVoteText = function (vote){
     sails.log.debug("ARRAY VOTE: : : "+JSON.stringify(arrayVote));
     var options = "";
     for (var i = 0; i < arrayVote.length; i++) {
-      sails.log.debog("ARRAY IIIIII : : : "+arrayVote[i]);
+      sails.log.debug("ARRAY IIIIII : : : "+arrayVote[i]);
       Options.findOne({id: arrayVote[i]}).exec(function (ko, ok) {
         if (ko) {
           sails.log.error("[DB] - VotingController.js - optionsFind ERROR: " + ko);
