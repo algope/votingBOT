@@ -35,6 +35,23 @@ module.exports.getVoteOptions = function (locale) {
  })
 };
 
+module.exports.getVoteText = function (vote){
+  return new Promise(function(resolve, reject) {
+    var arrayVote = vote.split(",");
+    var options = "";
+    for (var i = 0; i < arrayVote.lenght; i++) {
+      Options.findOne({id: arrayVote[i]}).exec(function (ko, ok) {
+        if (ko) {
+          sails.log.error("[DB] - VotingController.js - optionsFind ERROR: " + ko);
+        } else if (ok) {
+          options += ok.id + ". " + ok.text;
+        }
+      })
+    }
+    resolve(options);
+  });
+};
+
 module.exports.tell = function(id, locale, context){
   return emoji.emojify(sails.__({phrase: id, locale: locale}, context));
 };
