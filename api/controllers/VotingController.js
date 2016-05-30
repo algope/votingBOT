@@ -81,7 +81,19 @@ module.exports = {
           var array = decryptedVote.split(" ");
           var matching = array[0].match(regex);
           if (matching) {
-            return res.ok({verfied: true, vote: decryptedVote});
+            var arrayVote = matching.split(",");
+            var options = "";
+            for(var i=0; i<arrayVote.lenght; i++){
+              Options.findOne({id: arrayVote[i]}).exec(function(ko, ok){
+                if(ko){
+                  sails.log.error("[DB] - VotingController.js - optionsFind ERROR: "+ko);
+                }else if(ok){
+                  options += ok.id+". "+ok.text;
+                }
+              })
+            }
+
+            return res.ok({verfied: true, vote: decryptedVote, options: options});
           } else {
             return res.notFound({verfied: false, reason: 'Wrong password'});
           }
