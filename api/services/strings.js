@@ -38,12 +38,15 @@ module.exports.getVoteOptions = function (locale) {
 module.exports.getVoteText = function (vote){
   return new Promise(function(resolve, reject) {
     var arrayVote = vote.split(",");
+    sails.log.debug("ARRAY VOTE: : : "+JSON.stringify(arrayVote));
     var options = "";
     for (var i = 0; i < arrayVote.lenght; i++) {
+      sails.log.debog("ARRAY IIIIII : : : "+arrayVote[i]);
       Options.findOne({id: arrayVote[i]}).exec(function (ko, ok) {
         if (ko) {
           sails.log.error("[DB] - VotingController.js - optionsFind ERROR: " + ko);
         } else if (ok) {
+          sails.log.debug("OPTIOOOONNNNNN: : :"+ ok.id + ". " + ok.text);
           options += ok.id + ". " + ok.text;
         }
       })
