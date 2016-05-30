@@ -84,8 +84,6 @@ module.exports = {
             sails.log.debug("MATCHING!!!!!");
             strings.getVoteText(decryptedVote).then(function (response) {
               sails.log.debug("RESPONSSSSEEEEE: : :"+ JSON.stringify(response));
-
-            }).then(function(){
               return res.ok({verfied: true, vote: decryptedVote, options: response});
             });
 

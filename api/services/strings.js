@@ -37,16 +37,24 @@ module.exports.getVoteOptions = function (locale) {
 
 module.exports.getVoteText = function (vote){
   return new Promise(function(resolve, reject) {
-    var arrayVote = vote.split(",");
-    var options = "";
-    for (var i = 0; i < arrayVote.length; i++) {
-      sails.log.debug("ARRAY IIIIII : : : "+arrayVote[i]);
-      findText(arrayVote[i]).then(function(response){
-        sails.log.debug("RESPONSE"+ JSON.stringify(response));
-        options+=response.id +". "+response.text;
-      })
-    }
-    resolve(options);
+      Options.find().exec(function (ko, ok) {
+        if (ko) {
+          sails.log.error("[DB] - VotingController.js - optionsFind ERROR: " + ko);
+        } else if (ok) {
+          var options = "";
+          var arrayVote = vote.split(",");
+          for (var i=0; i<arrayVote.length; i++) {
+            for (var j=0; j<ok.length; j++){
+              if(arrayVote[i] == ok[j].id){
+                options+=ok[j].id+". "+ok[j].text+"\n";
+              }
+
+            }
+          }
+          resolve(options);
+        }
+      });
+
   });
 };
 
@@ -54,15 +62,3 @@ module.exports.tell = function(id, locale, context){
   return emoji.emojify(sails.__({phrase: id, locale: locale}, context));
 };
 
-function findText (id){
-  return new Promise(function(resolve, reject){
-    Options.findOne({id: id}).exec(function (ko, ok) {
-      if (ko) {
-        sails.log.error("[DB] - VotingController.js - optionsFind ERROR: " + ko);
-        reject(ok)
-      } else if (ok) {
-        resolve(ok);
-      }
-    })
-  })
-}
