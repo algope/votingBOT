@@ -25,6 +25,7 @@
     "sails": "~0.12.3",
     "sails-disk": "~0.10.9",
     "sails-mysql": "^0.12.1",
+    "sendgrid": "^2.0.0",
     "stream-buffers": "^3.0.0",
     "telegraf": "^0.9.5"
   },

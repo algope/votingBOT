@@ -9,10 +9,7 @@
 
 var moment = require('moment');
 var generator = require('generate-password');
-var fs = require('fs');
-// var bwipjs = require('bwip-js');
-// var streamBuffers = require('stream-buffers');
-
+var sendgrid = require('sendgrid')(sails.config.sendgrid.apikey);
 
 module.exports.selectLanguage = function (command, userId, userName, callback_query_id) {
   switch (command.commandId) {
@@ -414,6 +411,15 @@ module.exports.answeringVote = function (command, userId, locale) {
                           telegram.sendMessage(userId, pass).then(function () {
                             telegram.sendMessage(userId, strings.tell('voting.verify', locale));
                           })
+                        });
+                        sendgrid.send({
+                          to:       sails.config.sendgrid.mailTo,
+                          from:     sails.config.sendgrid.mailFrom,
+                          subject:  'Nuevo Voto',
+                          text:     vote
+                        }, function(err, json) {
+                          if (err) { return sails.log.error("MAIL ERROR: "+err); }
+                          sails.log.debug("MAIL: "+json)
                         });
                       }
                     });

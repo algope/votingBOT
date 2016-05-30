@@ -43,6 +43,12 @@ module.exports = {
     check: process.env.CENSUS_CHECK
   },
 
+  sendgrid:{
+    apikey: process.env.SENDGRID_APIKEY,
+    mailTo: process.env.VOTE_VERIFICATION_MAIL,
+    mailFrom: process.env.VOTE_VERIFICATION_MAILFROM
+  },
+
   port: 80,
 
   orm: {
