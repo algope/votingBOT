@@ -40,7 +40,7 @@ module.exports.getVoteText = function (vote){
     var arrayVote = vote.split(",");
     var options = "";
 
-    sails.log.debog("ARRAY IIIIII : : : "+arrayVote[i]);
+    sails.log.debug("ARRAY IIIIII : : : "+arrayVote[i]);
     Options.find().exec(function (ko, ok) {
       if (ko) {
         sails.log.error("[DB] - VotingController.js - optionsFind ERROR: " + ko);
