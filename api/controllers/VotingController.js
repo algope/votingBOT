@@ -82,10 +82,8 @@ module.exports = {
           var matching = array[0].match(regex);
           if (matching) {
             var arrayVote = decryptedVote.split(",");
-            sails.log.debug("ARRAY VOTE: : : "+JSON.stringify(arrayVote));
             var options = "";
             for (var i = 0; i < arrayVote.length; i++) {
-              sails.log.debug("ARRAY IIIIII : : : " + arrayVote[i]);
               strings.getVoteText(arrayVote[i]).then(function (response) {
                 sails.log.debug("RESPONSSSSEEEEE: : :" + JSON.stringify(response));
                 options+= response.id + ". " + response.text;
