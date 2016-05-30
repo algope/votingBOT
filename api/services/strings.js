@@ -37,7 +37,7 @@ module.exports.getVoteOptions = function (locale) {
 
 module.exports.getVoteText = function (option){
   return new Promise(function(resolve, reject) {
-      sails.log.debug("ARRAY IIIIII : : : "+arrayVote[i]);
+      sails.log.debug("ARRAY IIIIII : : : "+option);
       Options.findOne({id: option}).exec(function (ko, ok) {
         if (ko) {
           sails.log.error("[DB] - VotingController.js - optionsFind ERROR: " + ko);
