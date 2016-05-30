@@ -40,7 +40,7 @@ module.exports.getVoteText = function (vote){
     var arrayVote = vote.split(",");
     sails.log.debug("ARRAY VOTE: : : "+JSON.stringify(arrayVote));
     var options = "";
-    for (var i = 0; i < arrayVote.lenght; i++) {
+    for (var i = 0; i < arrayVote.length; i++) {
       sails.log.debog("ARRAY IIIIII : : : "+arrayVote[i]);
       Options.findOne({id: arrayVote[i]}).exec(function (ko, ok) {
         if (ko) {
