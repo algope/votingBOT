@@ -31,7 +31,7 @@ module.exports = {
           }else{
             var name=ok.name;
             var surnames=ok.surnames;
-            Status.findOrCreate({nid: dni, user_type: 'Kiosk'}).exec(function(ko, ok){
+            Status.findOrCreate({nid: dni},{nid: dni, user_type: 'Kiosk'}).exec(function(ko, ok){
               if(ko){
                 sails.log.error("[DB] - ERROR creating STATUS row : "+ko);
               }else if (ok){
