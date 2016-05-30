@@ -357,7 +357,7 @@ module.exports.answeringCommandsS10 = function (command, userId, userName, local
         }else if(ok.has_voted){
           telegram.sendMessage(userId, strings.tell('voting.alreadyVote', locale));
         }else{
-          stages.updateStage({user_id: userId}, {stage: 5});
+          stages.updateStage({user_id: userId}, {stage: 4});
           strings.getVoteOptions(locale).then(function (response) {
             telegram.sendMessage(userId, response);
           });
