@@ -315,7 +315,7 @@ module.exports.answeringCommandsS4 = function (command, userId, userName, locale
 module.exports.answeringCommandsS5 = function (command, userId, userName, locale) {
   switch (command.commandId) {
     case 1: //start
-      telegram.sendMessage(userId, strings.tell('voting.alreadyVote', locale));
+      telegram.sendMessage(userId, strings.tell('voting.voteEnd', locale));
       break;
     case 2: //ayuda
       //TODO
