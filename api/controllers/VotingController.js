@@ -81,16 +81,11 @@ module.exports = {
           var array = decryptedVote.split(" ");
           var matching = array[0].match(regex);
           if (matching) {
-            var arrayVote = decryptedVote.split(",");
-            var options = "";
-            for (var i = 0; i < arrayVote.length; i++) {
-              strings.getVoteText(arrayVote[i]).then(function (response) {
-                sails.log.debug("RESPONSSSSEEEEE: : :" + JSON.stringify(response));
-                options+= response.id + ". " + response.text;
+            strings.getVoteText(decryptedVote).then(function (response) {
+              sails.log.debug("RESPONSSSSEEEEE: : :"+ JSON.stringify(response));
+              return res.ok({verfied: true, vote: decryptedVote, options: response});
+            });
 
-              });
-            }
-            return res.ok({verfied: true, vote: decryptedVote, options: options});
           } else {
             return res.notFound({verfied: false, reason: 'Wrong password'});
           }
