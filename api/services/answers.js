@@ -354,7 +354,7 @@ module.exports.answeringCommandsS10 = function (command, userId, userName, local
     case 4: //votar
       telegram.sendMessage(userId, strings.tell('voting.alreadyVote', locale));
       break;
-    case 5: //acerca_de
+    case 5: //saber_mas
       telegram.sendMessage(userId, strings.tell('about.question', locale));
       stages.updateStage({user_id: userId}, {stage: 10});
       break;
@@ -457,6 +457,7 @@ module.exports.answerVerify = function (command, userId, locale) {
       var array = decryptedVote.split(" ");
       var matching = array[0].match(regex);
       if (matching) {
+
         telegram.sendMessage(userId, strings.tell('verifying.sucess', locale, decryptedVote), "", true, null, {hide_keyboard: true});
       } else {
         telegram.sendMessage(userId, strings.tell('verifying.error', locale), "", true, null, {hide_keyboard: true});

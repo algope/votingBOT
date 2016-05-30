@@ -124,6 +124,8 @@ module.exports = {
               answers.answeringCommandsS10(command, userId, userName, locale);
             } else if (command.commandType == 8) {
               answers.answeringGetInfo(command, userId, locale);
+            }else if (command.commandType == 9) {
+              answers.answerVerify(command, userId, locale);
             } else {
               answers.answeringError(userId, locale);
             }
