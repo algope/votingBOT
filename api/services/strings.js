@@ -46,7 +46,7 @@ module.exports.getVoteText = function (vote){
           for (var i=0; i<arrayVote.length; i++) {
             for (var j=0; j<ok.length; j++){
               if(arrayVote[i] == ok[j].id){
-                options.push({id: ok[j].id},{text: ok[j].text});
+                options.push({id: ok[j].id,text: ok[j].text});
               }
 
             }
