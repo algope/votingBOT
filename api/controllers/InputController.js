@@ -20,7 +20,7 @@ module.exports = {
       userAlias = update.callback_query.from.username;
       text = update.callback_query.data;
       callback_query_id = update.callback_query.id;
-    } else {
+    } else if(update.message){
       userId = update.message.from.id;
       userName = update.message.from.first_name;
       userAlias = update.message.from.username;
