@@ -25,10 +25,6 @@ module.exports = {
       model: 'chats',
       defaultsTo: null
     },
-    text: {
-      type: 'string',
-      defaultsTo: ''
-    },
     photo: {
       type: 'array',
       defaultsTo: null
