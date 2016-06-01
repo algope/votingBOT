@@ -27,7 +27,7 @@ module.exports = {
       text = update.message.text;
     }
 
-    if (text.length > 200) {
+    if (text && text.length > 200) {
       telegram.sendMessage(userId, strings.tell('troll', 'es'), "", true, null, {hide_keyboard: true});
       return res.ok();
     }
