@@ -367,8 +367,8 @@ module.exports.answeringVote = function (command, userId, locale) {
   sails.log.debug("[DEV] - RECEIVED AND CLEANED VOTE: : : "+cleanedVote);
   sails.log.debug("[DEV] - SPLITED AND SORTED VOTE: : : "+sortedArray);
   var duplicates = [];
-  for (var i = 0; i < arr.length - 1; i++) {
-    if (sorted_arr[i + 1] == sorted_arr[i]) {
+  for (var i = 0; i < sortedArray.length -1; i++) {
+    if (sortedArray[i + 1] == sortedArray[i]) {
       results.push(sortedArray[i]);
     }
   }
