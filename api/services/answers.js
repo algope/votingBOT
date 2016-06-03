@@ -95,6 +95,11 @@ module.exports.answeringRegisterS2 = function (command, userId, callback_query_i
 
           } else {
             stages.updateStage({user_id: userId}, {stage: 3});
+            Status.create({nid: command.nid, telegram_id: userId, has_voted: false, user_type: 'Telegram'}).exec(function(ko, ok){
+              if(ko){
+                sails.log.error("[DB] - Answers.js STATUS Create error: "+ko);
+              }
+            });
             telegram.sendMessage(userId, strings.tell('register.bdate', locale), "", true, null, {hide_keyboard: true})
           }
 
