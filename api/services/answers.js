@@ -362,14 +362,24 @@ module.exports.answeringVote = function (command, userId, locale) {
   var vote = command.vote;
   var cleanedVote = vote.replace(/ /g,'').trim();
   var splitOptions = cleanedVote.split(",");
+  var sortedArray = splitOptions.slice().sort();
   var flag = 0;
   sails.log.debug("[DEV] - RECEIVED AND CLEANED VOTE: : : "+cleanedVote);
-  sails.log.debug("[DEV] - SPLITED VOTE: : : "+splitOptions);
-  if (splitOptions.length > 8) { //TODO: HARDCODED
+  sails.log.debug("[DEV] - SPLITED AND SORTED VOTE: : : "+sortedArray);
+  var duplicates = [];
+  for (var i = 0; i < arr.length - 1; i++) {
+    if (sorted_arr[i + 1] == sorted_arr[i]) {
+      results.push(sortedArray[i]);
+    }
+  }
+
+  if(duplicates.length>0){
+    telegram.sendMessage(userId, strings.tell('voting.error.duplicates', locale));
+  }else if (sortedArray.length > 8) { //TODO: HARDCODED
     telegram.sendMessage(userId, strings.tell('voting.error', locale));
-  } else if (splitOptions.length <= 8) {
-    for (var i = 0; i < splitOptions.length; i++) {
-      if (parseInt(splitOptions[i]) > 24) {
+  } else if (sortedArray.length <= 8 && duplicates.length==0) {
+    for (var i = 0; i < sortedArray.length; i++) {
+      if (parseInt(sortedArray[i]) > 24) {
         flag++;
       }
     }

@@ -32,6 +32,7 @@
   "voting.alreadyVote" : "Ups, parece que ya has votado :flushed:, puedes verificar tu voto mediante el comando /verificar",
   "voting.voteEnd" : "Hola de nuevo %s, Ya tenemos tu voto registrado correctamente, puedes verificar tu voto mediante el comando /verificar",
   "voting.incorrect" : "Vaya, parece ser que %s de las opciones introducidas no pertenencen al listado. \nVuelve a emitir tu voto con las opciones del listado",
+  "voting.error.duplicates": "Ey, no puedes votar más de una vez a la misma opción, revisa tu voto en busca de duplicados",
 
   "verifying": "Vamos a verificar tu voto.\nEnvíame el código que te proporcioné cuando votaste:",
   "verifying.error" : "Parece que el código para descifrar el voto no es correcto :flushed: \nVuelve a intentarlo o ponte en contacto con nosotros",
