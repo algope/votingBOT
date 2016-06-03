@@ -16,7 +16,11 @@ module.exports = {
     'defaults': 'prodMySQL',
     prodMySQL:{
       adapter: 'sails-mysql',
-      url: process.env.PROD_DB_URL
+      host: process.env.DB_URL,
+      port: process.env.DB_PORT,
+      user: process.env.DB_USER,
+      password: process.env.DB_PASSWORD,
+      database: process.env.DB_NAME
     }
   },
 
