@@ -79,7 +79,8 @@ module.exports.connections = {
     host: '',
     user: '',
     password: '',
-    database: ''
+    database: '',
+    port : ''
   },
 
   /***************************************************************************
