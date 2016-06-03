@@ -7,7 +7,7 @@
 
 module.exports = {
 
-  migrate: 'alter',
+  migrate: 'drop',
   autoCreatedAt: false,
   autoUpdatedAt: false,
   attributes: {
