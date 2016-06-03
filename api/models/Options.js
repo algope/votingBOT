@@ -6,7 +6,7 @@
  */
 
 module.exports = {
-  migrate: 'drop',
+  migrate: 'safe',
   attributes: {
     text:{
       type: 'string'
