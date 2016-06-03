@@ -355,9 +355,11 @@ module.exports.answeringCommandsS10 = function (command, userId, userName, local
 
 module.exports.answeringVote = function (command, userId, locale) {
   var vote = command.vote;
-  var cleanedVote = vote.replace(/[, ]+/g, " ").trim();
-  var splitOptions = cleanedVote.split(" ");
+  var cleanedVote = vote.replace(/ /g,'').trim();
+  var splitOptions = cleanedVote.split(",");
   var flag = 0;
+  sails.log.debug("[DEV] - RECEIVED AND CLEANED VOTE: : : "+cleanedVote);
+  sails.log.debug("[DEV] - SPLITED VOTE: : : "+splitOptions);
   if (splitOptions.length > 8) { //TODO: HARDCODED
     telegram.sendMessage(userId, strings.tell('voting.error', locale));
   } else if (splitOptions.length <= 8) {
