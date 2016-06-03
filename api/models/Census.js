@@ -6,7 +6,7 @@
  */
 
 module.exports = {
-  connection:'devMySQL',
+  connection:'privateMySQL',
   migrate: 'safe',
   autoCreatedAt: false,
   autoUpdatedAt: false,
