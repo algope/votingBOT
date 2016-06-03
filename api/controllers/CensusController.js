@@ -15,9 +15,6 @@ module.exports = {
       return res.badRequest('Params expected.');
     }
 
-    if(dni.length == 8){
-      dni += '0'+dni;
-    }
     var date = moment(bdate, "DD-MM-YYYY");
     var day = date.date();
     var month = date.month() + 1;
@@ -25,6 +22,9 @@ module.exports = {
     var dateToCheck = new Date(year + '-' + month + '-' + day);
 
     if(validateNID(dni)){
+      if(dni.length == 8){
+        dni += '0'+dni;
+      }
       Census.findOne({dni: dni, birth_date: dateToCheck}).exec(function(ko, ok){
         if(ko){
           sails.log.error("KO: : : "+JSON.stringify(ko));
@@ -58,7 +58,7 @@ module.exports = {
 
 function validateNID(value) {
   var validChars = 'TRWAGMYFPDXBNJZSQVHLCKET';
-  var nifRexp = /^[0-9]{9}[TRWAGMYFPDXBNJZSQVHLCKET]{1}$/i;
+  var nifRexp = /^[0-9]{8}[TRWAGMYFPDXBNJZSQVHLCKET]{1}$/i;
   var nieRexp = /^[XYZ]{1}[0-9]{7}[TRWAGMYFPDXBNJZSQVHLCKET]{1}$/i;
   var str = value.toString().toUpperCase();
 
