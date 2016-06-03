@@ -77,10 +77,11 @@ module.exports.connections = {
   devMySQL: {
     adapter: 'sails-mysql',
     host: '',
+    port : '',
     user: '',
     password: '',
-    database: '',
-    port : ''
+    database: ''
+
   },
 
   /***************************************************************************
