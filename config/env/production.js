@@ -25,7 +25,7 @@ module.exports = {
   },
 
   models: {
-    connection: 'devMySQL',
+    connection: 'prodMySQL',
     migrate: process.env.MIGRATION_TYPE
 
 
