@@ -6,8 +6,8 @@
  */
 
 module.exports = {
-  
-  migrate: 'safe',
+
+  migrate: 'drop',
   attributes: {
     dni: {
       type: 'string',
