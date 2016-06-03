@@ -62,22 +62,12 @@ module.exports.answeringRegisterS2 = function (command, userId, callback_query_i
     }else {
       Users.findOne({id: userId}).exec(function (ko, ok) {
         if (ok) {
-          Users.update({id: userId}, {nid: command.nid}).exec(function (ko, ok) {
-            if (ko) {
-              sails.log.error("[DB] - Answers.js NID UPDATE ERROR: " + ko);
-            }
-          });
           if (sails.config.census.check == 1) { //Census User Check Activated
             if (ok.retry_nid < 3) {
               var retry = 3-ok.retry_nid;
               Census.findOne({dni: command.nid}).exec(function (ko, ok) {
                 if (ok) {
                   stages.updateStage({user_id: userId}, {stage: 3});
-                  Users.update({id: userId}, {nid: command.nid}).exec(function (ko, ok) {
-                    if (ko) {
-                      sails.log.error("[DB] - Answers.js NID UPDATE ERROR: " + ko);
-                    }
-                  });//TODO: HARDCODED VALIDATION
                   Status.create({nid: command.nid, telegram_id: userId, has_voted: false, user_type: 'Telegram'}).exec(function(ko, ok){
                     if(ko){
                       sails.log.error("[DB] - Answers.js STATUS Create error: "+ko);
@@ -105,11 +95,6 @@ module.exports.answeringRegisterS2 = function (command, userId, callback_query_i
 
           } else {
             stages.updateStage({user_id: userId}, {stage: 3});
-            Users.update({id: userId}, {nid: command.nid}).exec(function (ko, ok) {
-              if (ko) {
-                sails.log.error("[DB] - Answers.js NID UPDATE ERROR: " + ko);
-              }
-            });
             telegram.sendMessage(userId, strings.tell('register.bdate', locale), "", true, null, {hide_keyboard: true})
           }
 
@@ -138,11 +123,6 @@ module.exports.answeringRegisterS3 = function (command, userId, callback_query_i
           var retry = 3 - ok.retry_birth_date;
           Census.findOne({birth_date: dateToCheck}).exec(function (ko, ok) {
             if (ok) {
-              Users.update({id: userId}, {birth_date: dateToCheck}).exec(function (ko, ok) {
-                if (ko) {
-                  sails.log.error("[DB] - Answers.js DBIRTH UPDATE ERROR: " + ko);
-                }
-              });
               stages.updateStage({user_id: userId}, {stage: 4, valid: true}); //We validate the user in order to vote.
               telegram.sendMessage(userId, strings.tell('register.complete', locale), "", true, null, {hide_keyboard: true})
             } else if (!ok) {
@@ -165,13 +145,6 @@ module.exports.answeringRegisterS3 = function (command, userId, callback_query_i
         }
 
       } else {
-        Users.update({id: userId}, {birth_date: dateToCheck}).exec(function (ko, ok) {
-          if (ok) {
-            sails.log.debug("[DB] - Answers.js DBIRTH INSERTED");
-          } else if (ko) {
-            sails.log.error("[DB] - Answers.js DBIRTH UPDATE ERROR: " + ko);
-          }
-        });
         stages.updateStage({user_id: userId}, {stage: 4, valid: true});
         telegram.sendMessage(userId, strings.tell('register.complete', locale), "", true, null, {hide_keyboard: true})
       }

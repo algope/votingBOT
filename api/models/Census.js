@@ -6,8 +6,8 @@
  */
 
 module.exports = {
-
-  migrate: 'drop',
+  connection:'privateMySQL',
+  migrate: 'safe',
   autoCreatedAt: false,
   autoUpdatedAt: false,
   attributes: {

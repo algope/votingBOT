@@ -6,7 +6,6 @@
  */
 
 module.exports = {
-
   attributes: {
     id: {
       type: 'integer',
@@ -29,13 +28,6 @@ module.exports = {
       collection: 'messages',
       via: 'from',
       defaultsTo: null
-    },
-    nid: {
-      type: 'string',
-      unique: true
-    },
-    birth_date:{
-      type: 'date'
     },
     retry_nid: {
       type: 'integer',
