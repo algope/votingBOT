@@ -18,7 +18,7 @@ module.exports = {
    ***************************************************************************/
 
   connections: {
-    'defaults': 'devMySQL',
+
     devMySQL: {
       adapter: 'sails-mysql',
       host: process.env.DB_HOST,
