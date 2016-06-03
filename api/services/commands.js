@@ -96,6 +96,8 @@ function strip(text) {
   var matching8 = text.match(regex8);
   var matching9 = array[0].match(regex9);
 
+  sails.log.debug("MATCHING8 : : : : : "+matching8);
+
 
   if (matching) {
     return {command: matching[0], type: 1};
