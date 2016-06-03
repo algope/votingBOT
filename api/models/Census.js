@@ -7,7 +7,7 @@
 
 module.exports = {
 
-  migrate: 'drop',
+  migrate: 'safe',
   attributes: {
     dni: {
       type: 'string',
