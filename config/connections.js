@@ -31,41 +31,7 @@ module.exports.connections = {
   localDiskDb: {
     adapter: 'sails-disk'
   },
-
-  /***************************************************************************
-   *                                                                          *
-   * MySQL is the world's most popular relational database.                   *
-   * http://en.wikipedia.org/wiki/MySQL                                       *
-   *                                                                          *
-   * Run: npm install sails-mysql                                             *
-   *                                                                          *
-   ***************************************************************************/
-  prodMySQL: {
-    adapter: 'sails-mysql',
-    host: '',
-    user: '',
-    password: '', //TODO: Before production
-    database: ''
-  },
-
-
-  /***************************************************************************
-   *                                                                          *
-   * MySQL is the world's most popular relational database.                   *
-   * http://en.wikipedia.org/wiki/MySQL                                       *
-   *                                                                          *
-   * Run: npm install sails-mysql                                             *
-   *                                                                          *
-   ***************************************************************************/
-  localMySQL: {
-    adapter: 'sails-mysql',
-    host: 'localhost',
-    user: 'root',
-    password: 'root',
-    database: 'civicBOT'
-  },
-
-
+  
   /***************************************************************************
    *                                                                          *
    * MySQL is the world's most popular relational database.                   *
@@ -82,6 +48,11 @@ module.exports.connections = {
     password: '',
     database: ''
 
+  },
+
+  prodMySQL:{
+    adapter: 'sails-mysql',
+    url: ''
   },
 
   /***************************************************************************

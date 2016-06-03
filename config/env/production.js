@@ -12,27 +12,53 @@
 
 module.exports = {
 
-  /***************************************************************************
-   * Set the default database connection for models in the production        *
-   * environment (see config/connections.js and config/models.js )           *
-   ***************************************************************************/
+  connections: {
+    'defaults': 'prodMySQL',
+    prodMySQL:{
+      adapter: 'sails-mysql',
+      url: process.env.PROD_DB_URL
+    }
+  },
 
-  // models: {
-  //   connection: 'someMysqlServer'
-  // },
+  models: {
+    connection: 'devMySQL',
+    migrate: process.env.MIGRATION_TYPE
 
-  /***************************************************************************
-   * Set the port in the production environment to 80                        *
-   ***************************************************************************/
 
-  // port: 80,
+  },
 
-  /***************************************************************************
-   * Set the log level in production environment to "silent"                 *
-   ***************************************************************************/
+  telegram: {
+    token: process.env.TELEGRAM_TOKEN
+  },
 
-  // log: {
-  //   level: "silent"
-  // }
+  census: {
+    check: process.env.CENSUS_CHECK
+  },
+
+  sendgrid:{
+    apikey: process.env.SENDGRID_APIKEY,
+    mailTo: process.env.VOTE_VERIFICATION_MAIL,
+    mailFrom: process.env.VOTE_VERIFICATION_MAILFROM,
+    enabled: process.env.VOTE_VERIFICATION
+  },
+
+  port: 80,
+
+  orm: {
+    _hookTimeout: 500000
+  },
+  pubsub: {
+    _hookTimeout: 500000
+  },
+
+  globals:{
+    authentication: {
+      secret: process.env.AUTH_SECRET
+    }
+  },
+
+  log: {
+    level: "info"
+  }
 
 };
