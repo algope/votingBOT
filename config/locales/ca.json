@@ -37,6 +37,8 @@
   "verifying": "Anem a verificar el teu vot.\nEnviam el codi que et vaig proporcionar quan vares votar:",
   "verifying.error" : "Pareix que el codi per a desxifrar el vot no és correcta :flushed: \nTorna a intentar-ho o posat en contacte amb nosaltres.",
   "verifying.sucess" : "El teu vot és correcte :thumbsup: \nEl que vares votar és: %s",
+  "verifying.error.notTelegram" : "Ups, no puc verificar un vot si no ho has enviat a través de mí.\nPots verificar el teu vot des del lloc on vares generar el teu vot.",
+
 
   "about.question" : "¿Sobre quina opció vols saber-ne més?",
   "about.noRegistered": "No siguis tan ràpid, encara no ens coneguem... :bowtie: Abans de saber-ne més, registrar-te deuràs.",

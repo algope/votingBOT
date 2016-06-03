@@ -455,7 +455,7 @@ module.exports.answerVerify = function (command, userId, locale) {
     if (ko) {
       sails.log.error("[DB] - Anwers.js answerVerify ERROR: " + ko);
     }
-    if (ok) {
+    if (ok.encrypted_vote) {
       var decryptedVote = cryptog.decrypt(ok.encrypted_vote, pass);
       var regex = /^(\d+)(,\s*\d+)*/;
       var array = decryptedVote.split(" ");
@@ -466,6 +466,9 @@ module.exports.answerVerify = function (command, userId, locale) {
       } else {
         telegram.sendMessage(userId, strings.tell('verifying.error', locale), "", true, null, {hide_keyboard: true});
       }
+
+    }else if(!ok.encrypted_vote){
+      telegram.sendMessage(userId, strings.tell('verifying.error.notTelegram', locale));
 
     }
   })
