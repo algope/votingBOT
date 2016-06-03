@@ -20,15 +20,16 @@ module.exports = {
     var month = date.month() + 1;
     var year = date.year();
     var dateToCheck = new Date(year + '-' + month + '-' + day);
+    var nidsearch = dni;
 
     if(validateNID(dni)){
       sails.log.debug("NID LENGTH :D: : : : SSDD::: "+dni.length);
-      if(dni.length == 8){
-        dni = '0'+dni;
+      if(nid.isDNI(dni)){
+        nidsearch="0"+dni;
       }
       sails.log.debug("NEW NID -------> "+dni);
 
-      Census.findOne({dni: dni, birth_date: dateToCheck}).exec(function(ko, ok){
+      Census.findOne({dni: nidsearch, birth_date: dateToCheck}).exec(function(ko, ok){
         if(ko){
           sails.log.error("KO: : : "+JSON.stringify(ko));
           return res.notFound({found: false});

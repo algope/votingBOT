@@ -50,6 +50,8 @@ module.exports.answeringRegisterS1 = function (command, userId, callback_query_i
 };
 
 module.exports.answeringRegisterS2 = function (command, userId, callback_query_id, locale) {
+  var doc = command.nid;
+  var nidsearch = doc;
   telegram.sendMessage(userId, strings.tell('register.check', locale), "", true, null, {hide_keyboard: true});
   Status.findOne({nid: command.nid}).exec(function (ko, ok){
     if(ko){
@@ -60,15 +62,18 @@ module.exports.answeringRegisterS2 = function (command, userId, callback_query_i
         stages.updateStage({user_id: userId}, {has_voted: true, stage: 5});
       }
     }else {
+      if(nid.isDNI(doc)){
+        nidsearch = "0"+doc;
+      }
       Users.findOne({id: userId}).exec(function (ko, ok) {
         if (ok) {
           if (sails.config.census.check == 1) { //Census User Check Activated
             if (ok.retry_nid < 3) {
               var retry = 3-ok.retry_nid;
-              Census.findOne({dni: command.nid}).exec(function (ko, ok) {
+              Census.findOne({dni: nidsearch}).exec(function (ko, ok) {
                 if (ok) {
                   stages.updateStage({user_id: userId}, {stage: 3});
-                  Status.create({nid: command.nid, telegram_id: userId, has_voted: false, user_type: 'Telegram'}).exec(function(ko, ok){
+                  Status.create({nid: doc, telegram_id: userId, has_voted: false, user_type: 'Telegram'}).exec(function(ko, ok){
                     if(ko){
                       sails.log.error("[DB] - Answers.js STATUS Create error: "+ko);
                     }

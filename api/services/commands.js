@@ -80,7 +80,7 @@ module.exports.validate = function (text) {
 function strip(text) {
   var regex = /(\/[a-z\_A-Z]+)/;
   var regex4 = /(butt_)./;
-  var regex5 = /^[0-9]{9}[TRWAGMYFPDXBNJZSQVHLCKET]{1}$/i;
+  var regex5 = /^[0-9]{8}[TRWAGMYFPDXBNJZSQVHLCKET]{1}$/i;
   var regex6 = /^[XYZ]{1}[0-9]{7}[TRWAGMYFPDXBNJZSQVHLCKET]{1}$/i;
   var regex7 = /^(?:(?:31(\/|-|\.)(?:0?[13578]|1[02]))\1|(?:(?:29|30)(\/|-|\.)(?:0?[1,3-9]|1[0-2])\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:29(\/|-|\.)0?2\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\d|2[0-8])(\/|-|\.)(?:(?:0?[1-9])|(?:1[0-2]))\4(?:(?:1[6-9]|[2-9]\d)?\d{2})$/;
   var regex8 = /^(\d+(,\d+)*)?$/;
@@ -103,13 +103,8 @@ function strip(text) {
     return {command: matching[0], type: 1};
   } else if (matching4) {
     return {command: matching4[0], type: 4};
-  } else if (matching5){
-    if(text.length == 8){
-      text += '0'+text;
-    }
-    if(validate(text)) {
-      return {command: matching5[0], type: 5};
-    }
+  } else if (matching5 && validate(text)) {
+    return {command: matching5[0], type: 5};
   } else if (matching6 && validate(text)) {
     return {command: matching6[0], type: 6};
   } else if (matching7) {
