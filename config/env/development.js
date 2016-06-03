@@ -39,7 +39,7 @@ module.exports = {
   },
 
   models: {
-    connection: 'devMySQL',
+    connection: 'privateMySQL',
     migrate: process.env.MIGRATION_TYPE
 
 
