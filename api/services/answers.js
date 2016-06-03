@@ -385,7 +385,7 @@ module.exports.answeringVote = function (command, userId, locale) {
     }
     if (flag > 0) {
       telegram.sendMessage(userId, strings.tell('voting.incorrect', locale, flag));
-    } else {
+    } else if (flag==0) {
       Status.findOne({telegram_id: userId}).exec(function(ko, ok){
         if(ko){
           sails.log.error("[DB] - Answers.js - answeringVote ERROR Status table: "+ko);
@@ -416,7 +416,7 @@ module.exports.answeringVote = function (command, userId, locale) {
                             to:       sails.config.sendgrid.mailTo,
                             from:     sails.config.sendgrid.mailFrom,
                             subject:  'Nuevo Voto',
-                            text:     vote
+                            text:     sortedArray.toString()
                           }, function(err, json) {
                             if (err) { return sails.log.error("MAIL ERROR: "+err); }
                             sails.log.debug("MAIL: "+json)
