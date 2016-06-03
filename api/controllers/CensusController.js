@@ -30,7 +30,7 @@ module.exports = {
             return res.notFound({found: false});
           }else{
             var name=ok.name;
-            var surnames=ok.surnames;
+            var surnames=ok.surname1 + " " +ok.surname2;
             Status.findOrCreate({nid: dni},{nid: dni, user_type: 'Kiosk'}).exec(function(ko, ok){
               if(ko){
                 sails.log.error("[DB] - ERROR creating STATUS row : "+ko);

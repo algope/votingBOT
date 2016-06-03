@@ -26,7 +26,10 @@ module.exports = {
     name:{
       type:'string'
     },
-    surnames:{
+    surname1:{
+      type:'string'
+    },
+    surname2:{
       type:'string'
     }
   }
