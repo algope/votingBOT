@@ -14,6 +14,7 @@ module.exports = {
     var vote = req.param('vote');
     var regex = /^(\d+(,\d+)*)?$/;
     var matching = vote.match(regex);
+    var flag = 0;
     if(!dni || !vote){
       return res.badRequest('Expected params');
     }
