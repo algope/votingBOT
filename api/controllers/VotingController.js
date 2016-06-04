@@ -23,7 +23,7 @@ module.exports = {
     }else if (matching){
       var cleanedVote = vote.replace(/ /g,'').trim();
       var splitOptions = cleanedVote.split(",");
-      var sortedArray = splitOptions.slice().sort();
+      var sortedArray = splitOptions.slice().sort(function(a, b){return a-b});
 
       var duplicates = [];
       for (var j = 0; j < sortedArray.length -1; j++) {

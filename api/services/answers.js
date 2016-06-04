@@ -382,7 +382,7 @@ module.exports.answeringVote = function (command, userId, locale) {
   var vote = command.vote;
   var cleanedVote = vote.replace(/ /g,'').trim();
   var splitOptions = cleanedVote.split(",");
-  var sortedArray = splitOptions.slice().sort();
+  var sortedArray = splitOptions.slice().sort(function(a, b){return a-b});
   var flag = 0;
   sails.log.debug("[DEV] - RECEIVED AND CLEANED VOTE: : : "+cleanedVote);
   sails.log.debug("[DEV] - SPLITED AND SORTED VOTE: : : "+sortedArray);
