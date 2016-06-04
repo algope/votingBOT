@@ -15,11 +15,11 @@ module.exports.getVoteOptions = function (locale) {
      if (ok) {
        var resp = strings.tell('options.intro', locale);
        for (var i = 0; i < ok.length; i++) {
-         var id = ok[i].id;
+         var id = ok[i].option_id;
          if(id<10){
-           resp += ok[i].id+"\uFE0F\u20E3" + " : " + ok[i].text + "\n";
+           resp += ok[i].option_id+"\uFE0F\u20E3" + " : " + ok[i].text + "\n";
          } else if(id>=10){
-           var idStr = ok[i].id.toString();
+           var idStr = ok[i].option_id.toString();
            var n1 = idStr.charAt(0);
            var n2 = idStr.charAt(1);
            resp += n1+"\uFE0F\u20E3"+n2+"\uFE0F\u20E3"+ " : " + ok[i].text + "\n";
@@ -45,8 +45,8 @@ module.exports.getVoteText = function (vote){
           var arrayVote = vote.split(",");
           for (var i=0; i<arrayVote.length; i++) {
             for (var j=0; j<ok.length; j++){
-              if(arrayVote[i] == ok[j].id){
-                options.push({id: ok[j].id,text: ok[j].text});
+              if(arrayVote[i] == ok[j].option_id){
+                options.push({id: ok[j].option_id,text: ok[j].text});
               }
 
             }

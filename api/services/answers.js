@@ -497,7 +497,7 @@ module.exports.answeringGetInfo = function (command, userId, locale) {
   var splitOptions = cleanedVote.split(" ");
   var option = splitOptions[0];
 
-  Options.findOne({id: option}).exec(function (ko, ok) {
+  Options.findOne({option_id: option}).exec(function (ko, ok) {
     if (ko) {
       sails.log.error("[DB] - Answers.js ERROR options get info");
     } else if (ok) {

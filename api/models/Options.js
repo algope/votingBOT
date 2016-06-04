@@ -8,6 +8,10 @@
 module.exports = {
   migrate: 'drop',
   attributes: {
+    option_id: {
+      type: 'integer',
+      unique: true
+    },
     text:{
       type: 'string'
     },
