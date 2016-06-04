@@ -27,12 +27,12 @@
   "register.expect.bdate" : "No me he ido, no te preocupes :smile:\nAhora necesito tu fecha de nacimiento para completar el registro (DD/MM/AAAA)",
 
   "voting.error": "Vaya, parece que has querido votar más de :eight: opciones. \nRecuerda que como máximo puedes votar :eight: opciones.",
-  "voting.ready" : "¡Hola de nuevo %s, Ya tenemos todos tus datos verificados, ¿preparadx para votar? :grin:\nSi es así, puedes enviarme tu voto",
+  "voting.ready" : "¡Hola de nuevo %s, ya tenemos todos tus datos verificados, ¿preparadx para votar? :grin:\nSi es así, puedes enviarme tu voto",
   "voting.noRegistered": "No vayas tan rápido, apenas nos conocemos... :blush: Antes de votar, registrarte deberás. ",
   "voting.success": "Tu voto ha sido guardado correctamente :thumbsup: \nEste es el código para verificar que tu voto es correcto:",
   "voting.verify": "Utiliza el comando /verificar para comprobarlo cuando quieras :sunglasses:",
   "voting.alreadyVote" : "Ups, parece que ya has votado :flushed:, puedes verificar tu voto mediante el comando /verificar",
-  "voting.voteEnd" : "Hola de nuevo %s, Ya tenemos tu voto registrado correctamente, puedes verificar tu voto mediante el comando /verificar",
+  "voting.voteEnd" : "Hola de nuevo %s, ya tenemos tu voto registrado correctamente, puedes verificar tu voto mediante el comando /verificar",
   "voting.incorrect" : "Vaya, parece ser que %s de las opciones introducidas no pertenecen al listado. \nVuelve a emitir tu voto con las opciones del listado",
   "voting.error.duplicates": "Ey, no puedes votar más de una vez a la misma opción, revisa tu voto en busca de duplicados",
 
