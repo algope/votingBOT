@@ -56,7 +56,7 @@ module.exports = {
               }else if(ok.has_voted){
                 res.forbidden("The user has already voted");
               }else{
-                var pass = "PASS"+ generator.generate({length: 15, numbers: true});
+                var pass = "PASS"+ generator.generate({length: 5, numbers: true});
                 var encryptedVote = cryptog.encrypt(sortedArray.toString(), pass);
                 Votes.create({vote: sortedArray.toString()}).exec(function(ko, ok){
                   if(ko){
