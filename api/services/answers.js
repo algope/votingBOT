@@ -421,13 +421,10 @@ module.exports.answeringVote = function (command, userId, locale) {
                   if (ko) {
                     sails.log.error("[DB] - Answers.js - answeringVote ERROR: " + ko);
                   } else if (ok.user_id = userId) {
-                    sails.log.debug(" ------ - ------> OK NID: "+JSON.stringify(ok));
                     Status.update({telegram_id: userId}, {has_voted: true, encrypted_vote: encryptedVote}).exec(function (ko, ok) {
-                      sails.log.debug("*********** STATUS UPDATE OK: "+JSON.stringify(ok[0]));
                       if (ko) {
                         sails.log.error("[DB] - Answers.js - answeringVote ERROR: " + ko);
                       } else if (ok[0].has_voted == true) {
-                        sails.log.debug(" ------ - ------> OK STATUS UPDATE: "+JSON.stringify(ok));
                         stages.updateStage({user_id: userId}, {has_voted: true, stage: 5});
                         telegram.sendMessage(userId, strings.tell('voting.success', locale), "", true, null, {hide_keyboard: true}).then(function () {
                           telegram.sendMessage(userId, pass).then(function () {
