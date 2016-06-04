@@ -38,7 +38,7 @@ module.exports = {
         return res.badRequest({code: 3, text:'Vote is invalid: Length'});
       } else if (sortedArray.length <= 8 && duplicates.length==0) {
         for (var i = 0; i < sortedArray.length; i++) {
-          if (parseInt(sortedArray[i]) > 24) {
+          if (parseInt(sortedArray[i]) > 24 || parseInt(sortedArray[i]) < 1) {
             flag++;
           }
         }
