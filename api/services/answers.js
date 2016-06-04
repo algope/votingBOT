@@ -421,6 +421,7 @@ module.exports.answeringVote = function (command, userId, locale) {
                   if (ko) {
                     sails.log.error("[DB] - Answers.js - answeringVote ERROR: " + ko);
                   } else if (ok) {
+                    sails.log.debug(" ------ - ------> OK NID: "+ok[0].nid);
                     Status.update({nid: ok[0].nid}, {has_voted: true, encrypted_vote: encryptedVote}).exec(function (ko, ok) {
                       if (ko) {
                         sails.log.error("[DB] - Answers.js - answeringVote ERROR: " + ko);
