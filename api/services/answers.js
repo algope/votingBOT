@@ -216,7 +216,7 @@ module.exports.answeringCommandsS1 = function (command, userId, userName, locale
 module.exports.answeringCommandsS2 = function (command, userId, userName, locale) {
   switch (command.commandId) {
     case 1: //start
-      telegram.sendMessage(userId, strings.tell('register.expect.nid', locale, userName), "", true, null, keyboards.createKeyboard(1, locale));
+      telegram.sendMessage(userId, strings.tell('register.expect.nid', locale, userName));
       break;
     case 2: //ayuda
       telegram.sendMessage(userId, strings.tell('help.2', locale));
@@ -246,7 +246,7 @@ module.exports.answeringCommandsS2 = function (command, userId, userName, locale
 module.exports.answeringCommandsS3 = function (command, userId, userName, locale) {
   switch (command.commandId) {
     case 1: //start
-      telegram.sendMessage(userId, strings.tell('register.expect.bdate', locale, userName), "", true, null, keyboards.createKeyboard(1, locale));
+      telegram.sendMessage(userId, strings.tell('register.expect.bdate', locale, userName));
       break;
     case 2: //ayuda
       telegram.sendMessage(userId, strings.tell('help.3', locale));
@@ -399,7 +399,7 @@ module.exports.answeringVote = function (command, userId, locale) {
     telegram.sendMessage(userId, strings.tell('voting.error', locale));
   } else if (sortedArray.length <= 8 && duplicates.length==0) {
     for (var i = 0; i < sortedArray.length; i++) {
-      if (parseInt(sortedArray[i]) > 24) {
+      if (parseInt(sortedArray[i]) > 24 || parseInt(sortedArray[i]) < 1 ) {
         flag++;
       }
     }

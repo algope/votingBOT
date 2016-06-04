@@ -6,7 +6,7 @@
   "hello" : "Hola!",
   "hello.again" : "Hola de nou",
   "language.sel" : "Selecciona idioma:",
-  "welcome": "Hola %s! Un plaer conèixer-te! :smile: \nBenvingut/da al sistema de votació.\nPer a votar serà necessari que em digues el teu DNI i Data de Naixement i comprovaré que hi apareixes en el cens.\nVols continuar?",
+  "welcome": "Hola %s! Un plaer conèixer-te! :smile: \nBenvingut/da al sistema de votació.\nPer a votar serà necessari que em digues el teu DNI i data de naixement i comprovaré que hi apareixes en el cens.\nVols continuar?",
   "error": "Ups, açò no m'ho esperava... :confused: \nRevisa el que m'acabes d'enviar",
   "troll": "Uy, no tinc temps per a llegir tant... :weary:",
   "goodbye": "Una llastima :sob:, m'haguera agradat seguir parlant amb tu.\nSi canvies d'opinió, només has de tornar a escriure: /start",
@@ -15,13 +15,13 @@
 
   "register.start": "Iniciant registre...",
   "register.cancel": "Registre cancel·lat.",
-  "register.question": "Vols registrar-te? Recorda tenir a mà el teu número de DNI o NIE i la teva Data de Naixement",
+  "register.question": "Vols registrar-te? Recorda tenir a mà el teu número de DNI o NIE i la teva data de naixement",
   "register.nid": "Meravellós, ara introdueix el teu DNI (8 dígits y lletra) o NIE (X/Y/Z seguit per 7 dígits y letra). Recorda introduir-ho correctament :smile:",
   "register.bdate": "Perfecte, indicam ara la teva data de naixement amb el següent format: DD/MM/AAAA",
   "register.complete": "Registre complet :thumbsup:, Per a començar a votar selecciona el comandament /votar",
   "register.check": "Comprovant cens... :hourglass_flowing_sand:",
   "register.error.nid": "Ups :flushed:, em pareix que hi ha hagut un error. És possible que no hi apareixes en el Cens de votants.\nTorna a introduir el teu DNI per si t'hagueres equivocat.\nTens %s intents.",
-  "register.error.bdate": "Ups :flushed:, em pareix que hi ha hagut un error. És posible que no hi apareixes en el Cens de votants \nTorna a introduir la teva Data de Naixement per si t'hagueres equivocat.\nTens %s intents.",
+  "register.error.bdate": "Ups :flushed:, em pareix que hi ha hagut un error. És posible que no hi apareixes en el Cens de votants \nTorna a introduir la teva data de naixement per si t'hagueres equivocat.\nTens %s intents.",
   "register.banned": "Lo lament :flushed:, has esgotat els intents per a registrar-te. Per seguretat he bloquejat el teu usuari",
 
   "voting.error": "Vaja, pareix que has volgut votar més de :eight: opcions. \nRecorda que com màxim pots votar :eight: opcions.",
@@ -50,7 +50,7 @@
 
   "help.1" : "Polsa damunt un dels botons que t'he mostrat al missatge anterior.",
   "help.2" : "Introdueix el teu número de DNI o NIF amb lletra.",
-  "help.3" : "Introdueix la teva Data de Naixement amb el format DD(dia)/MM(mes)/AAAA(año).\nExemple: 14/11/1990",
+  "help.3" : "Introdueix la teva data de daixement amb el format DD(dia)/MM(mes)/AAAA(año).\nExemple: 14/11/1990",
   "help.4" : "Polsa damunt el comandament /votar per a emetre el teu vot. Recorda que hauràs d'introduir les opcions desitjades mitjançant números separats per coma.",
   "help.5" : "El teu vot ha estat enregistrat correctament. Ja has acabat :smile: . Polsa damunt el comandament /verificar per a tornar a veure el teu vot.",
   "help.10" : "Introdueix una opció de les que t'he mostrat per a conèixer més d'ella."
