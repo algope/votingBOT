@@ -420,12 +420,12 @@ module.exports.answeringVote = function (command, userId, locale) {
                 Users.update({user_id: userId}, {encrypted_vote: encryptedVote}).exec(function (ko, ok) {
                   if (ko) {
                     sails.log.error("[DB] - Answers.js - answeringVote ERROR: " + ko);
-                  } else if (ok) {
+                  } else if (ok.user_id = userId) {
                     sails.log.debug(" ------ - ------> OK NID: "+JSON.stringify(ok));
-                    Status.update({nid: ok[0].nid}, {has_voted: true, encrypted_vote: encryptedVote}).exec(function (ko, ok) {
+                    Status.update({telegram_id: userId}, {has_voted: true, encrypted_vote: encryptedVote}).exec(function (ko, ok) {
                       if (ko) {
                         sails.log.error("[DB] - Answers.js - answeringVote ERROR: " + ko);
-                      } else if (ok) {
+                      } else if (ok.has_voted == true) {
                         sails.log.debug(" ------ - ------> OK STATUS UPDATE: "+JSON.stringify(ok));
                         stages.updateStage({user_id: userId}, {has_voted: true, stage: 5});
                         telegram.sendMessage(userId, strings.tell('voting.success', locale), "", true, null, {hide_keyboard: true}).then(function () {
