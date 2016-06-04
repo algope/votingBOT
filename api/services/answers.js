@@ -173,6 +173,8 @@ module.exports.answeringCommandsS0 = function (command, userId, userName) {
     case 1: //start
       telegram.sendMessage(userId, strings.tell('language.sel', 'es', userName), "", true, null, keyboards.createKeyboard(3));
       break;
+    default:
+          telegram.sendMessage(userId, strings.tell('error', locale));
   }
 };
 
@@ -204,6 +206,8 @@ module.exports.answeringCommandsS1 = function (command, userId, userName, locale
     case 7: //verificar
       telegram.sendMessage(userId, strings.tell('verifying.notRegistered', locale));
       break;
+    default:
+      telegram.sendMessage(userId, strings.tell('error', locale));
   }
 
 };
@@ -232,6 +236,8 @@ module.exports.answeringCommandsS2 = function (command, userId, userName, locale
     case 7: //verificar
       telegram.sendMessage(userId, strings.tell('verifying.notRegistered', locale));
       break;
+    default:
+      telegram.sendMessage(userId, strings.tell('error', locale));
   }
 
 };
@@ -260,6 +266,8 @@ module.exports.answeringCommandsS3 = function (command, userId, userName, locale
     case 7: //verificar
       telegram.sendMessage(userId, strings.tell('verifying.notRegistered', locale));
       break;
+    default:
+      telegram.sendMessage(userId, strings.tell('error', locale));
   }
 
 };
@@ -291,6 +299,8 @@ module.exports.answeringCommandsS4 = function (command, userId, userName, locale
     case 7: //verificar
       telegram.sendMessage(userId, strings.tell('verifying.notRegistered', locale));
       break;
+    default:
+      telegram.sendMessage(userId, strings.tell('error', locale));
   }
 };
 
@@ -319,6 +329,8 @@ module.exports.answeringCommandsS5 = function (command, userId, userName, locale
     case 7: //verificar
       telegram.sendMessage(userId, strings.tell('verifying', locale), "", true, null, {hide_keyboard: true});
       break;
+    default:
+      telegram.sendMessage(userId, strings.tell('error', locale));
   }
 };
 
@@ -359,6 +371,8 @@ module.exports.answeringCommandsS10 = function (command, userId, userName, local
     case 7: //verificar
       telegram.sendMessage(userId, strings.tell('verifying', locale), "", true, null, {hide_keyboard: true});
       break;
+    default:
+      telegram.sendMessage(userId, strings.tell('error', locale));
   }
 };
 
