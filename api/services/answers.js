@@ -179,9 +179,10 @@ module.exports.answeringCommandsS0 = function (command, userId, userName) {
 }; //LANGUAGE
 
 module.exports.answeringCommandsS1 = function (command, userId, userName, locale) {
+  sails.log.debug("COMMAND ID _ _ _ _ _ _ _ _ "+ command.commandId);
   switch (command.commandId) {
     case 1: //start
-      telegram.sendMessage(userId, strings.tell('welcome', locale, userName), "", true, null, keyboards.createKeyboard(1));
+      telegram.sendMessage(userId, strings.tell('welcome', locale, userName), "", true, null, keyboards.createKeyboard(1, locale));
       break;
     case 2: //ayuda
       telegram.sendMessage(userId, strings.tell('help.1', locale));
@@ -191,12 +192,12 @@ module.exports.answeringCommandsS1 = function (command, userId, userName, locale
       break;
     case 4: //votar
       telegram.sendMessage(userId, strings.tell('voting.noRegistered', locale)).then(function(){
-        telegram.sendMessage(userId, strings.tell('register.question', locale), "", true, null, keyboards.createKeyboard(1));
+        telegram.sendMessage(userId, strings.tell('register.question', locale), "", true, null, keyboards.createKeyboard(1, locale));
       });
       break;
     case 5: //saber_mas
       telegram.sendMessage(userId, strings.tell('about.noRegistered', locale)).then(function(){
-        telegram.sendMessage(userId, strings.tell('register.question', locale), "", true, null, keyboards.createKeyboard(1));
+        telegram.sendMessage(userId, strings.tell('register.question', locale), "", true, null, keyboards.createKeyboard(1, locale));
       });
       break;
     case 6: //cancelar
@@ -215,7 +216,7 @@ module.exports.answeringCommandsS1 = function (command, userId, userName, locale
 module.exports.answeringCommandsS2 = function (command, userId, userName, locale) {
   switch (command.commandId) {
     case 1: //start
-      telegram.sendMessage(userId, strings.tell('register.expect.nid', locale, userName), "", true, null, keyboards.createKeyboard(1));
+      telegram.sendMessage(userId, strings.tell('register.expect.nid', locale, userName), "", true, null, keyboards.createKeyboard(1, locale));
       break;
     case 2: //ayuda
       telegram.sendMessage(userId, strings.tell('help.2', locale));
@@ -245,7 +246,7 @@ module.exports.answeringCommandsS2 = function (command, userId, userName, locale
 module.exports.answeringCommandsS3 = function (command, userId, userName, locale) {
   switch (command.commandId) {
     case 1: //start
-      telegram.sendMessage(userId, strings.tell('register.expect.bdate', locale, userName), "", true, null, keyboards.createKeyboard(1));
+      telegram.sendMessage(userId, strings.tell('register.expect.bdate', locale, userName), "", true, null, keyboards.createKeyboard(1, locale));
       break;
     case 2: //ayuda
       telegram.sendMessage(userId, strings.tell('help.3', locale));
