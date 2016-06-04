@@ -86,6 +86,7 @@ function strip(text) {
   var regex8 = /^(\d+(,\d+)*)?$/;
   var regex9 = /(PASS).+/;
   var array = text.split(" ");
+  var vote = text.replace(/ /g,'');
 
 
   var matching = regex.test(array[0]);
@@ -93,7 +94,7 @@ function strip(text) {
   var matching5 = regex5.test(array[0].toString().toUpperCase());
   var matching6 = regex6.test(array[0].toString().toUpperCase());
   var matching7 = regex7.test(array[0]);
-  var matching8 = regex8.test(text.replace(/ /g,'').trim());
+  var matching8 = regex8.test(vote);
   var matching9 = regex9.test(array[0]);
 
   sails.log.debug("MATCHING8 : : : : : "+matching8);
@@ -115,8 +116,8 @@ function strip(text) {
     sails.log.debug(">>>>>>>>>>>> MATCHING 7 >>>>>>>");
     return {command: array[0], type: 7};
   } else if (matching8){
-    sails.log.debug(">>>>>>>>>>>> MATCHING 8 >>>>>>>");
-    return {command: array[0], type: 8};
+    sails.log.debug(">>>>>>>>>>>> MATCHING 8 >>>>>>>: "+vote);
+    return {command: vote, type: 8};
   } else if (matching9){
     sails.log.debug(">>>>>>>>>>>> MATCHING 9 >>>>>>>");
     return {command: array[0], type: 9};
