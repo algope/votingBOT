@@ -6,7 +6,7 @@
  */
 
 module.exports = {
-  migrate: 'safe',
+  migrate: 'drop',
   attributes: {
     option_id: {
       type: 'integer',
