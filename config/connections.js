@@ -57,6 +57,15 @@ module.exports.connections = {
     password: '',
     database: ''
 
+  },
+
+  mongoLab : {
+    adapter: 'sails-mongo',
+    host: '',
+    port: '',
+    user: '',
+    password: '',
+    database: ''
   }
 
 };

@@ -65,7 +65,7 @@ module.exports.answeringRegisterS2 = function (command, userId, callback_query_i
       if(nid.isDNI(doc)){
         nidsearch = "0"+doc;
       }
-      Users.findOne({id: userId}).exec(function (ko, ok) {
+      Users.findOne({user_id: userId}).exec(function (ko, ok) {
         if (ok) {
           if (sails.config.census.check == 1) { //Census User Check Activated
             if (ok.retry_nid < 3) {
@@ -81,7 +81,7 @@ module.exports.answeringRegisterS2 = function (command, userId, callback_query_i
                   telegram.sendMessage(userId, strings.tell('register.bdate', locale), "", true, null, {hide_keyboard: true})
                 } else if (!ok) {
                   telegram.sendMessage(userId, strings.tell('register.error.nid', locale, retry), "", true, null, {hide_keyboard: true});
-                  Users.findOne({id: userId}).exec(function (ko, ok) {
+                  Users.findOne({user_id: userId}).exec(function (ko, ok) {
                     if (ok) {
                       ok.retry_nid++;
                       ok.save(function (err, user) {
@@ -121,7 +121,7 @@ module.exports.answeringRegisterS2 = function (command, userId, callback_query_i
 
 module.exports.answeringRegisterS3 = function (command, userId, callback_query_id, locale) {
   telegram.sendMessage(userId, strings.tell('register.check', locale), "", true, null, {hide_keyboard: true});
-  Users.findOne({id: userId}).exec(function (ko, ok) {
+  Users.findOne({user_id: userId}).exec(function (ko, ok) {
     if (ok) {
       var date = moment(command.date, "DD-MM-YYYY");
       var day = date.date();
@@ -137,7 +137,7 @@ module.exports.answeringRegisterS3 = function (command, userId, callback_query_i
               telegram.sendMessage(userId, strings.tell('register.complete', locale), "", true, null, {hide_keyboard: true})
             } else if (!ok) {
               telegram.sendMessage(userId, strings.tell('register.error.bdate', locale, retry), "", true, null, {hide_keyboard: true});
-              Users.findOne({id: userId}).exec(function (ko, ok) {
+              Users.findOne({user_id: userId}).exec(function (ko, ok) {
                 if (ok) {
                   ok.retry_birth_date++;
                   ok.save(function (err, user) {
@@ -417,7 +417,7 @@ module.exports.answeringVote = function (command, userId, locale) {
               if (ko) {
                 sails.log.error("[DB] - Answers.js - answeringVote ERROR: " + ko);
               } else if (ok) {
-                Users.update({id: userId}, {encrypted_vote: encryptedVote}).exec(function (ko, ok) {
+                Users.update({user_id: userId}, {encrypted_vote: encryptedVote}).exec(function (ko, ok) {
                   if (ko) {
                     sails.log.error("[DB] - Answers.js - answeringVote ERROR: " + ko);
                   } else if (ok) {
@@ -466,7 +466,7 @@ module.exports.answeringVote = function (command, userId, locale) {
 
 module.exports.answerVerify = function (command, userId, locale) {
   var pass = command.pass;
-  Users.findOne({id: userId}).exec(function (ko, ok) {
+  Users.findOne({user_id: userId}).exec(function (ko, ok) {
     if (ko) {
       sails.log.error("[DB] - Anwers.js answerVerify ERROR: " + ko);
     }

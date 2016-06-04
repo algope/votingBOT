@@ -34,12 +34,16 @@ module.exports = {
       user: process.env.DB_PRIVATE_USER,
       password: process.env.DB_PRIVATE_PASSWORD,
       database: process.env.DB_PRIVATE_NAME
+    },
+    mongodb: {
+      adapter: 'sails-mongo',
+      url: process.env.MONGO_URL
     }
 
   },
 
   models: {
-    connection: 'devMySQL',
+    connection: 'mongodb',
     migrate: process.env.MIGRATION_TYPE
 
 
