@@ -30,11 +30,16 @@ module.exports = {
       password: process.env.DB_PRIVATE_PASSWORD,
       database: process.env.DB_PRIVATE_NAME
 
+    },
+
+    mongodb: {
+      adapter: 'sails-mongo',
+      url: process.env.MONGO_URL
     }
   },
 
   models: {
-    connection: 'prodMySQL',
+    connection: 'mongodb',
     migrate: process.env.MIGRATION_TYPE
 
 

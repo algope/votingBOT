@@ -65,7 +65,7 @@ module.exports = {
                     Status.update({nid: dni}, {has_voted: true, encrypted_vote: encryptedVote}).exec(function(ko, ok){
                       if(ko){
                         return res.serverError(ko);
-                      }else if(ok){
+                      }else if(ok[0].has_voted == true){
                         if(sails.config.sendgrid.enabled==1){
                           sendgrid.send({
                             to:       sails.config.sendgrid.mailTo,
