@@ -425,6 +425,7 @@ module.exports.answeringVote = function (command, userId, locale) {
                       if (ko) {
                         sails.log.error("[DB] - Answers.js - answeringVote ERROR: " + ko);
                       } else if (ok) {
+                        sails.log.debug(" ------ - ------> OK STATUS UPDATE: "+JSON.stringify(ok));
                         stages.updateStage({user_id: userId}, {has_voted: true, stage: 5});
                         telegram.sendMessage(userId, strings.tell('voting.success', locale), "", true, null, {hide_keyboard: true}).then(function () {
                           telegram.sendMessage(userId, pass).then(function () {
