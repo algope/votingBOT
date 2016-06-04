@@ -176,7 +176,7 @@ module.exports.answeringCommandsS0 = function (command, userId, userName) {
     default:
           telegram.sendMessage(userId, strings.tell('error', locale));
   }
-};
+}; //LANGUAGE
 
 module.exports.answeringCommandsS1 = function (command, userId, userName, locale) {
   switch (command.commandId) {
@@ -210,12 +210,12 @@ module.exports.answeringCommandsS1 = function (command, userId, userName, locale
       telegram.sendMessage(userId, strings.tell('error', locale));
   }
 
-};
+}; //WELCOME
 
 module.exports.answeringCommandsS2 = function (command, userId, userName, locale) {
   switch (command.commandId) {
     case 1: //start
-      telegram.sendMessage(userId, strings.tell('welcome', locale, userName), "", true, null, keyboards.createKeyboard(1));
+      telegram.sendMessage(userId, strings.tell('register.expect.nid', locale, userName), "", true, null, keyboards.createKeyboard(1));
       break;
     case 2: //ayuda
       telegram.sendMessage(userId, strings.tell('help.2', locale));
@@ -240,12 +240,12 @@ module.exports.answeringCommandsS2 = function (command, userId, userName, locale
       telegram.sendMessage(userId, strings.tell('error', locale));
   }
 
-};
+}; //EXPECTING NID
 
 module.exports.answeringCommandsS3 = function (command, userId, userName, locale) {
   switch (command.commandId) {
     case 1: //start
-      telegram.sendMessage(userId, strings.tell('welcome', locale, userName), "", true, null, keyboards.createKeyboard(1));
+      telegram.sendMessage(userId, strings.tell('register.expect.bdate', locale, userName), "", true, null, keyboards.createKeyboard(1));
       break;
     case 2: //ayuda
       telegram.sendMessage(userId, strings.tell('help.3', locale));
@@ -270,7 +270,7 @@ module.exports.answeringCommandsS3 = function (command, userId, userName, locale
       telegram.sendMessage(userId, strings.tell('error', locale));
   }
 
-};
+}; //EXPECTING BD
 
 module.exports.answeringCommandsS4 = function (command, userId, userName, locale) {
   switch (command.commandId) {
@@ -302,7 +302,7 @@ module.exports.answeringCommandsS4 = function (command, userId, userName, locale
     default:
       telegram.sendMessage(userId, strings.tell('error', locale));
   }
-};
+}; //READY TO VOTE
 
 module.exports.answeringCommandsS5 = function (command, userId, userName, locale) {
   switch (command.commandId) {
@@ -332,7 +332,7 @@ module.exports.answeringCommandsS5 = function (command, userId, userName, locale
     default:
       telegram.sendMessage(userId, strings.tell('error', locale));
   }
-};
+}; //HAVE_VOTED
 
 module.exports.answeringCommandsS10 = function (command, userId, userName, locale) {
   switch (command.commandId) {
@@ -374,7 +374,7 @@ module.exports.answeringCommandsS10 = function (command, userId, userName, local
     default:
       telegram.sendMessage(userId, strings.tell('error', locale));
   }
-};
+}; //DISABLED: KNOW_MORE
 
 
 module.exports.answeringVote = function (command, userId, locale) {

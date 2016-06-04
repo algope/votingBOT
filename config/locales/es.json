@@ -23,10 +23,12 @@
   "register.error.nid": "Ups :flushed:, me temo que ha habido un error. Es posible que no te encuentres en el Censo de votantes.\nVuelve a introducir tu DNI por si te hubieras equivocado.\nTienes %s intentos.",
   "register.error.bdate": "Ups :flushed:, me temo que ha habido un error. Es posible que no te encuentres en el Censo de votantes \nVuelve a introducir tu Fecha de Nacimiento por si te hubieras equivocado.\nTienes %s intentos.",
   "register.banned": "Lo siento :flushed:, has agotado los intentos para registrarte. Por seguridad he bloqueado tu usuario.",
+  "register.expect.nid" : "Si si, sigo aquí :smile:\nEstoy esperando que me envíes tu DNI o NIE (8 dígitos con letra).",
+  "register.expect.bdate" : "No me he ido, no te preocupes :smile:\nAhora necesito tu fecha de nacimiento para completar el registro (DD/MM/AAAA)",
 
   "voting.error": "Vaya, parece que has querido votar más de :eight: opciones. \nRecuerda que como máximo puedes votar :eight: opciones.",
   "voting.ready" : "¡Hola de nuevo %s, Ya tenemos todos tus datos verificados, ¿preparadx para votar? :grin:\n",
-  "voting.noRegistered": "No vayas tan rápido, apenas nos conocemos... :bowtie: Antes de votar, registrarte deberás. ",
+  "voting.noRegistered": "No vayas tan rápido, apenas nos conocemos... :blush: Antes de votar, registrarte deberás. ",
   "voting.success": "Tu voto ha sido guardado correctamente :thumbsup: \nEste es el código para verificar que tu voto es correcto:",
   "voting.verify": "Utiliza el comando /verificar para comprobarlo cuando quieras :sunglasses:",
   "voting.alreadyVote" : "Ups, parece que ya has votado :flushed:, puedes verificar tu voto mediante el comando /verificar",
@@ -37,11 +39,11 @@
   "verifying": "Vamos a verificar tu voto.\nEnvíame el código que te proporcioné cuando votaste:",
   "verifying.error" : "Parece que el código para descifrar el voto no es correcto :flushed: \nVuelve a intentarlo o ponte en contacto con nosotros",
   "verifying.sucess" : "Tu voto es correcto :thumbsup: \n Lo que votaste fue: %s",
-  "verifying.notRegistered" : "Es un poco pronto para que empecemos a verificar cosas :bowtie:, sigue los pasos que te he ido indicando :smile:",
+  "verifying.notRegistered" : "Es un poco pronto para que empecemos a verificar cosas :blush:, sigue los pasos que te he ido indicando :smile:",
   "verifying.error.notTelegram" : "Ups, no puedo verificar un voto si no lo has enviado a través de mí.\nPuedes verificar tu voto desde el lugar donde emitiste tu voto.",
 
   "about.question" : "¿Sobre qué opción quieres saber más?",
-  "about.noRegistered": "No vayas tan rápido, apenas nos conocemos... :bowtie: Antes de saber más, registrarte deberás. ",
+  "about.noRegistered": "No vayas tan rápido, apenas nos conocemos... :blush: Antes de saber más, registrarte deberás. ",
 
   "options.intro" : "Opciones disponibles:\n\n",
   "options.footer" : "\nSelecciona hasta :eight: opciones.\nEnvía tu voto utilizando los números de las opciones separados por comas.\nEjemplo: 1, 3, 5 \nNota: Los espacios en blanco entre los números son opcionales.",

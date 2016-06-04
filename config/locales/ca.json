@@ -26,13 +26,15 @@
 
   "voting.error": "Vaja, pareix que has volgut votar més de :eight: opcions. \nRecorda que com màxim pots votar :eight: opcions.",
   "voting.ready" : "Hola de nou %s, Ja tenim totes les teves dades verificades, preparat/ada per a votar? :grin:\n",
-  "voting.noRegistered": "No siguis tan ràpid, encara no ens coneguem... :bowtie: Abans de votar, registrar-te deuràs.",
+  "voting.noRegistered": "No siguis tan ràpid, encara no ens coneguem... :blush: Abans de votar, registrar-te deuràs.",
   "voting.success": "El teu vot ha estat guardat correctament :thumbsup: \nAquest és el codi per a verificar que el teu vot és correcte:",
   "voting.verify": "Utilitza el comandament /verificar per a comprovar-ho quan vulguis :sunglasses:",
   "voting.alreadyVote" : "Ups, pareix que ja has votat :flushed:, pots verificar el teu vot mitjançant el comandament /verificar",
   "voting.voteEnd" : "Hola de nou %s, Ja tenim el teu vot registrat correctament, pots verificar el teu vot mitjançant el comandament /verificar",
   "voting.incorrect" : "Vaja, pareix que %s de les opcions introduïdes no pertanyen al llistat. \nTorna a emetre el teu vot amb les opcions del llistat",
   "voting.error.duplicates": "Ey, no pots votar més d'una vegada a la mateixa opció, revisa el teu vot per si hi ha duplicats",
+  "register.expect.nid" : "Si si, encara estic aquí :smile:\nEstic esperant que m'envies el teu DNI o NIE (8 dígits amb lletra).",
+  "register.expect.bdate" : "No me n'he anat, no et preocupis :smile:\nAra necessito la teva data de naixement per a completar el registre (DD/MM/AAAA)",
 
   "verifying": "Anem a verificar el teu vot.\nEnviam el codi que et vaig proporcionar quan vares votar:",
   "verifying.error" : "Pareix que el codi per a desxifrar el vot no és correcta :flushed: \nTorna a intentar-ho o posat en contacte amb nosaltres.",
@@ -41,7 +43,7 @@
 
 
   "about.question" : "¿Sobre quina opció vols saber-ne més?",
-  "about.noRegistered": "No siguis tan ràpid, encara no ens coneguem... :bowtie: Abans de saber-ne més, registrar-te deuràs.",
+  "about.noRegistered": "No siguis tan ràpid, encara no ens coneguem... :blush: Abans de saber-ne més, registrar-te deuràs.",
 
   "options.intro" : "Opcions disponibles:\n\n",
   "options.footer" : "\nSelecciona fins a :eight: opcions.\nEnvia el teu vot mitjançant els números de ses opcions separades per comes.\nExemple: 1, 3, 5 \nNota: Els espais en blanc entre els números són opcionals.",
