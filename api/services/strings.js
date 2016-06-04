@@ -19,7 +19,7 @@ module.exports.getVoteOptions = function (locale) {
        var resp = strings.tell('options.intro', locale);
        for (var i = 0; i < ok.length; i++) {
          var id = ok[i].option_id;
-         sails.log.debug("OPTION : : -----"+ok[i]);
+         sails.log.debug("OPTION : : -----"+JSON.stringify(ok[i]));
          sails.log.debug("ID ---- "+ ok[i].option_id);
          if(id<10){
            sails.log.debug(" OPTION _ TEXT : : " +ok[i].option_id+"\uFE0F\u20E3" + " : " + ok[i].text + "\n");
