@@ -101,25 +101,25 @@ function strip(text) {
 
   if (matching) {
     sails.log.debug(">>>>>>>>>>>> MATCHING >>>>>>>");
-    return {command: matching, type: 1};
+    return {command: array[0], type: 1};
   } else if (matching4) {
     sails.log.debug(">>>>>>>>>>>> MATCHING 4 >>>>>>>");
-    return {command: matching4, type: 4};
+    return {command: array[0], type: 4};
   } else if (matching5 && validate(text)) {
     sails.log.debug(">>>>>>>>>>>> MATCHING 5 >>>>>>>");
-    return {command: matching5, type: 5};
+    return {command: array[0], type: 5};
   } else if (matching6 && validate(text)) {
     sails.log.debug(">>>>>>>>>>>> MATCHING 6 >>>>>>>");
-    return {command: matching6, type: 6};
+    return {command: array[0], type: 6};
   } else if (matching7) {
     sails.log.debug(">>>>>>>>>>>> MATCHING 7 >>>>>>>");
-    return {command: matching7, type: 7};
+    return {command: array[0], type: 7};
   } else if (matching8){
     sails.log.debug(">>>>>>>>>>>> MATCHING 8 >>>>>>>");
-    return {command: matching8, type: 8};
+    return {command: array[0], type: 8};
   } else if (matching9){
     sails.log.debug(">>>>>>>>>>>> MATCHING 9 >>>>>>>");
-    return {command: matching9, type: 9};
+    return {command: array[0], type: 9};
   }
   else return false;
 
