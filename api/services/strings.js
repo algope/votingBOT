@@ -13,6 +13,7 @@ module.exports.getVoteOptions = function (locale) {
  return new Promise(function(resolve, reject){
    Options.find().exec(function (ko, ok) {
      if (ok) {
+       sails.log.debug(" <<<<<<>>><>>>> OPTIONS: "+ JSON.stringify(ok));
        var resp = strings.tell('options.intro', locale);
        for (var i = 0; i < ok.length; i++) {
          var id = ok[i].option_id;
