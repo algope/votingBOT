@@ -38,7 +38,7 @@
   "verifying.error" : "Parece que el código para descifrar el voto no es correcto :flushed: \nVuelve a intentarlo o ponte en contacto con nosotros",
   "verifying.sucess" : "Tu voto es correcto :thumbsup: \n Lo que votaste fue: %s",
   "verifying.notRegistered" : "Es un poco pronto para que empecemos a verificar cosas :bowtie:, sigue los pasos que te he ido indicando :smile:",
-  "verifying.error.notTelegram" : "Ups, no puedo verificar un voto si no lo has enviado a través de mí.\nPuedes verificar desde el lugar donde emitiste tu voto.",
+  "verifying.error.notTelegram" : "Ups, no puedo verificar un voto si no lo has enviado a través de mí.\nPuedes verificar tu voto desde el lugar donde emitiste tu voto.",
 
   "about.question" : "¿Sobre qué opción quieres saber más?",
   "about.noRegistered": "No vayas tan rápido, apenas nos conocemos... :bowtie: Antes de saber más, registrarte deberás. ",

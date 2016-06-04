@@ -297,7 +297,7 @@ module.exports.answeringCommandsS4 = function (command, userId, userName, locale
 module.exports.answeringCommandsS5 = function (command, userId, userName, locale) {
   switch (command.commandId) {
     case 1: //start
-      telegram.sendMessage(userId, strings.tell('voting.voteEnd', locale));
+      telegram.sendMessage(userId, strings.tell('voting.voteEnd', locale, userName));
       break;
     case 2: //ayuda
       telegram.sendMessage(userId, strings.tell('help.5', locale));
@@ -469,7 +469,6 @@ module.exports.answerVerify = function (command, userId, locale) {
 
     }else if(!ok.encrypted_vote){
       telegram.sendMessage(userId, strings.tell('verifying.error.notTelegram', locale));
-
     }
   })
 
