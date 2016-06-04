@@ -26,9 +26,9 @@ module.exports.processIt = function (text) {
       case "/votar" :
         id = 4;
         break;
-      case "/saber_mas":
-        id = 5;
-        break;
+      // case "/saber_mas":
+      //   id = 5;
+      //   break;
       case "/cancelar":
         id = 6;
         break;
