@@ -88,13 +88,13 @@ function strip(text) {
   var array = text.split(" ");
 
 
-  var matching = array[0].test(regex);
-  var matching4 = array[0].test(regex4);
-  var matching5 = array[0].toString().toUpperCase().test(regex5);
-  var matching6 = array[0].toString().toUpperCase().test(regex6);
-  var matching7 = array[0].test(regex7);
-  var matching8 = text.replace(/ /g,'').trim().test(regex8);
-  var matching9 = array[0].test(regex9);
+  var matching = regex.test(array[0]);
+  var matching4 = regex4.test(array[0]);
+  var matching5 = regex5.test(array[0].toString().toUpperCase());
+  var matching6 = regex6.test(array[0].toString().toUpperCase());
+  var matching7 = regex7.test(array[0]);
+  var matching8 = regex8.test(text.replace(/ /g,'').trim());
+  var matching9 = regex9.test(array[0]);
 
   sails.log.debug("MATCHING8 : : : : : "+matching8);
 
