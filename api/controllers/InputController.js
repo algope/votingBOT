@@ -71,6 +71,7 @@ module.exports = {
               answers.answeringRegisterS1(command, userId, callback_query_id, locale);
             } else {
               answers.answeringError(userId, locale);
+              telegram.sendMessage(userId, strings.tell('help.1', locale));
             }
 
 
@@ -83,6 +84,8 @@ module.exports = {
               answers.answeringRegisterS2(command, userId, callback_query_id, locale);
             } else {
               answers.answeringError(userId, locale);
+              telegram.sendMessage(userId, strings.tell('help.2', locale));
+
             }
 
           } else if (user.stage == 3) { //Expecting Bdate
@@ -94,6 +97,7 @@ module.exports = {
               answers.answeringRegisterS3(command, userId, callback_query_id, locale);
             } else {
               answers.answeringError(userId, locale);
+              telegram.sendMessage(userId, strings.tell('help.3', locale));
             }
 
           } else if ((user.stage == 4) && user.valid) { //Ready To vote
@@ -105,6 +109,7 @@ module.exports = {
               answers.answeringVote(command, userId, locale);
             } else {
               answers.answeringError(userId, locale);
+              telegram.sendMessage(userId, strings.tell('help.4', locale));
             }
 
           } else if (user.stage == 5){ //Already voted
@@ -116,6 +121,7 @@ module.exports = {
               answers.answerVerify(command, userId, locale);
             } else {
               answers.answeringError(userId, locale);
+              telegram.sendMessage(userId, strings.tell('help.5', locale));
             }
           } else if (user.stage == 10){ //get_info
             if (!command) {
