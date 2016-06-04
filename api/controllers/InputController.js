@@ -52,6 +52,7 @@ module.exports = {
         var locale = user.locale;
         if (!user.banned) {
           sails.log.debug("[DEV] - InputController.js Stage: " + user.stage);
+          sails.log.debug("[DEV] - InputController.js COMMANDTYPE: : : : : : "+ command.commandType);
           if (user.stage == 0) { //Language
             if (!command) {
               answers.answeringError(userId, locale);
