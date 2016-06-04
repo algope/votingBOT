@@ -37,7 +37,7 @@
   "register.expect.bdate" : "No me n'he anat, no et preocupis :smile:\nAra necessito la teva data de naixement per a completar el registre (DD/MM/AAAA)",
 
   "verifying": "Anem a verificar el teu vot.\nEnviam el codi que et vaig proporcionar quan vares votar:",
-  "verifying.error" : "Pareix que el codi per a desxifrar el vot no és correcta :flushed: \nTorna a intentar-ho o posat en contacte amb nosaltres.",
+  "verifying.error" : "Pareix que el codi per a desxifrar el vot no és correcte :flushed: \nTorna a intentar-ho o posat en contacte amb nosaltres.",
   "verifying.sucess" : "El teu vot és correcte :thumbsup: \nEl que vares votar és: %s",
   "verifying.error.notTelegram" : "Ups, no puc verificar un vot si no ho has enviat a través de mí.\nPots verificar el teu vot des del lloc on vares generar el teu vot.",
 
