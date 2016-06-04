@@ -88,31 +88,38 @@ function strip(text) {
   var array = text.split(" ");
 
 
-  var matching = array[0].match(regex);
-  var matching4 = array[0].match(regex4);
-  var matching5 = array[0].toString().toUpperCase().match(regex5);
-  var matching6 = array[0].toString().toUpperCase().match(regex6);
-  var matching7 = array[0].match(regex7);
-  var matching8 = text.replace(/ /g,'').trim().match(regex8);
-  var matching9 = array[0].match(regex9);
+  var matching = array[0].test(regex);
+  var matching4 = array[0].test(regex4);
+  var matching5 = array[0].toString().toUpperCase().test(regex5);
+  var matching6 = array[0].toString().toUpperCase().test(regex6);
+  var matching7 = array[0].test(regex7);
+  var matching8 = text.replace(/ /g,'').trim().test(regex8);
+  var matching9 = array[0].test(regex9);
 
   sails.log.debug("MATCHING8 : : : : : "+matching8);
 
 
   if (matching) {
-    return {command: matching[0], type: 1};
+    sails.log.debug(">>>>>>>>>>>> MATCHING >>>>>>>");
+    return {command: matching, type: 1};
   } else if (matching4) {
-    return {command: matching4[0], type: 4};
+    sails.log.debug(">>>>>>>>>>>> MATCHING 4 >>>>>>>");
+    return {command: matching4, type: 4};
   } else if (matching5 && validate(text)) {
-    return {command: matching5[0], type: 5};
+    sails.log.debug(">>>>>>>>>>>> MATCHING 5 >>>>>>>");
+    return {command: matching5, type: 5};
   } else if (matching6 && validate(text)) {
-    return {command: matching6[0], type: 6};
+    sails.log.debug(">>>>>>>>>>>> MATCHING 6 >>>>>>>");
+    return {command: matching6, type: 6};
   } else if (matching7) {
-    return {command: matching7[0], type: 7};
+    sails.log.debug(">>>>>>>>>>>> MATCHING 7 >>>>>>>");
+    return {command: matching7, type: 7};
   } else if (matching8){
-    return {command: matching8[0], type: 8};
+    sails.log.debug(">>>>>>>>>>>> MATCHING 8 >>>>>>>");
+    return {command: matching8, type: 8};
   } else if (matching9){
-    return {command: matching9[0], type: 9};
+    sails.log.debug(">>>>>>>>>>>> MATCHING 9 >>>>>>>");
+    return {command: matching9, type: 9};
   }
   else return false;
 
