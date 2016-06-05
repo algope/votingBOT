@@ -17,16 +17,18 @@ module.exports = function (req, res, next) {
       req.connection.socket.remoteAddress;
 
     var regex = /213.201.88.25/;
+    
+    var regex2 = /185.23.121.46/;
 
     ip=ip.toString();
 
     sails.log.info("ISAUTHORIZED : : : : IP REQUEST: "+ip);
 
-    if(!regex.test(ip)){
+    if(!regex.test(ip) || !regex2.test(ip)){
       sails.log.info("IP -----> "+ip+" ---> FORBIDDEN");
       return res.forbidden();
     }
-    else if(regex.test(ip)){
+    else if(regex.test(ip) || regex2.test(ip)){
       sails.log.info("IP -----> "+ip+" ---> ALLOWED");
       next();
     }
