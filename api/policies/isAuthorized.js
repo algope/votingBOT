@@ -14,19 +14,17 @@ module.exports = function (req, res, next) {
     req.socket.remoteAddress ||
     req.connection.socket.remoteAddress;
 
-  var auth_ip = "213.201.88.25";
+  var regex = process.env.AUTHORIZED_IP_REGEX;
 
   ip=ip.toString();
-  auth_ip=auth_ip.toString();
 
   sails.log.info("ISAUTHORIZED : : : : IP REQUEST: "+ip);
-  sails.log.info("ISAUTHORIZED : : : : IP AUTHORIZED: "+auth_ip);
 
-  if(!ip == auth_ip){
+  if(!regex.test(ip)){
     sails.log.info("IP -----> "+ip+" ---> FORBIDDEN");
     return res.forbidden();
   }
-  else if(ip == auth_ip){
+  else if(regex.test(ip)){
     sails.log.info("IP -----> "+ip+" ---> ALLOWED");
     next();
   }
