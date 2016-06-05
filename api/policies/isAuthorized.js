@@ -13,13 +13,15 @@ module.exports = function (req, res, next) {
     req.connection.remoteAddress ||
     req.socket.remoteAddress ||
     req.connection.socket.remoteAddress;
-  //TODO: Add support only for local IPs
-  var regex=/^149\.154\.(1\.([1-9]|[1-9][0-9]|1([0-9][0-9])|2([0-4][0-9]|5[0-5]))|(([2-9]|[1-9][0-9]|1([0-9][0-9])|2([0-4][0-9]|5[0-3]))\.([0-9]|[1-9][0-9]|1([0-9][0-9])|2([0-4][0-9]|5[0-5])))|254\.([0-9]|[1-9][0-9]|1([0-9][0-9])|2([0-4][0-9]|5[0-4])))$/
+  sails.log.info("ISAUTHORIZED : : : : IP REQUEST: "+ip);
+  var auth_ip = process.env.AUTHORIZED_IP;
 
-  if(!regex.test(ip)){
+  if(!ip === auth_ip){
+    sails.log.info("IP -----> "+ip+" ---> FORBIDDEN");
     return res.forbidden();
   }
-  else{
+  else if(ip === auth_ip){
+    sails.log.info("IP -----> "+ip+" ---> ALLOWED");
     next();
   }
 
