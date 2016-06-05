@@ -76,7 +76,7 @@ module.exports = {
   },
 
   log: {
-    level: "info"
+    level: process.env.LOG_LEVEL
   }
 
 };

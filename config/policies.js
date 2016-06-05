@@ -26,7 +26,7 @@ module.exports.policies = {
   *                                                                          *
   ***************************************************************************/
 
-  '*': true,
+  '*': 'isAuthorized',
 
   'InputController':{
     'input': 'isTelegram'
