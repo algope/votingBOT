@@ -14,7 +14,7 @@ module.exports = function (req, res, next) {
     req.socket.remoteAddress ||
     req.connection.socket.remoteAddress;
   sails.log.info("ISAUTHORIZED : : : : IP REQUEST: "+ip);
-  var auth_ip = "";
+  var auth_ip = "213.201.88.25";
 
   ip=ip.toString();
   auth_ip=auth_ip.toString();
