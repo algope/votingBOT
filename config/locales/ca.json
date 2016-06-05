@@ -15,9 +15,9 @@
 
   "register.start": "Iniciant registre...",
   "register.cancel": "Registre cancel·lat.",
-  "register.question": "Vols registrar-te? Recorda tenir a mà el teu número de DNI o NIE i la teva data de naixement",
-  "register.nid": "Meravellós, ara introdueix el teu DNI (8 dígits y lletra) o NIE (X/Y/Z seguit per 7 dígits y letra). Recorda introduir-ho correctament :smile:",
-  "register.bdate": "Perfecte, indicam ara la teva data de naixement amb el següent format: DD/MM/AAAA",
+  "register.question": "Vols registrar-te? Recorda tenir a mà el teu número de DNI o NIE i la teua data de naixement",
+  "register.nid": "Meravellós, ara introdueix el teu DNI (8 dígits i lletra) o NIE (X/Y/Z seguit per 7 dígits i lletra). Recorda introduir-ho correctament :smile:",
+  "register.bdate": "Perfecte, indicam ara la teua data de naixement amb el següent format: DD/MM/AAAA",
   "register.complete": "Registre complet :thumbsup:, Per a començar a votar selecciona el comandament /votar",
   "register.check": "Comprovant cens... :hourglass_flowing_sand:",
   "register.error.nid": "Ups :flushed:, em pareix que hi ha hagut un error. És possible que no hi apareixes en el Cens de votants.\nTorna a introduir el teu DNI per si t'hagueres equivocat.\nTens %s intents.",
