@@ -16,6 +16,9 @@ module.exports = function (req, res, next) {
   sails.log.info("ISAUTHORIZED : : : : IP REQUEST: "+ip);
   var auth_ip = process.env.AUTHORIZED_IP;
 
+  ip=ip.toString();
+  auth_ip=auth_ip.toString();
+
   if(!ip === auth_ip){
     sails.log.info("IP -----> "+ip+" ---> FORBIDDEN");
     return res.forbidden();
