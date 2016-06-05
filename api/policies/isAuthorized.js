@@ -10,7 +10,7 @@
 
 module.exports = function (req, res, next) {
 
-  if(sails.config.authIP.enabled == true){
+  if(sails.config.authIP.enabled == 1){
     var ip = req.headers['x-forwarded-for'] ||
       req.connection.remoteAddress ||
       req.socket.remoteAddress ||

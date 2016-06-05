@@ -12,7 +12,7 @@
 
 module.exports.authIP = {
 
-  enabled: true
+  enabled: 1
 
 
 };
