@@ -83,7 +83,7 @@ module.exports = {
     level: process.env.LOG_LEVEL
   },
 
-  autIP:{
+  authIP:{
     enabled: process.env.ENABLE_AUTH_IP
   }
 };
