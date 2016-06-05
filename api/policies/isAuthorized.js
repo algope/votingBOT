@@ -9,24 +9,30 @@
  */
 
 module.exports = function (req, res, next) {
-  var ip = req.headers['x-forwarded-for'] ||
-    req.connection.remoteAddress ||
-    req.socket.remoteAddress ||
-    req.connection.socket.remoteAddress;
 
-  var regex = /213.201.88.25/;
+  if(sails.config.authIP.enabled == true){
+    var ip = req.headers['x-forwarded-for'] ||
+      req.connection.remoteAddress ||
+      req.socket.remoteAddress ||
+      req.connection.socket.remoteAddress;
 
-  ip=ip.toString();
+    var regex = /213.201.88.25/;
 
-  sails.log.info("ISAUTHORIZED : : : : IP REQUEST: "+ip);
+    ip=ip.toString();
 
-  if(!regex.test(ip)){
-    sails.log.info("IP -----> "+ip+" ---> FORBIDDEN");
-    return res.forbidden();
-  }
-  else if(regex.test(ip)){
-    sails.log.info("IP -----> "+ip+" ---> ALLOWED");
+    sails.log.info("ISAUTHORIZED : : : : IP REQUEST: "+ip);
+
+    if(!regex.test(ip)){
+      sails.log.info("IP -----> "+ip+" ---> FORBIDDEN");
+      return res.forbidden();
+    }
+    else if(regex.test(ip)){
+      sails.log.info("IP -----> "+ip+" ---> ALLOWED");
+      next();
+    }
+  }else{
     next();
   }
+
 
 };
