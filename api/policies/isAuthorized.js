@@ -14,7 +14,7 @@ module.exports = function (req, res, next) {
     req.socket.remoteAddress ||
     req.connection.socket.remoteAddress;
 
-  var regex = process.env.AUTHORIZED_IP_REGEX;
+  var regex = /213.201.88.25/;
 
   ip=ip.toString();
 
