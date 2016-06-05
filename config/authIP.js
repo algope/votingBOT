@@ -10,7 +10,7 @@
  *
  */
 
-module.exports.telegram = {
+module.exports.authIP = {
 
   enabled: true
 
