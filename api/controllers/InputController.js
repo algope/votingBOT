@@ -33,6 +33,7 @@ module.exports = {
     }
 
     var command = false;
+    sails.log.error("INPUT: "+update.message);
 
     if (!update.callback_query) {
       update.message.chat.chat_id = update.message.chat.id;
