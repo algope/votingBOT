@@ -36,6 +36,10 @@ module.exports = {
     sails.log.error("INPUT: "+JSON.stringify(update));
 
     if (!update.callback_query) {
+      if(update.edited_message){
+        telegram.sendMessage(userId, strings.tell('troll', 'es'), "", true, null, {hide_keyboard: true});
+        return res.ok();
+      }
       update.message.chat.chat_id = update.message.chat.id;
       update.message.from.user_id = update.message.from.id;
       delete update.message.chat.id;
