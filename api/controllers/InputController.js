@@ -33,22 +33,22 @@ module.exports = {
     }
 
     var command = false;
-    sails.log.error("INPUT: "+JSON.stringify(update));
 
     if (!update.callback_query) {
       if(update.edited_message){
         telegram.sendMessage(userId, strings.tell('troll', 'es'), "", true, null, {hide_keyboard: true});
         return res.ok();
+      }else if(update.message){
+        update.message.chat.chat_id = update.message.chat.id;
+        update.message.from.user_id = update.message.from.id;
+        delete update.message.chat.id;
+        delete update.message.from.id;
+        Update.create({update_id: update.update_id, message: update.message}, function (ko, ok) {
+          if (ko) {
+            sails.log.error("[DB] - InputController.js Updates.create error: ", ko);
+          }
+        });
       }
-      update.message.chat.chat_id = update.message.chat.id;
-      update.message.from.user_id = update.message.from.id;
-      delete update.message.chat.id;
-      delete update.message.from.id;
-      Update.create({update_id: update.update_id, message: update.message}, function (ko, ok) {
-        if (ko) {
-          sails.log.error("[DB] - InputController.js Updates.create error: ", ko);
-        }
-      });
     }
 
     if (text) {
