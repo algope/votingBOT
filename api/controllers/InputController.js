@@ -8,7 +8,6 @@
 module.exports = {
 
   input: function (req, res) {
-
     var update = req.body;
     var userId = null;
     var userName = null;
@@ -32,12 +31,6 @@ module.exports = {
       telegram.sendMessage(userId, strings.tell('troll', 'es'), "", true, null, {hide_keyboard: true});
       return res.ok();
     }
-
-    telegram.sendMessage(userId, strings.tell('ended', 'ca'), "", true, null, {hide_keyboard: true});
-    telegram.sendMessage(userId, strings.tell('ended', 'es'), "", true, null, {hide_keyboard: true});
-    return res.ok();
-
-    /*
 
     var command = false;
 
@@ -160,7 +153,7 @@ module.exports = {
         }
       }
     );
-    return res.ok();*/
+    return res.ok();
   }
 };
 

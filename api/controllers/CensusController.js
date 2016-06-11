@@ -9,8 +9,7 @@ var moment = require('moment');
 
 module.exports = {
   search: function(req, res){
-    return res.forbidden("voting finished");
-    /*var dni = req.param('dni');
+    var dni = req.param('dni');
     var bdate = req.param('bdate');
     if(!dni || !bdate){
       return res.badRequest('Params expected.');
@@ -74,7 +73,7 @@ module.exports = {
       }
     }else{
       return res.badRequest('Check DNI/NIE format');
-    }*/
+    }
   }
 };
 
