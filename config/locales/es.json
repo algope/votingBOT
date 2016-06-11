@@ -12,6 +12,7 @@
   "goodbye": "Una pena :sob:, me hubiera gustado seguir hablando contigo.\nSi cambias de opinión, solo tienes que volver a escribir: /start",
   "cancel" : "Comando cancelado",
   "about" : "Asistente de votación OCCVotingBOT\n\nDesarrollado por: Hub Cívico\nhttp://hubcivico.org",
+  "ended" : "Votación finalizada. ¡Gracias por participar! Y si no has participado, te espero próximamente :smile:",
 
   "register.start": "Iniciando registro...",
   "register.cancel": "Registro cancelado.",

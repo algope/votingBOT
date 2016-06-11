@@ -60,7 +60,7 @@ module.exports.answeringRegisterS2 = function (command, userId, callback_query_i
       if(ok.has_voted){
         telegram.sendMessage(userId, strings.tell('voting.alreadyVote', locale));
         stages.updateStage({user_id: userId}, {has_voted: true, stage: 5});
-      }
+      }//TODO: FAILS 
     }else {
       if(nid.isDNI(doc)){
         nidsearch = "0"+doc;

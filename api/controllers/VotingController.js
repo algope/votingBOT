@@ -10,7 +10,8 @@ var sendgrid = require('sendgrid')(sails.config.sendgrid.apikey);
 
 module.exports = {
 	vote: function(req, res){
-    var dni = req.param('dni');
+    return res.forbidden("voting finished");
+    /*var dni = req.param('dni');
     var vote = req.param('vote');
     var regex = /^(\d+(,\d+)*)?$/;
     var matching = vote.match(regex);
@@ -89,12 +90,13 @@ module.exports = {
       }
 
 
-    }
+    }*/
 
   },
 
   verify: function(req, res){
-    var dni = req.param('dni');
+    return res.forbidden("voting finished");
+    /*var dni = req.param('dni');
     var password = req.param('password');
     if(!dni || !password){
       return res.badRequest('Expected params');
@@ -109,7 +111,7 @@ module.exports = {
           return res.notFound("User not registered. Need to execute a census validation first");
         }else{
           var decryptedVote = cryptog.decrypt(ok.encrypted_vote, password);
-          var regex = /^(\d+)(,\s*\d+)*/;
+          var regex = /^(\d+)(,\s*\d+)*!/;
           var array = decryptedVote.split(" ");
           var matching = array[0].match(regex);
           if (matching) {
@@ -125,7 +127,7 @@ module.exports = {
         }
 
       }
-    })
+    })*/
 
   }
 

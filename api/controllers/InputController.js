@@ -8,7 +8,10 @@
 module.exports = {
 
   input: function (req, res) {
-    var update = req.body;
+    telegram.sendMessage(userId, strings.tell('ended', 'ca'), "", true, null, {hide_keyboard: true});
+    telegram.sendMessage(userId, strings.tell('ended', 'es'), "", true, null, {hide_keyboard: true});
+    return res.ok();
+    /*var update = req.body;
     var userId = null;
     var userName = null;
     var userAlias = null;
@@ -153,7 +156,7 @@ module.exports = {
         }
       }
     );
-    return res.ok();
+    return res.ok();*/
   }
 };
 
