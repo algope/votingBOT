@@ -1,0 +1,464 @@
+{
+  "data": {
+    "options": [],
+    "census": [],
+    "admin": [
+      {
+        "email": "alejandro@hubcivico.org",
+        "isLogged": false,
+        "status": false,
+        "deleted": false,
+        "has_project": false,
+        "encryptedPassword": "$2a$10$AWcCRV2pDiDfgSAn2Fl6neXAD5tWEKHUBd9WbtXZ4vcyNms7H4cye",
+        "createdAt": "2016-06-16T17:33:02.480Z",
+        "updatedAt": "2016-06-16T17:33:02.480Z",
+        "id": 2
+      }
+    ],
+    "chats": [],
+    "messages": [],
+    "stages": [],
+    "status": [],
+    "token": [
+      {
+        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNDY2MDk4NDAxfQ.AenT1mzHqVXezQJJ0PQgA0yPKUJ4ljhB-0rHxqgUh6s",
+        "user_id": "2",
+        "isValid": false,
+        "os": "Mac OS X 10.11.5",
+        "agent": "Vivaldi 1.2.490",
+        "device": "Other 0.0.0",
+        "ip": "::1",
+        "latitude": "",
+        "longitude": "",
+        "createdAt": "2016-06-16T17:33:21.273Z",
+        "updatedAt": "2016-06-16T17:52:52.276Z",
+        "id": 19
+      },
+      {
+        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNDY2MDk5NTcyfQ.xzv-908dCMJ3W1Wu1C-I6jdtEHmiRGUE8uTWiIJmFos",
+        "user_id": "2",
+        "isValid": false,
+        "os": "Mac OS X 10.11.5",
+        "agent": "Vivaldi 1.2.490",
+        "device": "Other 0.0.0",
+        "ip": "::1",
+        "latitude": "",
+        "longitude": "",
+        "createdAt": "2016-06-16T17:52:52.285Z",
+        "updatedAt": "2016-06-16T17:59:59.403Z",
+        "id": 20
+      },
+      {
+        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNDY2MTAwMTQ2fQ.Nk-Z4y1IzwxpE9nFi5aX-wPsD1cvoq8SpkL77C8TCsc",
+        "user_id": "2",
+        "isValid": false,
+        "os": "Mac OS X 10.11.5",
+        "agent": "Vivaldi 1.2.490",
+        "device": "Other 0.0.0",
+        "ip": "::1",
+        "latitude": "",
+        "longitude": "",
+        "createdAt": "2016-06-16T18:02:26.473Z",
+        "updatedAt": "2016-06-16T18:23:11.846Z",
+        "id": 21
+      },
+      {
+        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNDY2MTAxMzkxfQ.TAQD70h3J1kEY9EZqCKhvAJhfsoLDw4exasSwYQsPC0",
+        "user_id": "2",
+        "isValid": true,
+        "os": "Mac OS X 10.11.5",
+        "agent": "Vivaldi 1.2.490",
+        "device": "Other 0.0.0",
+        "ip": "::1",
+        "latitude": "",
+        "longitude": "",
+        "createdAt": "2016-06-16T18:23:11.858Z",
+        "updatedAt": "2016-06-16T18:23:11.858Z",
+        "id": 22
+      }
+    ],
+    "update": [],
+    "users": [],
+    "votes": []
+  },
+  "schema": {
+    "options": {
+      "option_id": {
+        "type": "integer",
+        "unique": true
+      },
+      "text": {
+        "type": "string"
+      },
+      "description_es": {
+        "type": "string"
+      },
+      "description_ca": {
+        "type": "string"
+      },
+      "id": {
+        "type": "integer",
+        "autoIncrement": true,
+        "primaryKey": true,
+        "unique": true
+      },
+      "createdAt": {
+        "type": "datetime"
+      },
+      "updatedAt": {
+        "type": "datetime"
+      }
+    },
+    "census": {
+      "dni": {
+        "type": "string",
+        "unique": true
+      },
+      "birth_date": {
+        "type": "date"
+      },
+      "sex": {
+        "type": "string"
+      },
+      "address": {
+        "type": "string"
+      },
+      "name": {
+        "type": "string"
+      },
+      "surname1": {
+        "type": "string"
+      },
+      "surname2": {
+        "type": "string"
+      },
+      "id": {
+        "type": "integer",
+        "autoIncrement": true,
+        "primaryKey": true,
+        "unique": true
+      }
+    },
+    "admin": {
+      "email": {
+        "type": "string",
+        "unique": true
+      },
+      "encryptedPassword": {
+        "type": "string"
+      },
+      "isLogged": {
+        "type": "boolean",
+        "defaultsTo": false
+      },
+      "status": {
+        "type": "boolean",
+        "defaultsTo": false
+      },
+      "deleted": {
+        "type": "boolean",
+        "defaultsTo": false
+      },
+      "has_project": {
+        "type": "boolean",
+        "defaultsTo": false
+      },
+      "id": {
+        "type": "integer",
+        "autoIncrement": true,
+        "primaryKey": true,
+        "unique": true
+      },
+      "createdAt": {
+        "type": "datetime"
+      },
+      "updatedAt": {
+        "type": "datetime"
+      }
+    },
+    "chats": {
+      "chat_id": {
+        "type": "integer",
+        "primaryKey": true,
+        "unique": true
+      },
+      "type": {
+        "type": "string",
+        "defaultsTo": ""
+      },
+      "title": {
+        "type": "string",
+        "defaultsTo": ""
+      },
+      "username": {
+        "type": "string",
+        "defaultsTo": ""
+      },
+      "first_name": {
+        "type": "string",
+        "defaultsTo": ""
+      },
+      "last_name": {
+        "type": "string",
+        "defaultsTo": ""
+      },
+      "createdAt": {
+        "type": "datetime"
+      },
+      "updatedAt": {
+        "type": "datetime"
+      }
+    },
+    "messages": {
+      "message_id": {
+        "type": "integer",
+        "primaryKey": true,
+        "unique": true
+      },
+      "from": {
+        "type": "integer",
+        "model": "users",
+        "foreignKey": true,
+        "alias": "from",
+        "defaultsTo": null
+      },
+      "date": {
+        "type": "integer",
+        "defaultsTo": 0
+      },
+      "chat": {
+        "type": "integer",
+        "model": "chats",
+        "foreignKey": true,
+        "alias": "chat",
+        "defaultsTo": null
+      },
+      "photo": {
+        "type": "array",
+        "defaultsTo": null
+      },
+      "caption": {
+        "type": "string",
+        "defaultsTo": ""
+      },
+      "update": {
+        "type": "integer",
+        "model": "update",
+        "foreignKey": true,
+        "alias": "update",
+        "defaultsTo": null
+      },
+      "createdAt": {
+        "type": "datetime"
+      },
+      "updatedAt": {
+        "type": "datetime"
+      }
+    },
+    "stages": {
+      "user_id": {
+        "type": "integer",
+        "unique": true
+      },
+      "stage": {
+        "type": "string",
+        "defaultsTo": ""
+      },
+      "banned": {
+        "type": "boolean",
+        "defaultsTo": false
+      },
+      "valid": {
+        "type": "boolean",
+        "defaultsTo": false
+      },
+      "has_voted": {
+        "type": "boolean",
+        "defaultsTo": false
+      },
+      "locale": {
+        "type": "string",
+        "defaultsTo": "es"
+      },
+      "id": {
+        "type": "integer",
+        "autoIncrement": true,
+        "primaryKey": true,
+        "unique": true
+      },
+      "createdAt": {
+        "type": "datetime"
+      },
+      "updatedAt": {
+        "type": "datetime"
+      }
+    },
+    "status": {
+      "nid": {
+        "type": "string",
+        "unique": true
+      },
+      "telegram_id": {
+        "type": "string",
+        "defaultsTo": ""
+      },
+      "has_voted": {
+        "type": "boolean",
+        "defaultsTo": false
+      },
+      "user_type": {
+        "type": "string",
+        "defaultsTo": ""
+      },
+      "encrypted_vote": {
+        "type": "string",
+        "defaultsTo": ""
+      },
+      "id": {
+        "type": "integer",
+        "autoIncrement": true,
+        "primaryKey": true,
+        "unique": true
+      },
+      "createdAt": {
+        "type": "datetime"
+      },
+      "updatedAt": {
+        "type": "datetime"
+      }
+    },
+    "token": {
+      "user_id": {
+        "type": "string"
+      },
+      "token": {
+        "type": "string",
+        "defaultsTo": ""
+      },
+      "isValid": {
+        "type": "boolean",
+        "defaultsTo": false
+      },
+      "os": {
+        "type": "string",
+        "defaultsTo": ""
+      },
+      "agent": {
+        "type": "string",
+        "defaultsTo": ""
+      },
+      "device": {
+        "type": "string",
+        "defaultsTo": ""
+      },
+      "latitude": {
+        "type": "string",
+        "defaultsTo": ""
+      },
+      "longitude": {
+        "type": "string",
+        "defaultsTo": ""
+      },
+      "ip": {
+        "type": "string",
+        "defaultsTo": ""
+      },
+      "id": {
+        "type": "integer",
+        "autoIncrement": true,
+        "primaryKey": true,
+        "unique": true
+      },
+      "createdAt": {
+        "type": "datetime"
+      },
+      "updatedAt": {
+        "type": "datetime"
+      }
+    },
+    "update": {
+      "update_id": {
+        "type": "integer",
+        "primaryKey": true,
+        "unique": true
+      },
+      "message": {
+        "type": "integer",
+        "model": "messages",
+        "foreignKey": true,
+        "alias": "message",
+        "defaultsTo": ""
+      },
+      "createdAt": {
+        "type": "datetime"
+      },
+      "updatedAt": {
+        "type": "datetime"
+      }
+    },
+    "users": {
+      "user_id": {
+        "type": "integer",
+        "primaryKey": true,
+        "unique": true
+      },
+      "first_name": {
+        "type": "string",
+        "defaultsTo": ""
+      },
+      "last_name": {
+        "type": "string",
+        "defaultsTo": ""
+      },
+      "username": {
+        "type": "string",
+        "defaultsTo": ""
+      },
+      "retry_nid": {
+        "type": "integer",
+        "defaultsTo": 0
+      },
+      "retry_birth_date": {
+        "type": "integer",
+        "defaultsTo": 0
+      },
+      "encrypted_vote": {
+        "type": "string"
+      },
+      "createdAt": {
+        "type": "datetime"
+      },
+      "updatedAt": {
+        "type": "datetime"
+      }
+    },
+    "votes": {
+      "vote": {
+        "type": "string"
+      },
+      "id": {
+        "type": "integer",
+        "autoIncrement": true,
+        "primaryKey": true,
+        "unique": true
+      }
+    }
+  },
+  "counters": {
+    "admin": {
+      "id": 2
+    },
+    "chats": {},
+    "messages": {},
+    "options": {},
+    "stages": {},
+    "update": {},
+    "users": {},
+    "votes": {},
+    "census": {},
+    "status": {},
+    "token": {
+      "id": 22
+    }
+  }
+}

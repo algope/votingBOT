@@ -9,10 +9,23 @@
  * http://sailsjs.org/#!/documentation/reference/sails.config/sails.config.bootstrap.html
  */
 
-module.exports.bootstrap = function(cb) {
+module.exports.bootstrap = function (cb) {
 
   // It's very important to trigger this callback method when you are finished
   // with the bootstrap!  (otherwise your server will never lift, since it's waiting on the bootstrap)
-  //sails.telegraf = require('telegraf');
-  cb();
+  var username = process.env.ADMIN_USER;
+  var password = process.env.ADMIN_PASSWORD;
+
+  Admin.findOrCreate({email: username, password: password, confirmPassword: password}).exec(function (err, user) {
+    if(err){
+      sails.log.info("ERROR CREATING ADMIN!");
+      cb();
+    }else if(user){
+      sails.log.info("ADMIN USER CREATED/FOUND SUCCESSFULLY");
+      if(user.has_project){
+        
+      }
+      cb();
+    }
+  });
 };

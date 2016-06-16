@@ -1,34 +1,32 @@
 /**
- * Status.js
+ * Project.js
  *
  * @description :: TODO: You might write a short summary of how this model works and what it represents here.
  * @docs        :: http://sailsjs.org/documentation/concepts/models-and-orm/models
  */
 
 module.exports = {
+
   attributes: {
-    nid: {
+    user_id: {
       type: 'string',
       required: true,
       unique: true
     },
-    telegram_id:{
+    telegram_token: {
       type: 'string',
-      defaultsTo: ''
+      required: true
     },
-    has_voted:{
-      type: 'boolean',
-      required: true,
-      defaultsTo: false
-    },
-    user_type:{
+    server_url: {
       type: 'string',
-      defaultsTo: ''
+      required: true
     },
-    encrypted_vote: {
-      type: 'string',
-      defaultsTo: ''
+    voting_type:{
+      type: 'integer',
+      required: true
     }
+
+
   }
 };
 

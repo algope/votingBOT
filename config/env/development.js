@@ -18,23 +18,6 @@ module.exports = {
    ***************************************************************************/
 
   connections: {
-    devMySQL: {
-      adapter: 'sails-mysql',
-      host: process.env.DB_HOST,
-      port: process.env.DB_PORT,
-      user: process.env.DB_USER,
-      password: process.env.DB_PASSWORD,
-      database: process.env.DB_NAME
-
-    },
-    privateMySQL: {
-      adapter: 'sails-mysql',
-      host: process.env.DB_PRIVATE_HOST,
-      port: process.env.DB_PRIVATE_PORT,
-      user: process.env.DB_PRIVATE_USER,
-      password: process.env.DB_PRIVATE_PASSWORD,
-      database: process.env.DB_PRIVATE_NAME
-    },
     mongodb: {
       adapter: 'sails-mongo',
       url: process.env.MONGO_URL
@@ -43,8 +26,8 @@ module.exports = {
   },
 
   models: {
-    connection: 'mongodb',
-    migrate: process.env.MIGRATION_TYPE
+    connection: 'localDiskDb',
+    migrate: 'drop'
 
 
   },
@@ -64,7 +47,7 @@ module.exports = {
     enabled: process.env.VOTE_VERIFICATION
   },
 
-  port: 80,
+  port: 8080,
 
   orm: {
     _hookTimeout: 500000
