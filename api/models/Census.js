@@ -6,7 +6,7 @@
  */
 
 module.exports = {
-  migrate: 'safe',
+  // migrate: 'safe',
   autoCreatedAt: false,
   autoUpdatedAt: false,
   attributes: {

@@ -1,80 +1,82 @@
 {
   "data": {
     "options": [],
-    "census": [],
     "admin": [
       {
         "email": "alejandro@hubcivico.org",
         "isLogged": false,
         "status": false,
         "deleted": false,
-        "has_project": false,
-        "encryptedPassword": "$2a$10$AWcCRV2pDiDfgSAn2Fl6neXAD5tWEKHUBd9WbtXZ4vcyNms7H4cye",
-        "createdAt": "2016-06-16T17:33:02.480Z",
-        "updatedAt": "2016-06-16T17:33:02.480Z",
-        "id": 2
+        "has_project": true,
+        "encryptedPassword": "$2a$10$xKzxcxsJktaF6sjEkMUHeusk3ZXC5SWdUqnpb51jV1fZSw.DOfdWS",
+        "createdAt": "2016-06-17T09:33:14.494Z",
+        "updatedAt": "2016-06-17T09:33:27.460Z",
+        "id": 46
+      }
+    ],
+    "census": [
+      {
+        "dni": "47406295Y",
+        "birth_date": "1990-11-14T00:00:00.000Z",
+        "sex": "M",
+        "address": "Castan Tobeñas 55",
+        "name": " Alejandro",
+        "surname1": " González",
+        "surname2": " Pérez",
+        "id": 55
+      },
+      {
+        "dni": "41444848K",
+        "birth_date": "1977-11-14T00:00:00.000Z",
+        "sex": "F",
+        "address": "Cervantes 40",
+        "name": " Carmen",
+        "surname1": " Pérez",
+        "surname2": " Lavara",
+        "id": 56
+      },
+      {
+        "dni": "05898331G",
+        "birth_date": "1977-06-12T22:00:00.000Z",
+        "sex": "M",
+        "address": "Cervantes 40",
+        "name": " Antonio",
+        "surname1": " González",
+        "surname2": " Molina",
+        "id": 57
       }
     ],
     "chats": [],
     "messages": [],
+    "project": [
+      {
+        "user_id": "46",
+        "telegram_token": "232796573:AAGWf7H9WskPyfBC4Tv1ixAj6Tt5vpqZep0",
+        "server_url": "http://localhost",
+        "voting_type": 1,
+        "census_activated": 1,
+        "intervention_email": "test@test.com",
+        "createdAt": "2016-06-17T09:33:27.435Z",
+        "updatedAt": "2016-06-17T09:33:27.435Z",
+        "id": 18
+      }
+    ],
     "stages": [],
     "status": [],
     "token": [
       {
-        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNDY2MDk4NDAxfQ.AenT1mzHqVXezQJJ0PQgA0yPKUJ4ljhB-0rHxqgUh6s",
-        "user_id": "2",
-        "isValid": false,
-        "os": "Mac OS X 10.11.5",
-        "agent": "Vivaldi 1.2.490",
-        "device": "Other 0.0.0",
-        "ip": "::1",
-        "latitude": "",
-        "longitude": "",
-        "createdAt": "2016-06-16T17:33:21.273Z",
-        "updatedAt": "2016-06-16T17:52:52.276Z",
-        "id": 19
-      },
-      {
-        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNDY2MDk5NTcyfQ.xzv-908dCMJ3W1Wu1C-I6jdtEHmiRGUE8uTWiIJmFos",
-        "user_id": "2",
-        "isValid": false,
-        "os": "Mac OS X 10.11.5",
-        "agent": "Vivaldi 1.2.490",
-        "device": "Other 0.0.0",
-        "ip": "::1",
-        "latitude": "",
-        "longitude": "",
-        "createdAt": "2016-06-16T17:52:52.285Z",
-        "updatedAt": "2016-06-16T17:59:59.403Z",
-        "id": 20
-      },
-      {
-        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNDY2MTAwMTQ2fQ.Nk-Z4y1IzwxpE9nFi5aX-wPsD1cvoq8SpkL77C8TCsc",
-        "user_id": "2",
-        "isValid": false,
-        "os": "Mac OS X 10.11.5",
-        "agent": "Vivaldi 1.2.490",
-        "device": "Other 0.0.0",
-        "ip": "::1",
-        "latitude": "",
-        "longitude": "",
-        "createdAt": "2016-06-16T18:02:26.473Z",
-        "updatedAt": "2016-06-16T18:23:11.846Z",
-        "id": 21
-      },
-      {
-        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNDY2MTAxMzkxfQ.TAQD70h3J1kEY9EZqCKhvAJhfsoLDw4exasSwYQsPC0",
-        "user_id": "2",
+        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NDYsImlhdCI6MTQ2NjE1NTk5Nn0.R1-MFpqGE3D5QxJNqTAE7N7Ru9AyiW3AjgHsmEELjWQ",
+        "user_id": "46",
         "isValid": true,
         "os": "Mac OS X 10.11.5",
-        "agent": "Vivaldi 1.2.490",
+        "agent": "Chrome 47.0.2526",
         "device": "Other 0.0.0",
         "ip": "::1",
         "latitude": "",
         "longitude": "",
-        "createdAt": "2016-06-16T18:23:11.858Z",
-        "updatedAt": "2016-06-16T18:23:11.858Z",
-        "id": 22
+        "createdAt": "2016-06-17T09:33:16.948Z",
+        "updatedAt": "2016-06-17T09:33:16.948Z",
+        "id": 31
       }
     ],
     "update": [],
@@ -95,6 +97,43 @@
       },
       "description_ca": {
         "type": "string"
+      },
+      "id": {
+        "type": "integer",
+        "autoIncrement": true,
+        "primaryKey": true,
+        "unique": true
+      },
+      "createdAt": {
+        "type": "datetime"
+      },
+      "updatedAt": {
+        "type": "datetime"
+      }
+    },
+    "admin": {
+      "email": {
+        "type": "string",
+        "unique": true
+      },
+      "encryptedPassword": {
+        "type": "string"
+      },
+      "isLogged": {
+        "type": "boolean",
+        "defaultsTo": false
+      },
+      "status": {
+        "type": "boolean",
+        "defaultsTo": false
+      },
+      "deleted": {
+        "type": "boolean",
+        "defaultsTo": false
+      },
+      "has_project": {
+        "type": "boolean",
+        "defaultsTo": false
       },
       "id": {
         "type": "integer",
@@ -137,43 +176,6 @@
         "autoIncrement": true,
         "primaryKey": true,
         "unique": true
-      }
-    },
-    "admin": {
-      "email": {
-        "type": "string",
-        "unique": true
-      },
-      "encryptedPassword": {
-        "type": "string"
-      },
-      "isLogged": {
-        "type": "boolean",
-        "defaultsTo": false
-      },
-      "status": {
-        "type": "boolean",
-        "defaultsTo": false
-      },
-      "deleted": {
-        "type": "boolean",
-        "defaultsTo": false
-      },
-      "has_project": {
-        "type": "boolean",
-        "defaultsTo": false
-      },
-      "id": {
-        "type": "integer",
-        "autoIncrement": true,
-        "primaryKey": true,
-        "unique": true
-      },
-      "createdAt": {
-        "type": "datetime"
-      },
-      "updatedAt": {
-        "type": "datetime"
       }
     },
     "chats": {
@@ -247,6 +249,39 @@
         "foreignKey": true,
         "alias": "update",
         "defaultsTo": null
+      },
+      "createdAt": {
+        "type": "datetime"
+      },
+      "updatedAt": {
+        "type": "datetime"
+      }
+    },
+    "project": {
+      "user_id": {
+        "type": "string",
+        "unique": true
+      },
+      "telegram_token": {
+        "type": "string"
+      },
+      "server_url": {
+        "type": "string"
+      },
+      "voting_type": {
+        "type": "integer"
+      },
+      "census_activated": {
+        "type": "integer"
+      },
+      "intervention_email": {
+        "type": "string"
+      },
+      "id": {
+        "type": "integer",
+        "autoIncrement": true,
+        "primaryKey": true,
+        "unique": true
       },
       "createdAt": {
         "type": "datetime"
@@ -446,7 +481,7 @@
   },
   "counters": {
     "admin": {
-      "id": 2
+      "id": 46
     },
     "chats": {},
     "messages": {},
@@ -455,10 +490,15 @@
     "update": {},
     "users": {},
     "votes": {},
-    "census": {},
+    "census": {
+      "id": 57
+    },
     "status": {},
     "token": {
-      "id": 22
+      "id": 31
+    },
+    "project": {
+      "id": 18
     }
   }
 }

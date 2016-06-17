@@ -123,10 +123,8 @@ module.exports = {
                                     if (err) {
                                         sails.log.error("Error updating Token DB entry " + err);
                                     }else if (success) {
-
                                         sails.log.verbose("Token for User ID " + user.id + " Generated");
                                         sails.log.verbose("Issued token for user: " + user.id);
-
                                         return res.ok({
                                             session: success,
                                             has_project: user.has_project

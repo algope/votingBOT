@@ -10,6 +10,7 @@
   "dependencies": {
     "bcrypt": "^0.8.5",
     "bwip-js": "^0.16.0",
+    "csv-parse": "^1.1.1",
     "ejs": "^2.4.2",
     "form-data": "^1.0.0-rc4",
     "generate-password": "^1.1.1",

@@ -23,9 +23,21 @@ module.exports.bootstrap = function (cb) {
     }else if(user){
       sails.log.info("ADMIN USER CREATED/FOUND SUCCESSFULLY");
       if(user.has_project){
-        
+        Project.findOne({user_id:user.id}).exec(function(ko, ok){
+          if(ko){
+            sails.log.error("ERROR RETRIEVING ADMIN PROJECT");
+          }else if(ok){
+            sails.config.telegram.token=ok.telegram_token;
+            sails.config.census.check=ok.census_check;
+            //sails.config.voting.voting_type=ok.voting_type;
+            sails.config.sendgrid.mailTo=ok.intervention_email;
+            sails.config.voting.enabled=1;
+            cb();
+          }
+        })
+      }else{
+        cb();
       }
-      cb();
     }
   });
 };

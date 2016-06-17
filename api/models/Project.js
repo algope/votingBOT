@@ -24,9 +24,15 @@ module.exports = {
     voting_type:{
       type: 'integer',
       required: true
+    },
+    census_activated:{
+      type: 'integer',
+      required: true
+    },
+    intervention_email:{
+      type: 'email',
+      required: true
     }
-
-
   }
 };
 
