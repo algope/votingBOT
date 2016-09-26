@@ -18,19 +18,16 @@ module.exports = {
    ***************************************************************************/
 
   connections: {
-    'defaults': 'devMySQL',
-    devMySQL: {
-     adapter: 'sails-mysql',
-    host: process.env.DB_URL,
-    user: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
-    database: process.env.DB_NAME
+    mongodb: {
+      adapter: 'sails-mongo',
+      url: process.env.MONGO_URL
     }
+
   },
 
   models: {
-    connection: 'devMySQL',
-    migrate: process.env.MIGRATION_TYPE
+    connection: 'localDiskDb',
+    migrate: 'drop'
 
 
   },
@@ -43,7 +40,14 @@ module.exports = {
     check: process.env.CENSUS_CHECK
   },
 
-  port: 80,
+  sendgrid:{
+    apikey: process.env.SENDGRID_APIKEY,
+    mailTo: process.env.VOTE_VERIFICATION_MAIL,
+    mailFrom: process.env.VOTE_VERIFICATION_MAILFROM,
+    enabled: process.env.VOTE_VERIFICATION
+  },
+
+  port: 8080,
 
   orm: {
     _hookTimeout: 500000
@@ -59,6 +63,10 @@ module.exports = {
   },
 
   log: {
-    level: "info"
+    level: process.env.LOG_LEVEL
+  },
+
+  authIP:{
+    enabled: process.env.ENABLE_AUTH_IP
   }
 };

@@ -6,7 +6,9 @@
  */
 
 module.exports = {
-  migrate: 'safe',
+  // migrate: 'safe',
+  autoCreatedAt: false,
+  autoUpdatedAt: false,
   attributes: {
     dni: {
       type: 'string',
@@ -26,7 +28,10 @@ module.exports = {
     name:{
       type:'string'
     },
-    surnames:{
+    surname1:{
+      type:'string'
+    },
+    surname2:{
       type:'string'
     }
   }

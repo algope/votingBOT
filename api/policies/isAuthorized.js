@@ -9,18 +9,35 @@
  */
 
 module.exports = function (req, res, next) {
-  var ip = req.headers['x-forwarded-for'] ||
-    req.connection.remoteAddress ||
-    req.socket.remoteAddress ||
-    req.connection.socket.remoteAddress;
-  //TODO: Add support only for local IPs
-  var regex=/^149\.154\.(1\.([1-9]|[1-9][0-9]|1([0-9][0-9])|2([0-4][0-9]|5[0-5]))|(([2-9]|[1-9][0-9]|1([0-9][0-9])|2([0-4][0-9]|5[0-3]))\.([0-9]|[1-9][0-9]|1([0-9][0-9])|2([0-4][0-9]|5[0-5])))|254\.([0-9]|[1-9][0-9]|1([0-9][0-9])|2([0-4][0-9]|5[0-4])))$/
 
-  if(!regex.test(ip)){
-    return res.forbidden();
-  }
-  else{
+  if(sails.config.authIP.enabled == 1){
+    var ip = req.headers['x-forwarded-for'] ||
+      req.connection.remoteAddress ||
+      req.socket.remoteAddress ||
+      req.connection.socket.remoteAddress;
+
+    var regex = /213.201.88.25/;
+
+    var regex2 = /185.23.121.46/;
+
+    ip=ip.toString();
+
+    sails.log.info("ISAUTHORIZED : : : : IP REQUEST: "+ip);
+
+    if(!regex.test(ip) && !regex2.test(ip)){
+      sails.log.info("IP -----> "+ip+" ---> FORBIDDEN");
+      return res.forbidden();
+    }
+    else if(regex.test(ip)){
+      sails.log.info("IP -----> "+ip+" ---> ALLOWED");
+      next();
+    }else if(regex2.test(ip)){
+      sails.log.info("IP -----> "+ip+" ---> ALLOWED");
+      next();
+    }
+  }else{
     next();
   }
+
 
 };

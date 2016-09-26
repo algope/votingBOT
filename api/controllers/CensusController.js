@@ -14,38 +14,63 @@ module.exports = {
     if(!dni || !bdate){
       return res.badRequest('Params expected.');
     }
+
     var date = moment(bdate, "DD-MM-YYYY");
     var day = date.date();
     var month = date.month() + 1;
     var year = date.year();
     var dateToCheck = new Date(year + '-' + month + '-' + day);
+    var nidsearch = dni;
 
     if(validateNID(dni)){
-      Census.findOne({dni: dni, birth_date: dateToCheck}).exec(function(ko, ok){
-        if(ko){
-          sails.log.error("KO: : : "+JSON.stringify(ko));
-          return res.notFound({found: false});
-        }else{
-          if(ok==undefined){
+      sails.log.debug("NID LENGTH :D: : : : SSDD::: "+dni.length);
+      if(nid.isDNI(dni)){
+        nidsearch="0"+dni;
+      }
+
+      if (sails.config.census.check == 1) {
+        Census.findOne({dni: nidsearch, birth_date: dateToCheck}).exec(function(ko, ok){
+          if(ko){
+            sails.log.error("KO: : : "+JSON.stringify(ko));
             return res.notFound({found: false});
           }else{
-            var name=ok.name;
-            var surnames=ok.surnames;
-            Status.findOrCreate({nid: dni, user_type: 'Kiosk'}).exec(function(ko, ok){
-              if(ko){
-                sails.log.error("[DB] - ERROR creating STATUS row : "+ko);
-              }else if (ok){
-                if(ok.has_voted){
-                  return res.ok({found:true, has_voted: true, name: name, surnames: surnames})
-                }else{
-                  return res.ok({found: true, name: name, surnames: surnames});
+            if(ok==undefined){
+              return res.notFound({found: false});
+            }else{
+              var name=ok.name;
+              var surnames=ok.surname1 + " " +ok.surname2;
+              Status.findOrCreate({nid: dni},{nid: dni, user_type: 'Kiosk'}).exec(function(ko, ok){
+                if(ko){
+                  sails.log.error("[DB] - ERROR creating STATUS row : "+ko);
+                }else if (ok){
+                  if(ok.has_voted){
+                    return res.ok({found:true, has_voted: true, name: name, surnames: surnames})
+                  }else{
+                    return res.ok({found: true, has_voted: false, name: name, surnames: surnames});
+                  }
                 }
-              }
-            });
+              });
 
+            }
           }
-        }
-      });
+        });
+
+      }else{
+        var name="Nombre de prueba, censo no activo";
+        var surnames="Apellido de prueba, censo no activo";
+        Status.findOrCreate({nid: dni},{nid: dni, user_type: 'Kiosk'}).exec(function(ko, ok){
+          if(ko){
+            sails.log.error("[DB] - ERROR creating STATUS row : "+ko);
+          }else if (ok){
+            if(ok.has_voted){
+              return res.ok({found:true, has_voted: true, name: name, surnames: surnames})
+            }else{
+              return res.ok({found: true, has_voted: false, name: name, surnames: surnames});
+            }
+          }
+        });
+
+      }
     }else{
       return res.badRequest('Check DNI/NIE format');
     }
@@ -53,7 +78,6 @@ module.exports = {
 };
 
 function validateNID(value) {
-
   var validChars = 'TRWAGMYFPDXBNJZSQVHLCKET';
   var nifRexp = /^[0-9]{8}[TRWAGMYFPDXBNJZSQVHLCKET]{1}$/i;
   var nieRexp = /^[XYZ]{1}[0-9]{7}[TRWAGMYFPDXBNJZSQVHLCKET]{1}$/i;

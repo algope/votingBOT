@@ -12,27 +12,75 @@
 
 module.exports = {
 
-  /***************************************************************************
-   * Set the default database connection for models in the production        *
-   * environment (see config/connections.js and config/models.js )           *
-   ***************************************************************************/
+  connections: {
+    'defaults': 'prodMySQL',
+    prodMySQL:{
+      adapter: 'sails-mysql',
+      host: process.env.DB_HOST,
+      port: process.env.DB_PORT,
+      user: process.env.DB_USER,
+      password: process.env.DB_PASSWORD,
+      database: process.env.DB_NAME
+    },
+    privateMySQL: {
+      adapter: 'sails-mysql',
+      host: process.env.DB_PRIVATE_HOST,
+      port: process.env.DB_PRIVATE_PORT,
+      user: process.env.DB_PRIVATE_USER,
+      password: process.env.DB_PRIVATE_PASSWORD,
+      database: process.env.DB_PRIVATE_NAME
 
-  // models: {
-  //   connection: 'someMysqlServer'
-  // },
+    },
 
-  /***************************************************************************
-   * Set the port in the production environment to 80                        *
-   ***************************************************************************/
+    mongodb: {
+      adapter: 'sails-mongo',
+      url: process.env.MONGO_URL
+    }
+  },
 
-  // port: 80,
+  models: {
+    connection: 'mongodb',
+    migrate: process.env.MIGRATION_TYPE
 
-  /***************************************************************************
-   * Set the log level in production environment to "silent"                 *
-   ***************************************************************************/
 
-  // log: {
-  //   level: "silent"
-  // }
+  },
+
+  telegram: {
+    token: process.env.TELEGRAM_TOKEN
+  },
+
+  census: {
+    check: process.env.CENSUS_CHECK
+  },
+
+  sendgrid:{
+    apikey: process.env.SENDGRID_APIKEY,
+    mailTo: process.env.VOTE_VERIFICATION_MAIL,
+    mailFrom: process.env.VOTE_VERIFICATION_MAILFROM,
+    enabled: process.env.VOTE_VERIFICATION
+  },
+
+  port: 80,
+
+  orm: {
+    _hookTimeout: 500000
+  },
+  pubsub: {
+    _hookTimeout: 500000
+  },
+
+  globals:{
+    authentication: {
+      secret: process.env.AUTH_SECRET
+    }
+  },
+
+  log: {
+    level: process.env.LOG_LEVEL
+  },
+
+  autIP:{
+    enabled: process.env.ENABLE_AUTH_IP
+  }
 
 };

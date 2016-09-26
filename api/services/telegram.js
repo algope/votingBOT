@@ -136,21 +136,38 @@ module.exports.answerCallbackQuery = function (callback_query_id, text, show_ale
 
 
 module.exports.setWebHook = function (url) {
-  return new Promise(function (resolve, reject) {
-    var formData = {
-      url: url
-    };
-    request.post({
-      url: 'https://' + sails.config.telegram.url + '/bot' + sails.config.telegram.token + '/setWebHook',
-      formData: formData
-    }, function (err, httpResponse, body) {
-      if (err) {
-        reject(err);
-      }
-      resolve(JSON.parse(body))
-    });
+  var options = {
+    host: sails.config.telegram.url,
+    path: "/bot" + sails.config.telegram.token + '/setWebHook',
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  };
+  var post_data = JSON.stringify({
+    url: url
+  });
 
-  })
+  sails.log.debug("OPTIONS: : "+JSON.stringify(options));
+  sails.log.debug("URL: "+url);
+  return new Promise(function (resolve, reject) {
+    var postReq = https.request(options, function (res) {
+      res.setEncoding('utf8');
+      var json = "";
+      res.on('data', function (chunk) {
+        json += chunk;
+      });
+      res.on('end', function () {
+        if(!json.ok){
+          sails.log.error("TELEGRAM WEBHOOK ERROR: "+json);
+        }
+
+        resolve();
+      });
+    });
+    postReq.write(post_data);
+    postReq.end();
+  });
 };
 
 module.exports.getFile = function (file_id) {

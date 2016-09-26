@@ -26,9 +26,9 @@ module.exports.processIt = function (text) {
       case "/votar" :
         id = 4;
         break;
-      case "/saber_mas":
-        id = 5;
-        break;
+      // case "/saber_mas":
+      //   id = 5;
+      //   break;
       case "/cancelar":
         id = 6;
         break;
@@ -83,34 +83,44 @@ function strip(text) {
   var regex5 = /^[0-9]{8}[TRWAGMYFPDXBNJZSQVHLCKET]{1}$/i;
   var regex6 = /^[XYZ]{1}[0-9]{7}[TRWAGMYFPDXBNJZSQVHLCKET]{1}$/i;
   var regex7 = /^(?:(?:31(\/|-|\.)(?:0?[13578]|1[02]))\1|(?:(?:29|30)(\/|-|\.)(?:0?[1,3-9]|1[0-2])\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:29(\/|-|\.)0?2\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\d|2[0-8])(\/|-|\.)(?:(?:0?[1-9])|(?:1[0-2]))\4(?:(?:1[6-9]|[2-9]\d)?\d{2})$/;
-  var regex8 = /^(\d+)(,\s*\d+)*/;
+  var regex8 = /^(\d+(,\d+)*)?$/;
   var regex9 = /(PASS).+/;
   var array = text.split(" ");
+  var vote = text.replace(/ /g,'');
 
 
-  var matching = array[0].match(regex);
-  var matching4 = array[0].match(regex4);
-  var matching5 = array[0].toString().toUpperCase().match(regex5);
-  var matching6 = array[0].toString().toUpperCase().match(regex6);
-  var matching7 = array[0].match(regex7);
-  var matching8 = text.match(regex8);
-  var matching9 = array[0].match(regex9);
+  var matching = regex.test(array[0]);
+  var matching4 = regex4.test(array[0]);
+  var matching5 = regex5.test(array[0].toString().toUpperCase());
+  var matching6 = regex6.test(array[0].toString().toUpperCase());
+  var matching7 = regex7.test(array[0]);
+  var matching8 = regex8.test(vote);
+  var matching9 = regex9.test(array[0]);
+
+  sails.log.debug("MATCHING8 : : : : : "+matching8);
 
 
   if (matching) {
-    return {command: matching[0], type: 1};
+    sails.log.debug(">>>>>>>>>>>> MATCHING >>>>>>>");
+    return {command: array[0], type: 1};
   } else if (matching4) {
-    return {command: matching4[0], type: 4};
+    sails.log.debug(">>>>>>>>>>>> MATCHING 4 >>>>>>>");
+    return {command: array[0], type: 4};
   } else if (matching5 && validate(text)) {
-    return {command: matching5[0], type: 5};
+    sails.log.debug(">>>>>>>>>>>> MATCHING 5 >>>>>>>");
+    return {command: array[0], type: 5};
   } else if (matching6 && validate(text)) {
-    return {command: matching6[0], type: 6};
+    sails.log.debug(">>>>>>>>>>>> MATCHING 6 >>>>>>>");
+    return {command: array[0], type: 6};
   } else if (matching7) {
-    return {command: matching7[0], type: 7};
+    sails.log.debug(">>>>>>>>>>>> MATCHING 7 >>>>>>>");
+    return {command: array[0], type: 7};
   } else if (matching8){
-    return {command: matching8[0], type: 8};
+    sails.log.debug(">>>>>>>>>>>> MATCHING 8 >>>>>>>: "+vote);
+    return {command: vote, type: 8};
   } else if (matching9){
-    return {command: matching9[0], type: 9};
+    sails.log.debug(">>>>>>>>>>>> MATCHING 9 >>>>>>>");
+    return {command: array[0], type: 9};
   }
   else return false;
 

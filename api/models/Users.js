@@ -6,9 +6,8 @@
  */
 
 module.exports = {
-
   attributes: {
-    id: {
+    user_id: {
       type: 'integer',
       primaryKey: true,
       unique: true
@@ -29,13 +28,6 @@ module.exports = {
       collection: 'messages',
       via: 'from',
       defaultsTo: null
-    },
-    nid: {
-      type: 'string',
-      unique: true
-    },
-    birth_date:{
-      type: 'date'
     },
     retry_nid: {
       type: 'integer',

@@ -8,6 +8,10 @@
 module.exports = {
   migrate: 'safe',
   attributes: {
+    option_id: {
+      type: 'integer',
+      unique: true
+    },
     text:{
       type: 'string'
     },
